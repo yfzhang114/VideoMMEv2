@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video-MME v2: Evaluating True Understanding and Reasoning in Video MLLMs</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #6b7280;
+            --accent-color: #6366f1;
+            --accent-light: #818cf8;
+            --bg-color: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --max-width: 900px;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 4px;
+            margin-left: 16px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .lang-btn:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .lang-btn .flag {
+            margin-right: 4px;
+        }
+
+        /* Hide elements based on language */
+        [data-lang-zh] { display: none !important; }
+        [data-lang-en] { display: block; }
+        
+        html[lang="zh-CN"] [data-lang-zh] { display: block !important; }
+        html[lang="zh-CN"] [data-lang-en] { display: none !important; }
+        
+        /* For inline elements */
+        span[data-lang-zh], a[data-lang-zh], button[data-lang-zh] { display: none !important; }
+        span[data-lang-en], a[data-lang-en], button[data-lang-en] { display: inline; }
+        
+        html[lang="zh-CN"] span[data-lang-zh],
+        html[lang="zh-CN"] a[data-lang-zh],
+        html[lang="zh-CN"] button[data-lang-zh] { display: inline !important; }
+        html[lang="zh-CN"] span[data-lang-en],
+        html[lang="zh-CN"] a[data-lang-en],
+        html[lang="zh-CN"] button[data-lang-en] { display: none !important; }
+
+        /* For flex elements */
+        div.flex-item[data-lang-zh] { display: none; }
+        div.flex-item[data-lang-en] { display: flex; }
+
+        html[lang="zh-CN"] div.flex-item[data-lang-zh] { display: flex; }
+        html[lang="zh-CN"] div.flex-item[data-lang-en] { display: none; }
+
+        .chart-figure { margin: 0; }
+        .chart-container{
+            width: 100%;
+            height: 520px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-badge {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .logo-version {
+            background: var(--success-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 50%, #3b3b5c 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+        }
+
+        /* Button Group */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main Content */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(180deg, var(--accent-color), var(--accent-light));
+            border-radius: 2px;
+        }
+
+        article p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #374151;
+            text-align: justify;
+        }
+
+        article strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #eef2ff, #faf5ff);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Capability Framework */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .framework-grid { grid-template-columns: 1fr; }
+        }
+
+        .framework-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s;
+        }
+
+        .framework-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+
+        .framework-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .framework-card.consistency .icon {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        }
+
+        .framework-card.coherence .icon {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        }
+
+        .framework-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .framework-card p {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        /* ==================== LEADERBOARD STYLES ==================== */
+        .leaderboard-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .leaderboard-container {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+
+        .leaderboard-header {
+            background: var(--bg-secondary);
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .leaderboard-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .leaderboard-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .leaderboard-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .leaderboard-table thead {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .leaderboard-table th {
+            padding: 16px;
+            text-align: right;
+            font-weight: 600;
+            color: var(--secondary-color);
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+
+        .leaderboard-table th:hover {
+            color: var(--accent-color);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .leaderboard-table th:first-child {
+            text-align: left;
+            padding-left: 24px;
+            cursor: default;
+        }
+
+        .leaderboard-table th:first-child:hover {
+            color: var(--secondary-color);
+            background: transparent;
+        }
+
+        .leaderboard-table th.sorted {
+            color: var(--accent-color);
+        }
+
+        .sort-arrow {
+            font-size: 12px;
+            margin-left: 4px;
+            color: #9ca3af;
+            transition: transform 0.2s;
+        }
+
+        .sort-arrow.asc {
+            transform: rotate(180deg);
+        }
+
+        .sort-arrow.active {
+            color: var(--accent-color);
+        }
+
+        .leaderboard-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .leaderboard-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .leaderboard-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .leaderboard-table td {
+            padding: 14px 16px;
+            text-align: right;
+            color: var(--primary-color);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .leaderboard-table td:first-child {
+            text-align: left;
+            padding-left: 24px;
+        }
+
+        .model-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .model-logo {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+
+        .model-logo img,
+        .model-logo svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .model-name {
+            font-weight: 500;
+            border-bottom: 1px dashed #d1d5db;
+            padding-bottom: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .model-name:hover {
+            border-bottom-style: solid;
+            color: var(--accent-color);
+        }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #ffd700, #ffed4a); color: #92400e; }
+        .rank-2 { background: linear-gradient(135deg, #c0c0c0, #e5e7eb); color: #374151; }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #d97706); color: white; }
+        .rank-default { background: #f3f4f6; color: #6b7280; }
+
+        .score-high { color: var(--success-color); font-weight: 600; }
+        .score-mid { color: var(--warning-color); font-weight: 500; }
+
+        /* Level Hierarchy */
+        .level-container {
+            margin: 2rem 0;
+        }
+
+        .level-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .level-item:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+        }
+
+        .level-badge {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .level-badge.l1 { background: linear-gradient(135deg, #10b981, #34d399); }
+        .level-badge.l2 { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .level-badge.l3 { background: linear-gradient(135deg, #ef4444, #f87171); }
+
+        .level-badge span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .level-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--primary-color);
+        }
+
+        .level-content p {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        /* Annotation Pipeline */
+        .pipeline {
+            display: flex;
+            gap: 16px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-step {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .pipeline-step::after {
+            content: "→";
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .pipeline-step:last-child::after {
+            display: none;
+        }
+
+        .pipeline-step .step-num {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin: 0 auto 12px;
+        }
+
+        .pipeline-step h5 {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .pipeline-step p {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        @media (max-width: 700px) {
+            .pipeline { flex-direction: column; }
+            .pipeline-step::after { display: none; }
+        }
+
+        /* Human Badge */
+        .human-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #166534;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        /* Video Examples Section */
+        .examples-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 2rem 0;
+        }
+
+        .video-carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 16px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .video-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .video-carousel::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 4px;
+        }
+
+        .video-carousel::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .video-card {
+            flex-shrink: 0;
+            width: 400px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            scroll-snap-align: start;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 225px;
+            background: linear-gradient(135deg, #1a1a2e, #3b3b5c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .video-placeholder::after {
+            content: "▶";
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .video-info {
+            padding: 16px;
+        }
+
+        .video-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .qa-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .qa-tab {
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .qa-tab:hover, .qa-tab.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .qa-content {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 120px;
+        }
+
+        .qa-question {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .qa-options {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+
+        .qa-option {
+            padding: 4px 0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .qa-option.correct {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        /* Figure */
+        figure {
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .figure-placeholder {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1rem;
+            border: 2px dashed var(--border-color);
+        }
+
+        figcaption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* Citation */
+        .citation-block {
+            background: #1a1a2e;
+            color: #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .citation-block code {
+            color: #a5b4fc;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .hero-stats { gap: 24px; }
+            .stat-number { font-size: 1.8rem; }
+            .section-title { font-size: 1.5rem; }
+            .video-card { width: 320px; }
+            .nav-links { display: none; }
+            .leaderboard-header { flex-direction: column; align-items: flex-start; }
+            .lang-switcher { margin-left: 0; }
+        }
+
+        /* ==================== ANALYSIS SECTION STYLES ==================== */
+        .analysis-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .analysis-grid { grid-template-columns: 1fr; }
+        }
+
+        .analysis-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .analysis-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .analysis-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .analysis-card-header {
+            background: var(--bg-secondary);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .analysis-card-header h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .analysis-card-header .tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .tag-chart { background: #dbeafe; color: #1e40af; }
+        .tag-comparison { background: #fce7f3; color: #be185d; }
+        .tag-case { background: #dcfce7; color: #166534; }
+        .tag-insight { background: #fef3c7; color: #92400e; }
+
+        .analysis-card-body {
+            padding: 20px;
+        }
+
+        /* Chart Placeholder */
+        .chart-placeholder {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            gap: 12px;
+        }
+
+        .chart-placeholder.tall {
+            height: 400px;
+        }
+
+        .chart-placeholder .icon {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        .chart-placeholder .text {
+            font-size: 0.95rem;
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .chart-placeholder .hint {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        /* Case Study */
+        .case-study {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .case-video-preview {
+            background: linear-gradient(135deg, #1a1a2e, #3b3b5c);
+            height: 180px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .case-video-preview::after {
+            content: "▶";
+            opacity: 0.7;
+        }
+
+        .case-question {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .case-question-label {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .case-question-text {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .model-responses {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .model-response {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .model-response.correct {
+            border-color: var(--success-color);
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        }
+
+        .model-response.incorrect {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+        }
+
+        .response-model-info {
+            flex-shrink: 0;
+            width: 100px;
+        }
+
+        .response-model-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .response-status {
+            font-size: 0.7rem;
+            margin-top: 4px;
+        }
+
+        .response-status.correct { color: var(--success-color); }
+        .response-status.incorrect { color: #ef4444; }
+
+        .response-content {
+            flex: 1;
+            font-size: 0.85rem;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        /* Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #fefce8, #fef9c3);
+            border: 1px solid #fde047;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .insight-box h5 {
+            font-size: 0.9rem;
+            color: #854d0e;
+            margin-bottom: 8px;
+        }
+
+        .insight-box p {
+            font-size: 0.85rem;
+            color: #713f12;
+            margin: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span class="logo-badge">Video-MME</span>
+            <span class="logo-version">v2</span>
+        </a>
+        <div class="nav-right">
+            <nav class="nav-links">
+                <!-- English Navigation -->
+                <a href="#" class="active" data-lang-en>Home</a>
+                <a href="#introduction" data-lang-en>Introduction</a>
+                <a href="#examples" data-lang-en>Examples</a>
+                <a href="#leaderboard" data-lang-en>Leaderboard</a>
+                <a href="#analysis" data-lang-en>Analysis</a>
+                <a href="#dataset" data-lang-en>Dataset</a>
+                <!-- Chinese Navigation -->
+                <a href="#" class="active" data-lang-zh>首页</a>
+                <a href="#introduction" data-lang-zh>介绍</a>
+                <a href="#examples" data-lang-zh>示例</a>
+                <a href="#leaderboard" data-lang-zh>排行榜</a>
+                <a href="#analysis" data-lang-zh>分析</a>
+                <a href="#dataset" data-lang-zh>数据集</a>
+            </nav>
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">
+                    <span class="flag">🇺🇸</span>EN
+                </button>
+                <button class="lang-btn" onclick="switchLanguage('zh')" id="lang-zh">
+                    <span class="flag">🇨🇳</span>中文
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Video-MME <span class="highlight">v2</span></h1>
+        
+        <!-- English Subtitle -->
+        <p class="subtitle" data-lang-en>
+            A comprehensive benchmark for systematically evaluating <strong>true understanding and reasoning capabilities</strong> of Video Multimodal Large Language Models
+        </p>
+        <!-- Chinese Subtitle -->
+        <p class="subtitle" data-lang-zh>
+            一个系统评估视频多模态大语言模型<strong>真实理解与推理能力</strong>的综合性基准
+        </p>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">800</div>
+                <div class="stat-label">Videos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3,200</div>
+                <div class="stat-label">Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label" data-lang-en>Cognitive Levels</div>
+                <div class="stat-label" data-lang-zh>认知层级</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label" data-lang-en>Human Annotated</div>
+                <div class="stat-label" data-lang-zh>人工标注</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="#" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+            </a>
+            <a href="#" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                HuggingFace
+            </a>
+            <a href="#" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Paper
+            </a>
+            <a href="#leaderboard" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                Leaderboard
+            </a>
+        </div>
+    </div>
+</section>
+
+<main>
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <!-- English Title -->
+        <h2 class="section-title" data-lang-en>Introduction</h2>
+        <!-- Chinese Title -->
+        <h2 class="section-title" data-lang-zh>介绍</h2>
+        
+        <article>
+            <!-- English Content -->
+            <div data-lang-en>
+                <p>
+                    In recent years, Video Multimodal Large Language Models have made significant progress on various perception and reasoning tasks, marking a shift from simple video recognition to deeper semantic understanding and complex reasoning. Despite these breakthroughs, existing evaluation methods still focus primarily on narrow and task-specific benchmarks, making it difficult to determine whether models truly understand video content or merely exploit dataset biases and spurious correlations.
+                </p>
+                
+                <p>
+                    Meanwhile, in complex video reasoning tasks, previous research has focused on evaluating specific reasoning abilities while less attention has been paid to models' overall reasoning coherence in <strong>temporal and causal relation problems</strong>. This leaves us uncertain whether models are conducting systematic reasoning or merely generating locally consistent answers. These limitations hinder comprehensive evaluation of state-of-the-art Video MLLMs and highlight the urgent need to deeply investigate models' <strong>true understanding and reliable reasoning capabilities</strong> in video comprehension.
+                </p>
+
+                <div class="highlight-box">
+                    <h4>💡 Our Solution</h4>
+                    <p>
+                        To address these challenges, we propose <strong>Video-MME v2</strong>, a comprehensive benchmark designed to systematically evaluate the true understanding and reasoning capabilities of Video MLLMs. This benchmark introduces a <strong>group-based</strong> evaluation approach, systematically analyzing state-of-the-art models from two complementary dimensions.
+                    </p>
+                </div>
+
+                <div class="framework-grid">
+                    <div class="framework-card consistency">
+                        <div class="icon">🎯</div>
+                        <h4>Capability Consistency</h4>
+                        <p>
+                            Examines the stability and breadth of specific fundamental perception capabilities across different task dimensions (e.g., from viewpoint transformation to spatial reconstruction for spatial understanding) and granularities (e.g., from object counting to motion counting for video counting).
+                        </p>
+                    </div>
+                    <div class="framework-card coherence">
+                        <div class="icon">🔗</div>
+                        <h4>Reasoning Coherence</h4>
+                        <p>
+                            Evaluates models' multi-step reasoning capabilities through a series of temporally and causally related questions, detecting whether models can make complex high-level inferences along logical chains.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Overall, these two dimensions together form a <strong>rigorous and interpretable</strong> evaluation benchmark that focuses not only on task performance but also measures models' <strong>systematic and reliable reasoning capabilities</strong> in complex video scenarios.
+                </p>
+            </div>
+
+            <!-- Chinese Content -->
+            <div data-lang-zh>
+                <p>
+                    近年来，视频多模态大语言模型在多种感知与推理任务上取得了显著进展，标志着该领域正从单纯的视频识别迈向更深层次的语义理解与复杂推理。尽管取得了较大突破，现有评测方法仍主要关注于狭窄且任务特定的基准，难以判断模型是否真正理解视频内容，或仅仅利用了数据集中的偏好与假性相关。
+                </p>
+                
+                <p>
+                    与此同时，在复杂的视频推理任务中，以往研究多聚焦于某一特定推理能力的评估，而较少考察模型在<strong>时间与因果关联问题</strong>中的整体推理连贯性，这使得我们尚不清楚模型是在进行系统性推理，还是仅生成局部一致的答案。这些局限阻碍了对前沿视频 MLLMs 的全面评估，也凸显出迫切需要深入探究模型在视频理解中<strong>真实理解与可靠推理能力</strong>的必要性。
+                </p>
+
+                <div class="highlight-box">
+                    <h4>💡 我们的解决方案</h4>
+                    <p>
+                        为应对上述挑战，我们提出了 <strong>Video-MME v2</strong>，这是一个旨在系统评估视频 MLLMs 真实理解与推理能力的综合性基准。该基准通过引入<strong>基于任务分组（group-based）</strong>的评测方式，从两个互补维度对前沿模型进行系统分析。
+                    </p>
+                </div>
+
+                <div class="framework-grid">
+                    <div class="framework-card consistency">
+                        <div class="icon">🎯</div>
+                        <h4>能力一致性 (Capability Consistency)</h4>
+                        <p>
+                            用于检验特定基础感知能力在不同任务维度（如从视角转换到空间重建体现空间理解）与粒度（如从目标计数到运动计数体现视频计数）变化下的稳定性与广度。
+                        </p>
+                    </div>
+                    <div class="framework-card coherence">
+                        <div class="icon">🔗</div>
+                        <h4>推理连贯性 (Reasoning Coherence)</h4>
+                        <p>
+                            用于评估模型的多步推理能力，通过一系列时间与因果相关的问题检测模型是否能够沿逻辑链条作出复杂的高层次推断。
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    总体而言，这两个维度共同构成了一个<strong>严谨且可解释</strong>的评测基准，不仅关注模型的任务表现，更衡量其在复杂视频场景中<strong>系统性与可靠性的推理能力</strong>。
+                </p>
+            </div>
+        </article>
+    </section>
+</main>
+
+<!-- Leaderboard Section (Full Width) -->
+<section id="leaderboard" class="leaderboard-section">
+    <h2 class="section-title" data-lang-en>Leaderboard</h2>
+    <h2 class="section-title" data-lang-zh>排行榜</h2>
+    
+    <div class="leaderboard-container">
+        <div class="leaderboard-header">
+            <div class="leaderboard-title">📊 <span data-lang-en>Model Performance Rankings</span><span data-lang-zh>模型性能排名</span></div>
+            <div class="leaderboard-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <span data-lang-en>All Models</span><span data-lang-zh>所有模型</span>
+                </button>
+                <button class="filter-btn" data-filter="open">
+                    <span data-lang-en>Open Source</span><span data-lang-zh>开源模型</span>
+                </button>
+                <button class="filter-btn" data-filter="proprietary">
+                    <span data-lang-en>Proprietary</span><span data-lang-zh>闭源模型</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="leaderboard-table-wrapper">
+            <table class="leaderboard-table" id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
+                        <th data-sort="level1">Level 1 <span class="sort-arrow">↓</span></th>
+                        <th data-sort="level2">Level 2 <span class="sort-arrow">↓</span></th>
+                        <th data-sort="level3">Level 3 <span class="sort-arrow">↓</span></th>
+                        <th data-sort="relevance"><span data-lang-en>Relevance</span><span data-lang-zh>相关性</span> <span class="sort-arrow">↓</span></th>
+                        <th data-sort="logic"><span data-lang-en>Logic</span><span data-lang-zh>逻辑性</span> <span class="sort-arrow">↓</span></th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody">
+                    <!-- Data will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<main>
+    <!-- Video Examples Section -->
+    <section id="examples">
+        <h2 class="section-title" data-lang-en>Dataset Examples</h2>
+        <h2 class="section-title" data-lang-zh>数据集示例</h2>
+        
+        <div class="examples-section">
+            <p style="margin-bottom: 1.5rem; color: var(--secondary-color);" data-lang-en>
+                Scroll to view more video examples, click different QA tabs to switch question-answer content
+            </p>
+            <p style="margin-bottom: 1.5rem; color: var(--secondary-color);" data-lang-zh>
+                滑动查看更多视频示例，点击不同的 QA 标签切换问答内容
+            </p>
+            
+            <div class="video-carousel">
+                <!-- Video Card 1 -->
+                <div class="video-card">
+                    <video controls width="100%" preload="metadata" poster="videos/coffee.png">
+                        <source src="videos/POV - Barista on Shift ASMR_720p.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info">
+                        <div class="video-title">🎬 Level 1: Frame Only (Basic Counting)</div>
+                        <div class="qa-tabs">
+                            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+                            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+                        </div>
+                        <div class="qa-content">
+                            <div class="qa-question">Q: How many latte art appearances were there in the video?</div>
+                            <div class="qa-options">
+                                <div class="qa-option correct">A. 8</div>
+                                <div class="qa-option">B. 5</div>
+                                <div class="qa-option">C. 7</div>
+                                <div class="qa-option">D. 9</div>
+                                <div class="qa-option">E. 6</div>
+                                <div class="qa-option">F. 4</div>
+                                <div class="qa-option">G. 10</div>
+                                <div class="qa-option">H. 3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="video-card">
+                    <video controls width="100%" preload="metadata" poster="videos/chain1.png">
+                        <source src="The Price is Right  Shell 🐚 Game  432025_1080p.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info">
+                        <div class="video-title">🏠 Level 3: Physical World Reasoning (Entity Persistence Tracking)</div>
+                        <div class="qa-tabs">
+                            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+                            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+                        </div>
+                        <div class="qa-content">
+                            <div class="qa-question">Q: Does the ball exist underneath any of the shells?</div>
+                            <div class="qa-options">
+                                <div class="qa-option correct">A. Yes</div>
+                                <div class="qa-option">B. No</div>
+                                <div class="qa-option">C. Unable to determine</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="video-card">
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #2d3748, #553c9a);">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title" data-lang-en>🎭 Social Behavior Reasoning</div>
+                        <div class="video-title" data-lang-zh>🎭 社交行为推理</div>
+                        <div class="qa-tabs">
+                            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+                            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+                        </div>
+                        <div class="qa-content">
+                            <div class="qa-question" data-lang-en>Q: Based on the video, what is person A most likely to do next?</div>
+                            <div class="qa-question" data-lang-zh>Q: 根据视频内容，人物A接下来最可能做什么？</div>
+                            <div class="qa-options" data-lang-en>
+                                <div class="qa-option">A. Leave the room</div>
+                                <div class="qa-option correct">B. Shake hands with B ✓</div>
+                                <div class="qa-option">C. Sit down</div>
+                                <div class="qa-option">D. Make a phone call</div>
+                            </div>
+                            <div class="qa-options" data-lang-zh>
+                                <div class="qa-option">A. 离开房间</div>
+                                <div class="qa-option correct">B. 与B握手 ✓</div>
+                                <div class="qa-option">C. 坐下来</div>
+                                <div class="qa-option">D. 打电话</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class="video-card">
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #234e52, #319795);">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title" data-lang-en>🔬 Physical World Understanding</div>
+                        <div class="video-title" data-lang-zh>🔬 物理世界理解</div>
+                        <div class="qa-tabs">
+                            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+                            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+                        </div>
+                        <div class="qa-content">
+                            <div class="qa-question" data-lang-en>Q: Which direction will the ball move after rolling down the slope?</div>
+                            <div class="qa-question" data-lang-zh>Q: 球从斜面滚下后会朝哪个方向运动？</div>
+                            <div class="qa-options" data-lang-en>
+                                <div class="qa-option">A. Left</div>
+                                <div class="qa-option">B. Right</div>
+                                <div class="qa-option correct">C. Straight ahead ✓</div>
+                                <div class="qa-option">D. Stop</div>
+                            </div>
+                            <div class="qa-options" data-lang-zh>
+                                <div class="qa-option">A. 向左</div>
+                                <div class="qa-option">B. 向右</div>
+                                <div class="qa-option correct">C. 直线前进 ✓</div>
+                                <div class="qa-option">D. 停止不动</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 5 -->
+                <div class="video-card">
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #744210, #d69e2e);">
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title" data-lang-en>📖 Plot Understanding</div>
+                        <div class="video-title" data-lang-zh>📖 剧情理解</div>
+                        <div class="qa-tabs">
+                            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+                            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+                        </div>
+                        <div class="qa-content">
+                            <div class="qa-question" data-lang-en>Q: What is the sequence of the character's emotional changes in the video?</div>
+                            <div class="qa-question" data-lang-zh>Q: 视频中角色的情绪变化顺序是？</div>
+                            <div class="qa-options" data-lang-en>
+                                <div class="qa-option correct">A. Happy→Surprised→Angry ✓</div>
+                                <div class="qa-option">B. Sad→Happy→Calm</div>
+                                <div class="qa-option">C. Angry→Sad→Happy</div>
+                                <div class="qa-option">D. Surprised→Angry→Happy</div>
+                            </div>
+                            <div class="qa-options" data-lang-zh>
+                                <div class="qa-option correct">A. 高兴→惊讶→愤怒 ✓</div>
+                                <div class="qa-option">B. 悲伤→高兴→平静</div>
+                                <div class="qa-option">C. 愤怒→悲伤→高兴</div>
+                                <div class="qa-option">D. 惊讶→愤怒→高兴</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset Section -->
+    <section id="dataset">
+        <h2 class="section-title" data-lang-en>Dataset and Annotation</h2>
+        <h2 class="section-title" data-lang-zh>数据集与标注</h2>
+        
+        <article>
+            <!-- English Content -->
+            <div data-lang-en>
+                <p>
+                    To comprehensively evaluate the video understanding capabilities of multimodal large models, Video-MME V2 has constructed a progressive hierarchical classification system. We have abandoned flat task stacking and instead divided capability dimensions into three cognitive stages: from basic information retrieval and aggregation, advancing to dynamic capture of temporal sequences, actions, and changes, and ultimately rising to complex reasoning about plots, the physical world, and social behaviors.
+                </p>
+
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 Three-Level Capability Hierarchy</h3>
+                
+                <div class="level-container">
+                    <div class="level-item">
+                        <div class="level-badge l1">
+                            <span>LEVEL</span>
+                            1
+                        </div>
+                        <div class="level-content">
+                            <h4>Retrieval & Aggregation</h4>
+                            <p>Basic visual information recognition and extraction capabilities, including object recognition, attribute judgment, scene understanding, and other perception-level tasks.</p>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="level-badge l2">
+                            <span>LEVEL</span>
+                            2
+                        </div>
+                        <div class="level-content">
+                            <h4>Temporal & Dynamic Understanding</h4>
+                            <p>Dynamic capture of temporal sequences, actions, and changes, including action recognition, state change tracking, temporal order understanding, and other cognitive-level tasks.</p>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="level-badge l3">
+                            <span>LEVEL</span>
+                            3
+                        </div>
+                        <div class="level-content">
+                            <h4>Complex Reasoning</h4>
+                            <p>Complex reasoning about plots, the physical world, and social behaviors, including causal reasoning, intention understanding, common sense inference, and other high-level reasoning tasks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <figure>
+                    <img src="area-basic.svg" 
+                        alt="Video-MME V2 Three-Level Capability Hierarchy" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 1: Video-MME V2 Three-Level Capability Hierarchy</figcaption>
+                </figure>
+                <figure>
+                    <img src="teaser_3level.svg" 
+                        alt="Video-MME V2 Three-Level Capability Hierarchy" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 1: Video-MME V2 Three-Level Capability Hierarchy</figcaption>
+                </figure>
+
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 Annotation Pipeline</h3>
+
+                <div class="human-badge">
+                    ✓ Fully Human Expert-Led
+                </div>
+
+                <div class="pipeline">
+                    <div class="pipeline-step">
+                        <div class="step-num">1</div>
+                        <h5>Video Source Selection</h5>
+                        <p>Select 3-30 minute medium-length videos and the latest content from 2025 onwards to ensure data richness and timeliness</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">2</div>
+                        <h5>Q&A Design</h5>
+                        <p>Manually construct strong distractors, forcing models to answer based on video content rather than background knowledge</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">3</div>
+                        <h5>Expert Cross-Review</h5>
+                        <p>Multiple rounds of manual verification and correction, eliminating ambiguous expressions and non-unique answers</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;">
+                    This purely manual pipeline maximally eliminates noise and hallucinations from machine-generated data, ensuring high quality and reliability of the evaluation data.
+                </p>
+
+                <figure>
+                    <img src="teaser_annotation.png" 
+                        alt="Video-MME V2 Manual Annotation Pipeline" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption>Figure 2: Video-MME V2 Manual Annotation Pipeline</figcaption>
+                </figure>
+            </div>
+
+            <!-- Chinese Content -->
+            <div data-lang-zh>
+                <p>
+                    为了全面评估多模态大模型的视频理解能力，Video-MME V2 构建了一套循序渐进的层级化分类体系。我们摒弃了扁平化的任务堆叠，而是将能力维度划分为三个认知阶段：从基础的信息检索与聚合，进阶到对时序、动作与变化的动态捕捉，最终上升至对剧情、物理世界及社会行为的复杂推理。
+                </p>
+
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 三级能力层级体系</h3>
+                
+                <div class="level-container">
+                    <div class="level-item">
+                        <div class="level-badge l1">
+                            <span>LEVEL</span>
+                            1
+                        </div>
+                        <div class="level-content">
+                            <h4>信息检索与聚合 (Retrieval & Aggregation)</h4>
+                            <p>基础的视觉信息识别与提取能力，包括对象识别、属性判断、场景理解等感知层任务。</p>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="level-badge l2">
+                            <span>LEVEL</span>
+                            2
+                        </div>
+                        <div class="level-content">
+                            <h4>时序与动态理解 (Temporal & Dynamic)</h4>
+                            <p>对时序、动作与变化的动态捕捉，包括动作识别、状态变化跟踪、时间顺序理解等认知层任务。</p>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div class="level-badge l3">
+                            <span>LEVEL</span>
+                            3
+                        </div>
+                        <div class="level-content">
+                            <h4>复杂推理 (Complex Reasoning)</h4>
+                            <p>对剧情、物理世界及社会行为的复杂推理，包括因果推理、意图理解、常识推断等高阶推理任务。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <figure>
+                    <img src="area-basic.svg" 
+                        alt="Video-MME V2 的三级能力层级分类体系" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 1: Video-MME V2 的三级能力层级分类体系</figcaption>
+                </figure>
+                <figure>
+                    <img src="teaser_3level.svg" 
+                        alt="Video-MME V2 的三级能力层级分类体系" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 1: Video-MME V2 的三级能力层级分类体系</figcaption>
+                </figure>
+
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 标注流程</h3>
+
+                <div class="human-badge">
+                    ✓ 完全由人类专家主导
+                </div>
+
+                <div class="pipeline">
+                    <div class="pipeline-step">
+                        <div class="step-num">1</div>
+                        <h5>视频源筛选</h5>
+                        <p>选取3-30分钟的中长视频及2025年后的最新素材，保证数据的丰富度与时效性</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">2</div>
+                        <h5>问答设计</h5>
+                        <p>人工构建强干扰项，迫使模型必须基于视频内容而非背景知识作答</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">3</div>
+                        <h5>专家交叉评审</h5>
+                        <p>多轮人工校验修正，剔除模糊表述及答案不唯一的情况</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;">
+                    这一纯人工流水线最大程度地消除了机器生成数据的噪声与幻觉，确保评测数据的高质量与可靠性。
+                </p>
+
+                <figure>
+                    <img src="teaser_annotation.png" 
+                        alt="Video-MME V2 人工标注流程图解" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption>Figure 2: Video-MME V2 人工标注流程</figcaption>
+                </figure>
+            </div>
+        </article>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="analysis-section">
+        <h2 class="section-title" data-lang-en>Experiments & Analysis</h2>
+        <h2 class="section-title" data-lang-zh>实验与分析</h2>
+        
+        <p style="color: var(--secondary-color); margin-bottom: 2rem; font-size: 1.1rem;" data-lang-en>
+            We conducted comprehensive evaluations on multiple state-of-the-art video multimodal large models. Below are the main experimental results and in-depth analysis.
+        </p>
+        <p style="color: var(--secondary-color); margin-bottom: 2rem; font-size: 1.1rem;" data-lang-zh>
+            我们对多个前沿视频多模态大模型进行了全面评测，以下是主要实验结果与深入分析。
+        </p>
+
+        <div class="analysis-grid">
+            <!-- Chart Placeholder 1: Overall Performance -->
+            <div class="analysis-card">
+                <div class="analysis-card-header">
+                    <h4>📈 <span data-lang-en>Overall Performance by Level</span><span data-lang-zh>各层级整体表现</span></h4>
+                    <span class="tag tag-chart">Chart</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder">
+                        <div class="icon">📊</div>
+                        <div class="text" data-lang-en>Comparison of model performance across three cognitive levels</div>
+                        <div class="text" data-lang-zh>各模型在三个认知层级上的整体表现对比图</div>
+                        <div class="hint">Bar Chart / Grouped Bar Chart</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Placeholder 2: Radar Chart -->
+            <div class="analysis-card">
+                <div class="analysis-card-header">
+                    <h4>🎯 <span data-lang-en>Capability Radar</span><span data-lang-zh>能力雷达图</span></h4>
+                    <span class="tag tag-chart">Chart</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder">
+                        <div class="icon">🕸️</div>
+                        <div class="text" data-lang-en>Multi-dimensional capability radar chart (spatial understanding, temporal reasoning, causal reasoning, etc.)</div>
+                        <div class="text" data-lang-zh>模型多维能力雷达图（空间理解、时序推理、因果推理等）</div>
+                        <div class="hint">Radar Chart</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 1: Model Comparison -->
+            <div class="analysis-card full-width">
+                <div class="analysis-card-header">
+                    <h4>🔍 <span data-lang-en>Case Study: Multi-step Reasoning</span><span data-lang-zh>案例研究：多步推理</span></h4>
+                    <span class="tag tag-case">Case</span>
+                    <span class="tag tag-comparison">Comparison</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="case-study">
+                        <div class="case-video-preview" style="background: linear-gradient(135deg, #1e3a5f, #3182ce);"></div>
+                        
+                        <div class="case-question">
+                            <div class="case-question-label">QUESTION (Level 3 - Causal Reasoning)</div>
+                            <div class="case-question-text" data-lang-en>In the video, after the red ball hits the blue ball, why does the blue ball move to the right instead of to the left? Please analyze based on the physical scene shown in the video.</div>
+                            <div class="case-question-text" data-lang-zh>视频中，当红色小球撞击蓝色小球后，蓝色小球为什么会向右移动而不是向左？请根据视频中展示的物理场景进行分析。</div>
+                        </div>
+
+                        <div class="model-responses">
+                            <div class="model-response correct">
+                                <div class="response-model-info">
+                                    <div class="response-model-name">GPT-5.2-high</div>
+                                    <div class="response-status correct">✓ Correct</div>
+                                </div>
+                                <div class="response-content" data-lang-en>
+                                    Based on the collision scene shown in the video, the red ball hits the stationary blue ball at high speed from the left. According to the law of conservation of momentum, momentum is transferred along the collision direction after impact, so the blue ball moves to the right...
+                                </div>
+                                <div class="response-content" data-lang-zh>
+                                    根据视频中展示的碰撞场景，红色小球从左侧以较高速度撞击静止的蓝色小球。根据动量守恒定律，碰撞后动量会沿着碰撞方向传递，因此蓝色小球会向右侧移动...
+                                </div>
+                            </div>
+                            <div class="model-response correct">
+                                <div class="response-model-info">
+                                    <div class="response-model-name">Gemini-3-Pro</div>
+                                    <div class="response-status correct">✓ Correct</div>
+                                </div>
+                                <div class="response-content" data-lang-en>
+                                    The video shows the red ball rolling from the left side of the screen and hitting the blue ball. Since the red ball's direction of motion is from left to right, when the two balls collide, the red ball transfers its momentum to the blue ball, causing the blue ball to move in the same direction (to the right).
+                                </div>
+                                <div class="response-content" data-lang-zh>
+                                    视频显示红球从画面左侧滚动并撞击蓝球。由于红球的运动方向是从左向右，当两球发生碰撞时，红球将其动量传递给蓝球，导致蓝球沿相同方向（向右）运动。
+                                </div>
+                            </div>
+                            <div class="model-response incorrect">
+                                <div class="response-model-info">
+                                    <div class="response-model-name">Model-X-7B</div>
+                                    <div class="response-status incorrect">✗ Incorrect</div>
+                                </div>
+                                <div class="response-content" data-lang-en>
+                                    The blue ball moves to the right because the table is tilted, and the ball naturally rolls toward the lower side. The red ball's collision only triggered this movement.
+                                </div>
+                                <div class="response-content" data-lang-zh>
+                                    蓝色小球向右移动是因为桌面是倾斜的，球会自然滚向低处。红色小球的碰撞只是触发了这一运动。
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <h5>💡 <span data-lang-en>Key Insight</span><span data-lang-zh>关键洞察</span></h5>
+                            <p data-lang-en>This case demonstrates the differences between models in physical reasoning tasks. High-performance models can correctly identify collision dynamics, while weaker models tend to produce "shortcut reasoning," attributing motion to non-existent scene factors.</p>
+                            <p data-lang-zh>此案例展示了模型在物理推理任务中的差异。高性能模型能够正确识别碰撞动力学，而较弱模型容易产生"捷径推理"，将运动归因于不存在的场景因素。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Placeholder 3 & 4 -->
+            <div class="analysis-card">
+                <div class="analysis-card-header">
+                    <h4>📉 <span data-lang-en>Consistency Gap Analysis</span><span data-lang-zh>一致性差距分析</span></h4>
+                    <span class="tag tag-chart">Chart</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder">
+                        <div class="icon">📉</div>
+                        <div class="text" data-lang-en>Analysis of performance gaps in capability consistency dimension</div>
+                        <div class="text" data-lang-zh>模型在能力一致性维度上的表现差距分析</div>
+                        <div class="hint">Line Chart / Heatmap</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-card">
+                <div class="analysis-card-header">
+                    <h4>🔗 <span data-lang-en>Reasoning Coherence Breakdown</span><span data-lang-zh>推理连贯性分解</span></h4>
+                    <span class="tag tag-chart">Chart</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder">
+                        <div class="icon">🔗</div>
+                        <div class="text" data-lang-en>Breakdown of reasoning coherence performance across different task chains</div>
+                        <div class="text" data-lang-zh>推理连贯性在不同任务链上的表现分解</div>
+                        <div class="hint">Stacked Bar / Sankey Diagram</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="analysis-card full-width">
+                <div class="analysis-card-header">
+                    <h4>🕐 <span data-lang-en>Case Study: Temporal Understanding</span><span data-lang-zh>案例研究：时序理解</span></h4>
+                    <span class="tag tag-case">Case</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="case-study">
+                        <div class="case-video-preview" style="background: linear-gradient(135deg, #553c9a, #805ad5);"></div>
+                        
+                        <div class="case-question">
+                            <div class="case-question-label">QUESTION (Level 2 - Temporal Ordering)</div>
+                            <div class="case-question-text" data-lang-en>Please arrange the following events in chronological order as they appear in the video: A) Man opens refrigerator B) Woman enters kitchen C) Dog runs across living room D) Phone rings</div>
+                            <div class="case-question-text" data-lang-zh>请按照视频中事件发生的先后顺序排列：A) 男子打开冰箱 B) 女子进入厨房 C) 狗跑过客厅 D) 电话铃响</div>
+                        </div>
+
+                        <div class="model-responses">
+                            <div class="model-response correct">
+                                <div class="response-model-info">
+                                    <div class="response-model-name">Qwen3-VL-235B</div>
+                                    <div class="response-status correct">✓ Correct</div>
+                                </div>
+                                <div class="response-content" data-lang-en>
+                                    The correct order is: D → C → B → A. First the phone rings (0:05), then the dog is startled by the sound and runs across the living room (0:08), the woman hears the sound and walks from the bedroom to the kitchen (0:15), and finally the man opens the refrigerator in the kitchen (0:23).
+                                </div>
+                                <div class="response-content" data-lang-zh>
+                                    正确顺序是：D → C → B → A。首先电话铃响（0:05），随后狗被声音惊动跑过客厅（0:08），女子听到声音后从卧室走向厨房（0:15），最后男子在厨房打开冰箱（0:23）。
+                                </div>
+                            </div>
+                            <div class="model-response incorrect">
+                                <div class="response-model-info">
+                                    <div class="response-model-name">Model-Y-13B</div>
+                                    <div class="response-status incorrect">✗ Incorrect</div>
+                                </div>
+                                <div class="response-content" data-lang-en>
+                                    The order should be: B → A → C → D. The woman first appears in the kitchen, then the man opens the refrigerator...
+                                </div>
+                                <div class="response-content" data-lang-zh>
+                                    顺序应该是：B → A → C → D。女子首先出现在厨房，然后男子打开冰箱...
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <h5>💡 <span data-lang-en>Key Insight</span><span data-lang-zh>关键洞察</span></h5>
+                            <p data-lang-en>Temporal understanding is one of the core capabilities of video comprehension. This case shows that many models make errors when handling multi-event temporal ordering, especially when events are closely spaced or causally related.</p>
+                            <p data-lang-zh>时序理解是视频理解的核心能力之一。此案例表明，许多模型在处理多事件时序排列时容易出错，尤其是当事件间隔较短或存在因果关联时。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="analysis-card full-width">
+                <div class="analysis-card-header">
+                    <h4>📋 <span data-lang-en>Detailed Performance Comparison</span><span data-lang-zh>详细性能对比</span></h4>
+                    <span class="tag tag-comparison">Comparison</span>
+                </div>
+                <div class="analysis-card-body">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th><span data-lang-en>Capability</span><span data-lang-zh>能力</span></th>
+                                <th>GPT-5.2-high</th>
+                                <th>Gemini-3-Pro</th>
+                                <th>Qwen3-VL-235B</th>
+                                <th>InternVL3.5-241B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span data-lang-en>Spatial Understanding</span><span data-lang-zh>空间理解</span></td>
+                                <td style="color: var(--success-color); font-weight: 600;">92.3</td>
+                                <td>89.7</td>
+                                <td>88.4</td>
+                                <td>87.9</td>
+                            </tr>
+                            <tr>
+                                <td><span data-lang-en>Temporal Reasoning</span><span data-lang-zh>时序推理</span></td>
+                                <td>88.5</td>
+                                <td style="color: var(--success-color); font-weight: 600;">90.1</td>
+                                <td>87.2</td>
+                                <td>86.8</td>
+                            </tr>
+                            <tr>
+                                <td><span data-lang-en>Causal Inference</span><span data-lang-zh>因果推理</span></td>
+                                <td style="color: var(--success-color); font-weight: 600;">85.2</td>
+                                <td>82.4</td>
+                                <td>80.9</td>
+                                <td>79.5</td>
+                            </tr>
+                            <tr>
+                                <td><span data-lang-en>Action Recognition</span><span data-lang-zh>动作识别</span></td>
+                                <td>91.8</td>
+                                <td>90.5</td>
+                                <td style="color: var(--success-color); font-weight: 600;">92.1</td>
+                                <td>91.2</td>
+                            </tr>
+                            <tr>
+                                <td><span data-lang-en>Object Counting</span><span data-lang-zh>对象计数</span></td>
+                                <td>78.4</td>
+                                <td>76.2</td>
+                                <td>79.8</td>
+                                <td style="color: var(--success-color); font-weight: 600;">81.3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- More Chart Placeholders -->
+            <div class="analysis-card">
+                <div class="analysis-card-header">
+                    <h4>❌ <span data-lang-en>Error Type Distribution</span><span data-lang-zh>错误类型分布</span></h4>
+                    <span class="tag tag-chart">Chart</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder">
+                        <div class="icon">🥧</div>
+                        <div class="text" data-lang-en>Distribution of model error types (hallucination, temporal confusion, causal inversion, etc.)</div>
+                        <div class="text" data-lang-zh>模型错误类型分布（幻觉、时序混淆、因果倒置等）</div>
+                        <div class="hint">Pie Chart / Donut Chart</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-card">
+                <div class="analysis-card-header">
+                    <h4>⚖️ <span data-lang-en>Model Size vs Performance</span><span data-lang-zh>模型规模与性能</span></h4>
+                    <span class="tag tag-chart">Chart</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder">
+                        <div class="icon">📏</div>
+                        <div class="text" data-lang-en>Relationship between model parameter count and performance</div>
+                        <div class="text" data-lang-zh>模型参数量与性能的关系图</div>
+                        <div class="hint">Scatter Plot</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Findings -->
+            <div class="analysis-card full-width">
+                <div class="analysis-card-header">
+                    <h4>🎯 <span data-lang-en>Key Findings Summary</span><span data-lang-zh>主要发现总结</span></h4>
+                    <span class="tag tag-insight">Insight</span>
+                </div>
+                <div class="analysis-card-body">
+                    <div class="chart-placeholder tall">
+                        <div class="icon">📝</div>
+                        <div class="text" data-lang-en>Key Findings Summary:<br>1. Capability Consistency Analysis Conclusions<br>2. Reasoning Coherence Analysis Conclusions<br>3. Inter-model Difference Analysis<br>4. Future Improvement Suggestions</div>
+                        <div class="text" data-lang-zh>主要发现总结：<br>1. 能力一致性分析结论<br>2. 推理连贯性分析结论<br>3. 模型间差异分析<br>4. 未来改进方向建议</div>
+                        <div class="hint">Text Summary / Infographic</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Section -->
+    <section id="citation">
+        <h2 class="section-title" data-lang-en>Citation</h2>
+        <h2 class="section-title" data-lang-zh>引用</h2>
+        <div class="citation-block">
+<code>@article{videommev2_2025,
+  title={Video-MME v2: Evaluating True Understanding and Reasoning in Video MLLMs},
+  author={Video-MME Team},
+  journal={arXiv preprint},
+  year={2025},
+  url={https://github.com/Video-MME/Video-MME-v2}
+}</code>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#">GitHub</a>
+            <a href="#">HuggingFace</a>
+            <a href="#">Paper</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#" data-lang-en>Contact</a>
+            <a href="#" data-lang-zh>联系我们</a>
+        </div>
+        <p class="copyright" data-lang-en>© 2025 Video-MME Team. All rights reserved.</p>
+        <p class="copyright" data-lang-zh>© 2025 Video-MME 团队。保留所有权利。</p>
+    </div>
+</footer>
+
+<script>
+    // Language Switcher Function
+    function switchLanguage(lang) {
+        const html = document.documentElement;
+        const enBtn = document.getElementById('lang-en');
+        const zhBtn = document.getElementById('lang-zh');
+        
+        if (lang === 'zh') {
+            html.setAttribute('lang', 'zh-CN');
+            enBtn.classList.remove('active');
+            zhBtn.classList.add('active');
+            localStorage.setItem('preferred-lang', 'zh');
+        } else {
+            html.setAttribute('lang', 'en');
+            enBtn.classList.add('active');
+            zhBtn.classList.remove('active');
+            localStorage.setItem('preferred-lang', 'en');
+        }
+    }
+
+    // Load saved language preference
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedLang = localStorage.getItem('preferred-lang');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        }
+    });
+
+    // Leaderboard Data
+    const leaderboardData = [
+        // Proprietary Models
+        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", level1: 58.42, level2: 38.05, level3: 30.27, relevance: 42.03, logic: 35.57 },
+        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", level1: 30.74, level2: 27.51, level3: 20.03, relevance: 26.95, logic: 21.46 },
+        { name: "GPT-5", logo: "openai", type: "proprietary", level1: 30.17, level2: 25.53, level3: 20.72, relevance: 26.05, logic: 21.84 },
+        
+        // Open Source - Instruct Models
+        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", level1: 22.48, level2: 16.81, level3: 15.32, relevance: 16.92, logic: 18.92 },
+        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", level1: 21.48, level2: 16.44, level3: 14.71, relevance: 17.87, logic: 15.20 },
+        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", level1: 23.37, level2: 15.85, level3: 15.52, relevance: 17.44, logic: 17.95 },
+        { name: "InternVL3_5-241B-A28B-Instruct", logo: "intern", type: "open", level1: 19.42, level2: 15.52, level3: 14.03, relevance: 17.40, logic: 12.89 },
+        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", level1: 18.04, level2: 16.69, level3: 12.93, relevance: 16.75, logic: 12.78 },
+        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", level1: 17.43, level2: 11.81, level3: 12.97, relevance: 15.28, logic: 10.75 },
+        { name: "InternVL3_5-30B-A3B-Instruct", logo: "intern", type: "open", level1: 16.79, level2: 10.82, level3: 9.25, relevance: 13.10, logic: 8.84 },
+        { name: "Qwen3vl-30B-A3B-Think", logo: "qwen", type: "open", level1: 16.23, level2: 11.94, level3: 10.65, relevance: 13.83, logic: 9.83 },
+        { name: "Qwen2_5-VL-72B-Instruct", logo: "qwen", type: "open", level1: 16.09, level2: 13.55, level3: 11.45, relevance: 14.71, logic: 10.51 },
+        { name: "InternVL3_5-8B-Instruct", logo: "intern", type: "open", level1: 15.99, level2: 11.08, level3: 9.01, relevance: 12.29, logic: 9.76 },
+        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", level1: 15.80, level2: 12.01, level3: 9.40, relevance: 13.39, logic: 8.84 },
+        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", level1: 15.81, level2: 8.90, level3: 8.60, relevance: 11.45, logic: 8.73 },
+        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", level1: 15.68, level2: 11.35, level3: 10.96, relevance: 13.16, logic: 10.56 },
+        { name: "GLM4.5v-think", logo: "glm", type: "open", level1: 15.67, level2: 13.40, level3: 11.65, relevance: 14.06, logic: 11.58 },
+        { name: "Qwen3vl-4B-Instruct", logo: "qwen", type: "open", level1: 15.11, level2: 10.09, level3: 8.90, relevance: 12.00, logic: 8.60 },
+        { name: "InternVL3_5-4B-Instruct", logo: "intern", type: "open", level1: 14.31, level2: 9.84, level3: 8.35, relevance: 11.47, logic: 8.11 },
+        { name: "Qwen3vl-8B-Instruct", logo: "qwen", type: "open", level1: 14.28, level2: 10.80, level3: 10.50, relevance: 12.50, logic: 9.71 },
+        { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", level1: 13.41, level2: 11.10, level3: 9.73, relevance: 11.87, logic: 9.58 },
+        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", level1: 13.20, level2: 6.63, level3: 6.55, relevance: 9.24, logic: 6.36 },
+        { name: "GLM4.1v-think", logo: "glm", type: "open", level1: 13.15, level2: 8.65, level3: 7.25, relevance: 10.42, logic: 6.80 },
+        { name: "Keye-VL-1_5-8B", logo: "keye", type: "open", level1: 12.93, level2: 9.38, level3: 7.47, relevance: 10.77, logic: 6.89 },
+        { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", level1: 12.74, level2: 10.35, level3: 8.29, relevance: 11.45, logic: 7.38 },
+        { name: "Qwen2_5-VL-7B-Instruct", logo: "qwen", type: "open", level1: 12.77, level2: 9.46, level3: 7.13, relevance: 10.37, logic: 7.19 },
+        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", level1: 12.12, level2: 9.42, level3: 7.84, relevance: 10.51, logic: 7.30 },
+        { name: "Qwen3vl-30B-A3B-Instruct", logo: "qwen", type: "open", level1: 9.03, level2: 8.08, level3: 6.03, relevance: 8.63, logic: 5.11 },
+        { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", level1: 8.15, level2: 8.81, level3: 6.67, relevance: 9.41, logic: 4.43 },
+        { name: "GLM4.6-flash", logo: "glm", type: "open", level1: 3.59, level2: 3.75, level3: 3.10, relevance: 4.63, logic: 1.10 },
+    ];
+
+    // Logo SVGs - 添加新的logo
+    const logos = {
+        openai: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.0462 6.0462 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.4848 4.4848 0 0 1 2.3655-1.9723V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.453l-.142.0805L8.704 5.4599a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l3.1028-1.7999 3.1028 1.7999v3.5916l-3.1028 1.7999-3.1028-1.7999z" fill="#000"/></svg>`,
+        qwen: `<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Qwen_logo.svg" alt="Qwen" style="width:100%;height:100%;">`,
+        gemini: `<img src="gemini_logo.jpg" alt="Gemini" style="width:100%;height:100%;">`,
+        intern: `<img src="intern_logo.png" alt="InternVL" style="width:100%;height:100%;">`,
+        doubao: `<img src="logo_doubao.png" alt="Doubao" style="width:100%;height:100%;">`,
+        claude: `<img src="logo_claude.png" alt="Claude" style="width:100%;height:100%;">`,
+        kimi: `<img src="kimi_logo.jpg" alt="Kimi" style="width:100%;height:100%;">`,
+        glm: `<img src="glm_logo.JPG" alt="GLM" style="width:100%;height:100%;">`,
+        mimo: `<img src="mimo_logo.png" alt="MiMo" style="width:100%;height:100%;">`,
+        videollama: `<img src="videollama_logo.jpg" alt="VideoLLaMA" style="width:100%;height:100%;">`,
+        llava: `<img src="llava_logo.jpg" alt="LLaVA" style="width:100%;height:100%;">`,
+        keye: `<img src="keye_logo.jpg" alt="Keye" style="width:100%;height:100%;">`,
+    };
+
+    // Current sort state
+    let currentSort = { column: 'level1', direction: 'desc' };
+    let currentFilter = 'all';
+
+    // Render leaderboard
+    function renderLeaderboard() {
+        let data = [...leaderboardData];
+        
+        // Filter
+        if (currentFilter !== 'all') {
+            data = data.filter(item => item.type === currentFilter);
+        }
+        
+        // Sort
+        data.sort((a, b) => {
+            const aVal = a[currentSort.column];
+            const bVal = b[currentSort.column];
+            return currentSort.direction === 'desc' ? bVal - aVal : aVal - bVal;
+        });
+
+        const tbody = document.getElementById('leaderboardBody');
+        // 在 renderLeaderboard 函数中，修改这部分
+        tbody.innerHTML = data.map((item, index) => {
+            const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-default';
+            return `
+                <tr>
+                    <td>
+                        <div class="model-cell">
+                            <span class="rank-badge ${rankClass}">${index + 1}</span>
+                            <div class="model-logo">${logos[item.logo]}</div>
+                            <span class="model-name">${item.name}</span>
+                        </div>
+                    </td>
+                    <td class="${item.level1 >= 30 ? 'score-high' : item.level1 >= 15 ? 'score-mid' : ''}">${item.level1}</td>
+                    <td class="${item.level2 >= 25 ? 'score-high' : item.level2 >= 12 ? 'score-mid' : ''}">${item.level2}</td>
+                    <td class="${item.level3 >= 20 ? 'score-high' : item.level3 >= 10 ? 'score-mid' : ''}">${item.level3}</td>
+                    <td>${item.relevance}</td>
+                    <td>${item.logic}</td>
+                </tr>
+            `;
+        }).join('');
+
+        // Update sort arrows
+        document.querySelectorAll('.leaderboard-table th[data-sort]').forEach(th => {
+            const arrow = th.querySelector('.sort-arrow');
+            const column = th.dataset.sort;
+            if (column === currentSort.column) {
+                th.classList.add('sorted');
+                arrow.classList.add('active');
+                arrow.classList.toggle('asc', currentSort.direction === 'asc');
+            } else {
+                th.classList.remove('sorted');
+                arrow.classList.remove('active', 'asc');
+            }
+        });
+    }
+
+    // Sort handler
+    document.querySelectorAll('.leaderboard-table th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+            const column = th.dataset.sort;
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'desc' ? 'asc' : 'desc';
+            } else {
+                currentSort.column = column;
+                currentSort.direction = 'desc';
+            }
+            renderLeaderboard();
+        });
+    });
+
+    // Filter handler
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            renderLeaderboard();
+        });
+    });
+
+    // Initial render
+    renderLeaderboard();
+
+    // QA Tab Switching
+    function switchQA(button, qaIndex) {
+        const card = button.closest('.video-card');
+        const tabs = card.querySelectorAll('.qa-tab');
+        
+        tabs.forEach(tab => tab.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Note: For a complete implementation, you would need to update the QA content based on the selected tab
+        // This is a simplified version - you can expand the qaData array for full functionality
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

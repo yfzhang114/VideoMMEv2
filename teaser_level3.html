@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    // 数据结构（仅展示颜色更新，其余结构不变）
+
+var data = [
+
+{
+
+// name: 'Video-MME V2',
+
+itemStyle: {
+
+color: '#3a5f7d' // ← 更亮的根色
+
+},
+
+children: [
+
+// ========== Level 1: Perception & Aggregation ==========
+
+{
+
+name: 'L1: Perception &\nAggregation',
+
+itemStyle: {
+
+color: '#6b9ac4' // ← 清新蓝
+
+},
+
+children: [
+
+{
+
+name: 'Visual-Only',
+
+itemStyle: {
+
+color: '#8fb3d9'
+
+},
+
+children: [
+
+{ name: 'Recognition', value: 33, itemStyle: { color: '#b3d1ee' } },
+
+{ name: 'Spatial\nCounting', value: 33, itemStyle: { color: '#c9e0f5' } },
+
+{ name: 'Visual\nCalculation', value: 34, itemStyle: { color: '#dbe9f7' } }
+
+]
+
+},
+
+{
+
+name: 'Audio-Visual\nFusion',
+
+itemStyle: {
+
+color: '#7fa5d6'
+
+},
+
+children: [
+
+{ name: 'Cross-Modal\nMatching', value: 33, itemStyle: { color: '#a3c6eb' } },
+
+{ name: 'Audio→Visual\nQA', value: 33, itemStyle: { color: '#c0daf2' } },
+
+{ name: 'Visual→Audio\nQA', value: 34, itemStyle: { color: '#d5e6f8' } }
+
+]
+
+}
+
+]
+
+},
+
+// ========== Level 2: Temporal Understanding ==========
+
+{
+
+name: 'L2: Temporal\nUnderstanding',
+
+itemStyle: {
+
+color: '#d98c6c' // ← 柔和橙
+
+},
+
+children: [
+
+{
+
+name: 'Action &\nMotion',
+
+itemStyle: {
+
+color: '#e1a287'
+
+},
+
+children: [
+
+{ name: 'Action\nRecognition', value: 20, itemStyle: { color: '#ebc0ab' } },
+
+{ name: 'Repetitive\nCounting', value: 20, itemStyle: { color: '#f2d5c5' } },
+
+{ name: 'Temporal\nLocalization', value: 20, itemStyle: { color: '#f6e2d4' } },
+
+{ name: 'Motion\nAnalysis', value: 20, itemStyle: { color: '#f8e5dc' } }
+
+]
+
+},
+
+{
+
+name: 'Sequential\nReasoning',
+
+itemStyle: {
+
+color: '#d29a7c'
+
+},
+
+children: [
+
+{ name: 'Ordering', value: 27, itemStyle: { color: '#e4b59f' } },
+
+{ name: 'State\nChange', value: 27, itemStyle: { color: '#f0d0c0' } },
+
+{ name: 'Periodicity', value: 26, itemStyle: { color: '#f5e1d2' } }
+
+]
+
+},
+
+{
+
+name: 'Event-Level\nTemporal',
+
+itemStyle: {
+
+color: '#c78b6e'
+
+},
+
+children: [
+
+{ name: 'Causal\nReasoning', value: 40, itemStyle: { color: '#dfb09b' } },
+
+{ name: 'Short-term\nPrediction', value: 40, itemStyle: { color: '#ecd1c5' } }
+
+]
+
+}
+
+]
+
+},
+
+// ========== Level 3: Complex Reasoning ==========
+
+{
+
+name: 'L3: Complex\nReasoning',
+
+itemStyle: {
+
+color: '#7fb7a5' // ← 灰绿
+
+},
+
+children: [
+
+{
+
+name: 'Narrative\nComprehension',
+
+itemStyle: {
+
+color: '#97c6b3'
+
+},
+
+children: [
+
+{ name: 'Turning\nPoint', value: 20, itemStyle: { color: '#b5d8cb' } },
+
+{ name: 'Narrative\nCloze', value: 20, itemStyle: { color: '#cde5dd' } },
+
+{ name: 'Symbolic\nInterpretation', value: 20, itemStyle: { color: '#dfece6' } },
+
+{ name: 'Cinematic\nTechnique', value: 20, itemStyle: { color: '#e9f2ed' } }
+
+]
+
+},
+
+{
+
+name: 'Knowledge\nGrounding',
+
+itemStyle: {
+
+color: '#8dbcc2'
+
+},
+
+children: [
+
+{ name: 'Concept\nAcquisition', value: 40, itemStyle: { color: '#b0d2d7' } },
+
+{ name: 'Skill\nLearning', value: 40, itemStyle: { color: '#cde6e9' } }
+
+]
+
+},
+
+{
+
+name: 'Social\nIntelligence',
+
+itemStyle: {
+
+color: '#9cafc7'
+
+},
+
+children: [
+
+{ name: 'Individual\nCognition', value: 27, itemStyle: { color: '#bbcfe0' } },
+
+{ name: 'Dyadic\nInteraction', value: 27, itemStyle: { color: '#d5e3ec' } },
+
+{ name: 'Collective\nDynamics', value: 26, itemStyle: { color: '#e6edf5' } }
+
+]
+
+},
+
+{
+
+name: 'Physical &\nSpatial',
+
+itemStyle: {
+
+color: '#a7b0c9'
+
+},
+
+children: [
+
+{ name: 'Object\nPermanence', value: 20, itemStyle: { color: '#c0c9dd' } },
+
+{ name: '3D Spatial', value: 20, itemStyle: { color: '#d5ddf2' } },
+
+{ name: 'Counterfactual', value: 20, itemStyle: { color: '#e4e9f8' } },
+
+{ name: 'Counterintuitive', value: 20, itemStyle: { color: '#edf1fb' } }
+
+]
+
+}
+
+]
+
+}
+
+]
+
+}
+
+];
+
+// 配置项：重点优化 label 字体大小和颜色
+
+var option = {
+
+// 删除 title
+
+// title: { ... }, // ← 已移除
+
+series: {
+
+type: 'sunburst',
+
+data: data, // 保持你的 data 不变
+
+radius: [0, '95%'], // 总半径扩大，给外圈更多空间
+
+center: ['50%', '50%'], // 居中
+
+sort: undefined,
+
+emphasis: {
+
+focus: 'ancestor'
+
+},
+
+// 关键：调整各层级半径比例，让 L3 更宽
+
+levels: [
+
+{}, // root
+
+{
+
+r0: '0%',
+
+r: '8%', // L1 缩小
+
+itemStyle: {
+
+borderWidth: 3,
+
+borderRadius: 20,
+
+borderColor: '#fff',
+
+shadowBlur: 6,
+
+shadowColor: 'rgba(0, 0, 0, 0.1)'
+
+},
+
+label: {
+
+fontSize: 18,
+
+fontWeight: 'bold',
+
+color: '#ffffff',
+
+position: 'inside', // 居中显示
+
+rotate: 0
+
+}
+
+},
+
+{
+
+r0: '8%',
+
+r: '35%', // L2 中等
+
+itemStyle: {
+
+borderWidth: 2,
+
+borderRadius: 20,
+
+borderColor: '#fff'
+
+},
+
+label: {
+
+rotate: 'tangential',
+
+fontSize: 24,
+
+fontWeight: '600',
+
+color: '#ffffff'
+
+}
+
+},
+
+{
+
+r0: '35%',
+
+r: '65%', // L3 扩大到 30% 宽度（原只有 ~20%）
+
+itemStyle: {
+
+borderWidth: 3,
+
+borderRadius: 20,
+
+borderColor: '#fff'
+
+},
+
+label: {
+
+rotate: 'tangential',
+
+fontSize: 18,
+
+color: '#222',
+
+textBorderColor: '#fff',
+
+textBorderWidth: 2,
+
+distanceToLabel: 5 // 让文字离扇区稍远一点，避免拥挤
+
+}
+
+},
+
+{
+
+r0: '65%',
+
+r: '69%', // 最外层叶子节点，占 30% 宽度
+
+itemStyle: {
+
+borderWidth: 1,
+
+borderRadius: 20,
+
+borderColor: '#fff'
+
+},
+
+label: {
+
+position: 'outside',
+
+fontSize: 14,
+
+padding: [3, 6],
+
+color: '#111',
+
+textBorderColor: '#fff',
+
+textBorderWidth: 2,
+
+distanceToLabel: 10 // 外部标签离扇区更远，避免重叠
+
+}
+
+}
+
+],
+
+// 自定义中心圆环内的 “Video-MME V2” 文本（居中+美观）
+
+// graphic: [
+
+// {
+
+// type: 'text',
+
+// graphicKey: 'centerText',
+
+// z: 10,
+
+// // left: 'center',
+
+// top: 'center',
+
+// style: {
+
+// text: 'Video-MME V2',
+
+// fontSize: 20,
+
+// fontWeight: 'bold',
+
+// fill: '#ffffff',
+
+// // textAlign: 'center',
+
+// // textVerticalAlign: 'middle'
+
+// }
+
+// }
+
+// ]
+
+},
+
+tooltip: {
+
+trigger: 'item',
+
+formatter: '{b}: {c} questions'
+
+}
+
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
