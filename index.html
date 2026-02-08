@@ -1580,8 +1580,8 @@
                         <th data-sort="level1">Level 1 <span class="sort-arrow">↓</span></th>
                         <th data-sort="level2">Level 2 <span class="sort-arrow">↓</span></th>
                         <th data-sort="level3">Level 3 <span class="sort-arrow">↓</span></th>
-                        <th data-sort="relevance"><span data-lang-en>Relevance</span><span data-lang-zh>相关性</span> <span class="sort-arrow">↓</span></th>
-                        <th data-sort="logic"><span data-lang-en>Logic</span><span data-lang-zh>逻辑性</span> <span class="sort-arrow">↓</span></th>
+                        <th data-sort="consistency"><span data-lang-en>Consistency</span><span data-lang-zh>一致性</span> <span class="sort-arrow">↓</span></th>
+                        <th data-sort="coherence"><span data-lang-en>Coherence</span><span data-lang-zh>连贯性</span> <span class="sort-arrow">↓</span></th>
                     </tr>
                 </thead>
                 <tbody id="leaderboardBody">
@@ -2054,97 +2054,22 @@
                     <!-- L2 - Coherence Example -->
                     <div class="video-card">
                         <div class="video-card-top">
-                            <div class="video-placeholder" style="background: linear-gradient(135deg, #7c2d12, #ea580c);"></div>
-                            <span class="eval-badge eval-coherence card-badge">Coherence</span>
+                            <!-- 使用占位符或替换为实际 video 标签 -->
+                            <video controls width="100%" preload="metadata" poster="videos/level2-1.png">
+                                <source src="videos/level2-1.mp4" type="video/mp4">
+                            </video>
+                            <span class="eval-badge eval-coherence card-badge">Consistency</span>
                         </div>
                         <div class="video-info">
                             <div class="video-title">
-                                <span data-lang-en>🍳 Cooking Tutorial — Temporal Chain</span>
-                                <span data-lang-zh>🍳 烹饪教程 — 时序逻辑链</span>
+                                <span data-lang-en>🏀 NBA Game — Causal Reasoning</span>
+                                <span data-lang-zh>🏀 NBA 比赛 — 因果推理</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Coherence:</strong> Questions form a temporal chain — identifying steps in sequence, each requiring knowledge of the previous step.
+                                <strong>Consistency:</strong> Tests <em>causal reasoning</em> within a temporal sequence. Can the model infer the causes of player ejections, penalties, emotions, and strategic shifts based on game events?
                             </div>
                             <div class="eval-hint" data-lang-zh>
-                                <strong>逻辑链测评：</strong>问题构成时序链 — 按顺序识别步骤，每个问题需要前一步的知识。
-                            </div>
-                            <div class="qa-tabs">
-                                <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-                                <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q2</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
-                            </div>
-                            <div class="qa-content-wrapper">
-                                <div class="qa-content active" data-qa-index="0">
-                                    <div class="chain-step">Step 1 / 4</div>
-                                    <div class="qa-question" data-lang-en>Q1: What is the first ingredient added to the pan?</div>
-                                    <div class="qa-question" data-lang-zh>Q1: 第一个加入锅中的食材是什么？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Olive oil</div>
-                                        <div class="qa-option">B. Butter</div>
-                                        <div class="qa-option">C. Garlic</div>
-                                        <div class="qa-option">D. Onion</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="1">
-                                    <div class="chain-step">Step 2 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: After the olive oil is added...</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：在加入橄榄油之后...</div>
-                                    <div class="qa-question" data-lang-en>Q2: What does the cook do immediately after adding the olive oil?</div>
-                                    <div class="qa-question" data-lang-zh>Q2: 加入橄榄油后厨师立即做了什么？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Adds salt</div>
-                                        <div class="qa-option correct">✓ B. Swirls the pan to spread the oil</div>
-                                        <div class="qa-option">C. Adds vegetables</div>
-                                        <div class="qa-option">D. Turns up the heat</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="2">
-                                    <div class="chain-step">Step 3 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: After swirling the pan...</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：在晃动锅子之后...</div>
-                                    <div class="qa-question" data-lang-en>Q3: What ingredient is added right after the pan-swirling?</div>
-                                    <div class="qa-question" data-lang-zh>Q3: 晃动锅子之后紧接着加入了什么食材？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Tomatoes</div>
-                                        <div class="qa-option">B. Mushrooms</div>
-                                        <div class="qa-option correct">✓ C. Minced garlic</div>
-                                        <div class="qa-option">D. Chicken pieces</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="3">
-                                    <div class="chain-step">Step 4 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: After adding garlic...</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：在加入蒜末之后...</div>
-                                    <div class="qa-question" data-lang-en>Q4: What visual change indicates the garlic is ready for the next step?</div>
-                                    <div class="qa-question" data-lang-zh>Q4: 什么视觉变化表明蒜末已经准备好进入下一步？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. It turns black</div>
-                                        <div class="qa-option correct">✓ B. It turns golden and fragrant steam rises</div>
-                                        <div class="qa-option">C. It melts completely</div>
-                                        <div class="qa-option">D. No visible change</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- L2 - Consistency Example -->
-                    <div class="video-card">
-                        <div class="video-card-top">
-                            <div class="video-placeholder" style="background: linear-gradient(135deg, #4c1d95, #8b5cf6);"></div>
-                            <span class="eval-badge eval-consistency card-badge">Consistency</span>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">
-                                <span data-lang-en>⚽ Soccer Match — Action Recognition Consistency</span>
-                                <span data-lang-zh>⚽ 足球比赛 — 动作识别一致性</span>
-                            </div>
-                            <div class="eval-hint" data-lang-en>
-                                <strong>Consistency:</strong> 4 questions test <em>action understanding</em> across dimensions (action type → speed → direction → interaction)
-                            </div>
-                            <div class="eval-hint" data-lang-zh>
-                                <strong>一致性测评：</strong>4个问题跨维度测试<em>动作理解</em>（动作类型→速度→方向→交互）
+                                <strong>一致性测评：</strong>测试时间序列中的<em>因果推理</em>能力。模型能否根据比赛事件推断球员驱逐、判罚、情绪变化以及战术调整的原因？
                             </div>
                             <div class="qa-tabs">
                                 <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2153,135 +2078,416 @@
                                 <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
                             </div>
                             <div class="qa-content-wrapper">
+                                
+                                <!-- Q1: Suns #3 Ejection Reason (Ans: Technical Foul) -->
                                 <div class="qa-content active" data-qa-index="0">
-                                    <div class="qa-question" data-lang-en>Q1: What type of kick does player #7 use to pass the ball?</div>
-                                    <div class="qa-question" data-lang-zh>Q1: 7号球员用什么方式传球？</div>
+                                    <div class="qa-question" data-lang-en>Q1: Why did the Suns' player #3 leave the court when the score was 113:114?</div>
+                                    <div class="qa-question" data-lang-zh>Q1: 为什么太阳队3号球员在比分113:114时离场？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. Header</div>
-                                        <div class="qa-option correct">✓ B. Inside foot pass</div>
-                                        <div class="qa-option">C. Volley</div>
-                                        <div class="qa-option">D. Backheel</div>
+                                        <div class="qa-option">A. Because he was ejected due to regular fouls.</div>
+                                        <div class="qa-option">B. Because it was time for a rotation substitution.</div>
+                                        <div class="qa-option correct">✓ C. Because he was ejected due to a technical foul.</div>
+                                        <div class="qa-option">D. Because he could not continue due to an ankle injury.</div>
+                                        <div class="qa-option">E. Because he was subbed out by the coach due to poor performance.</div>
+                                        <div class="qa-option">F. Because he could not continue due to a rib injury from a collision.</div>
+                                        <div class="qa-option">G. Because he was protesting the officiating by refusing to play.</div>
+                                        <div class="qa-option">H. Because he could not continue due to excessive physical exhaustion.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Action Type</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：动作类型</div>
+                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
+
+                                <!-- Q2: Lakers #23 Free Throw (Ans: Tech Foul execution) -->
                                 <div class="qa-content" data-qa-index="1">
-                                    <div class="qa-question" data-lang-en>Q2: Is the ball moving faster before or after the pass by player #7?</div>
-                                    <div class="qa-question" data-lang-zh>Q2: 7号球员传球前后球速哪个更快？</div>
+                                    <div class="qa-question" data-lang-en>Q2: Why did the Lakers' player #23 go to the free-throw line when the score was 113:114?</div>
+                                    <div class="qa-question" data-lang-zh>Q2: 为什么湖人队23号球员在比分113:114时走上罚球线？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. Before</div>
-                                        <div class="qa-option correct">✓ B. After</div>
-                                        <div class="qa-option">C. Same speed</div>
-                                        <div class="qa-option">D. Ball stops</div>
+                                        <div class="qa-option">A. Because a Suns player committed a blocking foul while defending the Lakers' player #23's layup.</div>
+                                        <div class="qa-option">B. Because the Lakers were fouled tactically on a fast break with no defender in front.</div>
+                                        <div class="qa-option">C. Because the Suns had fewer than 5 players on the court after a timeout.</div>
+                                        <div class="qa-option">D. Because the Suns had more than 5 players on the court after a timeout.</div>
+                                        <div class="qa-option">E. Because the Suns' coach argued with the referee and was assessed a technical foul.</div>
+                                        <div class="qa-option">F. Because the Suns' center committed a defensive three-second violation.</div>
+                                        <div class="qa-option">G. Because the Suns requested a timeout when they had none remaining.</div>
+                                        <div class="qa-option correct">✓ H. Because a Suns player committed a technical foul, and the Lakers' player #23 chose to execute the free throw himself.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Speed Perception</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：速度感知</div>
+                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
+
+                                <!-- Q3: Suns #3 Anger (Ans: Crash motion) -->
                                 <div class="qa-content" data-qa-index="2">
-                                    <div class="qa-question" data-lang-en>Q3: In which direction does player #7 pass the ball?</div>
-                                    <div class="qa-question" data-lang-zh>Q3: 7号球员向哪个方向传球？</div>
+                                    <div class="qa-question" data-lang-en>Q3: Why did the Suns' player #3 feel dissatisfied and angry when the score was 113:114?</div>
+                                    <div class="qa-question" data-lang-zh>Q3: 为什么太阳队3号球员在比分113:114时感到不满和愤怒？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Forward-left</div>
-                                        <div class="qa-option">B. Backward</div>
-                                        <div class="qa-option">C. Straight ahead</div>
-                                        <div class="qa-option">D. Forward-right</div>
+                                        <div class="qa-option">A. He missed a crucial three-point shot.</div>
+                                        <div class="qa-option">B. He repeatedly received "grenade" passes from teammates and had a difficult time on the court.</div>
+                                        <div class="qa-option">C. He believed the referee's officiating standards were inconsistent and biased.</div>
+                                        <div class="qa-option correct">✓ D. A Lakers player made a motion to crash into him.</div>
+                                        <div class="qa-option">E. He felt dissatisfied with the coach's substitution adjustments.</div>
+                                        <div class="qa-option">F. He believed the team did not call a timeout in time to make adjustments.</div>
+                                        <div class="qa-option">G. Fans on the sidelines were booing him.</div>
+                                        <div class="qa-option">H. He believed the referee made a serious missed call.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Direction</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：方向</div>
+                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
+
+                                <!-- Q4: Tactical Impact (Ans: Offensive team must attack) -->
                                 <div class="qa-content" data-qa-index="3">
-                                    <div class="qa-question" data-lang-en>Q4: How does the receiving player (#10) control the ball?</div>
-                                    <div class="qa-question" data-lang-zh>Q4: 接球的10号球员如何控球？</div>
+                                    <div class="qa-question" data-lang-en>Q4: What impact did missing that technical free throw have on the tactics of both sides for the final possession?</div>
+                                    <div class="qa-question" data-lang-zh>Q4: 错失那次技术犯规罚球对双方最后一攻的战术有什么影响？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. Heads it forward</div>
-                                        <div class="qa-option">B. Lets it pass through</div>
-                                        <div class="qa-option correct">✓ C. Traps with chest then controls with foot</div>
-                                        <div class="qa-option">D. Kicks it directly</div>
+                                        <div class="qa-option">A. The offensive team needs to complete the attack quickly to fight for an extra offensive possession; the defensive team's strategy remains unchanged.</div>
+                                        <div class="qa-option correct">✓ B. The offensive team needs to actively complete the last attack; the defensive team's strategy remains unchanged.</div>
+                                        <div class="qa-option">C. The offensive team needs to make a three-pointer to overcome the deficit; the defensive team's strategy remains unchanged.</div>
+                                        <div class="qa-option">D. Neither the offensive nor defensive strategies are affected, as the game has entered garbage time.</div>
+                                        <div class="qa-option">E. The offensive team's strategy remains unchanged, needing only to run out the clock to win; the defensive team needs to foul quickly to gain an extra offensive possession.</div>
+                                        <div class="qa-option">F. The offensive team can choose to play conservatively to force overtime, or take some risk to attack actively; the defensive team's strategy remains unchanged.</div>
+                                        <div class="qa-option">G. The offensive team can only choose to shoot a three-pointer on the final possession; the defensive team only needs to focus on defending beyond the three-point line.</div>
+                                        <div class="qa-option">H. The offensive team's strategy remains unchanged; the defensive team only needs to focus on defending the paint.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Interaction</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：交互动作</div>
+                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-
-                    <!-- L2 - Another Coherence Example -->
-                    <div class="video-card">
+                    
+                    <!-- L2 - Coherence Example (Logic Chain) -->
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- Football Theme Gradient -->
                         <div class="video-card-top">
-                            <div class="video-placeholder" style="background: linear-gradient(135deg, #1e3a5f, #0ea5e9);"></div>
+                            <!-- 使用占位符或替换为实际 video 标签 -->
+                            <video controls width="100%" preload="metadata" poster="videos/2-2.png">
+                                <source src="videos/2-2.mp4" type="video/mp4">
+                            </video>
                             <span class="eval-badge eval-coherence card-badge">Coherence</span>
                         </div>
-                        <div class="video-info">
-                            <div class="video-title">
-                                <span data-lang-en>🏗️ Assembly Line — State Change Chain</span>
-                                <span data-lang-zh>🏗️ 装配流水线 — 状态变化链</span>
-                            </div>
-                            <div class="eval-hint" data-lang-en>
-                                <strong>Coherence:</strong> Track a product's state changes through a manufacturing pipeline, each Q builds on prior state.
-                            </div>
-                            <div class="eval-hint" data-lang-zh>
-                                <strong>连贯性测评：</strong>追踪产品在制造流水线中的状态变化，每个问题基于前序状态。
-                            </div>
-                            <div class="qa-tabs">
-                                <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-                                <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q2</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
-                            </div>
-                            <div class="qa-content-wrapper">
-                                <div class="qa-content active" data-qa-index="0">
-                                    <div class="chain-step">Step 1 / 4</div>
-                                    <div class="qa-question" data-lang-en>Q1: What is the initial state of the metal piece on the conveyor belt?</div>
-                                    <div class="qa-question" data-lang-zh>Q1: 传送带上金属件的初始状态是怎样的？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Flat, unpainted rectangular sheet</div>
-                                        <div class="qa-option">B. Pre-bent L-shape</div>
-                                        <div class="qa-option">C. Circular disc</div>
-                                        <div class="qa-option">D. Already assembled</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="1">
-                                    <div class="chain-step">Step 2 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Starting from a flat sheet...</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：从平板状态开始...</div>
-                                    <div class="qa-question" data-lang-en>Q2: What happens to the flat sheet at the first machine station?</div>
-                                    <div class="qa-question" data-lang-zh>Q2: 平板在第一个机器工位发生了什么变化？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Gets painted</div>
-                                        <div class="qa-option correct">✓ B. Gets stamped and bent into an L-shape</div>
-                                        <div class="qa-option">C. Gets cut in half</div>
-                                        <div class="qa-option">D. Gets heated</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="2">
-                                    <div class="chain-step">Step 3 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Now it's an L-shaped piece...</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：现在是L形件...</div>
-                                    <div class="qa-question" data-lang-en>Q3: What is done to the L-shaped piece at the second station?</div>
-                                    <div class="qa-question" data-lang-zh>Q3: L形件在第二个工位接受了什么处理？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Polished smooth</div>
-                                        <div class="qa-option">B. Welded to another part</div>
-                                        <div class="qa-option correct">✓ C. Drilled with 3 holes</div>
-                                        <div class="qa-option">D. Discarded</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="3">
-                                    <div class="chain-step">Step 4 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Now it has 3 holes drilled...</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：现在有3个钻孔...</div>
-                                    <div class="qa-question" data-lang-en>Q4: What is inserted into those drilled holes at the final station?</div>
-                                    <div class="qa-question" data-lang-zh>Q4: 在最终工位，那些钻孔中被插入了什么？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Rivets</div>
-                                        <div class="qa-option">B. Screws</div>
-                                        <div class="qa-option">C. Wires</div>
-                                        <div class="qa-option">D. Nothing</div>
-                                    </div>
-                                </div>
-                            </div>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>⚽ Football Match — Event Sequence Ordering</span>
+            <span data-lang-zh>⚽ 足球比赛 — 事件顺序排序</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Coherence (L2):</strong> Linear logic chain <code>[1,2,3,4]</code>. Reconstructs the match timeline step-by-step: Existence → Teams → Players → Full Chronology.
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。逐步重建比赛时间线：存在性确认 → 球队确认 → 球员确认 → 完整时序。
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q2</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Existence (Base) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="chain-step">Step 1 / 4: Establish Context</div>
+                <div class="qa-question" data-lang-en>Q1: Is the number of goals in this match greater than or equal to 2?</div>
+                <div class="qa-question" data-lang-zh>Q1: 这场比赛的进球数是否大于或等于2个？</div>
+                <div class="qa-options">
+                    <div class="qa-option correct">✓ A. Yes.</div>
+                    <div class="qa-option">B. No.</div>
+                    <div class="qa-option">C. Cannot be determined.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
+            </div>
+
+            <!-- Q2: First/Last Teams (Depends on Q1) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="chain-step">Step 2 / 4: Identify Teams</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Knowing there are multiple goals, identify the teams involved at the boundaries.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：已知存在多个进球，确定首尾进球的球队。</div>
+                <div class="qa-question" data-lang-en>Q2: Which teams scored the first and last goals in this match, respectively?</div>
+                <div class="qa-question" data-lang-zh>Q2: 这场比赛中分别打进第一个和最后一个进球的是哪支球队？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The white team, the blue team.</div>
+                    <div class="qa-option">B. The red team, the red team.</div>
+                    <div class="qa-option">C. The green team, the green team.</div>
+                    <div class="qa-option correct">✓ D. The red team, the green team.</div>
+                    <div class="qa-option">E. The white team, the red team.</div>
+                    <div class="qa-option">F. The white team, the white team.</div>
+                    <div class="qa-option">G. The red team, the white team.</div>
+                    <div class="qa-option">H. The green team, the red team.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
+            </div>
+
+            <!-- Q3: First/Last Players (Depends on Q2) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="chain-step">Step 3 / 4: Identify Players</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Refining from "Red starts, Green ends" to specific jersey numbers.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：从“红队开始，绿队结束”进一步精确到具体球衣号码。</div>
+                <div class="qa-question" data-lang-en>Q3: Which players scored the first and last goals in this match, respectively?</div>
+                <div class="qa-question" data-lang-zh>Q3: 这场比赛中分别打进第一个和最后一个进球的是哪位球员？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The red team's #19, the red team's #9.</div>
+                    <div class="qa-option correct">✓ B. The red team's #19, the green team's #11.</div>
+                    <div class="qa-option">C. The red team's #7, the red team's #9.</div>
+                    <div class="qa-option">D. The red team's #7, the green team's #11.</div>
+                    <div class="qa-option">E. The green team's #6, the green team's #19.</div>
+                    <div class="qa-option">F. The green team's #11, the red team's #19.</div>
+                    <div class="qa-option">G. The red team's #9, the green team's #6.</div>
+                    <div class="qa-option">H. The green team's #19, the green team's #6.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
+            </div>
+
+            <!-- Q4: Full Sequence (Depends on Q3) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="chain-step">Step 4 / 4: Full Chronology</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Filling the middle timeline between Red #19 (First) and Green #11 (Last).</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：填充红队#19（首球）和绿队#11（尾球）中间的时间线。</div>
+                <div class="qa-question" data-lang-en>Q4: What is the chronological order of all goalscorers in this match?</div>
+                <div class="qa-question" data-lang-zh>Q4: 这场比赛所有进球球员的时间顺序是怎样的？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. Red #19, Green #6, Red #7, Red #9, Green #11.</div>
+                    <div class="qa-option">B. Red #7, Red #19, Green #6, Red #9, Green #11.</div>
+                    <div class="qa-option">C. Red #19, Red #7, Green #11, Red #9, Green #6.</div>
+                    <div class="qa-option">D. Green #11, Red #19, Red #7, Green #6, Red #9.</div>
+                    <div class="qa-option correct">✓ E. Red #19, Red #7, Green #6, Red #9, Green #11.</div>
+                    <div class="qa-option">F. Red #19, Red #7, Green #6, Green #11, Red #9.</div>
+                    <div class="qa-option">G. Red #9, Red #19, Red #7, Green #6, Green #11.</div>
+                    <div class="qa-option">H. Red #19, Red #27, Green #6, Red #9, Green #11.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+                    
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- Physics/Engineering Theme Gradient (Blueprint Blue) -->
+                        <div class="video-card-top">
+                            <!-- 使用占位符或替换为实际 video 标签 -->
+                            <video controls width="100%" preload="metadata" poster="videos/2-3.png">
+                                <source src="videos/2-3.mp4" type="video/mp4">
+                            </video>
+                            <span class="eval-badge eval-coherence card-badge">Coherence</span>
                         </div>
-                    </div>
+        <span class="eval-badge eval-relevance card-badge">Relevance</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>🚗 RC Car Experiment — Scene Transformation</span>
+            <span data-lang-zh>🚗 遥控车实验 — 场景变换检测</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Relevance:</strong> Tests perception of <em>scene transformation </em>. Can the model detect specific physical modifications (weights, springs) and parameter adjustments (pothole width) across different trial runs?
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>一致性测评：</strong>测试对场景变换的感知。模型能否检测不同测试轮次中的具体物理改装（配重、弹簧）和参数调整（坑洞宽度）？
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Pothole Width Change (Ans: 4,6,8,10,12,14) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="qa-question" data-lang-en>Q1: When testing with the original car at 25% speed, how did the width of the pothole change?</div>
+                <div class="qa-question" data-lang-zh>Q1: 当以25%的速度测试原始小车时，坑洞的宽度是如何变化的？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. It gradually widened from 4cm to 6cm, 8cm, 10cm, 12cm, and 14cm.</div>
+                    <div class="qa-option correct">✓ B. It gradually widened from 4cm to 6cm, 8cm, 10cm, and 14cm.</div>
+                    <div class="qa-option">C. It gradually widened from 4cm to 6cm, 10cm, 12cm, and 14cm.</div>
+                    <div class="qa-option">D. It gradually widened from 4cm to 6cm, 8cm, 10cm, and 12cm.</div>
+                    <div class="qa-option">E. It gradually widened from 4cm to 6cm, 8cm, 9cm, 10cm, 12cm, and 14cm.</div>
+                    <div class="qa-option">F. It gradually widened from 4cm to 6cm, 8cm, 9cm, 10cm, 11cm, 12cm, and 14cm.</div>
+                    <div class="qa-option">G. It gradually widened from 4cm to 6cm, 8cm, 10cm, 12cm, 13cm, and 14cm.</div>
+                    <div class="qa-option">H. It gradually widened from 4cm to 6cm, 10cm, 12cm, and 14cm.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
+            </div>
+
+            <!-- Q2: 20cm Pothole Mod (Ans: Elastic device on rear) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="qa-question" data-lang-en>Q2: Compared to the previous experiment, what modification was made to the car in the experiment where it successfully crossed the 20cm pothole?</div>
+                <div class="qa-question" data-lang-zh>Q2: 与上一次实验相比，在成功越过20cm坑洞的实验中，小车做了什么改装？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. An elastic device was installed on the front wheels.</div>
+                    <div class="qa-option">B. Weight was added to the rear part of the vehicle.</div>
+                    <div class="qa-option">C. Weight was added to the front part of the vehicle.</div>
+                    <div class="qa-option">D. Two rods were added to the front part of the vehicle.</div>
+                    <div class="qa-option">E. Two rods were added to the rear part of the vehicle.</div>
+                    <div class="qa-option">F. The speed of the car was increased.</div>
+                    <div class="qa-option correct">✓ G. An elastic device was installed on the rear wheels.</div>
+                    <div class="qa-option">H. The weight of the car was increased.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
+            </div>
+
+            <!-- Q3: 14cm Pothole Mod (Ans: Yellow weight moved to rear) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="qa-question" data-lang-en>Q3: Compared to the previous experiment, what modification was made to the car in the experiment where it successfully crossed the 14cm pothole?</div>
+                <div class="qa-question" data-lang-zh>Q3: 与上一次实验相比，在成功越过14cm坑洞的实验中，小车做了什么改装？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The yellow weight was moved from the front part of the vehicle to the rear part.</div>
+                    <div class="qa-option">B. The yellow weight on the front part of the vehicle was decreased.</div>
+                    <div class="qa-option">C. The yellow weight on the rear part of the vehicle was increased.</div>
+                    <div class="qa-option correct">✓ D. The black weight was moved from the front part of the vehicle to the rear part.</div>
+                    <div class="qa-option">E. The diameter of the wheels was increased.</div>
+                    <div class="qa-option">F. The red weight was added to both the front and rear parts of the vehicle respectively.</div>
+                    <div class="qa-option">G. Screws were added to the bottom of the vehicle.</div>
+                    <div class="qa-option">H. The initial speed of the car was significantly increased.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
+            </div>
+
+            <!-- Q4: 24cm Pothole Mod (Ans: Mass increased) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="qa-question" data-lang-en>Q4: Compared to the previous experiment, what modification was made to the car in the experiment where it successfully crossed the 24cm pothole?</div>
+                <div class="qa-question" data-lang-zh>Q4: 与上一次实验相比，在成功越过24cm坑洞的实验中，小车做了什么改装？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The mass of the weight was increased.</div>
+                    <div class="qa-option correct">✓ B. The weight was moved to the top.</div>
+                    <div class="qa-option">C. The weight was moved to the rear.</div>
+                    <div class="qa-option">D. The mass of the weight was reduced.</div>
+                    <div class="qa-option">E. The speed of the car was increased.</div>
+                    <div class="qa-option">F. The weight was moved to the front.</div>
+                    <div class="qa-option">G. An elastic device was installed on the rear wheels.</div>
+                    <div class="qa-option">H. The suspension stiffness was increased.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- L2 - Coherence Example (Logic Chain) -->
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- 实际视频标签 -->
+        <video controls width="100%" preload="metadata" poster="videos/2-4.png">
+            <source src="videos/2-4.mp4" type="video/mp4">
+        </video>
+        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>💥 Butty's Kitchen Mishap — Causal Logic Chain</span>
+            <span data-lang-zh>💥 巴蒂的厨房灾难 — 因果逻辑链</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Coherence:</strong> Logic tree <code>[1,[2,3],4]</code>. Q1 identifies the core accident. Q2 (cause of accident) and Q3 (consequent action) branch from Q1. Q4 concludes the chain based on the total mess.
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>连贯性测评：</strong>逻辑树 <code>[1,[2,3],4]</code>。Q1 确定核心事故。Q2（事故原因）和 Q3（随后的行为）从 Q1 分支出来。Q4 基于造成的整体混乱得出结论。
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q1</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q2+Q3</span></button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: The Accident (Root) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="chain-step">Step 1 / 4: The Core Event</div>
+                <div class="qa-question" data-lang-en>Q1: What happened while Butty was making lasagna?</div>
+                <div class="qa-question" data-lang-zh>Q1: 巴蒂做千层面的时候发生了什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The lasagna spilled onto the carpet</div>
+                    <div class="qa-option">B. The dish with the lasagna didn’t fit into the oven</div>
+                    <div class="qa-option">C. Butty tripped and fell while carrying the lasagna</div>
+                    <div class="qa-option correct">✓ D. The oven exploded</div>
+                    <div class="qa-option">E. Butty didn’t know how long to set the oven timer for</div>
+                    <div class="qa-option">F. There was no prepared lasagna inside the refrigerator</div>
+                    <div class="qa-option">G. The lasagna spilled inside the refrigerator</div>
+                    <div class="qa-option">H. The lasagna in the refrigerator had already gone bad</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
+            </div>
+
+            <!-- Q2: Cause of Explosion (Depends on Q1) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="chain-step">Step 2 / 4: Analyze Cause</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Explaining why the oven exploded.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：解释烤箱为什么会爆炸。</div>
+                <div class="qa-question" data-lang-en>Q2: Why did the oven explode?</div>
+                <div class="qa-question" data-lang-zh>Q2: 烤箱为什么会爆炸？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. While cleaning the lamp, Butty pulled it down and caused an electrical failure</div>
+                    <div class="qa-option">B. Butty removed the oven knob and replaced it with an unsuitable substitute</div>
+                    <div class="qa-option">C. Butty got distracted staring out the window and forgot to stop the oven</div>
+                    <div class="qa-option">D. Butty was gazing out the window while cleaning it</div>
+                    <div class="qa-option">E. The oven was old and poorly maintained, leading to a short circuit</div>
+                    <div class="qa-option">F. When Butty put the lasagna inside, it spilled and caused a short circuit</div>
+                    <div class="qa-option correct">✓ G. Butty accidentally removed the oven knob and reattached it incorrectly</div>
+                    <div class="qa-option">H. Butty set the oven to the wrong mode</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
+            </div>
+
+            <!-- Q3: Subsequent Action (Depends on Q1) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="chain-step">Step 3 / 4: Analyze Action</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: The explosion created the mess (stains) that he is trying to clean.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：爆炸造成了混乱（污渍），他正在试图清理。</div>
+                <div class="qa-question" data-lang-en>Q3: Why did Butty stand on clutter?</div>
+                <div class="qa-question" data-lang-zh>Q3: 巴蒂为什么站在杂物堆上？</div>
+                <div class="qa-options">
+                    <div class="qa-option correct">✓ A. The earlier explosion left stains all over the lamp</div>
+                    <div class="qa-option">B. The lady of the house told Butty to clean the entire kitchen</div>
+                    <div class="qa-option">C. The lamp was covered in dust, and Butty needed to clean it while tidying</div>
+                    <div class="qa-option">D. The lady wanted the house spotless to welcome guests</div>
+                    <div class="qa-option">E. The lampshade was rusted and needed cleaning</div>
+                    <div class="qa-option">F. The earlier explosion caused a power outage, and Butty was trying to fix the lamp</div>
+                    <div class="qa-option">G. Butty piled up some clutter while cleaning and used it as a step to reach the chandelier</div>
+                    <div class="qa-option">H. The explosion shattered the bulb, and Butty was replacing it</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
+            </div>
+
+            <!-- Q4: Conclusion (Depends on Q2 & Q3) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="chain-step">Step 4 / 4: Final Outcome</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q2 & Q3: The combination of the explosion and the subsequent mess forces him to leave.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2 & Q3：爆炸和随后的混乱加在一起，迫使他离开。</div>
+                <div class="qa-question" data-lang-en>Q4: Why did Butty run away from home?</div>
+                <div class="qa-question" data-lang-zh>Q4: 巴蒂为什么要离家出走？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. Butty pulled the chandelier down while cleaning it</div>
+                    <div class="qa-option">B. Butty didn’t clean the kitchen properly</div>
+                    <div class="qa-option">C. Butty broke the oven while making lasagna</div>
+                    <div class="qa-option">D. An explosion happened while Butty was making lasagna</div>
+                    <div class="qa-option correct">✓ E. Butty made a huge mess in the house</div>
+                    <div class="qa-option">F. The lady of the house no longer needed Butty’s help</div>
+                    <div class="qa-option">G. The lady asked Butty to prepare for a party, but he didn’t finish on time</div>
+                    <div class="qa-option">H. The lady was hosting a party and needed Butty to leave temporarily</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
 
@@ -2298,234 +2504,541 @@
                 </div>
                 <div class="video-carousel">
                     <!-- L3 - Coherence Example (Shell Game) -->
+                    
                     <div class="video-card">
-                        <div class="video-card-top">
-                            <video controls width="100%" preload="metadata" poster="videos/chain1.png">
-                                <source src="videos/The Price is Right  Shell Game  432025_1080p.mp4" type="video/mp4">
-                            </video>
-                            <span class="eval-badge eval-coherence card-badge">Coherence</span>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">
-                                <span data-lang-en>🐚 Shell Game — Entity Persistence Reasoning Chain</span>
-                                <span data-lang-zh>🐚 贝壳游戏 — 实体持续性推理链</span>
-                            </div>
-                            <div class="eval-hint" data-lang-en>
-                                <strong>Coherence:</strong> Track hidden object through shuffles — each question requires tracking result from previous step.
-                            </div>
-                            <div class="eval-hint" data-lang-zh>
-                                <strong>连贯性测评：</strong>通过洗牌追踪隐藏物体 — 每个问题需要前一步的追踪结果。
-                            </div>
-                            <div class="qa-tabs">
-                                <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-                                <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q2</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
-                            </div>
-                            <div class="qa-content-wrapper">
-                                <div class="qa-content active" data-qa-index="0">
-                                    <div class="chain-step">Step 1 / 4</div>
-                                    <div class="qa-question" data-lang-en>Q1: Under which shell is the ball initially placed?</div>
-                                    <div class="qa-question" data-lang-zh>Q1: 球最初被放在哪个贝壳下面？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. The middle shell</div>
-                                        <div class="qa-option">B. The left shell</div>
-                                        <div class="qa-option">C. The right shell</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="1">
-                                    <div class="chain-step">Step 2 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Ball starts under the middle shell</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：球最初在中间贝壳下</div>
-                                    <div class="qa-question" data-lang-en>Q2: After the first swap, which shell is the ball under?</div>
-                                    <div class="qa-question" data-lang-zh>Q2: 第一次交换后，球在哪个贝壳下面？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Still in the middle</div>
-                                        <div class="qa-option correct">✓ B. The left shell</div>
-                                        <div class="qa-option">C. The right shell</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="2">
-                                    <div class="chain-step">Step 3 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Ball is now under the left shell</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：球现在在左边贝壳下</div>
-                                    <div class="qa-question" data-lang-en>Q3: After all shuffles are complete, which shell is the ball under?</div>
-                                    <div class="qa-question" data-lang-zh>Q3: 所有洗牌完成后，球在哪个贝壳下面？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Left</div>
-                                        <div class="qa-option">B. Middle</div>
-                                        <div class="qa-option correct">✓ C. Right</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="3">
-                                    <div class="chain-step">Step 4 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Ball should be under the right shell</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：球应该在右边贝壳下</div>
-                                    <div class="qa-question" data-lang-en>Q4: Does the ball actually exist underneath the shell when it is revealed?</div>
-                                    <div class="qa-question" data-lang-zh>Q4: 揭开贝壳时球实际上还在下面吗？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Yes</div>
-                                        <div class="qa-option">B. No, it was secretly removed</div>
-                                        <div class="qa-option">C. Unable to determine</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="video-card-top">
+    <!-- 使用占位符或替换为实际 video 标签 -->
+    <video controls width="100%" preload="metadata" poster="videos/3-1.png">
+    <source src="videos/3-1.mp4" type="video/mp4">
+    </video>
+    <span class="eval-badge eval-coherence card-badge">Consistency</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>🎩 Shell Game — Entity Persistence Tracking</span>
+            <span data-lang-zh>🎩 魔术杯球 — 实体持久性追踪</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Relevance:</strong> Tests <em>entity persistence</em> and <em>perspective taking</em>. Can the model track a hidden object through multiple swaps and switch spatial perspectives (Performer vs. Audience)?
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>一致性测评：</strong>测试<em>实体持久性</em>和<em>视角转换</em>。模型能否在多次交换中追踪隐藏物体，并在不同空间视角（表演者 vs 观众）间切换？
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Swap 1 (Performer View) - Ans: First on Left -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="qa-question" data-lang-en>Q1: In Round 1, after the first swap, under which shell is the ball located from the performer's perspective?</div>
+                <div class="qa-question" data-lang-zh>Q1: 第一轮游戏中，第一次交换后，从表演者视角看，球位于哪个贝壳下？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The second shell on the left.</div>
+                    <div class="qa-option">B. The middle shell.</div>
+                    <div class="qa-option correct">✓ C. The first shell on the left.</div>
+                    <div class="qa-option">D. The fourth shell on the left.</div>
+                    <div class="qa-option">E. The first shell on the right.</div>
+                    <div class="qa-option">F. The second shell on the right.</div>
+                    <div class="qa-option">G. The fourth shell on the right.</div>
+                    <div class="qa-option">H. Cannot be determined.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Entity Persistence</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 实体持久性</div>
+            </div>
 
-                    <!-- L3 - Consistency Example -->
-                    <div class="video-card">
-                        <div class="video-card-top">
-                            <div class="video-placeholder" style="background: linear-gradient(135deg, #2d3748, #553c9a);"></div>
-                            <span class="eval-badge eval-consistency card-badge">Consistency</span>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">
-                                <span data-lang-en>🎭 Job Interview — Social Reasoning Consistency</span>
-                                <span data-lang-zh>🎭 面试场景 — 社交推理一致性</span>
-                            </div>
-                            <div class="eval-hint" data-lang-en>
-                                <strong>Consistency:</strong> 4 questions test <em>social understanding</em> across dimensions (emotion → intention → relationship → prediction)
-                            </div>
-                            <div class="eval-hint" data-lang-zh>
-                                <strong>一致性测评：</strong>4个问题跨维度测试<em>社交理解</em>（情感→意图→关系→预测）
-                            </div>
-                            <div class="qa-tabs">
-                                <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-                                <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
-                                <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
-                                <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
-                            </div>
-                            <div class="qa-content-wrapper">
-                                <div class="qa-content active" data-qa-index="0">
-                                    <div class="qa-question" data-lang-en>Q1: What emotion does the interviewee display when asked about weaknesses?</div>
-                                    <div class="qa-question" data-lang-zh>Q1: 被问到缺点时，面试者表现出什么情绪？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Confident</div>
-                                        <div class="qa-option correct">✓ B. Nervous and hesitant</div>
-                                        <div class="qa-option">C. Angry</div>
-                                        <div class="qa-option">D. Indifferent</div>
-                                    </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Emotion Recognition</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：情感识别</div>
-                                </div>
-                                <div class="qa-content" data-qa-index="1">
-                                    <div class="qa-question" data-lang-en>Q2: What is the interviewer's likely intention when leaning forward?</div>
-                                    <div class="qa-question" data-lang-zh>Q2: 面试官前倾身体时最可能的意图是什么？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Showing interest and encouraging elaboration</div>
-                                        <div class="qa-option">B. Preparing to end the interview</div>
-                                        <div class="qa-option">C. Expressing disagreement</div>
-                                        <div class="qa-option">D. Feeling tired</div>
-                                    </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Intention Inference</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：意图推断</div>
-                                </div>
-                                <div class="qa-content" data-qa-index="2">
-                                    <div class="qa-question" data-lang-en>Q3: What is the power dynamic between the two people?</div>
-                                    <div class="qa-question" data-lang-zh>Q3: 两人之间的权力关系是怎样的？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Equal peers</div>
-                                        <div class="qa-option">B. The younger person is in charge</div>
-                                        <div class="qa-option correct">✓ C. The person behind the desk holds authority</div>
-                                        <div class="qa-option">D. No clear dynamic</div>
-                                    </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Social Relationship</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：社会关系</div>
-                                </div>
-                                <div class="qa-content" data-qa-index="3">
-                                    <div class="qa-question" data-lang-en>Q4: Based on the ending, what is the interviewee most likely to do next?</div>
-                                    <div class="qa-question" data-lang-zh>Q4: 根据结尾，面试者接下来最可能做什么？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Leave immediately</div>
-                                        <div class="qa-option correct">✓ B. Shake hands with the interviewer</div>
-                                        <div class="qa-option">C. Sit down again</div>
-                                        <div class="qa-option">D. Make a phone call</div>
-                                    </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Dimension: Behavior Prediction</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 维度：行为预测</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Q2: Swap 2 (Performer View) - Ans: Second on Left -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="qa-question" data-lang-en>Q2: In Round 1, after the second swap, under which shell is the ball located from the performer's perspective?</div>
+                <div class="qa-question" data-lang-zh>Q2: 第一轮游戏中，第二次交换后，从表演者视角看，球位于哪个贝壳下？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The first shell on the left.</div>
+                    <div class="qa-option">B. The third shell on the left.</div>
+                    <div class="qa-option">C. The fourth shell on the left.</div>
+                    <div class="qa-option">D. The first shell on the right.</div>
+                    <div class="qa-option">E. The third shell on the right.</div>
+                    <div class="qa-option correct">✓ F. The second shell on the left.</div>
+                    <div class="qa-option">G. The fourth shell on the right.</div>
+                    <div class="qa-option">H. Cannot be determined.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Entity Persistence</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 实体持久性</div>
+            </div>
 
-                    <!-- L3 - Another Coherence Example -->
-                    <div class="video-card">
-                        <div class="video-card-top">
-                            <div class="video-placeholder" style="background: linear-gradient(135deg, #234e52, #319795);"></div>
-                            <span class="eval-badge eval-coherence card-badge">Coherence</span>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">
-                                <span data-lang-en>🔬 Physics Experiment — Causal Reasoning Chain</span>
-                                <span data-lang-zh>🔬 物理实验 — 因果推理链</span>
-                            </div>
-                            <div class="eval-hint" data-lang-en>
-                                <strong>Coherence:</strong> Trace cause-effect through a physical event — each answer unlocks the next causal step.
-                            </div>
-                            <div class="eval-hint" data-lang-zh>
-                                <strong>连贯性测评：</strong>追踪物理事件中的因果关系 — 每个答案解锁下一个因果步骤。
-                            </div>
-                            <div class="qa-tabs">
-                                <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-                                <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q2</span></button>
-                                <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
-                            </div>
-                            <div class="qa-content-wrapper">
-                                <div class="qa-content active" data-qa-index="0">
-                                    <div class="chain-step">Step 1 / 4</div>
-                                    <div class="qa-question" data-lang-en>Q1: What causes the ball to start moving on the ramp?</div>
-                                    <div class="qa-question" data-lang-zh>Q1: 是什么导致球在斜面上开始运动？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Wind blows it</div>
-                                        <div class="qa-option correct">✓ B. A person releases it from rest</div>
-                                        <div class="qa-option">C. Another ball hits it</div>
-                                        <div class="qa-option">D. The ramp tilts suddenly</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="1">
-                                    <div class="chain-step">Step 2 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Ball was released from rest on a ramp</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：球从斜面上静止释放</div>
-                                    <div class="qa-question" data-lang-en>Q2: Why does the ball accelerate as it goes down the ramp?</div>
-                                    <div class="qa-question" data-lang-zh>Q2: 为什么球在下坡时加速？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. Gravitational component along the slope</div>
-                                        <div class="qa-option">B. Someone pushes it</div>
-                                        <div class="qa-option">C. The ramp is made of a special material</div>
-                                        <div class="qa-option">D. Magnetic force</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="2">
-                                    <div class="chain-step">Step 3 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Ball accelerated due to gravity along slope</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：球因沿斜面的重力分量而加速</div>
-                                    <div class="qa-question" data-lang-en>Q3: What direction does the ball move after reaching the bottom of the ramp?</div>
-                                    <div class="qa-question" data-lang-zh>Q3: 球到达斜面底部后朝什么方向运动？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. Left</div>
-                                        <div class="qa-option">B. Right</div>
-                                        <div class="qa-option correct">✓ C. Straight ahead along the horizontal surface</div>
-                                        <div class="qa-option">D. It stops immediately</div>
-                                    </div>
-                                </div>
-                                <div class="qa-content" data-qa-index="3">
-                                    <div class="chain-step">Step 4 / 4</div>
-                                    <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Ball continues straight on horizontal surface</div>
-                                    <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：球在水平面上继续直线运动</div>
-                                    <div class="qa-question" data-lang-en>Q4: Why does the ball eventually stop on the horizontal surface?</div>
-                                    <div class="qa-question" data-lang-zh>Q4: 为什么球最终在水平面上停了下来？</div>
-                                    <div class="qa-options">
-                                        <div class="qa-option">A. It hits a wall</div>
-                                        <div class="qa-option correct">✓ B. Friction force decelerates it</div>
-                                        <div class="qa-option">C. Gravity pulls it down</div>
-                                        <div class="qa-option">D. Air resistance only</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Q3: Swap 3 (Audience View) - Ans: Second on Left -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="qa-question" data-lang-en>Q3: In Round 1, after the third swap, under which shell is the ball located from the perspective of the audience member wearing white?</div>
+                <div class="qa-question" data-lang-zh>Q3: 第一轮游戏中，第三次交换后，从穿白衣的观众视角看，球位于哪个贝壳下？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The first shell on the left.</div>
+                    <div class="qa-option correct">✓ B. The second shell on the left.</div>
+                    <div class="qa-option">C. The third shell on the left.</div>
+                    <div class="qa-option">D. The fourth shell on the left.</div>
+                    <div class="qa-option">E. The first shell on the right.</div>
+                    <div class="qa-option">F. The third shell on the right.</div>
+                    <div class="qa-option">G. The fourth shell on the right.</div>
+                    <div class="qa-option">H. Cannot be determined.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Perspective Taking</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 视角转换</div>
+            </div>
+
+            <!-- Q4: Total Moves - Ans: 2 -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="qa-question" data-lang-en>Q4: In Round 1 of the shell game, how many times does the ball change position?</div>
+                <div class="qa-question" data-lang-zh>Q4: 在第一轮游戏中，球的位置总共变换了多少次？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. 0</div>
+                    <div class="qa-option">B. 1</div>
+                    <div class="qa-option">C. 3</div>
+                    <div class="qa-option">D. 4</div>
+                    <div class="qa-option">E. 5</div>
+                    <div class="qa-option">F. 6</div>
+                    <div class="qa-option">G. 7</div>
+                    <div class="qa-option correct">✓ H. 2</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Event Counting</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 事件计数</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- L3 - Coherence Example (Math Logic Chain) -->
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- 实际视频标签 -->
+        <video controls width="100%" preload="metadata" poster="videos/3-2.png">
+            <source src="videos/3-2.mp4" type="video/mp4">
+        </video>
+        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>📐 Geometry Puzzle — Math Logic Chain</span>
+            <span data-lang-zh>📐 几何谜题 — 数学逻辑链</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Coherence:</strong> Logic tree <code>[[1,2],3,4]</code>. Q1 and Q2 solve independent variables. Q3 combines Q1 & Q2 to find the total area. Q4 derives the final value A from Q3.
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>连贯性测评：</strong>逻辑树 <code>[[1,2],3,4]</code>。Q1 和 Q2 求解独立变量。Q3 结合 Q1 和 Q2 计算总面积。Q4 从 Q3 推导最终值 A。
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q1+Q2</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Solve xb (Ans: 6) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="chain-step">Step 1 / 4: Solve Component 1</div>
+                <div class="qa-question" data-lang-en>Q1: What is the relationship between x and b?</div>
+                <div class="qa-question" data-lang-zh>Q1: x 和 b 之间的关系是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. xb=2</div>
+                    <div class="qa-option">B. xb=4</div>
+                    <div class="qa-option correct">✓ C. xb=6</div>
+                    <div class="qa-option">D. xb=3</div>
+                    <div class="qa-option">E. xb=5</div>
+                    <div class="qa-option">F. xb=7</div>
+                    <div class="qa-option">G. xb=8</div>
+                    <div class="qa-option">H. xb=1</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
+            </div>
+
+            <!-- Q2: Solve ya (Ans: 12) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="chain-step">Step 2 / 4: Solve Component 2</div>
+                <div class="qa-question" data-lang-en>Q2: What is the relationship between y and a?</div>
+                <div class="qa-question" data-lang-zh>Q2: y 和 a 之间的关系是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option correct">✓ A. ya=8</div>
+                    <div class="qa-option">B. ya=6</div>
+                    <div class="qa-option">C. ya=4</div>
+                    <div class="qa-option">D. ya=20</div>
+                    <div class="qa-option">E. ya=18</div>
+                    <div class="qa-option">F. ya=12</div>
+                    <div class="qa-option">G. ya=16</div>
+                    <div class="qa-option">H. ya=10</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
+            </div>
+
+            <!-- Q3: Total Area (Depends on Q1, Q2) (Ans: 18) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="chain-step">Step 3 / 4: Calculate Total Area</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1 & Q2: Combining partial products (xb=6, ya=12) to determine the full area.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1 & Q2：结合部分乘积（xb=6, ya=12）来确定总面积。</div>
+                <div class="qa-question" data-lang-en>Q3: What is the area of the entire rectangle?</div>
+                <div class="qa-question" data-lang-zh>Q3: 整个矩形的面积是多少？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. 18</div>
+                    <div class="qa-option">B. 28</div>
+                    <div class="qa-option">C. 14</div>
+                    <div class="qa-option">D. 16</div>
+                    <div class="qa-option">E. 20</div>
+                    <div class="qa-option">F. 22</div>
+                    <div class="qa-option correct">✓ G. 24</div>
+                    <div class="qa-option">H. 26</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
+            </div>
+
+            <!-- Q4: Value of A (Depends on Q3) (Ans: 12) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="chain-step">Step 4 / 4: Final Derivation</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Deriving the specific unknown value A using the calculated total area.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：利用计算出的总面积推导特定未知数值 A。</div>
+                <div class="qa-question" data-lang-en>Q4: What is the value of A?</div>
+                <div class="qa-question" data-lang-zh>Q4: A 的值是多少？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. 12</div>
+                    <div class="qa-option correct">✓ B. 18</div>
+                    <div class="qa-option">C. 8</div>
+                    <div class="qa-option">D. 6</div>
+                    <div class="qa-option">E. 16</div>
+                    <div class="qa-option">F. 20</div>
+                    <div class="qa-option">G. 22</div>
+                    <div class="qa-option">H. 24</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- 实际视频标签 -->
+        <video controls width="100%" preload="metadata" poster="videos/3-3.png">
+            <source src="videos/3-3.mp4" type="video/mp4">
+        </video>
+        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>📱 The Social Detox — Narrative Turning Points</span>
+            <span data-lang-zh>📱 社交戒断 — 叙事转折点检测</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Consistency:</strong> Tests <em>complex plot comprehension</em>. Can the model identify key psychological turning points (decision to isolate, attempt to reconnect, relapse into addiction)?
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>一致性测评：</strong>测试<em>复杂剧情理解</em>。模型能否识别关键的心理转折点（决定隔离、尝试重新连接、再次陷入成瘾）？
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Throwing Phone (Ans: Breakfast gesture) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="qa-question" data-lang-en>Q1: Which event causes the male protagonist to decide to throw away his phone?</div>
+                <div class="qa-question" data-lang-zh>Q1: 什么事件导致男主角决定扔掉他的手机？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. While eating breakfast, he notices himself unconsciously making a phone-scrolling gesture.</div>
+                    <div class="qa-option">B. His failed proposal is watched and mocked by a crowd.</div>
+                    <div class="qa-option">C. He looks at his phone during the proposal, causing it to fail, and the scene is recorded by others.</div>
+                    <div class="qa-option">D. He realizes that he is checking his phone even during the proposal.</div>
+                    <div class="qa-option">E. He forgets to prepare for the proposal because he is addicted to his phone beforehand.</div>
+                    <div class="qa-option">F. When rewatching the proposal video, he discovers that he keeps his head down scrolling on his phone the entire time.</div>
+                    <div class="qa-option">G. After the proposal ends, he realizes that he never truly looked into the other person's eyes.</div>
+                    <div class="qa-option correct">✓ H. A video of his failed proposal is recorded and shared on social media.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
+                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
+            </div>
+
+            <!-- Q2: Resume Social 1 (Ans: Flyer) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="qa-question" data-lang-en>Q2: What is the turning point when the male protagonist first decides to resume his social life?</div>
+                <div class="qa-question" data-lang-zh>Q2: 男主角第一次决定恢复社交生活的转折点是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. An advertisement flyer for an Italian restaurant.</div>
+                    <div class="qa-option correct">✓ B. An invitation to a disco dance party.</div>
+                    <div class="qa-option">C. A phone that he cannot bring himself to throw away.</div>
+                    <div class="qa-option">D. His family coming to persuade him to go outside.</div>
+                    <div class="qa-option">E. A girl he meets at the dance party.</div>
+                    <div class="qa-option">F. The people at the dance party enjoying music and dancing.</div>
+                    <div class="qa-option">G. Lasagna made by his mother.</div>
+                    <div class="qa-option">H. A phone call from an unknown number.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
+                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
+            </div>
+
+            <!-- Q3: Resume Social 2 (Ans: Phone call from girl) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="qa-question" data-lang-en>Q3: What is the turning point when the male protagonist decides for the second time to resume his social life after isolating himself?</div>
+                <div class="qa-question" data-lang-zh>Q3: 在自我隔离后，男主角第二次决定恢复社交生活的转折点是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. Answering a phone call from the girl he met at the dance party.</div>
+                    <div class="qa-option">B. Attending the dance party and dancing and playing with the girl.</div>
+                    <div class="qa-option">C. Climbing into a recycling bin to try to retrieve his phone.</div>
+                    <div class="qa-option correct">✓ D. Leaving his phone number to a girl at the dance party.</div>
+                    <div class="qa-option">E. Returning to social media and scrolling through a large number of videos.</div>
+                    <div class="qa-option">F. Attending the dance party and immersing himself in the music and dancing.</div>
+                    <div class="qa-option">G. His family coming to persuade him to go outside.</div>
+                    <div class="qa-option">H. Picking up the lasagna made by his mother.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
+                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
+            </div>
+
+            <!-- Q4: Return to Quiet (Ans: Turning off phone) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="qa-question" data-lang-en>Q4: Which event marks the male protagonist's return to a "quiet life" after briefly resuming his social life?</div>
+                <div class="qa-question" data-lang-zh>Q4: 什么事件标志着男主角在短暂恢复社交生活后回归“平静生活”？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. Turning off his phone after scrolling through a large number of social media videos.</div>
+                    <div class="qa-option correct">✓ B. Hanging up on the phone call from the girl he met at the dance party.</div>
+                    <div class="qa-option">C. Burying his phone underground.</div>
+                    <div class="qa-option">D. Throwing his phone into a recycling bin.</div>
+                    <div class="qa-option">E. No longer using electronic devices such as a radio or alarm clock.</div>
+                    <div class="qa-option">F. Placing a paper shredder at the doorway to refuse incoming flyers.</div>
+                    <div class="qa-option">G. Making an emergency call that gets hung up on.</div>
+                    <div class="qa-option">H. Being rejected by a girl at the dance party.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
+                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- 实际视频标签 -->
+        <video controls width="100%" preload="metadata" poster="videos/3-4.png">
+            <source src="videos/3-4.mp4" type="video/mp4">
+        </video>
+        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>🪵 Wood Carving — General Skills Acquisition</span>
+            <span data-lang-zh>🪵 木雕工艺 — 通用技能获取</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Consistency:</strong> Tests <em>video-based knowledge acquisition</em>. Can the model learn specific technical details (material selection, reversed operation logic, error analysis, cutting techniques) from a tutorial?
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>一致性测评：</strong>测试<em>基于视频的知识获取</em>。模型能否从教程中学会具体的技术细节（选材、镜像操作逻辑、错误分析、刀法辨析）？
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Material Selection (Ans: Alder branches with thicker main) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="qa-question" data-lang-en>Q1: According to the video, how should the wood for making a hummingbird carving be selected?</div>
+                <div class="qa-question" data-lang-zh>Q1: 根据视频，制作蜂鸟雕刻应如何选择木材？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. Choose alder branches with a thicker main trunk and thinner side branches.</div>
+                    <div class="qa-option correct">✓ B. Choose branches of any type of tree with a thicker main trunk and thinner side branches.</div>
+                    <div class="qa-option">C. Choose branches of any type of tree with a thicker main trunk and side branches.</div>
+                    <div class="qa-option">D. Choose branches of any type of tree with a thinner main trunk and thicker side branches.</div>
+                    <div class="qa-option">E. Choose alder branches with a thicker main trunk and side branches.</div>
+                    <div class="qa-option">F. Choose willow branches that have been fully dried.</div>
+                    <div class="qa-option">G. Choose straight-grained softwood with the grain direction aligned with the design shape.</div>
+                    <div class="qa-option">H. Choose lightweight wood with a stable source, free of visible wormholes and cracks.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
+                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
+            </div>
+
+            <!-- Q2: Reversed Orientation Logic (Ans: Push lower both -> V lower-right -> Sweep upper-left) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="qa-question" data-lang-en>Q2: If the carving methods are followed exactly but the hummingbird’s head orientation is reversed (left-right), which approach is most accurate?</div>
+                <div class="qa-question" data-lang-zh>Q2: 如果完全按照视频方法雕刻，但蜂鸟头部的左右朝向与视频相反，哪种操作最准确？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. First use push cuts to remove wood from the lower areas on both sides of the head to make it left–right symmetrical, then use a V cut to remove wood from the lower-right area of the head, and finally use a sweeping cut to remove wood from the upper-left area of the head.</div>
+                    <div class="qa-option">B. Use a push cut to remove wood from the lower-right area of the head, and use only push cuts on the left side to remove excess material from the upper area.</div>
+                    <div class="qa-option">C. Use a V cut to remove wood from the lower-right area of the head, and use only push cuts on the left side to remove excess material from the upper area.</div>
+                    <div class="qa-option">D. Use a V cut to remove wood from the lower-left area of the head, and use only push cuts on the right side to remove excess material from the upper area.</div>
+                    <div class="qa-option">E. First use push cuts to remove wood from the lower areas on both sides of the head to make it left–right symmetrical, then use a V cut to remove wood from the lower-left area of the head, and finally use a sweeping cut to remove wood from the upper-right area of the head.</div>
+                    <div class="qa-option">F. First use a sweeping cut to remove wood from the lower areas on both sides of the head to make it left–right symmetrical, then use a V cut to remove wood from the upper-right area of the head, and finally use a push cut to remove wood from the upper-left area of the head.</div>
+                    <div class="qa-option correct">✓ G. Use a push cut to remove wood from the lower-left area of the head, and use only push cuts on the right side to remove excess material from the upper area.</div>
+                    <div class="qa-option">H. First use a sweeping cut to remove wood from the lower areas on both sides of the head to make it left–right symmetrical, then use a V cut to remove wood from the lower-left area of the head, and finally use a push cut to remove wood from the upper-left area of the head.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
+                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
+            </div>
+
+            <!-- Q3: Error Analysis (Ans: Inner curve changed ratio) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="qa-question" data-lang-en>Q3: Which statement about errors and possible causes in carving the hummingbird's body and tail is the most accurate?</div>
+                <div class="qa-question" data-lang-zh>Q3: 关于雕刻蜂鸟身体和尾部时的错误及可能原因，哪种说法最准确？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The body is too long and the tail is too short, possibly because raising the inner curve of the body during carving changed the body-to-head length ratio.</div>
+                    <div class="qa-option">B. The body is too long and the tail is too short, possibly because the body-to-tail length ratio of approximately 2:1 was not ensured when drawing the outline before carving.</div>
+                    <div class="qa-option">C. The body is too long and the tail is too short, possibly because using rough cut on the tail damaged the overall structure.</div>
+                    <div class="qa-option correct">✓ D. The body is too long and the tail is too short, possibly because the body and head length ratio of approximately 2:1 was not ensured when drawing the outline before carving.</div>
+                    <div class="qa-option">E. The tail tip and the lines on the abdomen are too sharp, possibly because push cut was used during carving.</div>
+                    <div class="qa-option">F. The tail tip and the lines on the abdomen are too sharp, possibly because small push cut was used during carving.</div>
+                    <div class="qa-option">G. The tail tip and the lines on the abdomen are too sharp, possibly because rough cut was used initially to carve the general shape.</div>
+                    <div class="qa-option">H. The tail tip and the lines on the abdomen are too sharp, possibly because a pencil outline was not drawn before carving.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
+                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
+            </div>
+
+            <!-- Q4: Technique Analysis (Ans: Push cut for delicate lines) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="qa-question" data-lang-en>Q4: Which statement about the carving methods used in the video is the most accurate?</div>
+                <div class="qa-question" data-lang-zh>Q4: 关于视频中使用的雕刻技法，哪种说法最准确？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. Push cut is often used to make shape lines more delicate and smooth, such as refining the head contour and carving wing edge contours.</div>
+                    <div class="qa-option">B. Push cut is often used to make shape lines more delicate and smooth, such as refining the head contour and shaping the connection curve between the head underside and body.</div>
+                    <div class="qa-option">C. Rough cut is often used to carve clear and sharp lines, such as shaping the long tail feather lines.</div>
+                    <div class="qa-option">D. Sweeping cut can be used both for rough carving and refinement, such as carving the general head contour and enhancing the smoothness and symmetry of the body lines.</div>
+                    <div class="qa-option">E. Rough cut can be used both for carving clear and sharp lines and for refinement, such as carving the general tail shape and refining wing contours.</div>
+                    <div class="qa-option">F. V cut is mainly used for later refinement, such as deepening wing edges, and is not used for rough carving due to low efficiency.</div>
+                    <div class="qa-option">G. Sweeping cut is mainly used for carving general shapes and smooth lines, such as carving the head's approximate shape and the connection between the upper head and beak, and is not used for later refinement due to space limitations.</div>
+                    <div class="qa-option correct">✓ H. V cut can be used for later refinement, such as deepening wing edges and clarifying the connection line between the head and beak.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
+                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- L3 - Coherence Example (Counterfactual Reasoning - Game Logic) -->
+<div class="video-card">
+    <div class="video-card-top">
+        <!-- 实际视频标签 -->
+        <video controls width="100%" preload="metadata" poster="videos/3-5.png">
+            <source src="videos/3-5.mp4" type="video/mp4">
+        </video>
+        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>💦 Water Gun Battle — Counterfactual Reasoning</span>
+            <span data-lang-zh>💦 水枪大战 — 反事实推理</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Coherence:</strong> Linear logic chain <code>[1,2,3,4]</code>. Q1 establishes elimination rules → Q2 identifies first death scenario → Q3 analyzes attacker's preparation → Q4 performs counterfactual reasoning: <em>If the player survives, what weapon upgrade and tactical choice would follow?</em>
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。Q1 确立淘汰判定规则 → Q2 识别首次阵亡场景 → Q3 分析攻击者准备动作 → Q4 进行反事实推理：<em>若玩家存活，将升级何武器并采取何战术？</em>
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2 <span class="dep-arrow">← Q1</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q2</span></button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q1,Q2,Q3</span></button>
+        </div>
+        <div class="qa-content-wrapper">
+            
+            <!-- Q1: Elimination Rule (Correct Answer: A → shuffled to position A) -->
+            <div class="qa-content active" data-qa-index="0">
+                <div class="chain-step">Step 1 / 4: Establish Game Rules</div>
+                <div class="qa-question" data-lang-en>Q1: In this game, how do you determine that a player has been eliminated?</div>
+                <div class="qa-question" data-lang-zh>Q1: 在这个游戏中，如何判断一名玩家已被淘汰？</div>
+                <div class="qa-options">
+                    <div class="qa-option correct">✓ A. Weapon switch.</div>
+                    <div class="qa-option">B. Opponent is hit by more than 5 shots.</div>
+                    <div class="qa-option">C. Opponent jumps into the water.</div>
+                    <div class="qa-option">D. Opponent can no longer retaliate.</div>
+                    <div class="qa-option">E. You emit a cheer sound.</div>
+                    <div class="qa-option">F. Opponent stops attacking you.</div>
+                    <div class="qa-option">G. Opponent can no longer move.</div>
+                    <div class="qa-option">H. Opponent plays a death sound effect.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
+            </div>
+
+            <!-- Q2: First Death Scenario (Correct Answer: A → shuffled to position G) -->
+            <div class="qa-content" data-qa-index="1">
+                <div class="chain-step">Step 2 / 4: Identify Death Event</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Knowing elimination is marked by weapon switch → When was the first-person player first eliminated? What weapon and target?</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：已知通过武器切换判定淘汰 → 主视角玩家首次被淘汰时使用何武器、瞄准何目标？</div>
+                <div class="qa-question" data-lang-en>Q2: In the video, when the first-person player is eliminated for the first time, which water gun is he using, and which player is he attempting to attack?</div>
+                <div class="qa-question" data-lang-zh>Q2: 在视频中，当第一人称玩家第一次被淘汰时，他正在使用哪把水枪，并且试图攻击哪个玩家？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. He is using Spyra LX and is attempting to shoot the player running towards him from the right.</div>
+                    <div class="qa-option">B. He is using the red Spyra LX and aiming at a player who is also on the lawn.</div>
+                    <div class="qa-option">C. He is using Nerf Hyper Balls and attempting to throw them at a player.</div>
+                    <div class="qa-option">D. He is holding Spyra LX, and the target is the person in the swimming pool.</div>
+                    <div class="qa-option">E. He was holding a Roblox Big Paintball gun and attempting to attack players who were jumping off the diving board.</div>
+                    <div class="qa-option">F. He was using an inflatable dolphin water gun and attempting to attack a player, but was ambushed from the side by another player.</div>
+                    <div class="qa-option correct">✓ G. He is using an X-Shot Pump Action water gun, and the target he is aiming at is a player on the yard's lawn.</div>
+                    <div class="qa-option">H. His X-Shot Pump Action had just run out of water and he was preparing to jump into the pool to refill it.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
+            </div>
+
+            <!-- Q3: Attacker's Preparation (Correct Answer: A → shuffled to position C) -->
+            <div class="qa-content" data-qa-index="2">
+                <div class="chain-step">Step 3 / 4: Analyze Attacker Setup</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Knowing the player was killed while using X-Shot targeting lawn → What was the lawn player (attacker) doing? What terrain advantage?</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：已知玩家使用 X-Shot 瞄准草坪玩家时被击杀 → 草坪上的攻击者在做什么准备？利用了何种地形优势？</div>
+                <div class="qa-question" data-lang-en>Q3: Before eliminating the first-person player for the first time, what preparatory action was the attacker (whom the first-person player was trying to target) performing? And which specific terrain feature did he use to gain a shooting advantage?</div>
+                <div class="qa-question" data-lang-zh>Q3: 在第一次淘汰第一人称玩家之前，攻击者（即第一人称玩家试图瞄准的草坪玩家）正在进行什么准备动作？他利用了哪个具体的地形特征来获得射击优势？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. He was performing an acrobatic jump shot off the diving board, using height to gain an advantage.</div>
+                    <div class="qa-option">B. He was running up the stairs from the lower courtyard, allowing him to attack from an unexpected angle.</div>
+                    <div class="qa-option correct">✓ C. He was hiding behind a large potted plant in the courtyard, using surprise for a close-range ambush.</div>
+                    <div class="qa-option">D. He was quickly refilling his weapon directly from the pool, enabling him to rejoin combat immediately.</div>
+                    <div class="qa-option">E. He was sliding down the water slide, using momentum to rapidly close the distance for an attack.</div>
+                    <div class="qa-option">F. He remained completely still, aiming for over five seconds, patiently waiting for the perfect shot from the far end of the yard.</div>
+                    <div class="qa-option">G. He had just respawned and used his brief invincibility period to eliminate an opponent from an open position with ease.</div>
+                    <div class="qa-option">H. He was reloading his red water gun, and his position on the elevated lawn gave him a clear line of sight over the pool.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
+            </div>
+
+            <!-- Q4: Counterfactual Weapon Upgrade (Correct Answer: A → shuffled to position E) -->
+            <div class="qa-content" data-qa-index="3">
+                <div class="chain-step">Step 4 / 4: Counterfactual Reasoning</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1, Q2, Q3: If the player survives that X-Shot encounter → What weapon upgrade per video sequence? What next target based on new weapon traits?</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1、Q2、Q3：若玩家使用 X-Shot 时存活并完成击杀 → 根据视频武器升级顺序将获得何武器？基于新武器特性的下一目标是什么？</div>
+                <div class="qa-question" data-lang-en>Q4: Assuming the main character player is not killed in the first deathmatch, but successfully eliminates his target with his current weapon, according to the weapon progression sequence shown in the video, which new weapon will he immediately upgrade to? Considering the characteristics of that new weapon, what is his most likely next target and action?</div>
+                <div class="qa-question" data-lang-zh>Q4: 假设主角玩家在第一次死斗中未被击杀，而是成功用当前武器淘汰了目标，根据视频中显示的武器升级顺序，他将立即升级到哪把新武器？考虑到该新武器的特点，他最可能的下一个目标和行动是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. He will upgrade to the ultimate skip balls. He will use the wide-ranging destructive power of this weapon to attack enemies in a crowd.</div>
+                    <div class="qa-option">B. He will upgrade to Spyra LX. He will use this weapon's high-frequency firing rate to engage and eliminate his enemies in direct combat.</div>
+                    <div class="qa-option">C. He will upgrade to Spyra LX. He will use the immense power of this weapon to attack enemies in the water.</div>
+                    <div class="qa-option">D. He will obtain a bubble gun. His most reasonable action is to retreat to the stairs and utilize the weapon's range effect from a higher vantage point.</div>
+                    <div class="qa-option correct">✓ E. He will upgrade to the ROBLOX BIG PAINTBALL. Using this compact weapon, he will sneak up on lone enemies.</div>
+                    <div class="qa-option">F. He will upgrade to STOMP SOAKER. His most rational action is to ignore the enemies around him and continue to focus on attacking distant targets on the lawn.</div>
+                    <div class="qa-option">G. He will upgrade to a rocket launcher. His most logical next move would be to set up a launch pad in the courtyard to attack players on large inflatable floating beds.</div>
+                    <div class="qa-option">H. The game will end directly, as this is the last level up.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
+                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
+            </div>
+
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </div>
