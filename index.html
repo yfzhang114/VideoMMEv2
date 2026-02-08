@@ -1446,6 +1446,107 @@
             color: var(--accent-color);
             font-weight: 600;
         }
+
+        /* 容器与排版 */
+.intro-container {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+    color: #374151;
+}
+.intro-lead {
+    font-size: 1.1em;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+/* 第一性原理高亮框 */
+.philosophy-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 5px solid #0284c7;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.philosophy-title {
+    color: #0369a1;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.philosophy-questions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.philosophy-questions li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-weight: 500;
+}
+.philosophy-questions li::before {
+    content: "❓";
+    position: absolute;
+    left: 0;
+    font-size: 0.9em;
+}
+
+/* 三级能力体系网格 */
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.capability-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.capability-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.level-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+}
+.lvl-1 { background: #dbeafe; color: #1e40af; }
+.lvl-2 { background: #dcfce7; color: #166534; }
+.lvl-3 { background: #fce7f3; color: #9d174d; }
+
+/* 分组评测网格 (复用你之前的风格，稍作微调) */
+.framework-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.framework-card {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+.framework-card h4 {
+    margin-top: 0.5rem;
+    color: #111827;
+}
+.icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+@media (max-width: 768px) {
+    .framework-grid { grid-template-columns: 1fr; }
+}
     </style>
 </head>
 <body>
@@ -1552,82 +1653,127 @@
         
         <article>
             <!-- English Content -->
-            <div data-lang-en>
-                <p>
-                    In recent years, Video Multimodal Large Language Models have made significant progress on various perception and reasoning tasks, marking a shift from simple video recognition to deeper semantic understanding and complex reasoning. Despite these breakthroughs, existing evaluation methods still focus primarily on narrow and task-specific benchmarks, making it difficult to determine whether models truly understand video content or merely exploit dataset biases and spurious correlations.
+            <div class="intro-container" data-lang-en>
+                <p class="intro-lead">
+                    In 2024, we released <strong>Video-MME</strong>, establishing the first comprehensive benchmark for evaluating Video Multimodal Large Language Models (Video MLLMs), which significantly propelled the field forward. Today, as models evolve from simple recognition to deep semantic understanding, the standards for evaluation have risen. However, existing benchmarks often focus on narrow tasks, making it difficult to distinguish true understanding from dataset bias exploitation. Furthermore, current research lacks a focus on <strong>reasoning coherence</strong>, leaving it unclear whether models perform systematic reasoning or merely generate plausible hallucinations.
                 </p>
-                
+            
                 <p>
-                    Meanwhile, in complex video reasoning tasks, previous research has focused on evaluating specific reasoning abilities while less attention has been paid to models' overall reasoning coherence in <strong>temporal and causal relation problems</strong>. This leaves us uncertain whether models are conducting systematic reasoning or merely generating locally consistent answers. These limitations hinder comprehensive evaluation of state-of-the-art Video MLLMs and highlight the urgent need to deeply investigate models' <strong>true understanding and reliable reasoning capabilities</strong> in video comprehension.
+                    Addressing this urgent need, we present <strong>Video-MME v2</strong>. After six months of rigorous data curation, filtering, and annotation, we share our deep insights into the next generation of video understanding evaluation to drive further technological iteration.
                 </p>
-
-                <div class="highlight-box">
-                    <h4>💡 Our Solution</h4>
-                    <p>
-                        To address these challenges, we propose <strong>Video-MME v2</strong>, a comprehensive benchmark designed to systematically evaluate the true understanding and reasoning capabilities of Video MLLMs. This benchmark introduces a <strong>group-based</strong> evaluation approach, systematically analyzing state-of-the-art models from two complementary dimensions.
-                    </p>
+            
+                <div class="philosophy-box">
+                    <div class="philosophy-title">🚀 First Principles Design</div>
+                    <p>In Video-MME v2, we returned to first principles to answer two fundamental questions:</p>
+                    <ul class="philosophy-questions">
+                        <li>What capabilities define a robust video understanding model?</li>
+                        <li>How can these capabilities be accurately and adequately evaluated?</li>
+                    </ul>
                 </div>
-
+            
+                <h3>1. Comprehensive Capability Hierarchy</h3>
+                <p>We propose a <strong>Multi-level Evaluation System</strong> that aggregates capabilities from foundational to complex, ensuring a holistic assessment:</p>
+                
+                <div class="capability-grid">
+                    <div class="capability-card">
+                        <span class="level-badge lvl-1">Level 1</span>
+                        <h4>Point-wise Aggregation</h4>
+                        <p>Emphasizes the ability to integrate information from single or multiple fixed timestamps, forming the bedrock of visual perception.</p>
+                    </div>
+                    <div class="capability-card">
+                        <span class="level-badge lvl-2">Level 2</span>
+                        <h4>Temporal Understanding</h4>
+                        <p>Focuses on resolving tasks specifically related to temporal dynamics, causal sequences, and motion evolution.</p>
+                    </div>
+                    <div class="capability-card">
+                        <span class="level-badge lvl-3">Level 3</span>
+                        <h4>Complex Reasoning</h4>
+                        <p>Introduces real-world scenarios requiring intricate logic, testing the model's performance in diverse and authentic contexts.</p>
+                    </div>
+                </div>
+            
+                <h3>2. Robust Evaluation Mechanism</h3>
+                <p>
+                    Moving beyond the traditional scatter-shot approach of individual questions, we introduce a <strong>Group-based Evaluation Mechanism</strong>. This approach emphasizes robustness by assessing capabilities through structured task groups rather than isolated queries.
+                </p>
+            
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>Capability Consistency</h4>
                         <p>
-                            Examines the stability and breadth of specific fundamental perception capabilities across different task dimensions (e.g., from viewpoint transformation to spatial reconstruction for spatial understanding) and granularities (e.g., from object counting to motion counting for video counting).
+                            Evaluates a specific capability across varying <strong>granularities</strong> (e.g., object vs. action counting) and <strong>breadths</strong>, ensuring the model's perception is stable and not brittle.
                         </p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
                         <h4>Reasoning Coherence</h4>
                         <p>
-                            Evaluates models' multi-step reasoning capabilities through a series of temporally and causally related questions, detecting whether models can make complex high-level inferences along logical chains.
+                            Inspects critical nodes within a logical chain. By verifying the intermediate steps of inference, we distinguish between true reasoning and lucky guesses.
                         </p>
                     </div>
                 </div>
-
-                <p>
-                    Overall, these two dimensions together form a <strong>rigorous and interpretable</strong> evaluation benchmark that focuses not only on task performance but also measures models' <strong>systematic and reliable reasoning capabilities</strong> in complex video scenarios.
-                </p>
             </div>
 
-            <!-- Chinese Content -->
-            <div data-lang-zh>
-                <p>
-                    近年来，视频多模态大语言模型在多种感知与推理任务上取得了显著进展，标志着该领域正从单纯的视频识别迈向更深层次的语义理解与复杂推理。尽管取得了较大突破，现有评测方法仍主要关注于狭窄且任务特定的基准，难以判断模型是否真正理解视频内容，或仅仅利用了数据集中的偏好与假性相关。
-                </p>
-                
-                <p>
-                    与此同时，在复杂的视频推理任务中，以往研究多聚焦于某一特定推理能力的评估，而较少考察模型在<strong>时间与因果关联问题</strong>中的整体推理连贯性，这使得我们尚不清楚模型是在进行系统性推理，还是仅生成局部一致的答案。这些局限阻碍了对前沿视频 MLLMs 的全面评估，也凸显出迫切需要深入探究模型在视频理解中<strong>真实理解与可靠推理能力</strong>的必要性。
-                </p>
+<!-- Chinese Content -->
+<div class="intro-container" data-lang-zh>
+    <p class="intro-lead">
+        2024年，我们发布了 <strong>Video-MME</strong>，作为首个完善评估多模态大模型视频理解能力的数据集，它极大地推动了该领域的发展。如今，随着模型能力从单纯识别迈向深度语义理解，评估标准也随之提高。然而，现有评测仍多局限于特定任务，难以区分模型是真正理解视频，还是利用了数据集偏差。此外，现有研究往往忽视<strong>推理连贯性</strong>，使得我们难以判断模型是在进行系统性推理，还是仅生成了看似合理的答案。
+        为此，我们推出了 <strong>Video-MME v2</strong>。经过半年多的数据收集、清洗与筛选，我们希望在这一关键节点，分享对下一代视频理解评估的深入思考，推动领域技术进一步迭代。
+    </p>
 
-                <div class="highlight-box">
-                    <h4>💡 我们的解决方案</h4>
-                    <p>
-                        为应对上述挑战，我们提出了 <strong>Video-MME v2</strong>，这是一个旨在系统评估视频 MLLMs 真实理解与推理能力的综合性基准。该基准通过引入<strong>基于任务分组（group-based）</strong>的评测方式，从两个互补维度对前沿模型进行系统分析。
-                    </p>
-                </div>
+    <div class="philosophy-box">
+        <div class="philosophy-title">🚀 基于第一性原理的设计</div>
+        <p>在 Video-MME v2 中，我们回归本源，回答了两个核心问题：</p>
+        <ul class="philosophy-questions">
+            <li>一个优秀的视频理解模型究竟需要什么能力？</li>
+            <li>这些能力如何才能得到正确、充分的评估？</li>
+        </ul>
+    </div>
 
-                <div class="framework-grid">
-                    <div class="framework-card consistency">
-                        <div class="icon">🎯</div>
-                        <h4>能力一致性 (Capability Consistency)</h4>
-                        <p>
-                            用于检验特定基础感知能力在不同任务维度（如从视角转换到空间重建体现空间理解）与粒度（如从目标计数到运动计数体现视频计数）变化下的稳定性与广度。
-                        </p>
-                    </div>
-                    <div class="framework-card coherence">
-                        <div class="icon">🔗</div>
-                        <h4>推理连贯性 (Reasoning Coherence)</h4>
-                        <p>
-                            用于评估模型的多步推理能力，通过一系列时间与因果相关的问题检测模型是否能够沿逻辑链条作出复杂的高层次推断。
-                        </p>
-                    </div>
-                </div>
+    <h3>1. 完整的能力评估体系</h3>
+    <p>我们构建了 <strong>Multi-level 多级评估体系</strong>，实现了从单点信息聚合到复杂视频推理的全方位评价：</p>
+    
+    <div class="capability-grid">
+        <div class="capability-card">
+            <span class="level-badge lvl-1">Level 1</span>
+            <h4>单点信息聚合</h4>
+            <p>强调对于一个或多个固定时间点的信息整合能力，是视觉感知的基础。</p>
+        </div>
+        <div class="capability-card">
+            <span class="level-badge lvl-2">Level 2</span>
+            <h4>时序理解</h4>
+            <p>关注于解决与时间演变、因果序列相关的动态任务能力。</p>
+        </div>
+        <div class="capability-card">
+            <span class="level-badge lvl-3">Level 3</span>
+            <h4>复杂推理</h4>
+            <p>引入真实、多样化的复杂场景，检验模型在实际应用中的推理水平。</p>
+        </div>
+    </div>
 
-                <p>
-                    总体而言，这两个维度共同构成了一个<strong>严谨且可解释</strong>的评测基准，不仅关注模型的任务表现，更衡量其在复杂视频场景中<strong>系统性与可靠性的推理能力</strong>。
-                </p>
-            </div>
+    <h3>2. 鲁棒的评估机制</h3>
+    <p>
+        区别于以往针对单个问题的散点式评估，我们引入了 <strong>基于任务分组 (Group-based)</strong> 的评测方式，进一步强调模型能力的鲁棒性。
+    </p>
+
+    <div class="framework-grid">
+        <div class="framework-card consistency">
+            <div class="icon">🎯</div>
+            <h4>能力一致性 (Consistency)</h4>
+            <p>
+                针对同一种能力，通过不同的广度（如不同视角）和粒度（如不同计数对象）进行多维评估，确保感知的稳定性。
+            </p>
+        </div>
+        <div class="framework-card coherence">
+            <div class="icon">🔗</div>
+            <h4>推理连贯性 (Coherence)</h4>
+            <p>
+                对推理逻辑链路的关键节点进行检查。通过验证推理的中间步骤，区分真实的逻辑推导与概率性的猜测。
+            </p>
+        </div>
+    </div>
+</div>
         </article>
     </section>
 </main>
@@ -3228,13 +3374,6 @@
                     This purely manual pipeline maximally eliminates noise and hallucinations from machine-generated data, ensuring high quality and reliability of the evaluation data.
                 </p>
 
-                <figure>
-                    <img src="figs/imgs/teaser_annotation.png" 
-                        alt="Video-MME V2 Manual Annotation Pipeline" 
-                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 2: Video-MME V2 Manual Annotation Pipeline</figcaption>
-                </figure>
-
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 Data Statistics</h3>
 
                 <p>
@@ -3339,12 +3478,6 @@
                     这一纯人工流水线最大程度地消除了机器生成数据的噪声与幻觉，确保评测数据的高质量与可靠性。
                 </p>
 
-                <figure>
-                    <img src="figs/imgs/teaser_annotation.png" 
-                        alt="Video-MME V2 人工标注流程" 
-                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 2: Video-MME V2 人工标注流程</figcaption>
-                </figure>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 数据统计</h3>
 
