@@ -741,6 +741,86 @@
             margin: 2rem 0;
         }
 
+        /* Video Carousel Wrapper - with nav buttons and indicator */
+        .video-carousel-wrapper {
+            position: relative;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            color: var(--primary-color);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .carousel-nav-btn:hover {
+            background: white;
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+        }
+
+        .carousel-nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .carousel-prev {
+            left: 12px;
+        }
+
+        .carousel-next {
+            right: 12px;
+        }
+
+        .carousel-indicator {
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+            border-radius: 12px;
+            display: inline-block;
+            margin: 4px 0 0;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+        }
+
+        .carousel-indicator .current {
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--accent-color);
+        }
+
+        .carousel-indicator .total {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
         .video-carousel {
             display: flex;
             gap: 24px;
@@ -748,6 +828,7 @@
             padding: 16px 0;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
         }
 
         .video-carousel::-webkit-scrollbar {
@@ -1632,10 +1713,12 @@
                         <p class="level-row-desc" data-lang-zh>基础视觉感知 — 对象识别、计数、属性判断、场景理解</p>
                     </div>
                 </div>
-                <div class="video-carousel">
-                    <!-- L1 - Consistency Example -->
-                                        <!-- L1 - Consistency Example -->
-                    <div class="video-card">
+                <div class="video-carousel-wrapper">
+                    <div class="carousel-inner">
+                        <button type="button" class="carousel-nav-btn carousel-prev" aria-label="Previous video" onclick="carouselPrev(this)">‹</button>
+                        <div class="video-carousel">
+                            <!-- L1 - Consistency Example -->
+                            <div class="video-card">
                         <div class="video-card-top">
                             <video controls width="100%" preload="metadata" poster="videos/coffee.png">
                                 <source src="videos/level1-1.mp4" type="video/mp4">
@@ -2037,7 +2120,11 @@
         </div>
     </div>
 </div>
-            </div>
+                        </div>
+                        <button type="button" class="carousel-nav-btn carousel-next" aria-label="Next video" onclick="carouselNext(this)">›</button>
+                    </div>
+                    <div class="carousel-indicator"><span class="current">1</span> / <span class="total">4</span></div>
+                </div>
 
             <!-- ==================== LEVEL 2 ==================== -->
             <div class="level-row">
@@ -2050,9 +2137,12 @@
                         <p class="level-row-desc" data-lang-zh>动作识别、状态变化跟踪、时间顺序理解、动态感知</p>
                     </div>
                 </div>
-                <div class="video-carousel">
-                    <!-- L2 - Coherence Example -->
-                    <div class="video-card">
+                <div class="video-carousel-wrapper">
+                    <div class="carousel-inner">
+                        <button type="button" class="carousel-nav-btn carousel-prev" aria-label="Previous video" onclick="carouselPrev(this)">‹</button>
+                        <div class="video-carousel">
+                            <!-- L2 - Coherence Example -->
+                            <div class="video-card">
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
                             <video controls width="100%" preload="metadata" poster="videos/level2-1.png">
@@ -2154,7 +2244,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                
                     <!-- L2 - Coherence Example (Logic Chain) -->
 <div class="video-card">
     <div class="video-card-top">
@@ -2487,9 +2577,11 @@
         </div>
     </div>
 </div>
-
+                        </div>
+                        <button type="button" class="carousel-nav-btn carousel-next" aria-label="Next video" onclick="carouselNext(this)">›</button>
+                    </div>
+                    <div class="carousel-indicator"><span class="current">1</span> / <span class="total">4</span></div>
                 </div>
-            </div>
 
             <!-- ==================== LEVEL 3 ==================== -->
             <div class="level-row">
@@ -2502,35 +2594,36 @@
                         <p class="level-row-desc" data-lang-zh>因果推理、意图理解、物理世界推理、社会行为推断</p>
                     </div>
                 </div>
-                <div class="video-carousel">
-                    <!-- L3 - Coherence Example (Shell Game) -->
-                    
-                    <div class="video-card">
-    <div class="video-card-top">
-    <!-- 使用占位符或替换为实际 video 标签 -->
-    <video controls width="100%" preload="metadata" poster="videos/3-1.png">
-    <source src="videos/3-1.mp4" type="video/mp4">
-    </video>
-    <span class="eval-badge eval-coherence card-badge">Consistency</span>
-    </div>
-    <div class="video-info">
-        <div class="video-title">
-            <span data-lang-en>🎩 Shell Game — Entity Persistence Tracking</span>
-            <span data-lang-zh>🎩 魔术杯球 — 实体持久性追踪</span>
-        </div>
-        <div class="eval-hint" data-lang-en>
-            <strong>Relevance:</strong> Tests <em>entity persistence</em> and <em>perspective taking</em>. Can the model track a hidden object through multiple swaps and switch spatial perspectives (Performer vs. Audience)?
-        </div>
-        <div class="eval-hint" data-lang-zh>
-            <strong>一致性测评：</strong>测试<em>实体持久性</em>和<em>视角转换</em>。模型能否在多次交换中追踪隐藏物体，并在不同空间视角（表演者 vs 观众）间切换？
-        </div>
-        <div class="qa-tabs">
-            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
-            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
-            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
-        </div>
-        <div class="qa-content-wrapper">
+                <div class="video-carousel-wrapper">
+                    <div class="carousel-inner">
+                        <button type="button" class="carousel-nav-btn carousel-prev" aria-label="Previous video" onclick="carouselPrev(this)">‹</button>
+                        <div class="video-carousel">
+                            <!-- L3 - Coherence Example (Shell Game) -->
+                            <div class="video-card">
+                                <div class="video-card-top">
+                                    <video controls width="100%" preload="metadata" poster="videos/3-1.png">
+                                        <source src="videos/3-1.mp4" type="video/mp4">
+                                    </video>
+                                    <span class="eval-badge eval-coherence card-badge">Consistency</span>
+                                </div>
+                                <div class="video-info">
+                                    <div class="video-title">
+                                        <span data-lang-en>🎩 Shell Game — Entity Persistence Tracking</span>
+                                        <span data-lang-zh>🎩 魔术杯球 — 实体持久性追踪</span>
+                                    </div>
+                                    <div class="eval-hint" data-lang-en>
+                                        <strong>Relevance:</strong> Tests <em>entity persistence</em> and <em>perspective taking</em>. Can the model track a hidden object through multiple swaps and switch spatial perspectives (Performer vs. Audience)?
+                                    </div>
+                                    <div class="eval-hint" data-lang-zh>
+                                        <strong>一致性测评：</strong>测试<em>实体持久性</em>和<em>视角转换</em>。模型能否在多次交换中追踪隐藏物体，并在不同空间视角（表演者 vs 观众）间切换？
+                                    </div>
+                                    <div class="qa-tabs">
+                                        <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                                        <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                                        <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+                                        <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+                                    </div>
+                                    <div class="qa-content-wrapper">
             
             <!-- Q1: Swap 1 (Performer View) - Ans: First on Left -->
             <div class="qa-content active" data-qa-index="0">
@@ -2604,37 +2697,36 @@
                 <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 事件计数</div>
             </div>
 
-        </div>
-    </div>
-</div>
+                                    </div>
+                                </div>
+                            </div>
 
-<!-- L3 - Coherence Example (Math Logic Chain) -->
-<div class="video-card">
-    <div class="video-card-top">
-        <!-- 实际视频标签 -->
-        <video controls width="100%" preload="metadata" poster="videos/3-2.png">
-            <source src="videos/3-2.mp4" type="video/mp4">
-        </video>
-        <span class="eval-badge eval-coherence card-badge">Coherence</span>
-    </div>
-    <div class="video-info">
-        <div class="video-title">
-            <span data-lang-en>📐 Geometry Puzzle — Math Logic Chain</span>
-            <span data-lang-zh>📐 几何谜题 — 数学逻辑链</span>
-        </div>
-        <div class="eval-hint" data-lang-en>
-            <strong>Coherence:</strong> Logic tree <code>[[1,2],3,4]</code>. Q1 and Q2 solve independent variables. Q3 combines Q1 & Q2 to find the total area. Q4 derives the final value A from Q3.
-        </div>
-        <div class="eval-hint" data-lang-zh>
-            <strong>连贯性测评：</strong>逻辑树 <code>[[1,2],3,4]</code>。Q1 和 Q2 求解独立变量。Q3 结合 Q1 和 Q2 计算总面积。Q4 从 Q3 推导最终值 A。
-        </div>
-        <div class="qa-tabs">
-            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
-            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
-            <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q1+Q2</span></button>
-            <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
-        </div>
-        <div class="qa-content-wrapper">
+                            <!-- L3 - Coherence Example (Math Logic Chain) -->
+                            <div class="video-card">
+                                <div class="video-card-top">
+                                    <video controls width="100%" preload="metadata" poster="videos/3-2.png">
+                                        <source src="videos/3-2.mp4" type="video/mp4">
+                                    </video>
+                                    <span class="eval-badge eval-coherence card-badge">Coherence</span>
+                                </div>
+                                <div class="video-info">
+                                    <div class="video-title">
+                                        <span data-lang-en>📐 Geometry Puzzle — Math Logic Chain</span>
+                                        <span data-lang-zh>📐 几何谜题 — 数学逻辑链</span>
+                                    </div>
+                                    <div class="eval-hint" data-lang-en>
+                                        <strong>Coherence:</strong> Logic tree <code>[[1,2],3,4]</code>. Q1 and Q2 solve independent variables. Q3 combines Q1 & Q2 to find the total area. Q4 derives the final value A from Q3.
+                                    </div>
+                                    <div class="eval-hint" data-lang-zh>
+                                        <strong>连贯性测评：</strong>逻辑树 <code>[[1,2],3,4]</code>。Q1 和 Q2 求解独立变量。Q3 结合 Q1 和 Q2 计算总面积。Q4 从 Q3 推导最终值 A。
+                                    </div>
+                                    <div class="qa-tabs">
+                                        <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+                                        <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+                                        <button class="qa-tab" onclick="switchQA(this, 2)">Q3 <span class="dep-arrow">← Q1+Q2</span></button>
+                                        <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
+                                    </div>
+                                    <div class="qa-content-wrapper">
             
             <!-- Q1: Solve xb (Ans: 6) -->
             <div class="qa-content active" data-qa-index="0">
@@ -2726,7 +2818,7 @@
         <video controls width="100%" preload="metadata" poster="videos/3-3.png">
             <source src="videos/3-3.mp4" type="video/mp4">
         </video>
-        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+        <span class="eval-badge eval-coherence card-badge">Consistency</span>
     </div>
     <div class="video-info">
         <div class="video-title">
@@ -2829,7 +2921,7 @@
         <video controls width="100%" preload="metadata" poster="videos/3-4.png">
             <source src="videos/3-4.mp4" type="video/mp4">
         </video>
-        <span class="eval-badge eval-coherence card-badge">Coherence</span>
+        <span class="eval-badge eval-coherence card-badge">Consistency</span>
     </div>
     <div class="video-info">
         <div class="video-title">
@@ -3039,6 +3131,10 @@
         </div>
     </div>
 </div>
+                        </div>
+                        <button type="button" class="carousel-nav-btn carousel-next" aria-label="Next video" onclick="carouselNext(this)">›</button>
+                    </div>
+                    <div class="carousel-indicator"><span class="current">1</span> / <span class="total">5</span></div>
                 </div>
             </div>
         </div>
@@ -3593,7 +3689,76 @@
         if (savedLang) {
             switchLanguage(savedLang);
         }
+        initCarousels();
     });
+
+    // Video Carousel: prev/next navigation and indicator
+    const CAROUSEL_GAP = 24;
+
+    function initCarousels() {
+        requestAnimationFrame(function() {
+            document.querySelectorAll('.video-carousel-wrapper').forEach(function(wrapper) {
+                const inner = wrapper.querySelector('.carousel-inner');
+                const carousel = inner ? inner.querySelector('.video-carousel') : wrapper.querySelector('.video-carousel');
+                if (!carousel) return;
+                const cards = Array.from(carousel.children).filter(function(el) { return el.classList.contains('video-card'); });
+                const total = cards.length;
+                const indicator = wrapper.querySelector('.carousel-indicator');
+                const currentSpan = indicator ? indicator.querySelector('.current') : null;
+                const totalSpan = indicator ? indicator.querySelector('.total') : null;
+                const prevBtn = wrapper.querySelector('.carousel-prev');
+                const nextBtn = wrapper.querySelector('.carousel-next');
+                if (!currentSpan || !totalSpan || !prevBtn || !nextBtn) return;
+
+                totalSpan.textContent = total;
+
+                function getStep() {
+                    var w = carousel.clientWidth;
+                    if (w <= 0 && cards[0]) w = cards[0].offsetWidth;
+                    return (w > 0 ? w : 400) + CAROUSEL_GAP;
+                }
+
+                function updateIndicator() {
+                    var step = getStep();
+                    var scrollLeft = carousel.scrollLeft;
+                    var idx = Math.min(total, Math.max(1, Math.round(scrollLeft / step) + 1));
+                    currentSpan.textContent = idx;
+                    prevBtn.disabled = idx <= 1;
+                    nextBtn.disabled = idx >= total;
+                }
+
+                var scrollEndTimer;
+                carousel.addEventListener('scroll', function() {
+                    updateIndicator();
+                    clearTimeout(scrollEndTimer);
+                    scrollEndTimer = setTimeout(updateIndicator, 100);
+                });
+                carousel.addEventListener('scrollend', updateIndicator);
+                updateIndicator();
+            });
+        });
+    }
+
+    function carouselPrev(btn) {
+        var wrapper = btn.closest('.video-carousel-wrapper');
+        var inner = wrapper.querySelector('.carousel-inner');
+        var carousel = inner ? inner.querySelector('.video-carousel') : wrapper.querySelector('.video-carousel');
+        if (!carousel) return;
+        var step = carousel.clientWidth + CAROUSEL_GAP;
+        var target = Math.max(0, carousel.scrollLeft - step);
+        carousel.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    function carouselNext(btn) {
+        var wrapper = btn.closest('.video-carousel-wrapper');
+        var inner = wrapper.querySelector('.carousel-inner');
+        var carousel = inner ? inner.querySelector('.video-carousel') : wrapper.querySelector('.video-carousel');
+        if (!carousel) return;
+        var step = carousel.clientWidth + CAROUSEL_GAP;
+        var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        var target = Math.min(maxScroll, carousel.scrollLeft + step);
+        carousel.scrollTo({ left: target, behavior: 'smooth' });
+    }
 
     // Leaderboard Data
     const leaderboardData = [
