@@ -766,12 +766,21 @@
 
         .video-card {
             flex-shrink: 0;
-            width: 400px;
+            width: 100%;
             background: white;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             scroll-snap-align: start;
+        }
+
+        @media (max-width: 768px) {
+            .qa-options {
+                grid-template-columns: 1fr; /* 手机屏幕窄，强制变回单列 */
+            }
+            .video-card {
+                width: 95%; /* 手机上占满屏幕 */
+            }
         }
 
         .video-placeholder {
@@ -1629,7 +1638,7 @@
                     <div class="video-card">
                         <div class="video-card-top">
                             <video controls width="100%" preload="metadata" poster="videos/coffee.png">
-                                <source src="videos/POV - Barista on Shift ASMR_720p.mp4" type="video/mp4">
+                                <source src="videos/level1-1.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-consistency card-badge">Consistency</span>
                         </div>
@@ -1928,6 +1937,106 @@
             </div></div>
                     </div>
                 </div>
+
+
+                <div class="video-card">
+    <div class="video-card-top">
+        <!-- 紫色渐变代表情感/语义 -->
+                        <div class="video-card-top">
+                            <!-- 使用占位符或替换为实际 video 标签 -->
+                            <video controls width="100%" preload="metadata" poster="videos/level1-4.png">
+                                <source src="videos/level1-4.mp4" type="video/mp4">
+                            </video>
+                            <span class="eval-badge eval-coherence card-badge">Consistency</span>
+                        </div>
+        <span class="eval-badge eval-consistency card-badge">Consistency</span>
+    </div>
+    <div class="video-info">
+        <div class="video-title">
+            <span data-lang-en>🎻 Short Films — A-V Semantic Consistency</span>
+            <span data-lang-zh>🎻 短片合集 — 音视频语义一致性</span>
+        </div>
+        <div class="eval-hint" data-lang-en>
+            <strong>Consistency:</strong> Questions test whether the <em>emotional atmosphere</em> of the visual scene aligns logically with the <em>mood</em> of the background music.
+        </div>
+        <div class="eval-hint" data-lang-zh>
+            <strong>一致性测评：</strong>测试视觉场景的<em>情感氛围</em>是否与背景音乐的<em>情绪基调</em>在逻辑上保持一致。
+        </div>
+        <div class="qa-tabs">
+            <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
+            <button class="qa-tab" onclick="switchQA(this, 1)">Q2</button>
+            <button class="qa-tab" onclick="switchQA(this, 2)">Q3</button>
+            <button class="qa-tab" onclick="switchQA(this, 3)">Q4</button>
+        </div>
+         <div class="qa-content-wrapper">
+            <div class="qa-content active" data-qa-index="0">
+                <div class="qa-question" data-lang-en>Q1: In the first story, when the mother hands the ticket to her son at the station, what is the relationship between the visual tone of the scene and the mood of the background music?</div>
+                <div class="qa-question" data-lang-zh>Q1: 在第一个故事中，当母亲在车站把车票递给儿子时，画面色调与背景音乐情绪的关系是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The camera focuses on the mother's wrinkled hands and the ticket, and the background music consists of slightly anxious heartbeats and strings; the two are consistent.</div>
+                    <div class="qa-option">B. The visual presents bright, warm tones, and the background music is slow and sad; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option correct">✓ C. The visual presents dark, cold tones, and the background music is slow and sad; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">D. The visual presents bright, warm tones, and the background music is cheerful and full of hope; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option">E. The scene shows the boy finally running to hug his mother, and the background music is stirring and warm; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">F. The visual tone is a documentary-style yellowish hue, and the background music is a nostalgic old song playing from the station broadcast; the two are consistent.</div>
+                    <div class="qa-option">G. There is no background music, only ambient noise from the station, and the visual presents cold tones; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">H. The visual presents bright, warm tones, and the background music is cheerful and full of hope; the atmospheres of both are consistent.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
+            </div>
+            <div class="qa-content" data-qa-index="1">
+                <div class="qa-question" data-lang-en>Q2: In the opening part of the second story, "Bent Out of Shape", what is the relationship between the visual style and the mood of the background music when the square-shaped family sits on their porch drinking beverages?</div>
+                <div class="qa-question" data-lang-zh>Q2: 在第二个故事"Bent Out of Shape"的开场部分，当方形家庭坐在门廊喝饮料时，视觉风格与背景音乐情绪的关系是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The visual style is angular but warmly colored, and the background music has a lively rhythm. The atmosphere of the two is consistent.</div>
+                    <div class="qa-option">B. The visual style is angular and monochromatic, and the background music has a lively rhythm. The atmosphere of the two is consistent.</div>
+                    <div class="qa-option">C. The visual style is angular and monochromatic, and the background music is slow and melancholic. The atmosphere of the two is consistent.</div>
+                    <div class="qa-option">D. The visual style is rounded and warmly colored, and the background music has a lively rhythm. The atmosphere of the two is consistent.</div>
+                    <div class="qa-option">E. The visual style is rounded and warmly colored, and the background music is slow and melancholic. The atmosphere of the two is opposite.</div>
+                    <div class="qa-option">F. The visual style is angular but warmly colored, and the background music is cheerful. The atmosphere of the two is consistent.</div>
+                    <div class="qa-option">G. The visual style is angular and monochromatic, there is no background music, only the sound of drinking. The atmosphere is very quiet.</div>
+                    <div class="qa-option correct">✓ H. The visual style is angular and monochromatic, and the background music has a lively rhythm. The atmosphere of the two is opposite.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
+            </div>
+            <div class="qa-content" data-qa-index="2">
+                <div class="qa-question" data-lang-en>Q3: In the third story, when the girl helps the little pilot fix the spaceship and it takes off at night, what are the characteristics of the audiovisual atmosphere?</div>
+                <div class="qa-question" data-lang-zh>Q3: 在第三个故事中，当女孩帮助小飞行员修好飞船并在夜晚起飞时，视听氛围的特点是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option">A. The visual depicts an imaginative cosmic flight, and the background music becomes optimistic and warm; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">B. The visual depicts an imaginative cosmic flight, and the background music becomes optimistic and warm; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option correct">✓ C. The visual shows a magnificent scene of flying through the starry sky, and the background music becomes stirring and cheerful; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">D. The visual shows a dark sky before a storm, and the background music becomes stirring and cheerful; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option">E. The visual shows a dark sky before a storm, and the background music becomes tense and rapid; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">F. The visual shows a magnificent scene of flying through the starry sky, and the background music becomes slow and sad; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option">G. The visual focuses on the girl's slender figure looking up at the departing spaceship, and the background music turns into an ethereal and mournful piano solo; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">H. The visual uses twinkling starlight to contrast with the girl's loneliness on the ground, and the background music turns into a low, lingering chant; the atmospheres of both are consistent.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
+            </div>
+            <div class="qa-content" data-qa-index="3">
+                <div class="qa-question" data-lang-en>Q4: In the fourth story, "Joy & Heron," what is the relationship between the visual tone and the mood of the music at the end, when the heron and the dog share the catch, and the fisherman and the dog watch the sunrise together in the boat?</div>
+                <div class="qa-question" data-lang-zh>Q4: 在第四个故事"Joy & Heron"中，当鹭鸟与狗分享渔获，渔夫和狗在船上一起看日出的结尾部分，视觉色调与音乐情绪的关系是什么？</div>
+                <div class="qa-options">
+                    <div class="qa-option correct">✓ A. The visual shows a warm sunrise rising over a misty lake, and the background music is warm and peaceful; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">B. The visual shows a warm sunrise rising over a misty lake, and the background music is tense and comical; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option">C. The visual is a poetic scene of a golden sunset and a shimmering lake, and the background music is quiet and beautiful; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">D. The visual shows a gloomy lake before a storm, and the background music is warm and peaceful; the atmospheres of both are in contrast.</div>
+                    <div class="qa-option">E. The visual shows a gloomy lake before a storm, and the background music is tense and comical; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">F. The visual shows bleak heavy snow and a setting sun, and the background music is an ethereal and sorrowful female hum; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">G. The visual shows the receding backs of the characters with blurred tones, and the background music is a fading, mournful melody; the atmospheres of both are consistent.</div>
+                    <div class="qa-option">H. The visual shows a gloomy lake before a storm, and the background music is warm and peaceful; the atmospheres of both are consistent.</div>
+                </div>
+                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
+                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
+            </div>
+
+        </div>
+    </div>
+</div>
             </div>
 
             <!-- ==================== LEVEL 2 ==================== -->
@@ -1935,8 +2044,8 @@
                 <div class="level-row-header">
                     <div class="level-row-badge l2">L2</div>
                     <div>
-                        <h3 class="level-row-title" data-lang-en>Level 2: Temporal & Dynamic Understanding</h3>
-                        <h3 class="level-row-title" data-lang-zh>Level 2: 时序与动态理解</h3>
+                        <h3 class="level-row-title" data-lang-en>Level 2: Temporal Understanding</h3>
+                        <h3 class="level-row-title" data-lang-zh>Level 2: 时序理解</h3>
                         <p class="level-row-desc" data-lang-en>Action recognition, state change tracking, temporal ordering, dynamic perception</p>
                         <p class="level-row-desc" data-lang-zh>动作识别、状态变化跟踪、时间顺序理解、动态感知</p>
                     </div>
@@ -2453,7 +2562,7 @@
                             2
                         </div>
                         <div class="level-content">
-                            <h4>Temporal & Dynamic Understanding</h4>
+                            <h4>Temporal Understanding</h4>
                             <p>Dynamic capture of temporal sequences, actions, and changes, including action recognition, state change tracking, temporal order understanding, and other cognitive-level tasks.</p>
                         </div>
                     </div>
@@ -2543,7 +2652,7 @@
                             2
                         </div>
                         <div class="level-content">
-                            <h4>时序与动态理解 (Temporal & Dynamic)</h4>
+                            <h4>时序理解 (Temporal Understanding)</h4>
                             <p>对时序、动作与变化的动态捕捉，包括动作识别、状态变化跟踪、时间顺序理解等认知层任务。</p>
                         </div>
                     </div>
