@@ -3,8 +3,12 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch
-import matplotlib.patheffects as pe
+from matplotlib.patches import Patch
+
+# 统一使用 serif 字体（学术风格）
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['font.serif'] = ['Times New Roman', 'DejaVu Serif', 'serif']
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 # ── 读取数据 ──────────────────────────────────────────────
 with open("data_statistics.json", "r", encoding="utf-8") as f:
@@ -14,18 +18,16 @@ records = data if isinstance(data, list) else data.get("statistics", data.get("d
 
 # ── 提取统计量 ────────────────────────────────────────────
 question_wc = {i: [] for i in range(1, 5)}
-option_total_wc = {i: [] for i in range(1, 5)}        # 整道题所有选项总字数
-option_individual_wc = {c: [] for c in "ABCDEFGH"}    # 单个选项字数（跨所有题目汇总）
+option_total_wc = {i: [] for i in range(1, 5)}
+option_individual_wc = {c: [] for c in "ABCDEFGH"}
 video_durations = []
 
 for rec in records:
-    # question word counts
     for q in range(1, 5):
         key = f"question_{q}_word_count"
         if key in rec:
             question_wc[q].append(rec[key])
 
-    # per-choice word counts (A-H) & per-question option total
     for q in range(1, 5):
         total = 0
         for c in "ABCDEFGH":
@@ -37,7 +39,6 @@ for rec in records:
         if total > 0:
             option_total_wc[q].append(total)
 
-    # video duration
     if "video_duration_seconds" in rec:
         video_durations.append(rec["video_duration_seconds"])
 
@@ -47,7 +48,6 @@ for q in range(1, 5):
     for v in question_wc[q]:
         rows.append({"Category": f"Question {q}", "Word Count": v, "Group": "Questions"})
 
-# 用 gt_X 找到正确选项并统计 answer word count
 for rec in records:
     for q in range(1, 5):
         gt_key = f"gt_{q}"
@@ -65,14 +65,12 @@ df = pd.DataFrame(rows)
 
 # ── 计算均值 & 标准差 ─────────────────────────────────────
 summary = df.groupby("Category")["Word Count"].agg(["mean", "std"]).reset_index()
-# 定义排序
 order = [f"Question {i}" for i in range(1, 5)] + \
         [f"Answer {i}" for i in range(1, 5)] + \
         [f"Choice {c}" for c in "ABCDEFGH"]
 summary["Category"] = pd.Categorical(summary["Category"], categories=order, ordered=True)
 summary = summary.sort_values("Category").dropna(subset=["Category"])
 
-# 给 group 染色
 def get_group(cat):
     if cat.startswith("Question"):
         return "Questions"
@@ -84,19 +82,42 @@ def get_group(cat):
 summary["Group"] = summary["Category"].apply(get_group)
 
 # ═══════════════════════════════════════════════════════════
-# 🎨  图 1 – 柱状图：均值 + 方差 (error bar)
+# 🎨  合并图：上下布局 (2 行 1 列)
 # ═══════════════════════════════════════════════════════════
-sns.set_theme(style="whitegrid", font_scale=1.15)
+FIG_W, FIG_H = 12, 11  # 🔹 总高度约为单图的 2 倍
+TITLE_FONTSIZE, AXIS_FONTSIZE, TICK_FONTSIZE = 14, 12, 10
+ANNOTATION_COLOR = "#999999"
+sns.set_theme(style="whitegrid", font_scale=1.0)
+
+blue_colors = ["#3a5f7d", "#6b9ac4", "#8fb3d9", "#b3d1ee"]
+orange_colors = ["#d98c6c", "#e1a287", "#ebc0ab", "#f2d5c5"]
+light_blue_colors = ["#c9e0f5", "#dbe9f7", "#b3d1ee", "#c0daf2", "#d5e6f8", "#a3c6eb", "#8fb3d9", "#6b9ac4"]
+
+def get_color(cat):
+    if cat.startswith("Question"):
+        q_num = int(cat.split()[-1])
+        return blue_colors[(q_num - 1) % len(blue_colors)]
+    elif cat.startswith("Answer"):
+        a_num = int(cat.split()[-1])
+        return orange_colors[(a_num - 1) % len(orange_colors)]
+    else:
+        choice_letter = cat.split()[-1]
+        idx = ord(choice_letter) - ord('A')
+        return light_blue_colors[idx % len(light_blue_colors)]
 
 palette_map = {
-    "Questions": "#4C72B0",
-    "Answers": "#DD8452",
-    "Choices": "#55A868",
+    "Questions": "#6b9ac4",
+    "Answers": "#d98c6c",
+    "Choices": "#8fb3d9",
 }
 
-fig1, ax1 = plt.subplots(figsize=(18, 7))
+# 🔹 创建 2 行 1 列的子图
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(FIG_W, FIG_H))
 
-colors = [palette_map[g] for g in summary["Group"]]
+# ═══════════════════════════════════════════════════════════
+# 📊 子图 1：Word Count Statistics
+# ═══════════════════════════════════════════════════════════
+colors = [get_color(cat) for cat in summary["Category"]]
 x_pos = np.arange(len(summary))
 
 bars = ax1.bar(
@@ -107,95 +128,131 @@ bars = ax1.bar(
     edgecolor="white",
     linewidth=1.2,
     capsize=5,
-    error_kw=dict(elinewidth=1.5, capthick=1.5, color="#333333"),
-    width=0.65,
+    error_kw=dict(elinewidth=1.5, capthick=1.5, color=ANNOTATION_COLOR),
+    width=0.80,
     zorder=3,
 )
 
-# 在柱顶标注数值
 for i, (m, s) in enumerate(zip(summary["mean"], summary["std"])):
     ax1.text(
-        i, m + s + 0.3, f"{m:.1f}±{s:.1f}",
-        ha="center", va="bottom", fontsize=8.5, fontweight="bold", color="#333333",
+        i, m + s + 0.3, f"{m:.1f}±{s:.0f}",
+        ha="center", va="bottom", fontsize=9, fontweight="bold",
+        color=ANNOTATION_COLOR,
+        family='serif',
     )
 
 ax1.set_xticks(x_pos)
-ax1.set_xticklabels(summary["Category"], rotation=40, ha="right", fontsize=11)
-ax1.set_ylabel("Word Count", fontsize=13, fontweight="bold")
+ax1.set_xticklabels(summary["Category"], rotation=40, ha="right", fontsize=TICK_FONTSIZE, family='serif')
+ax1.set_ylabel("Word Count", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
 ax1.set_title(
     "Word Count Statistics: Questions / Answers / Choices  (Mean ± Std)",
-    fontsize=16, fontweight="bold", pad=15,
+    fontsize=TITLE_FONTSIZE, fontweight="bold", pad=12, family='serif',
 )
 
-# 图例
-from matplotlib.patches import Patch
 legend_elements = [Patch(facecolor=v, edgecolor="white", label=k) for k, v in palette_map.items()]
-ax1.legend(handles=legend_elements, loc="upper right", fontsize=12, frameon=True, fancybox=True)
+ax1.legend(handles=legend_elements, loc="upper right", fontsize=TICK_FONTSIZE, frameon=True, fancybox=True, prop={'family': 'serif'})
 
 ax1.set_xlim(-0.6, len(summary) - 0.4)
 ax1.grid(axis="y", alpha=0.4)
-sns.despine(left=True, bottom=True)
-
-fig1.tight_layout()
-fig1.savefig("fig1_word_count_stats.png", dpi=200, bbox_inches="tight")
-plt.show()
+ax1.spines['top'].set_visible(False)
+ax1.spines['right'].set_visible(False)
+ax1.spines['left'].set_color('gray')
+ax1.spines['bottom'].set_color('gray')
 
 # ═══════════════════════════════════════════════════════════
-# 🎨  图 2 – 视频时长分布直方图
+# 📊 子图 2：Video Length Distribution
 # ═══════════════════════════════════════════════════════════
 durations = np.array(video_durations)
 dur_min, dur_max = durations.min(), durations.max()
 
-# 均匀分 ~10 个 bin（向下/上取整到 10 秒整数边界，更美观）
-bin_start = int(np.floor(dur_min / 30) * 30)
-bin_end   = int(np.ceil(dur_max / 30) * 30) + 1
-n_bins    = 10
-bins = np.linspace(bin_start, bin_end, n_bins + 1)
+start_min = 2.9
+merge_start_min = 20.5
+step_min = 1.0
 
-fig2, ax2 = plt.subplots(figsize=(14, 6))
+edges_sec = [start_min * 60]
+t = start_min
+while t + step_min <= merge_start_min:
+    t += step_min
+    edges_sec.append(t * 60)
+edges_sec.append(merge_start_min * 60)
+edges_sec.append(dur_max * 1.001)
+bin_edges = np.array(edges_sec)
 
-# KDE + 直方图
-sns.histplot(
-    durations,
-    bins=bins,
-    kde=True,
-    color="#6A89CC",
-    edgecolor="white",
-    linewidth=1.2,
-    alpha=0.75,
-    line_kws=dict(linewidth=2.5, color="#E55039"),
-    ax=ax2,
-    stat="count",
-)
+counts, _ = np.histogram(durations[durations >= start_min * 60], bins=bin_edges)
 
-# 在每个柱上标注数量
-counts, bin_edges = np.histogram(durations, bins=bins)
+n_bars = len(counts)
+cmap_colors = [
+    "#3a5f7d", "#6b9ac4", "#8fb3d9", "#b3d1ee", "#c9e0f5",
+    "#7fa5d6", "#a3c6eb", "#c0daf2", "#d98c6c", "#e1a287",
+    "#ebc0ab", "#f2d5c5", "#55a868", "#7bc090", "#9ed4b4",
+]
+bar_colors = [cmap_colors[i % len(cmap_colors)] for i in range(n_bars)]
+
+x_positions = []
+for i in range(n_bars - 1):
+    x_positions.append((bin_edges[i] + bin_edges[i + 1]) / 2)
+last_pos = x_positions[-1] + (step_min * 60)
+x_positions.append(last_pos)
+
+fixed_bar_width_sec = (step_min * 60) * 0.75
+
+for i in range(n_bars):
+    ax2.bar(
+        x_positions[i],
+        counts[i],
+        width=fixed_bar_width_sec,
+        color=bar_colors[i],
+        edgecolor='lightgray',
+        linewidth=0.5,
+        alpha=0.9,
+    )
+
 for i, cnt in enumerate(counts):
     if cnt > 0:
         ax2.text(
-            (bin_edges[i] + bin_edges[i + 1]) / 2,
-            cnt + 0.5,
-            str(cnt),
-            ha="center", va="bottom", fontsize=11, fontweight="bold", color="#333333",
+            x_positions[i],
+            cnt + max(counts) * 0.01,
+            str(int(cnt)),
+            ha="center", va="bottom",
+            fontsize=TICK_FONTSIZE,
+            fontweight="bold",
+            color=ANNOTATION_COLOR,
+            family='serif',
         )
 
-# 加均值竖线
-mean_dur = durations.mean()
-ax2.axvline(mean_dur, color="#E55039", linestyle="--", linewidth=2, label=f"Mean = {mean_dur:.1f}s")
+x_labels = []
+for i in range(n_bars - 1):
+    start, end = bin_edges[i] / 60, bin_edges[i + 1] / 60
+    x_labels.append(f"({start:.1f}, {end:.1f}]")
+x_labels.append(">20.5 min")
 
-ax2.set_xlabel("Video Duration (seconds)", fontsize=13, fontweight="bold")
-ax2.set_ylabel("Number of Videos", fontsize=13, fontweight="bold")
+ax2.set_xticks(x_positions)
+ax2.set_xlim(left=bin_edges[0] - 30, right=x_positions[-1] + 60)
+ax2.set_xticklabels(x_labels, rotation=40, ha="right", fontsize=TICK_FONTSIZE, family='serif')
+
+ax2.set_xlabel("Video Length (min)", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
+ax2.set_ylabel("Number of Videos", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
+ax2.set_ylim(0, (max(counts) * 1.15) if len(counts) else 10)
 ax2.set_title(
-    f"Video Duration Distribution  (N={len(durations)},  "
-    f"range {dur_min:.0f}s – {dur_max:.0f}s)",
-    fontsize=16, fontweight="bold", pad=15,
+    "Video Length Distribution",
+    fontsize=TITLE_FONTSIZE,
+    fontweight="bold",
+    pad=12,
+    family='serif',
 )
-ax2.legend(fontsize=12, frameon=True, fancybox=True)
-ax2.grid(axis="y", alpha=0.35)
-sns.despine(left=True, bottom=True)
 
-fig2.tight_layout()
-fig2.savefig("fig2_video_duration_distribution.png", dpi=200, bbox_inches="tight")
+ax2.grid(axis="y", alpha=0.3, linestyle='--', linewidth=0.5)
+ax2.set_axisbelow(True)
+ax2.spines['top'].set_visible(False)
+ax2.spines['right'].set_visible(False)
+ax2.spines['left'].set_color('gray')
+ax2.spines['bottom'].set_color('gray')
+
+# ═══════════════════════════════════════════════════════════
+# 💾 保存合并图
+# ═══════════════════════════════════════════════════════════
+plt.tight_layout()
+fig.savefig("combined_statistics.png", dpi=200, bbox_inches="tight")
 plt.show()
 
-print("✅  两张图已保存: fig1_word_count_stats.png  /  fig2_video_duration_distribution.png")
+print("✅  合并图已保存: combined_statistics.png")

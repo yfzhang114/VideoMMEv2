@@ -3234,6 +3234,27 @@
                         style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption>Figure 2: Video-MME V2 Manual Annotation Pipeline</figcaption>
                 </figure>
+
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 Data Statistics</h3>
+
+                <p>
+                    The figure below presents statistics of our group-based evaluation. For each group of four question-answer pairs, we analyze the length distribution of questions and answers, as well as the average length and variance of the eight choices (A–H) in multiple-choice questions.
+                </p>
+
+                <p>
+                    For the <strong>choices</strong>, lengths remain fairly consistent across options, indicating no positional bias. For the <strong>Q&amp;A pairs</strong>, we observe an <em>increasing trend</em> in length from Q1 to Q4. This is mainly because our <strong>Reasoning Coherence</strong> questions are designed with escalating difficulty—later questions typically require deeper reasoning, longer problem descriptions, and more elaborate answers.
+                </p>
+
+                <p>
+                    The <strong>video length distribution</strong> shows that the vast majority of videos are within 20 minutes, with a diverse range. Many short-form videos under 10 minutes are included. Although the video durations are not particularly long, the <a href="#leaderboard">leaderboard</a> demonstrates that our questions remain highly challenging for current MLLMs.
+                </p>
+
+                <figure>
+                    <img src="figs/exps/data_sta.png" 
+                        alt="Video-MME V2 Data Statistics" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption>Figure 3: Data Statistics — Q&amp;A and choice lengths per group, and video length distribution</figcaption>
+                </figure>
             </div>
 
             <!-- Chinese Content -->
@@ -3318,12 +3339,33 @@
                     这一纯人工流水线最大程度地消除了机器生成数据的噪声与幻觉，确保评测数据的高质量与可靠性。
                 </p>
 
-                <!-- <figure>
+                <figure>
                     <img src="figs/imgs/teaser_annotation.png" 
-                        alt="Video-MME V2 人工标注流程图解" 
+                        alt="Video-MME V2 人工标注流程" 
                         style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption>Figure 2: Video-MME V2 人工标注流程</figcaption>
-                </figure> -->
+                </figure>
+
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 数据统计</h3>
+
+                <p>
+                    下图展示了我们基于分组（group-based）评测的数据统计。对于每组四个问答对，我们分析了问题与答案的长度分布，以及八选题中八个选项（A–H）的平均长度和方差。
+                </p>
+
+                <p>
+                    对于<strong>选项（choice）</strong>，各选项长度基本一致，不存在位置偏差。对于<strong>问答对</strong>，我们观察到从 Q1 到 Q4 呈<em>递增趋势</em>。这主要是因为我们的<strong>推理连贯性（Reasoning Coherence）</strong>测试题通常越往后难度越大，描述和答案相应也就越长。
+                </p>
+
+                <p>
+                    <strong>视频长度分布</strong>显示绝大多数视频在 20 分钟以内，分布较为多样。10 分钟以内的短视频占比较高。虽然视频长度并不算长，但从<a href="#leaderboard">排行榜</a>中可以看到，我们的问题对目前的 MLLM 极具挑战性。
+                </p>
+
+                <figure>
+                    <img src="figs/exps/data_sta.png" 
+                        alt="Video-MME V2 数据统计" 
+                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption>Figure 3: 数据统计 — 每组的问答与选项长度，以及视频长度分布</figcaption>
+                </figure>
             </div>
         </article>
     </section>
