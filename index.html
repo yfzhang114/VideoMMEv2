@@ -719,6 +719,104 @@
             .pipeline-step::after { display: none; }
         }
 
+        /* Enhanced Annotation Criteria */
+        .ann-criteria {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 2rem 0;
+        }
+
+        .ann-criterion {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .ann-criterion:hover {
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.08);
+        }
+
+        .ann-criterion-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .ann-criterion-header .step-num {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .ann-criterion-body {
+            padding: 20px 24px;
+        }
+
+        .ann-subitem {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .ann-subitem:last-child {
+            margin-bottom: 0;
+        }
+
+        .ann-subitem::before {
+            content: "▸";
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .ann-qa-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .ann-qa-grid { grid-template-columns: 1fr; }
+        }
+
+        .ann-qa-item {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 14px 18px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .ann-qa-item strong {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .ann-qa-item p {
+            margin: 6px 0 0;
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
         /* Human Badge */
         .human-badge {
             display: inline-flex;
@@ -1447,106 +1545,179 @@
             font-weight: 600;
         }
 
-        /* 容器与排版 */
-.intro-container {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    line-height: 1.7;
-    color: #374151;
-}
-.intro-lead {
-    font-size: 1.1em;
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-}
+        /* Introduction Section */
+        .intro-article {
+            max-width: 100%;
+        }
 
-/* 第一性原理高亮框 */
-.philosophy-box {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-left: 5px solid #0284c7;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-}
-.philosophy-title {
-    color: #0369a1;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.philosophy-questions {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.philosophy-questions li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-    font-weight: 500;
-}
-.philosophy-questions li::before {
-    content: "❓";
-    position: absolute;
-    left: 0;
-    font-size: 0.9em;
-}
+        .intro-container {
+            font-family: var(--font-main);
+            line-height: 1.8;
+            color: #374151;
+        }
 
-/* 三级能力体系网格 */
-.capability-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-.capability-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.capability-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-.level-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-}
-.lvl-1 { background: #dbeafe; color: #1e40af; }
-.lvl-2 { background: #dcfce7; color: #166534; }
-.lvl-3 { background: #fce7f3; color: #9d174d; }
+        .intro-lead {
+            font-size: 1.05rem;
+            color: #1f2937;
+            margin-bottom: 1.75rem;
+            text-align: justify;
+        }
 
-/* 分组评测网格 (复用你之前的风格，稍作微调) */
-.framework-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-.framework-card {
-    background: #fafafa;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-.framework-card h4 {
-    margin-top: 0.5rem;
-    color: #111827;
-}
-.icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .intro-h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eef2ff;
+        }
 
-@media (max-width: 768px) {
-    .framework-grid { grid-template-columns: 1fr; }
-}
+        .intro-container h3 + p {
+            margin-bottom: 1rem;
+        }
+
+        .intro-container .capability-grid + p,
+        .intro-container .framework-grid + p {
+            margin-top: 1rem;
+        }
+
+                /* 第一性原理高亮框 */
+        .philosophy-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem 1.75rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+        }
+
+        .philosophy-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .philosophy-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+
+        .philosophy-questions {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+        }
+
+        .philosophy-questions li {
+            margin-bottom: 0.4rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .philosophy-questions li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* 三级能力体系网格 */
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .capability-grid { grid-template-columns: 1fr; }
+        }
+
+        .capability-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.35rem;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .capability-card h4 {
+            font-size: 1rem;
+            margin: 0.5rem 0 0.4rem;
+            color: var(--primary-color);
+        }
+
+        .capability-card p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 0.2rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .lvl-1 { background: #dbeafe; color: #1e40af; }
+        .lvl-2 { background: #dcfce7; color: #166534; }
+        .lvl-3 { background: #fce7f3; color: #9d174d; }
+
+        /* 分组评测网格 */
+        .intro-container .framework-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .intro-container .framework-grid { grid-template-columns: 1fr; }
+        }
+
+        .intro-container .framework-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.35rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .intro-container .framework-card:hover {
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+        }
+
+        .intro-container .framework-card h4 {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .intro-container .framework-card p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .intro-container .framework-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -1651,129 +1822,115 @@
         <!-- Chinese Title -->
         <h2 class="section-title" data-lang-zh>介绍</h2>
         
-        <article>
+        <article class="intro-article">
             <!-- English Content -->
             <div class="intro-container" data-lang-en>
                 <p class="intro-lead">
-                    In 2024, we released <strong>Video-MME</strong>, establishing the first comprehensive benchmark for evaluating Video Multimodal Large Language Models (Video MLLMs), which significantly propelled the field forward. Today, as models evolve from simple recognition to deep semantic understanding, the standards for evaluation have risen. However, existing benchmarks often focus on narrow tasks, making it difficult to distinguish true understanding from dataset bias exploitation. Furthermore, current research lacks a focus on <strong>reasoning coherence</strong>, leaving it unclear whether models perform systematic reasoning or merely generate plausible hallucinations.
+                    In 2024, we released the VideoMME dataset as the first comprehensive benchmark for evaluating video understanding capabilities of multimodal large models. Following its release, VideoMME has driven significant progress in the field of multimodal video understanding. As video understanding models continue to advance, we see them moving from simple video recognition toward deeper semantic understanding and complex reasoning, which places higher demands on evaluation. However, existing methods still focus largely on narrow, task-specific benchmarks, making it difficult to determine whether models truly understand video content or merely exploit dataset biases. Meanwhile, in complex video reasoning tasks, prior work has focused on evaluating specific reasoning abilities while paying less attention to models' overall reasoning coherence, leaving us uncertain whether models perform systematic reasoning or merely generate plausible-looking answers. These limitations hinder comprehensive evaluation of state-of-the-art video understanding models and underscore the need to probe their true understanding and reliable reasoning capabilities. Therefore, we present Video-MME v2. Through over six months of data collection, cleaning, annotation, and curation, we hope to share our in-depth perspectives on next-generation video understanding evaluation at this critical juncture, and to advance further technical progress in the field.
                 </p>
-            
-                <p>
-                    Addressing this urgent need, we present <strong>Video-MME v2</strong>. After six months of rigorous data curation, filtering, and annotation, we share our deep insights into the next generation of video understanding evaluation to drive further technological iteration.
-                </p>
-            
+
                 <div class="philosophy-box">
-                    <div class="philosophy-title">🚀 First Principles Design</div>
-                    <p>In Video-MME v2, we returned to first principles to answer two fundamental questions:</p>
+                    <div class="philosophy-title">🚀 First Principles</div>
+                    <p>In Video-MME v2, we address two questions:</p>
                     <ul class="philosophy-questions">
-                        <li>What capabilities define a robust video understanding model?</li>
-                        <li>How can these capabilities be accurately and adequately evaluated?</li>
+                        <li>What capabilities should a strong video understanding model possess?</li>
+                        <li>How can these capabilities be correctly and adequately evaluated?</li>
                     </ul>
+                    <p style="margin-top: 1rem; margin-bottom: 0;">To this end, we propose: <strong>(1)</strong> a complete capability evaluation framework—Video-MME v2 achieves full coverage from single-point information aggregation to temporal understanding to complex video reasoning; <strong>(2)</strong> a robust evaluation mechanism—group-based evaluation that emphasizes model robustness beyond scatter-shot individual-question assessment.</p>
                 </div>
-            
-                <h3>1. Comprehensive Capability Hierarchy</h3>
-                <p>We propose a <strong>Multi-level Evaluation System</strong> that aggregates capabilities from foundational to complex, ensuring a holistic assessment:</p>
-                
+
+                <h3 class="intro-h3">1. Capability Evaluation Framework</h3>
+                <p>We divide video understanding into three progressive dimensions:</p>
                 <div class="capability-grid">
                     <div class="capability-card">
                         <span class="level-badge lvl-1">Level 1</span>
-                        <h4>Point-wise Aggregation</h4>
-                        <p>Emphasizes the ability to integrate information from single or multiple fixed timestamps, forming the bedrock of visual perception.</p>
+                        <h4>Point-wise Information Aggregation</h4>
+                        <p>Emphasizes integrating information at one or more fixed timestamps—the foundation of visual perception.</p>
                     </div>
                     <div class="capability-card">
                         <span class="level-badge lvl-2">Level 2</span>
                         <h4>Temporal Understanding</h4>
-                        <p>Focuses on resolving tasks specifically related to temporal dynamics, causal sequences, and motion evolution.</p>
+                        <p>Focuses on solving temporally-related tasks and capturing dynamic changes.</p>
                     </div>
                     <div class="capability-card">
                         <span class="level-badge lvl-3">Level 3</span>
                         <h4>Complex Reasoning</h4>
-                        <p>Introduces real-world scenarios requiring intricate logic, testing the model's performance in diverse and authentic contexts.</p>
+                        <p>Introduces complex reasoning in real, diverse scenarios to examine true model capabilities.</p>
                     </div>
                 </div>
-            
-                <h3>2. Robust Evaluation Mechanism</h3>
-                <p>
-                    Moving beyond the traditional scatter-shot approach of individual questions, we introduce a <strong>Group-based Evaluation Mechanism</strong>. This approach emphasizes robustness by assessing capabilities through structured task groups rather than isolated queries.
-                </p>
-            
+                <p>This framework integrates existing video evaluation datasets with our reflections on deployable models, comprehensively assessing models from foundational to real-world levels.</p>
+
+                <h3 class="intro-h3">2. Group-based Evaluation</h3>
+                <p>We construct two important task groupings:</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>Capability Consistency</h4>
-                        <p>
-                            Evaluates a specific capability across varying <strong>granularities</strong> (e.g., object vs. action counting) and <strong>breadths</strong>, ensuring the model's perception is stable and not brittle.
-                        </p>
+                        <p>Evaluates a single capability across different breadths and granularities.</p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
                         <h4>Reasoning Coherence</h4>
-                        <p>
-                            Inspects critical nodes within a logical chain. By verifying the intermediate steps of inference, we distinguish between true reasoning and lucky guesses.
-                        </p>
+                        <p>Inspects key nodes along reasoning chains;</p>
                     </div>
+                    
                 </div>
+                <p>Together these groupings assess robustness and comprehensiveness.</p>
             </div>
 
-<!-- Chinese Content -->
-<div class="intro-container" data-lang-zh>
-    <p class="intro-lead">
-        2024年，我们发布了 <strong>Video-MME</strong>，作为首个完善评估多模态大模型视频理解能力的数据集，它极大地推动了该领域的发展。如今，随着模型能力从单纯识别迈向深度语义理解，评估标准也随之提高。然而，现有评测仍多局限于特定任务，难以区分模型是真正理解视频，还是利用了数据集偏差。此外，现有研究往往忽视<strong>推理连贯性</strong>，使得我们难以判断模型是在进行系统性推理，还是仅生成了看似合理的答案。
-        为此，我们推出了 <strong>Video-MME v2</strong>。经过半年多的数据收集、清洗与筛选，我们希望在这一关键节点，分享对下一代视频理解评估的深入思考，推动领域技术进一步迭代。
-    </p>
+            <!-- Chinese Content -->
+            <div class="intro-container" data-lang-zh>
+                <p class="intro-lead">
+                    2024年，我们发布了VideoMME数据集，作为第一个完善评估多模态大模型视频理解能力的数据集，VideoMME在发布之后推动了整个多模态视频理解领域的发展与进步。而如今，随着多模态视频理解模型的能力日渐提升，我们也看到模型正从单纯的视频识别迈向更深层次的语义理解与复杂推理，也对视频理解能力的评估提出了更高的要求。然而，现有评测方法仍主要关注于一些特定的任务，难以判断模型是否真正理解视频内容，或是利用了数据集中的偏好；与此同时，在复杂的视频推理任务中，已有研究多聚焦于某一特定推理能力的评估，而较少考察模型在复杂问题中的整体推理连贯性，这使得我们尚不清楚模型是在进行系统性推理，还是仅生成看似合理的答案。这些局限阻碍了对前沿视频理解模型的全面评估，也凸显出迫切需要深入探究模型在视频理解中真实理解与可靠推理能力的必要性。因此，我们带来了Video-MME-v2数据集，通过长达半年多的数据收集，清洗，标注与筛选，我们希望在这一视频理解能力发展的关键节点，向大家分享我们对于下一代视频理解模型评估的深入思考与见解，并以此推动整个视频理解领域更进一步的技术迭代与进步。
+                </p>
 
-    <div class="philosophy-box">
-        <div class="philosophy-title">🚀 基于第一性原理的设计</div>
-        <p>在 Video-MME v2 中，我们回归本源，回答了两个核心问题：</p>
-        <ul class="philosophy-questions">
-            <li>一个优秀的视频理解模型究竟需要什么能力？</li>
-            <li>这些能力如何才能得到正确、充分的评估？</li>
-        </ul>
-    </div>
+                <div class="philosophy-box">
+                    <div class="philosophy-title">🚀 第一性原理</div>
+                    <p>在Video-MME-v2中，我们从第一性原理出发，回答了两个问题：</p>
+                    <ul class="philosophy-questions">
+                        <li>一个好的视频理解模型需要什么能力？</li>
+                        <li>这些能力如何得到正确的、充分的评估？</li>
+                    </ul>
+                    <p style="margin-top: 1rem; margin-bottom: 0;">为此，我们提出了：<strong>(1)</strong> 完整的能力评估体系，通过构建 Multi-level 的视频理解能力评估体系，Video-MME-v2 实现了单点信息聚合—时序理解—复杂视频推理的全方位评价体系；<strong>(2)</strong> 鲁棒的评估机制，引入基于任务分组的评测方式，以问题组为单位的评估更进一步强调模型能力的鲁棒性。</p>
+                </div>
 
-    <h3>1. 完整的能力评估体系</h3>
-    <p>我们构建了 <strong>Multi-level 多级评估体系</strong>，实现了从单点信息聚合到复杂视频推理的全方位评价：</p>
-    
-    <div class="capability-grid">
-        <div class="capability-card">
-            <span class="level-badge lvl-1">Level 1</span>
-            <h4>单点信息聚合</h4>
-            <p>强调对于一个或多个固定时间点的信息整合能力，是视觉感知的基础。</p>
-        </div>
-        <div class="capability-card">
-            <span class="level-badge lvl-2">Level 2</span>
-            <h4>时序理解</h4>
-            <p>关注于解决与时间演变、因果序列相关的动态任务能力。</p>
-        </div>
-        <div class="capability-card">
-            <span class="level-badge lvl-3">Level 3</span>
-            <h4>复杂推理</h4>
-            <p>引入真实、多样化的复杂场景，检验模型在实际应用中的推理水平。</p>
-        </div>
-    </div>
+                <h3 class="intro-h3">1. 能力评估体系</h3>
+                <p>我们将视频理解划分为三个渐进的维度：</p>
+                <div class="capability-grid">
+                    <div class="capability-card">
+                        <span class="level-badge lvl-1">Level 1</span>
+                        <h4>单点信息聚合</h4>
+                        <p>强调对于一个/多个固定时间点的信息整合能力。</p>
+                    </div>
+                    <div class="capability-card">
+                        <span class="level-badge lvl-2">Level 2</span>
+                        <h4>时序理解</h4>
+                        <p>关注于时序相关的任务解决能力。</p>
+                    </div>
+                    <div class="capability-card">
+                        <span class="level-badge lvl-3">Level 3</span>
+                        <h4>复杂推理</h4>
+                        <p>引入复杂任务推理的场景，检验模型在真实、多样化视频理解场景中的真实能力。</p>
+                    </div>
+                </div>
+                <p>这一评价体系融合了已有的视频评估数据集以及我们对于在真实场景中可用的视频理解模型的思考，从而全方位地检验模型从基础到落地的真实水平。</p>
 
-    <h3>2. 鲁棒的评估机制</h3>
-    <p>
-        区别于以往针对单个问题的散点式评估，我们引入了 <strong>基于任务分组 (Group-based)</strong> 的评测方式，进一步强调模型能力的鲁棒性。
-    </p>
-
-    <div class="framework-grid">
-        <div class="framework-card consistency">
-            <div class="icon">🎯</div>
-            <h4>能力一致性 (Consistency)</h4>
-            <p>
-                针对同一种能力，通过不同的广度（如不同视角）和粒度（如不同计数对象）进行多维评估，确保感知的稳定性。
-            </p>
-        </div>
-        <div class="framework-card coherence">
-            <div class="icon">🔗</div>
-            <h4>推理连贯性 (Coherence)</h4>
-            <p>
-                对推理逻辑链路的关键节点进行检查。通过验证推理的中间步骤，区分真实的逻辑推导与概率性的猜测。
-            </p>
-        </div>
-    </div>
-</div>
+                <h3 class="intro-h3">2. 基于任务分组的评测方式</h3>
+                <p>我们构建了两种重要的任务分组：</p>
+                <div class="framework-grid">
+                    <div class="framework-card consistency">
+                        <div class="icon">🎯</div>
+                        <h4>能力一致性</h4>
+                        <p>针对一种能力，通过不同广度和粒度进行评估。</p>
+                    </div>
+                    <div class="framework-card coherence">
+                        <div class="icon">🔗</div>
+                        <h4>推理连贯性</h4>
+                        <p>对推理逻辑链路的关键节点进行检查；</p>
+                    </div>
+                </div>
+                <p>这两种任务分组共同评估了模型能力的鲁棒性和全面性。</p>
+            </div>
         </article>
     </section>
 </main>
@@ -3349,29 +3506,76 @@
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 Annotation Pipeline</h3>
 
                 <div class="human-badge">
-                    ✓ Fully Human Expert-Led
+                    ✓ Fully Human Expert-Led · Rigorous Multi-Stage Quality Assurance
                 </div>
 
-                <div class="pipeline">
-                    <div class="pipeline-step">
-                        <div class="step-num">1</div>
-                        <h5>Video Source Selection</h5>
-                        <p>Select 3-30 minute medium-length videos and the latest content from 2025 onwards to ensure data richness and timeliness</p>
+                <div class="ann-criteria">
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">1</span>
+                            <span>Video Curation</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-subitem">Source: YouTube videos with post-2025 release dates to ensure timeliness</div>
+                            <div class="ann-subitem">Video diversity across categories and styles</div>
+                            <div class="ann-subitem">Minimum view-count threshold to ensure content quality</div>
+                            <div class="ann-subitem">Manual curation of classic content: classic films, flagship videos from established creators</div>
+                        </div>
                     </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">2</div>
-                        <h5>Q&A Design</h5>
-                        <p>Manually construct strong distractors, forcing models to answer based on video content rather than background knowledge</p>
+
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">2</span>
+                            <span>Question Design</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-subitem">Group-based design: horizontal expansion for capability coverage (relevance); vertical annotation of reasoning process (logic chain)</div>
+                            <div class="ann-subitem">Manual verification of relevance and rigor of logic-reasoning nodes</div>
+                            <div class="ann-subitem">Frontier models used during annotation to validate question effectiveness across different question types</div>
+                        </div>
                     </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">3</div>
-                        <h5>Expert Cross-Review</h5>
-                        <p>Multiple rounds of manual verification and correction, eliminating ambiguous expressions and non-unique answers</p>
+
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">3</span>
+                            <span>Option Design</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-subitem">8-option design to reduce random-guessing probability</div>
+                            <div class="ann-subitem">At least one strong distractor per question; distractors selected from model-generated candidates and manually refined</div>
+                        </div>
+                    </div>
+
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">4</span>
+                            <span>Quality Assurance</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-qa-grid">
+                                <div class="ann-qa-item">
+                                    <strong>a. Text-Only Check</strong>
+                                    <p>Gemini-3-Pro text-only baseline to control text-solvable proportion</p>
+                                </div>
+                                <div class="ann-qa-item">
+                                    <strong>b. Cross-Review</strong>
+                                    <p>Annotators cross-check; each question reviewed by 3–4 annotators for ambiguity, option design, etc.</p>
+                                </div>
+                                <div class="ann-qa-item">
+                                    <strong>c. External Validation</strong>
+                                    <p>New annotators (unexposed to videos/questions) perform fine-grained checks to mitigate annotator subjectivity</p>
+                                </div>
+                                <div class="ann-qa-item">
+                                    <strong>d. Re-Validation</strong>
+                                    <p>Post-modification text-only re-run; re-validation by fresh annotators to ensure modification validity</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <p style="margin-top: 1.5rem;">
-                    This purely manual pipeline maximally eliminates noise and hallucinations from machine-generated data, ensuring high quality and reliability of the evaluation data.
+                    This multi-stage pipeline—from curation to design to quality assurance—ensures high reliability and low bias in the evaluation data.
                 </p>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 Data Statistics</h3>
@@ -3453,29 +3657,76 @@
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 标注流程</h3>
 
                 <div class="human-badge">
-                    ✓ 完全由人类专家主导
+                    ✓ 完全由人类专家主导 · 严谨的多阶段质量保障
                 </div>
 
-                <div class="pipeline">
-                    <div class="pipeline-step">
-                        <div class="step-num">1</div>
-                        <h5>视频源筛选</h5>
-                        <p>选取3-30分钟的中长视频及2025年后的最新素材，保证数据的丰富度与时效性</p>
+                <div class="ann-criteria">
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">1</span>
+                            <span>视频筛选</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-subitem">来源：YouTube 视频，2025 年起发布的视频以保证时效性</div>
+                            <div class="ann-subitem">视频多样性，覆盖不同类别与风格</div>
+                            <div class="ann-subitem">播放量门槛，确保内容质量</div>
+                            <div class="ann-subitem">人工筛选去除经典视频内容：经典电影、知名 up 主的代表性视频</div>
+                        </div>
                     </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">2</div>
-                        <h5>问答设计</h5>
-                        <p>人工构建强干扰项，迫使模型必须基于视频内容而非背景知识作答</p>
+
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">2</span>
+                            <span>问题设计</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-subitem">Group-based 设计：横向扩展能力覆盖（相关性）；纵向标注推理过程（逻辑链）</div>
+                            <div class="ann-subitem">人工检验相关性与逻辑推理节点的严谨性</div>
+                            <div class="ann-subitem">标注过程中使用 frontier 模型对各类问题进行校验，确保问题有效性</div>
+                        </div>
                     </div>
-                    <div class="pipeline-step">
-                        <div class="step-num">3</div>
-                        <h5>专家交叉评审</h5>
-                        <p>多轮人工校验修正，剔除模糊表述及答案不唯一的情况</p>
+
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">3</span>
+                            <span>选项设计</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-subitem">8 选项设计，降低模型蒙对的概率</div>
+                            <div class="ann-subitem">每道题至少标注一个强干扰项；干扰项基于 GT 选出后进行人工润色</div>
+                        </div>
+                    </div>
+
+                    <div class="ann-criterion">
+                        <div class="ann-criterion-header">
+                            <span class="step-num">4</span>
+                            <span>标注质量检查</span>
+                        </div>
+                        <div class="ann-criterion-body">
+                            <div class="ann-qa-grid">
+                                <div class="ann-qa-item">
+                                    <strong>a. Text-Only 检查</strong>
+                                    <p>Gemini-3-Pro text-only 控制纯文本可解题比例</p>
+                                </div>
+                                <div class="ann-qa-item">
+                                    <strong>b. 交错检查</strong>
+                                    <p>标注同学互相审核；每道题至少 3–4 人初步审核，修改问题描述（歧义）、选项设置等</p>
+                                </div>
+                                <div class="ann-qa-item">
+                                    <strong>c. 外部测评</strong>
+                                    <p>新同学（未见过视频与问题）进行细粒度检查，降低标注同学主观性对质量的影响</p>
+                                </div>
+                                <div class="ann-qa-item">
+                                    <strong>d. 修改后复验</strong>
+                                    <p>针对修改后问题重新 text-only 实验；交由未见过该视频的同学再次 validation，确保修改有效性</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <p style="margin-top: 1.5rem;">
-                    这一纯人工流水线最大程度地消除了机器生成数据的噪声与幻觉，确保评测数据的高质量与可靠性。
+                    从筛选、设计到质量检查，多阶段流程确保评测数据的高可靠性与低偏差。
                 </p>
 
 
