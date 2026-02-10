@@ -1,0 +1,157 @@
+// ================= 数据定义 =================
+// 结构：4个大类 (Inner Ring) -> 对应子类 (Outer Ring)
+// 配色策略：统一柔和饱和度，确保所有颜色可见，避免"默认模板感"
+var data = [
+  {
+  itemStyle: {color: '#5e5a56'},
+  children: [
+  {
+    name: 'Sports &\nCompetition',
+    // Base: 降低饱和度的柔和蓝灰
+    itemStyle: { color: '#6b8fa8' }, 
+    children: [
+      // 策略：平衡最深和最淡，确保对比度适中
+      { name: 'Gym & Fitness', value: 40, itemStyle: { color: '#7ea0b8' } },
+      { name: 'Outdoor & Extreme', value: 30, itemStyle: { color: '#85a8c0' } },
+      { name: 'Basketball', value: 20, itemStyle: { color: '#8cb0c8' } },
+      { name: 'Soccer', value: 20, itemStyle: { color: '#93b8d0' } },
+      { name: 'Combat Sports', value: 10, itemStyle: { color: '#9ac0d8' } },
+      { name: 'Racing & Speed', value: 10, itemStyle: { color: '#a1c8e0' } },
+      { name: 'Other Sports', value: 15, itemStyle: { color: '#a8d0e8' } },
+    ]
+  },
+  {
+    name: 'Lifestyle &\nEntertainment',
+    // Base: 降低饱和度的柔和陶土色
+    itemStyle: { color: '#c49a85' }, 
+    children: [
+      // 策略：平衡最深和最淡，确保对比度适中
+      { name: 'Variety & Comedy', value: 50, itemStyle: { color: '#cba896' } },
+      { name: 'Cooking & Baking', value: 40, itemStyle: { color: '#d0b09c' } },
+      { name: 'Digital & Auto', value: 30, itemStyle: { color: '#d5b8a2' } },
+      { name: 'Travel & Exploration', value: 30, itemStyle: { color: '#dac0a8' } },
+      { name: 'Home & Living', value: 30, itemStyle: { color: '#dfc8ae' } },
+      { name: 'Gaming & Play', value: 25, itemStyle: { color: '#e4d0b4' } },
+      { name: 'Pets & Animals', value: 20, itemStyle: { color: '#e9d8ba' } },
+      { name: 'Vlogs & Review', value: 10, itemStyle: { color: '#eee0c0' } },
+    ]
+  },
+  {
+    name: 'Art &\nLiterature',
+    // Base: 降低饱和度的柔和紫灰
+    itemStyle: { color: '#9d8fb8' }, 
+    children: [
+      // 策略：平衡最深和最淡，确保对比度适中
+      { name: 'Film', value: 45, itemStyle: { color: '#a79ac2' } },
+      { name: 'Performing Arts', value: 40, itemStyle: { color: '#ada0c8' } },
+      { name: 'TV Series', value: 35, itemStyle: { color: '#b3a6ce' } },
+      { name: 'Animation & Comics', value: 35, itemStyle: { color: '#b9acd4' } },
+      { name: 'Painting & Handicraft', value: 20, itemStyle: { color: '#bfb2da' } },
+      { name: 'Fashion & Beauty', value: 15, itemStyle: { color: '#c5b8e0' } },
+      { name: 'Architecture & Design', value: 12, itemStyle: { color: '#cbbee6' } },
+    ]
+  },
+  {
+    name: 'Knowledge &\nEducation',
+    // Base: 提高基础色饱和度，确保可见度
+    itemStyle: { color: '#7fa896' }, 
+    children: [
+      // 策略：这是最容易变“秃”的颜色（因为接近白色背景），所以收缩得最紧
+      { name: 'Physics & Math', value: 35, itemStyle: { color: '#8db5a3' } },
+      { name: 'Nature & Geography', value: 20, itemStyle: { color: '#95beab' } },
+      { name: 'Mechanics & Structures', value: 20, itemStyle: { color: '#9dc7b3' } },
+      { name: 'Politics & Global News', value: 20, itemStyle: { color: '#a5d0bb' } },
+      { name: 'Economics & Law', value: 20, itemStyle: { color: '#add9c3' } },
+      { name: 'Computer Science & AI', value: 15, itemStyle: { color: '#b5e2cb' } },
+      { name: 'Humanities & History', value: 12, itemStyle: { color: '#bdebd3' } },
+      { name: 'Philosophy & Wisdom', value: 12, itemStyle: { color: '#c5f4db' } },
+      { name: 'Chemistry & Materials', value: 10, itemStyle: { color: '#cdfde3' } },
+      { name: 'Documentary & Bio', value: 10, itemStyle: { color: '#d5ffe9' } }, // 淡淡的薄荷色，不再是纯白
+    ]
+  },
+  ]
+  }
+];
+
+var option = {
+  series: {
+    type: 'sunburst',
+    data: data,
+    radius: [0, '95%'], 
+    center: ['50%', '50%'],
+    sort: undefined, // 保持数据定义的顺序，不自动排序
+    emphasis: {
+      focus: 'ancestor'
+    },
+    
+    // ================= 层级样式配置 (Levels) =================
+    // 从原来的4层（root+3环）调整为3层（root+2环）
+    levels: [
+      {},
+      // Level 0: 中心/根节点 (隐形占位)
+      {
+        r0: '0%', // 留一个小圆心，避免太拥挤
+        r: '6.1%',  // 内环占据主体位置
+        itemStyle: {
+          borderWidth: 2,
+          borderRadius: 10, // 稍微减小圆角以适应扇形角度
+          borderColor: '#fff',
+          shadowBlur: 5,
+          shadowColor: 'rgba(0, 0, 0, 0.1)'
+        },
+        label: {
+          rotate: 'tangential', // 切向旋转
+          fontSize: 15,         // 保持较大字体
+          fontWeight: '600',
+          color: '#ffffff'
+        }
+      }, 
+      
+      // Level 1: 内环 (四大分类)
+      // 对应原代码的 L2 样式，调整半径以适应双环
+      {
+        r0: '6.2%', // 留一个小圆心，避免太拥挤
+        r: '26%',  // 内环占据主体位置
+        itemStyle: {
+          borderWidth: 3,
+          borderRadius: 10, // 稍微减小圆角以适应扇形角度
+          borderColor: '#fff',
+          shadowBlur: 5,
+          shadowColor: 'rgba(0, 0, 0, 0.1)'
+        },
+        label: {
+          rotate: 'tangential', // 切向旋转
+          fontSize: 15,         // 保持较大字体
+          fontWeight: '600',
+          color: '#ffffff'
+        }
+      },
+      
+      // Level 2: 外环 (具体子类)
+      // 对应原代码的 L3 样式
+      {
+        r0: '26%',
+        r: '58%', // 外环延伸至边缘
+        itemStyle: {
+          borderWidth: 2,
+          borderRadius: 10,
+          borderColor: '#fff'
+        },
+        label: {
+          rotate: 'radial',
+          fontSize: 13.5, // 字体稍小适应外环
+          color: '#222',
+          textBorderColor: '#fff',
+          textBorderWidth: 1.5,
+          distanceToLabel: 5,
+          // 如果外环文字过长，可以开启下面这行让文字显示在图形内
+          // position: 'inside' 
+        }
+      }
+    ]
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}' // 简化 tooltip，只显示名称
+  }
+};
