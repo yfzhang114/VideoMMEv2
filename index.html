@@ -397,7 +397,7 @@
 
         /* ==================== LEADERBOARD STYLES ==================== */
         .leaderboard-section {
-            max-width: 1100px;
+            max-width: 110%;
             margin: 0 auto;
             padding: 60px 24px;
         }
@@ -460,6 +460,19 @@
             overflow-x: auto;
         }
 
+        .leaderboard-table caption.leaderboard-caption {
+            caption-side: top;
+            padding: 0.75rem 1rem 1rem;
+            background: #f8fafc;
+            border-radius: 8px 8px 0 0;
+            border-left: 4px solid var(--accent-color);
+            font-size: 0.85rem;
+            color: #4b5563;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+
         .leaderboard-table {
             width: 100%;
             border-collapse: collapse;
@@ -487,15 +500,40 @@
             background: rgba(99, 102, 241, 0.05);
         }
 
-        .leaderboard-table th:first-child {
+        .leaderboard-table th:first-child,
+        .leaderboard-table th.th-model {
             text-align: left;
             padding-left: 24px;
             cursor: default;
         }
 
-        .leaderboard-table th:first-child:hover {
+        .leaderboard-table th:first-child:hover,
+        .leaderboard-table th.th-model:hover {
             color: var(--secondary-color);
             background: transparent;
+        }
+
+        .leaderboard-table th.th-frames,
+        .leaderboard-table th.th-group,
+        .leaderboard-table th[data-sort] {
+            text-align: center;
+        }
+
+        .leaderboard-table th.th-group {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .leaderboard-table th.th-sub {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #9ca3af;
+            padding: 8px 10px;
+            min-width: 56px;
+        }
+
+        .leaderboard-table th.th-frames {
+            min-width: 60px;
         }
 
         .leaderboard-table th.sorted {
@@ -532,7 +570,7 @@
 
         .leaderboard-table td {
             padding: 14px 16px;
-            text-align: right;
+            text-align: center;
             color: var(--primary-color);
             font-variant-numeric: tabular-nums;
         }
@@ -1958,14 +1996,37 @@
         
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
+                <caption class="leaderboard-caption">
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Consistency</em> = capability consistency across four questions; the score grows quadratically with correct count — sporadic correct answers contribute little, while sustained consistency is strongly rewarded. <em>Coherence</em> = reasoning coherence along logic chains; each chain has a structure-specific scoring scheme — partial credit is awarded for correct steps, and the weight of each step depends on the chain structure and interdependencies. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric, the average of Consistency and Coherence.</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>Consistency</em> = 能力一致性；分数随答对数量呈平方增长——偶发答对贡献较小，持续一致表现会被显著奖励。<em>Coherence</em> = 推理连贯性；每条逻辑链有与其结构对应的计分方式——对正确步骤给予部分分数，每步权重取决于链的结构与步骤间依赖。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标，为 Consistency 与 Coherence 的平均值。</span>
+                </caption>
                 <thead>
-                    <tr>
-                        <th><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
-                        <th data-sort="level1">Level 1 <span class="sort-arrow">↓</span></th>
-                        <th data-sort="level2">Level 2 <span class="sort-arrow">↓</span></th>
-                        <th data-sort="level3">Level 3 <span class="sort-arrow">↓</span></th>
-                        <th data-sort="consistency"><span data-lang-en>Consistency</span><span data-lang-zh>一致性</span> <span class="sort-arrow">↓</span></th>
-                        <th data-sort="coherence"><span data-lang-en>Coherence</span><span data-lang-zh>连贯性</span> <span class="sort-arrow">↓</span></th>
+                    <tr class="leaderboard-header-row-main">
+                        <th rowspan="2" class="th-model"><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
+                        <th rowspan="2" class="th-frames">Frames</th>
+                        <th colspan="2" class="th-group" data-sort="level1">Level 1 <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="level2">Level 2 <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="level3">Level 3 <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="relevance"><span data-lang-en>Consistency</span><span data-lang-zh>一致性</span> <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="logic"><span data-lang-en>Coherence</span><span data-lang-zh>连贯性</span> <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="avg_acc">Avg Acc <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="overall">Overall <span class="sort-arrow">↓</span></th>
+                    </tr>
+                    <tr class="leaderboard-header-row-sub">
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
+                        <th class="th-sub">w. sub</th>
+                        <th class="th-sub">wo sub</th>
                     </tr>
                 </thead>
                 <tbody id="leaderboardBody">
@@ -4186,42 +4247,58 @@
         carousel.scrollTo({ left: target, behavior: 'smooth' });
     }
 
-    // Leaderboard Data
-    const leaderboardData = [
-        // Proprietary Models
-        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", level1: 58.42, level2: 38.05, level3: 30.27, relevance: 42.03, logic: 35.57 },
-        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", level1: 30.74, level2: 27.51, level3: 20.03, relevance: 26.95, logic: 21.46 },
-        { name: "GPT-5", logo: "openai", type: "proprietary", level1: 30.17, level2: 25.53, level3: 20.72, relevance: 26.05, logic: 21.84 },
-        
-        // Open Source - Instruct Models
-        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", level1: 22.48, level2: 16.81, level3: 15.32, relevance: 16.92, logic: 18.92 },
-        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", level1: 21.48, level2: 16.44, level3: 14.71, relevance: 17.87, logic: 15.20 },
-        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", level1: 23.37, level2: 15.85, level3: 15.52, relevance: 17.44, logic: 17.95 },
-        { name: "InternVL3_5-241B-A28B-Instruct", logo: "intern", type: "open", level1: 19.42, level2: 15.52, level3: 14.03, relevance: 17.40, logic: 12.89 },
-        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", level1: 18.04, level2: 16.69, level3: 12.93, relevance: 16.75, logic: 12.78 },
-        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", level1: 17.43, level2: 11.81, level3: 12.97, relevance: 15.28, logic: 10.75 },
-        { name: "InternVL3_5-30B-A3B-Instruct", logo: "intern", type: "open", level1: 16.79, level2: 10.82, level3: 9.25, relevance: 13.10, logic: 8.84 },
-        { name: "Qwen3vl-30B-A3B-Think", logo: "qwen", type: "open", level1: 16.23, level2: 11.94, level3: 10.65, relevance: 13.83, logic: 9.83 },
-        { name: "Qwen2_5-VL-72B-Instruct", logo: "qwen", type: "open", level1: 16.09, level2: 13.55, level3: 11.45, relevance: 14.71, logic: 10.51 },
-        { name: "InternVL3_5-8B-Instruct", logo: "intern", type: "open", level1: 15.99, level2: 11.08, level3: 9.01, relevance: 12.29, logic: 9.76 },
-        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", level1: 15.80, level2: 12.01, level3: 9.40, relevance: 13.39, logic: 8.84 },
-        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", level1: 15.81, level2: 8.90, level3: 8.60, relevance: 11.45, logic: 8.73 },
-        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", level1: 15.68, level2: 11.35, level3: 10.96, relevance: 13.16, logic: 10.56 },
-        { name: "GLM4.5v-think", logo: "glm", type: "open", level1: 15.67, level2: 13.40, level3: 11.65, relevance: 14.06, logic: 11.58 },
-        { name: "Qwen3vl-4B-Instruct", logo: "qwen", type: "open", level1: 15.11, level2: 10.09, level3: 8.90, relevance: 12.00, logic: 8.60 },
-        { name: "InternVL3_5-4B-Instruct", logo: "intern", type: "open", level1: 14.31, level2: 9.84, level3: 8.35, relevance: 11.47, logic: 8.11 },
-        { name: "Qwen3vl-8B-Instruct", logo: "qwen", type: "open", level1: 14.28, level2: 10.80, level3: 10.50, relevance: 12.50, logic: 9.71 },
-        { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", level1: 13.41, level2: 11.10, level3: 9.73, relevance: 11.87, logic: 9.58 },
-        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", level1: 13.20, level2: 6.63, level3: 6.55, relevance: 9.24, logic: 6.36 },
-        { name: "GLM4.1v-think", logo: "glm", type: "open", level1: 13.15, level2: 8.65, level3: 7.25, relevance: 10.42, logic: 6.80 },
-        { name: "Keye-VL-1_5-8B", logo: "keye", type: "open", level1: 12.93, level2: 9.38, level3: 7.47, relevance: 10.77, logic: 6.89 },
-        { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", level1: 12.74, level2: 10.35, level3: 8.29, relevance: 11.45, logic: 7.38 },
-        { name: "Qwen2_5-VL-7B-Instruct", logo: "qwen", type: "open", level1: 12.77, level2: 9.46, level3: 7.13, relevance: 10.37, logic: 7.19 },
-        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", level1: 12.12, level2: 9.42, level3: 7.84, relevance: 10.51, logic: 7.30 },
-        { name: "Qwen3vl-30B-A3B-Instruct", logo: "qwen", type: "open", level1: 9.03, level2: 8.08, level3: 6.03, relevance: 8.63, logic: 5.11 },
-        { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", level1: 8.15, level2: 8.81, level3: 6.67, relevance: 9.41, logic: 4.43 },
-        { name: "GLM4.6-flash", logo: "glm", type: "open", level1: 3.59, level2: 3.75, level3: 3.10, relevance: 4.63, logic: 1.10 },
+    // Leaderboard Data - each metric has [w_sub, wo_sub]; updated from benchmark final_rating (level_1, level_2, level_3, relevance_linear_score, logic_score)
+    const leaderboardDataRaw = [
+        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", frames: "1fps", level1: [58.4, 58.4], level2: [38.1, 38.0], level3: [30.3, 30.2], relevance: [42.0, 42.1], logic: [35.6, 35.5] },
+        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", frames: "1fps", level1: [30.7, 30.8], level2: [27.5, 27.5], level3: [20.0, 20.1], relevance: [27.0, 26.9], logic: [21.5, 21.4] },
+        { name: "GPT-5", logo: "openai", type: "proprietary", frames: "1fps", level1: [30.2, 30.1], level2: [25.5, 25.6], level3: [20.7, 20.7], relevance: [26.1, 26.0], logic: [21.8, 21.9] },
+        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [32.6, 23.3], level2: [25.4, 17.7], level3: [23.4, 15.8], relevance: [42.3, 34.9], logic: [24.8, 14.9] },
+        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [30.3, 18.8], level2: [27.0, 16.5], level3: [22.3, 13.3], relevance: [40.6, 31.6], logic: [26.1, 12.7] },
+        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [26.9, 25.6], level2: [17.7, 15.0], level3: [17.3, 16.9], relevance: [34.6, 33.4], logic: [20.3, 18.0] },
+        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [22.7, 23.4], level2: [15.9, 15.2], level3: [15.2, 15.6], relevance: [31.4, 31.7], logic: [18.5, 18.1] },
+        { name: "InternVL3_5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [19.4, 19.4], level2: [15.5, 15.5], level3: [14.0, 14.0], relevance: [17.4, 17.4], logic: [12.9, 12.9] },
+        { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [34.4, 26.5], logic: [20.9, 9.4] },
+        { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [33.8, 26.3], logic: [17.6, 7.4] },
+        { name: "Qwen3vl-8B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [23.0, 14.9], level2: [16.9, 12.5], level3: [15.7, 10.8], relevance: [32.7, 27.6], logic: [17.4, 9.3] },
+        { name: "Qwen3vl-4B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [23.1, 15.8], level2: [14.3, 9.8], level3: [14.2, 9.1], relevance: [31.2, 25.1], logic: [16.0, 9.0] },
+        { name: "InternVL3_5-8B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [22.5, 15.7], level2: [13.7, 10.0], level3: [14.2, 9.5], relevance: [29.9, 24.8], logic: [16.3, 9.6] },
+        { name: "Qwen3vl-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [14.7, 14.7], level2: [12.3, 12.3], level3: [10.9, 10.9], relevance: [27.7, 27.7], logic: [9.6, 9.6] },
+        { name: "InternVL3_5-30B-A3B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [21.2, 11.1], level2: [13.9, 7.7], level3: [13.3, 6.5], relevance: [30.5, 20.6], logic: [15.3, 6.0] },
+        { name: "Qwen3vl-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [20.0, 9.4], level2: [17.5, 9.3], level3: [14.2, 5.6], relevance: [29.5, 21.0], logic: [18.1, 5.1] },
+        { name: "Qwen2_5-VL-7B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [20.4, 13.6], level2: [14.8, 11.0], level3: [12.7, 8.3], relevance: [28.6, 23.6], logic: [16.2, 9.2] },
+        { name: "InternVL_3_5-4B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [20.4, 13.9], level2: [12.8, 10.0], level3: [12.5, 7.4], relevance: [29.4, 23.9], logic: [14.0, 7.2] },
+        { name: "Qwen2_5-VL-72B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [16.1, 16.1], level2: [13.6, 13.6], level3: [11.5, 11.5], relevance: [14.7, 14.7], logic: [10.5, 10.5] },
+        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", frames: "1fps", level1: [17.4, 17.4], level2: [11.8, 11.8], level3: [13.0, 13.0], relevance: [15.3, 15.3], logic: [10.8, 10.8] },
+        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "1fps", level1: [15.8, 15.8], level2: [12.0, 12.0], level3: [9.4, 9.4], relevance: [13.4, 13.4], logic: [8.8, 8.8] },
+        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", frames: "1fps", level1: [15.8, 15.8], level2: [8.9, 8.9], level3: [8.6, 8.6], relevance: [11.5, 11.5], logic: [8.7, 8.7] },
+        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "1fps", level1: [15.7, 15.7], level2: [11.4, 11.4], level3: [11.0, 11.0], relevance: [13.2, 13.2], logic: [10.6, 10.6] },
+        { name: "GLM4.5v-think", logo: "glm", type: "open", frames: "1fps", level1: [15.7, 15.7], level2: [13.4, 13.4], level3: [11.7, 11.7], relevance: [14.1, 14.1], logic: [11.6, 11.6] },
+        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", frames: "1fps", level1: [13.2, 13.2], level2: [6.6, 6.6], level3: [6.6, 6.6], relevance: [9.2, 9.2], logic: [6.4, 6.4] },
+        { name: "GLM4.1v-think", logo: "glm", type: "open", frames: "1fps", level1: [13.2, 13.2], level2: [8.7, 8.7], level3: [7.3, 7.3], relevance: [10.4, 10.4], logic: [6.8, 6.8] },
+        { name: "Keye-VL-1_5-8B", logo: "keye", type: "open", frames: "1fps", level1: [12.9, 12.9], level2: [9.4, 9.4], level3: [7.5, 7.5], relevance: [10.8, 10.8], logic: [6.9, 6.9] },
+        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", frames: "1fps", level1: [12.1, 12.1], level2: [9.4, 9.4], level3: [7.8, 7.8], relevance: [10.5, 10.5], logic: [7.3, 7.3] },
+        { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", frames: "1fps", level1: [8.2, 8.2], level2: [8.8, 8.8], level3: [6.7, 6.7], relevance: [9.4, 9.4], logic: [4.4, 4.4] },
+        { name: "GLM4.6-flash", logo: "glm", type: "open", frames: "1fps", level1: [3.6, 3.6], level2: [3.8, 3.8], level3: [3.1, 3.1], relevance: [4.6, 4.6], logic: [1.1, 1.1] },
     ];
+
+    // Expand data with computed avg_acc [w_sub, wo_sub], overall [w_sub, wo_sub], and sort keys
+    const leaderboardData = leaderboardDataRaw.map(item => {
+        const avg_acc_w = (item.level1[0] + item.level2[0] + item.level3[0] + item.relevance[0] + item.logic[0]) / 5;
+        const avg_acc_o = (item.level1[1] + item.level2[1] + item.level3[1] + item.relevance[1] + item.logic[1]) / 5;
+        const overall_w = (item.relevance[0] + item.logic[0]) / 2;
+        const overall_o = (item.relevance[1] + item.logic[1]) / 2;
+        const l1 = (item.level1[0] + item.level1[1]) / 2, l2 = (item.level2[0] + item.level2[1]) / 2, l3 = (item.level3[0] + item.level3[1]) / 2;
+        const rel = (item.relevance[0] + item.relevance[1]) / 2, log = (item.logic[0] + item.logic[1]) / 2;
+        return {
+            ...item,
+            frames: item.frames || "1fps",
+            level1_avg: l1, level2_avg: l2, level3_avg: l3, relevance_avg: rel, logic_avg: log,
+            avg_acc: [avg_acc_w, avg_acc_o],
+            overall: [overall_w, overall_o],
+            avg_acc_avg: (avg_acc_w + avg_acc_o) / 2,
+            overall_avg: (overall_w + overall_o) / 2
+        };
+    });
 
     // Logo SVGs - 添加新的logo
     const logos = {
@@ -4240,48 +4317,60 @@
     };
 
     // Current sort state
-    let currentSort = { column: 'level1', direction: 'desc' };
+    let currentSort = { column: 'avg_acc', direction: 'desc' };
     let currentFilter = 'all';
+
+    function fmt(v) { return typeof v === 'number' ? v.toFixed(1) : v; }
 
     // Render leaderboard
     function renderLeaderboard() {
         let data = [...leaderboardData];
         
-        // Filter
         if (currentFilter !== 'all') {
             data = data.filter(item => item.type === currentFilter);
         }
         
-        // Sort
+        const sortCol = currentSort.column;
+        const sortKey = { level1: 'level1_avg', level2: 'level2_avg', level3: 'level3_avg', relevance: 'relevance_avg', logic: 'logic_avg', avg_acc: 'avg_acc_avg', overall: 'overall_avg' }[sortCol] || sortCol;
         data.sort((a, b) => {
-            const aVal = a[currentSort.column];
-            const bVal = b[currentSort.column];
+            let aVal = a[sortKey] != null ? (typeof a[sortKey] === 'string' ? parseFloat(a[sortKey]) : a[sortKey]) : 0;
+            let bVal = b[sortKey] != null ? (typeof b[sortKey] === 'string' ? parseFloat(b[sortKey]) : b[sortKey]) : 0;
             return currentSort.direction === 'desc' ? bVal - aVal : aVal - bVal;
         });
 
         const tbody = document.getElementById('leaderboardBody');
-        // 在 renderLeaderboard 函数中，修改这部分
         tbody.innerHTML = data.map((item, index) => {
             const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-default';
+            const l1w = item.level1[0], l1o = item.level1[1], l2w = item.level2[0], l2o = item.level2[1], l3w = item.level3[0], l3o = item.level3[1];
+            const relw = item.relevance[0], relo = item.relevance[1], logw = item.logic[0], logo = item.logic[1];
             return `
                 <tr>
                     <td>
                         <div class="model-cell">
                             <span class="rank-badge ${rankClass}">${index + 1}</span>
-                            <div class="model-logo">${logos[item.logo]}</div>
+                            <div class="model-logo">${logos[item.logo] || ''}</div>
                             <span class="model-name">${item.name}</span>
                         </div>
                     </td>
-                    <td class="${item.level1 >= 30 ? 'score-high' : item.level1 >= 15 ? 'score-mid' : ''}">${item.level1}</td>
-                    <td class="${item.level2 >= 25 ? 'score-high' : item.level2 >= 12 ? 'score-mid' : ''}">${item.level2}</td>
-                    <td class="${item.level3 >= 20 ? 'score-high' : item.level3 >= 10 ? 'score-mid' : ''}">${item.level3}</td>
-                    <td>${item.relevance}</td>
-                    <td>${item.logic}</td>
+                    <td>${item.frames || '1fps'}</td>
+                    <td class="${l1w >= 30 ? 'score-high' : l1w >= 15 ? 'score-mid' : ''}">${fmt(l1w)}</td>
+                    <td class="${l1o >= 30 ? 'score-high' : l1o >= 15 ? 'score-mid' : ''}">${fmt(l1o)}</td>
+                    <td class="${l2w >= 25 ? 'score-high' : l2w >= 12 ? 'score-mid' : ''}">${fmt(l2w)}</td>
+                    <td class="${l2o >= 25 ? 'score-high' : l2o >= 12 ? 'score-mid' : ''}">${fmt(l2o)}</td>
+                    <td class="${l3w >= 20 ? 'score-high' : l3w >= 10 ? 'score-mid' : ''}">${fmt(l3w)}</td>
+                    <td class="${l3o >= 20 ? 'score-high' : l3o >= 10 ? 'score-mid' : ''}">${fmt(l3o)}</td>
+                    <td>${fmt(relw)}</td>
+                    <td>${fmt(relo)}</td>
+                    <td>${fmt(logw)}</td>
+                    <td>${fmt(logo)}</td>
+                    <td>${fmt(item.avg_acc[0])}</td>
+                    <td>${fmt(item.avg_acc[1])}</td>
+                    <td>${fmt(item.overall[0])}</td>
+                    <td>${fmt(item.overall[1])}</td>
                 </tr>
             `;
         }).join('');
 
-        // Update sort arrows
         document.querySelectorAll('.leaderboard-table th[data-sort]').forEach(th => {
             const arrow = th.querySelector('.sort-arrow');
             const column = th.dataset.sort;
