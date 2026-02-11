@@ -397,7 +397,7 @@
 
         /* ==================== LEADERBOARD STYLES ==================== */
         .leaderboard-section {
-            max-width: 110%;
+            max-width: 87%;
             margin: 0 auto;
             padding: 60px 24px;
         }
@@ -635,8 +635,8 @@
         .rank-3 { background: linear-gradient(135deg, #cd7f32, #d97706); color: white; }
         .rank-default { background: #f3f4f6; color: #6b7280; }
 
-        .score-high { color: var(--success-color); font-weight: 600; }
-        .score-mid { color: var(--warning-color); font-weight: 500; }
+        .score-high { color: var(--success-color); }
+        .score-mid { color: var(--warning-color); }
 
         /* Level Hierarchy */
         .level-container {
@@ -1997,20 +1997,20 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Consistency</em> = capability consistency across four questions; the score grows quadratically with correct count — sporadic correct answers contribute little, while sustained consistency is strongly rewarded. <em>Coherence</em> = reasoning coherence along logic chains; each chain has a structure-specific scoring scheme — partial credit is awarded for correct steps, and the weight of each step depends on the chain structure and interdependencies. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric, the average of Consistency and Coherence.</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>Consistency</em> = 能力一致性；分数随答对数量呈平方增长——偶发答对贡献较小，持续一致表现会被显著奖励。<em>Coherence</em> = 推理连贯性；每条逻辑链有与其结构对应的计分方式——对正确步骤给予部分分数，每步权重取决于链的结构与步骤间依赖。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标，为 Consistency 与 Coherence 的平均值。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Consistency</em> = capability consistency across dimensions. <em>Coherence</em> = reasoning coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric, average of Consistency and Coherence.</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>Consistency</em> = 能力一致性。<em>Coherence</em> = 推理连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标，即 Consistency 与 Coherence 的平均值。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
                         <th rowspan="2" class="th-model"><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
                         <th rowspan="2" class="th-frames">Frames</th>
+                        <th colspan="2" class="th-group" data-sort="overall">Overall <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="level1">Level 1 <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="level2">Level 2 <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="level3">Level 3 <span class="sort-arrow">↓</span></th>
-                        <th colspan="2" class="th-group" data-sort="relevance"><span data-lang-en>Consistency</span><span data-lang-zh>一致性</span> <span class="sort-arrow">↓</span></th>
-                        <th colspan="2" class="th-group" data-sort="logic"><span data-lang-en>Coherence</span><span data-lang-zh>连贯性</span> <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="relevance"><span data-lang-en>Capability Consistency</span><span data-lang-zh>能力一致性</span> <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="logic"><span data-lang-en>Reasoning Coherence</span><span data-lang-zh>推理连贯性</span> <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="avg_acc">Avg Acc <span class="sort-arrow">↓</span></th>
-                        <th colspan="2" class="th-group" data-sort="overall">Overall <span class="sort-arrow">↓</span></th>
                     </tr>
                     <tr class="leaderboard-header-row-sub">
                         <th class="th-sub">w. sub</th>
@@ -2085,20 +2085,20 @@
                             <div class="video-card">
                         <div class="video-card-top">
                             <video controls width="100%" preload="metadata" poster="videos/coffee.png">
-                                <source src="videos/1-1.mp4" type="video/mp4">
+                                <source src="videos/level1-1.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-consistency card-badge">Consistency</span>
                         </div>
                         <div class="video-info">
                             <div class="video-title">
-                                <span data-lang-en>☕ Barista Shift — Basic Counting Consistency</span>
-                                <span data-lang-zh>☕ 咖啡师工作 — 基础计数一致性</span>
+                                <span data-lang-en>☕ Barista Shift — Basic Counting</span>
+                                <span data-lang-zh>☕ 咖啡师工作 — 基础计数</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Consistency:</strong> All 4 questions test <em>basic counting</em> (Frame-Only) at the same granularity but across different counting targets (latte art → take-away → dine-in → total)
+                                <strong>Capability Consistency:</strong> All 4 questions test <em>basic counting</em>. Same granularity, different counting targets: latte art appearances → take-away orders → dine-in orders → total cups. Answerable by reading key frames; no temporal or cross-modal reasoning required, belonging to Level 1 (Retrieval &amp; Aggregation).
                             </div>
                             <div class="eval-hint" data-lang-zh>
-                                <strong>一致性测评：</strong>4个问题均测试<em>基础计数</em>（仅帧级别），同一粒度但不同计数目标（拉花次数→外带订单→堂食订单→总杯数）
+                                <strong>能力一致性测评：</strong>4个问题均测试<em>基础计数</em>，同一粒度但不同计数目标（拉花次数→外带订单→堂食订单→总杯数）。问题可通过阅读视频中的某些帧作答，无需理解时序或跨模态关联，属于 Level 1（信息检索与聚合）。
                             </div>
                             <div class="qa-tabs">
                                 <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2120,8 +2120,6 @@
                                         <div class="qa-option">G. 10</div>
                                         <div class="qa-option">H. 3</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Basic Counting</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 基础计数</div>
                                 </div>
                                 <div class="qa-content" data-qa-index="1">
                                     <div class="qa-question" data-lang-en>Q2: How many take-away coffee orders appeared in the video?</div>
@@ -2136,8 +2134,6 @@
                                         <div class="qa-option">G. 7</div>
                                         <div class="qa-option">H. 8</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Basic Counting</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 基础计数</div>
                                 </div>
                                 <div class="qa-content" data-qa-index="2">
                                     <div class="qa-question" data-lang-en>Q3: How many dine-in coffee orders appeared in the video?</div>
@@ -2152,8 +2148,6 @@
                                         <div class="qa-option">G. 9</div>
                                         <div class="qa-option">H. 2</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Basic Counting</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 基础计数</div>
                                 </div>
                                 <div class="qa-content" data-qa-index="3">
                                     <div class="qa-question" data-lang-en>Q4: How many cups of coffee beverages were sold in total in the video?</div>
@@ -2168,8 +2162,6 @@
                                         <div class="qa-option">G. 11</div>
                                         <div class="qa-option">H. 12</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Basic Counting</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 基础计数</div>
                                 </div>
                             </div>
                         </div>
@@ -2186,14 +2178,14 @@
                         </div>
                         <div class="video-info">
                             <div class="video-title">
-                                <span data-lang-en>🏹 Archery — Numerical Calculation Chain</span>
-                                <span data-lang-zh>🏹 射箭运动 — 数值计算逻辑链</span>
+                                <span data-lang-en>🏹 Archery — Numerical Calculation</span>
+                                <span data-lang-zh>🏹 射箭运动 — 数值计算</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Coherence:</strong> Logical dependency tree <code>[1,[2,3],4]</code>. Q2 & Q3 derive rates from Q1's total. Q4 compares the results of Q2 & Q3.
+                                <strong>Reasoning Coherence:</strong> Logical dependency tree <code>[1,[2,3],4]</code>. Q2 & Q3 derive rates from Q1's total. Q4 compares the results of Q2 & Q3. Questions can be answered by reading certain frames in the video, without requiring temporal understanding or complex reasoning, belonging to Level 1 (Retrieval & Aggregation).
                             </div>
                             <div class="eval-hint" data-lang-zh>
-                                <strong>连贯性测评：</strong>逻辑依赖树 <code>[1,[2,3],4]</code>。Q2 和 Q3 基于 Q1 的总量计算命中率，Q4 比较 Q2 和 Q3 的结果。
+                                <strong>推理连贯性测评：</strong>逻辑依赖树 <code>[1,[2,3],4]</code>。Q2 和 Q3 基于 Q1 的总量计算命中率，Q4 比较 Q2 和 Q3 的结果。问题可以通过阅读视频中的某些帧来作答，无需理解时序或跨模态关联，属于 Level 1（信息检索与聚合）。
                             </div>
                             <div class="qa-tabs">
                                 <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2220,8 +2212,6 @@
                                         <div class="qa-option">G. 10</div>
                                         <div class="qa-option">H. 12</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Numerical Calculation</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 数值计算</div>
                                 </div>
 
                                 <!-- Q2: Black Hit Rate (Depends on Q1) -->
@@ -2241,8 +2231,6 @@
                                         <div class="qa-option">G. 31.3%</div>
                                         <div class="qa-option">H. 68.9%</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Numerical Calculation</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 数值计算</div>
                                 </div>
 
                                 <!-- Q3: White Hit Rate (Depends on Q1) -->
@@ -2262,8 +2250,6 @@
                                         <div class="qa-option">G. 20%</div>
                                         <div class="qa-option">H. 57.1%</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Numerical Calculation</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 数值计算</div>
                                 </div>
 
                                 <!-- Q4: Comparison (Depends on Q2 & Q3) -->
@@ -2283,8 +2269,6 @@
                                         <div class="qa-option">G. Black was 35.6% higher than White.</div>
                                         <div class="qa-option">H. They had the same hit rate.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 1 · Frame-Only · Numerical Calculation</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 1 · 仅帧级别 · 数值计算</div>
                                 </div>
 
                             </div>
@@ -2303,13 +2287,13 @@
                         <div class="video-info">
                             <div class="video-title">
                                 <span data-lang-en>🧠 ADHD Explanation — Audio-Visual Association</span>
-                                <span data-lang-zh>🧠 ADHD 解释 — 音视频关联一致性</span>
+                                <span data-lang-zh>🧠 ADHD 解释 — 视觉引导的音频描述</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Consistency:</strong> Questions test <em>cross-modal correlation</em>. Can the model correctly map specific <em>visual scenes</em> to their simultaneous <em>audio content</em> (speech/music)?
+                                <strong>Capability Consistency:</strong> All 4 questions test <em>vision-guided audio description</em> (Frames &amp; Audio), same granularity but different scene–audio mappings (Q1 clothes stacked on shelves → Q2 brushing teeth with ball hitting head → Q3 colorful balls falling down stairs → Q4 chatting outside tent). Answerable by correlating frames with simultaneous audio; no temporal ordering required, belonging to Level 1 (Retrieval &amp; Aggregation).
                             </div>
                             <div class="eval-hint" data-lang-zh>
-                                <strong>一致性测评：</strong>测试<em>跨模态相关性</em>。模型能否将特定的<em>视觉场景</em>与同时发生的<em>音频内容</em>（语音/音乐）正确对应？
+                                <strong>能力一致性测评：</strong>4个问题均测试<em>视觉引导的音频描述</em>（视频帧+音频），同一粒度但不同场景–音频对应（Q1衣物堆在货架场景→Q2刷牙被球砸场景→Q3彩色球滚落楼梯场景→Q4帐篷外聊天场景）。问题可通过将帧与同时发生的音频关联作答，无需理解时序，属于 Level 1（信息检索与聚合）。
                             </div>
                             <div class="qa-tabs">
                                 <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2331,8 +2315,6 @@
                     <div class="qa-option">G. His daily work routine as a tour guide.</div>
                     <div class="qa-option">H. He is showing his collection of filming equipment and everyday personal items.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Vision-Guided Audio Description</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 视觉引导的音频描述</div>
             </div>
             <div class="qa-content" data-qa-index="1">
                 <div class="qa-question" data-lang-en>Q2: When the video shows a young man brushing his teeth and a green ball hitting him on the head, what is being said in the audio?</div>
@@ -2347,8 +2329,6 @@
                     <div class="qa-option">G. You're going to be very late.</div>
                     <div class="qa-option">H. A direct hit right out of nowhere!</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Vision-Guided Audio Description</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 视觉引导的音频描述</div>
             </div>
             <div class="qa-content" data-qa-index="2">
                 <div class="qa-question" data-lang-en>Q3: In the short film made by the protagonist, when many colorful balls fall down the stairs, which description of the background music is most accurate?</div>
@@ -2363,8 +2343,6 @@
                     <div class="qa-option correct">✓ G. Intense symphonic music accompanied by noisy negative comments.</div>
                     <div class="qa-option">H. Melodious folk music combined with noisy negative comments.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Vision-Guided Audio Description</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 视觉引导的音频描述</div>
             </div>
             <div class="qa-content" data-qa-index="3">
                 <div class="qa-question" data-lang-en>Q4: In the scene where the protagonist is sitting outside a tent on chairs and chatting with a man wearing a black jacket and a red inner layer, what is the corresponding audio when the camera cuts to the man?</div>
@@ -2379,8 +2357,6 @@
                     <div class="qa-option">G. You're going to be very late.</div>
                     <div class="qa-option">H. Well done!</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Vision-Guided Audio Description</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 视觉引导的音频描述</div>
             </div></div>
                     </div>
                 </div>
@@ -2400,14 +2376,14 @@
     </div>
     <div class="video-info">
         <div class="video-title">
-            <span data-lang-en>🎻 Short Films — A-V Semantic Consistency</span>
+            <span data-lang-en>🎻 Short Films — A-V Semantic</span>
             <span data-lang-zh>🎻 短片合集 — 音视频语义一致性</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Consistency:</strong> Questions test whether the <em>emotional atmosphere</em> of the visual scene aligns logically with the <em>mood</em> of the background music.
+            <strong>Capability Consistency:</strong> All 4 questions test <em>cross-modal semantic consistency</em> (Frames &amp; Audio), same granularity but different story segments (Q1 first story mother handing ticket → Q2 second story "Bent Out of Shape" opening → Q3 third story girl helping little pilot → Q4 fourth story "Joy &amp; Heron" ending). Each asks whether the visual tone aligns with the music mood. Answerable by perceiving frame–audio alignment; no sequential reasoning required, belonging to Level 1 (Retrieval &amp; Aggregation).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>一致性测评：</strong>测试视觉场景的<em>情感氛围</em>是否与背景音乐的<em>情绪基调</em>在逻辑上保持一致。
+            <strong>能力一致性测评：</strong>4个问题均测试<em>跨模态语义一致性</em>（视频帧+音频），同一粒度但不同故事片段（Q1第一个故事母亲递车票→Q2第二个故事"Bent Out of Shape"开场→Q3第三个故事女孩帮助小飞行员→Q4第四个故事"Joy & Heron"结尾）。问题可通过感知画面色调与背景音乐情绪的对应作答，无需时序推理，属于 Level 1（信息检索与聚合）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2429,8 +2405,6 @@
                     <div class="qa-option">G. There is no background music, only ambient noise from the station, and the visual presents cold tones; the atmospheres of both are consistent.</div>
                     <div class="qa-option">H. The visual presents bright, warm tones, and the background music is cheerful and full of hope; the atmospheres of both are consistent.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
             </div>
             <div class="qa-content" data-qa-index="1">
                 <div class="qa-question" data-lang-en>Q2: In the opening part of the second story, "Bent Out of Shape", what is the relationship between the visual style and the mood of the background music when the square-shaped family sits on their porch drinking beverages?</div>
@@ -2445,8 +2419,6 @@
                     <div class="qa-option">G. The visual style is angular and monochromatic, there is no background music, only the sound of drinking. The atmosphere is very quiet.</div>
                     <div class="qa-option correct">✓ H. The visual style is angular and monochromatic, and the background music has a lively rhythm. The atmosphere of the two is opposite.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
             </div>
             <div class="qa-content" data-qa-index="2">
                 <div class="qa-question" data-lang-en>Q3: In the third story, when the girl helps the little pilot fix the spaceship and it takes off at night, what are the characteristics of the audiovisual atmosphere?</div>
@@ -2461,8 +2433,6 @@
                     <div class="qa-option">G. The visual focuses on the girl's slender figure looking up at the departing spaceship, and the background music turns into an ethereal and mournful piano solo; the atmospheres of both are consistent.</div>
                     <div class="qa-option">H. The visual uses twinkling starlight to contrast with the girl's loneliness on the ground, and the background music turns into a low, lingering chant; the atmospheres of both are consistent.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
             </div>
             <div class="qa-content" data-qa-index="3">
                 <div class="qa-question" data-lang-en>Q4: In the fourth story, "Joy & Heron," what is the relationship between the visual tone and the mood of the music at the end, when the heron and the dog share the catch, and the fisherman and the dog watch the sunrise together in the boat?</div>
@@ -2477,8 +2447,6 @@
                     <div class="qa-option">G. The visual shows the receding backs of the characters with blurred tones, and the background music is a fading, mournful melody; the atmospheres of both are consistent.</div>
                     <div class="qa-option">H. The visual shows a gloomy lake before a storm, and the background music is warm and peaceful; the atmospheres of both are consistent.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 1 · Frames & Audio · Cross-Modal Semantic Consistency</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 1 · 视频帧+音频 · 跨模态语义一致性</div>
             </div>
 
         </div>
@@ -2520,10 +2488,10 @@
                                 <span data-lang-zh>🏀 NBA 比赛 — 因果推理</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Consistency:</strong> Tests <em>causal reasoning</em> within a temporal sequence. Can the model infer the causes of player ejections, penalties, emotions, and strategic shifts based on game events?
+                                <strong>Capability Consistency:</strong> All 4 questions test simple <em>causal reasoning</em> (Temporal Reasoning), same granularity but different causal targets (why a player left the court → why a free throw occurred → why a player was angry → tactical impact of a missed free throw). Requires understanding event order and cause–effect within the game timeline, belonging to Level 2 (Temporal Understanding).
                             </div>
                             <div class="eval-hint" data-lang-zh>
-                                <strong>一致性测评：</strong>测试时间序列中的<em>因果推理</em>能力。模型能否根据比赛事件推断球员驱逐、判罚、情绪变化以及战术调整的原因？
+                                <strong>能力一致性测评：</strong>4个问题均测试简单的<em>因果推理</em>（时序推理），同一粒度但不同因果目标（球员离场原因→罚球原因→球员愤怒原因→错失罚球的战术影响）。需理解比赛时间线中的事件顺序与因果关系，属于 Level 2（时序理解）。
                             </div>
                             <div class="qa-tabs">
                                 <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2547,8 +2515,6 @@
                                         <div class="qa-option">G. Because he was protesting the officiating by refusing to play.</div>
                                         <div class="qa-option">H. Because he could not continue due to excessive physical exhaustion.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
 
                                 <!-- Q2: Lakers #23 Free Throw (Ans: Tech Foul execution) -->
@@ -2565,8 +2531,6 @@
                                         <div class="qa-option">G. Because the Suns requested a timeout when they had none remaining.</div>
                                         <div class="qa-option correct">✓ H. Because a Suns player committed a technical foul, and the Lakers' player #23 chose to execute the free throw himself.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
 
                                 <!-- Q3: Suns #3 Anger (Ans: Crash motion) -->
@@ -2583,8 +2547,6 @@
                                         <div class="qa-option">G. Fans on the sidelines were booing him.</div>
                                         <div class="qa-option">H. He believed the referee made a serious missed call.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
 
                                 <!-- Q4: Tactical Impact (Ans: Offensive team must attack) -->
@@ -2601,8 +2563,6 @@
                                         <div class="qa-option">G. The offensive team can only choose to shoot a three-pointer on the final possession; the defensive team only needs to focus on defending beyond the three-point line.</div>
                                         <div class="qa-option">H. The offensive team's strategy remains unchanged; the defensive team only needs to focus on defending the paint.</div>
                                     </div>
-                                    <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                                    <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
                                 </div>
 
                             </div>
@@ -2627,10 +2587,10 @@
             <span data-lang-zh>⚽ 足球比赛 — 事件顺序排序</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Coherence (L2):</strong> Linear logic chain <code>[1,2,3,4]</code>. Reconstructs the match timeline step-by-step: Existence → Teams → Players → Full Chronology.
+            <strong>Reasoning Coherence:</strong> Linear logic chain <code>[1,2,3,4]</code>. Q1 confirms goal count → Q2 identifies first/last teams → Q3 identifies first/last scorers → Q4 reconstructs full chronology. Each step builds on prior answers. Requires tracking events across the video timeline, belonging to Level 2 (Temporal Understanding).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。逐步重建比赛时间线：存在性确认 → 球队确认 → 球员确认 → 完整时序。
+            <strong>推理连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。Q1 确认进球数 → Q2 确定首尾球队 → Q3 确定首尾球员 → Q4 重建完整时序。每步依赖前序答案。需追踪视频时间线中的事件，属于 Level 2（时序理解）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2650,8 +2610,6 @@
                     <div class="qa-option">B. No.</div>
                     <div class="qa-option">C. Cannot be determined.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
             </div>
 
             <!-- Q2: First/Last Teams (Depends on Q1) -->
@@ -2671,8 +2629,6 @@
                     <div class="qa-option">G. The red team, the white team.</div>
                     <div class="qa-option">H. The green team, the red team.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
             </div>
 
             <!-- Q3: First/Last Players (Depends on Q2) -->
@@ -2692,8 +2648,6 @@
                     <div class="qa-option">G. The red team's #9, the green team's #6.</div>
                     <div class="qa-option">H. The green team's #19, the green team's #6.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
             </div>
 
             <!-- Q4: Full Sequence (Depends on Q3) -->
@@ -2713,8 +2667,6 @@
                     <div class="qa-option">G. Red #9, Red #19, Red #7, Green #6, Green #11.</div>
                     <div class="qa-option">H. Red #19, Red #27, Green #6, Red #9, Green #11.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Order · Event Sequence Ordering</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 顺序 · 事件序列排序</div>
             </div>
 
         </div>
@@ -2739,10 +2691,10 @@
             <span data-lang-zh>🚗 遥控车实验 — 场景变换检测</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Relevance:</strong> Tests perception of <em>scene transformation </em>. Can the model detect specific physical modifications (weights, springs) and parameter adjustments (pothole width) across different trial runs?
+            <strong>Capability Consistency:</strong> All 4 questions test <em>scene transformation detection</em>, same granularity but different modification targets across trial runs (added weights → spring attachment → pothole width adjustment → combined changes). Requires tracking what changed between runs over time, belonging to Level 2 (Temporal Understanding).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>一致性测评：</strong>测试对场景变换的感知。模型能否检测不同测试轮次中的具体物理改装（配重、弹簧）和参数调整（坑洞宽度）？
+            <strong>能力一致性测评：</strong>4个问题均测试<em>场景变换检测</em>，同一粒度但不同改装目标（配重→弹簧→坑洞宽度→组合变化）。需追踪不同测试轮次间的变化，属于 Level 2（时序理解）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2766,8 +2718,6 @@
                     <div class="qa-option">G. It gradually widened from 4cm to 6cm, 8cm, 10cm, 12cm, 13cm, and 14cm.</div>
                     <div class="qa-option">H. It gradually widened from 4cm to 6cm, 10cm, 12cm, and 14cm.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
             </div>
 
             <!-- Q2: 20cm Pothole Mod (Ans: Elastic device on rear) -->
@@ -2784,8 +2734,6 @@
                     <div class="qa-option correct">✓ G. An elastic device was installed on the rear wheels.</div>
                     <div class="qa-option">H. The weight of the car was increased.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
             </div>
 
             <!-- Q3: 14cm Pothole Mod (Ans: Yellow weight moved to rear) -->
@@ -2802,8 +2750,6 @@
                     <div class="qa-option">G. Screws were added to the bottom of the vehicle.</div>
                     <div class="qa-option">H. The initial speed of the car was significantly increased.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
             </div>
 
             <!-- Q4: 24cm Pothole Mod (Ans: Mass increased) -->
@@ -2820,8 +2766,6 @@
                     <div class="qa-option">G. An elastic device was installed on the rear wheels.</div>
                     <div class="qa-option">H. The suspension stiffness was increased.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Change · Scene Transformation Detection</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 变化 · 场景变换检测</div>
             </div>
 
         </div>
@@ -2839,14 +2783,14 @@
     </div>
     <div class="video-info">
         <div class="video-title">
-            <span data-lang-en>💥 Butty's Kitchen Mishap — Causal Logic Chain</span>
-            <span data-lang-zh>💥 巴蒂的厨房灾难 — 因果逻辑链</span>
+            <span data-lang-en>💥 Butty's Kitchen Mishap — Causal Reasoning</span>
+            <span data-lang-zh>💥 巴蒂的厨房灾难 — 因果推理</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Coherence:</strong> Logic tree <code>[1,[2,3],4]</code>. Q1 identifies the core accident. Q2 (cause of accident) and Q3 (consequent action) branch from Q1. Q4 concludes the chain based on the total mess.
+            <strong>Reasoning Coherence:</strong> Logic tree <code>[1,[2,3],4]</code>. Q1 identifies the core accident. Q2 analyzes cause and Q3 analyzes consequent action, both branching from Q1. Q4 concludes based on total mess. Requires understanding event order and cause–effect relationships within the video timeline, belonging to Level 2 (Temporal Understanding).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>连贯性测评：</strong>逻辑树 <code>[1,[2,3],4]</code>。Q1 确定核心事故。Q2（事故原因）和 Q3（随后的行为）从 Q1 分支出来。Q4 基于造成的整体混乱得出结论。
+            <strong>推理连贯性测评：</strong>逻辑树 <code>[1,[2,3],4]</code>。Q1 确定核心事故。Q2 分析原因和 Q3 分析后续行为，两者都从 Q1 分支出来。Q4 基于整体混乱得出结论。需理解视频时间线中的事件顺序与因果关系，属于 Level 2（时序理解）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2871,8 +2815,6 @@
                     <div class="qa-option">G. The lasagna spilled inside the refrigerator</div>
                     <div class="qa-option">H. The lasagna in the refrigerator had already gone bad</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
             </div>
 
             <!-- Q2: Cause of Explosion (Depends on Q1) -->
@@ -2892,8 +2834,6 @@
                     <div class="qa-option correct">✓ G. Butty accidentally removed the oven knob and reattached it incorrectly</div>
                     <div class="qa-option">H. Butty set the oven to the wrong mode</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
             </div>
 
             <!-- Q3: Subsequent Action (Depends on Q1) -->
@@ -2913,8 +2853,6 @@
                     <div class="qa-option">G. Butty piled up some clutter while cleaning and used it as a step to reach the chandelier</div>
                     <div class="qa-option">H. The explosion shattered the bulb, and Butty was replacing it</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
             </div>
 
             <!-- Q4: Conclusion (Depends on Q2 & Q3) -->
@@ -2934,8 +2872,6 @@
                     <div class="qa-option">G. The lady asked Butty to prepare for a party, but he didn’t finish on time</div>
                     <div class="qa-option">H. The lady was hosting a party and needed Butty to leave temporarily</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 2 · Temporal Reasoning · Causal Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 2 · 时序推理 · 因果推理</div>
             </div>
 
         </div>
@@ -2976,10 +2912,10 @@
                                         <span data-lang-zh>🎩 魔术杯球 — 实体持久性追踪</span>
                                     </div>
                                     <div class="eval-hint" data-lang-en>
-                                        <strong>Relevance:</strong> Tests <em>entity persistence</em> and <em>perspective taking</em>. Can the model track a hidden object through multiple swaps and switch spatial perspectives (Performer vs. Audience)?
+                                        <strong>Capability Consistency:</strong> All 4 questions test <em>entity persistence</em> and <em>perspective taking</em> (Physical World Reasoning), same granularity but different tracking targets (Q1-Q2 track from performer's perspective → Q3 switches to audience perspective → Q4 counts total position changes). Requires complex spatial reasoning and perspective switching, belonging to Level 3 (Complex Reasoning).
                                     </div>
                                     <div class="eval-hint" data-lang-zh>
-                                        <strong>一致性测评：</strong>测试<em>实体持久性</em>和<em>视角转换</em>。模型能否在多次交换中追踪隐藏物体，并在不同空间视角（表演者 vs 观众）间切换？
+                                        <strong>能力一致性测评：</strong>4个问题均测试<em>实体持久性</em>和<em>视角转换</em>（物理世界推理），同一粒度但不同追踪目标（Q1-Q2从表演者视角追踪→Q3切换到观众视角→Q4统计总位置变化次数）。需复杂空间推理与视角切换，属于 Level 3（复杂推理）。
                                     </div>
                                     <div class="qa-tabs">
                                         <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -3003,8 +2939,6 @@
                     <div class="qa-option">G. The fourth shell on the right.</div>
                     <div class="qa-option">H. Cannot be determined.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Entity Persistence</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 实体持久性</div>
             </div>
 
             <!-- Q2: Swap 2 (Performer View) - Ans: Second on Left -->
@@ -3021,8 +2955,6 @@
                     <div class="qa-option">G. The fourth shell on the right.</div>
                     <div class="qa-option">H. Cannot be determined.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Entity Persistence</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 实体持久性</div>
             </div>
 
             <!-- Q3: Swap 3 (Audience View) - Ans: Second on Left -->
@@ -3039,8 +2971,6 @@
                     <div class="qa-option">G. The fourth shell on the right.</div>
                     <div class="qa-option">H. Cannot be determined.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Perspective Taking</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 视角转换</div>
             </div>
 
             <!-- Q4: Total Moves - Ans: 2 -->
@@ -3057,8 +2987,6 @@
                     <div class="qa-option">G. 7</div>
                     <div class="qa-option correct">✓ H. 2</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Physical World Reasoning · Event Counting</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 物理世界推理 · 事件计数</div>
             </div>
 
                                     </div>
@@ -3075,14 +3003,14 @@
                                 </div>
                                 <div class="video-info">
                                     <div class="video-title">
-                                        <span data-lang-en>📐 Geometry Puzzle — Math Logic Chain</span>
-                                        <span data-lang-zh>📐 几何谜题 — 数学逻辑链</span>
+                                        <span data-lang-en>📐 Geometry Puzzle — Math Reasoning</span>
+                                        <span data-lang-zh>📐 几何谜题 — 数学推理</span>
                                     </div>
                                     <div class="eval-hint" data-lang-en>
-                                        <strong>Coherence:</strong> Logic tree <code>[[1,2],3,4]</code>. Q1 and Q2 solve independent variables. Q3 combines Q1 & Q2 to find the total area. Q4 derives the final value A from Q3.
+                                        <strong>Reasoning Coherence:</strong> Logic tree <code>[[1,2],3,4]</code>. Q1 and Q2 solve independent variables (xb and ya). Q3 combines Q1 & Q2 to find the total area. Q4 derives the final value A from Q3. Requires multi-step mathematical reasoning and logical deduction, belonging to Level 3 (Complex Reasoning).
                                     </div>
                                     <div class="eval-hint" data-lang-zh>
-                                        <strong>连贯性测评：</strong>逻辑树 <code>[[1,2],3,4]</code>。Q1 和 Q2 求解独立变量。Q3 结合 Q1 和 Q2 计算总面积。Q4 从 Q3 推导最终值 A。
+                                        <strong>推理连贯性测评：</strong>逻辑树 <code>[[1,2],3,4]</code>。Q1 和 Q2 求解独立变量（xb 和 ya）。Q3 结合 Q1 和 Q2 计算总面积。Q4 从 Q3 推导最终值 A。需多步数学推理与逻辑推导，属于 Level 3（复杂推理）。
                                     </div>
                                     <div class="qa-tabs">
                                         <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -3107,8 +3035,6 @@
                     <div class="qa-option">G. xb=8</div>
                     <div class="qa-option">H. xb=1</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
             </div>
 
             <!-- Q2: Solve ya (Ans: 12) -->
@@ -3126,8 +3052,6 @@
                     <div class="qa-option">G. ya=16</div>
                     <div class="qa-option">H. ya=10</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
             </div>
 
             <!-- Q3: Total Area (Depends on Q1, Q2) (Ans: 18) -->
@@ -3147,8 +3071,6 @@
                     <div class="qa-option correct">✓ G. 24</div>
                     <div class="qa-option">H. 26</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
             </div>
 
             <!-- Q4: Value of A (Depends on Q3) (Ans: 12) -->
@@ -3168,8 +3090,6 @@
                     <div class="qa-option">G. 22</div>
                     <div class="qa-option">H. 24</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Level 3 · Knowledge Acquisition · Math Logic</div>
-                <div class="qa-dimension" data-lang-zh>📏 Level 3 · 知识获取 · 数学逻辑</div>
             </div>
 
         </div>
@@ -3190,10 +3110,10 @@
             <span data-lang-zh>📱 社交戒断 — 叙事转折点检测</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Consistency:</strong> Tests <em>complex plot comprehension</em>. Can the model identify key psychological turning points (decision to isolate, attempt to reconnect, relapse into addiction)?
+            <strong>Capability Consistency:</strong> All 4 questions test <em>narrative turning point detection</em> (Complex Plot Comprehension), same granularity but different turning point targets (decision to isolate → first attempt to reconnect → second attempt to reconnect → return to isolation). Requires understanding complex psychological states and narrative structure, belonging to Level 3 (Complex Reasoning).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>一致性测评：</strong>测试<em>复杂剧情理解</em>。模型能否识别关键的心理转折点（决定隔离、尝试重新连接、再次陷入成瘾）？
+            <strong>能力一致性测评：</strong>4个问题均测试<em>叙事转折点检测</em>（复杂剧情理解），同一粒度但不同转折点目标（决定隔离→首次尝试重新连接→第二次尝试重新连接→回归隔离）。需理解复杂心理状态与叙事结构，属于 Level 3（复杂推理）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -3217,8 +3137,6 @@
                     <div class="qa-option">G. After the proposal ends, he realizes that he never truly looked into the other person's eyes.</div>
                     <div class="qa-option correct">✓ H. A video of his failed proposal is recorded and shared on social media.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
-                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
             </div>
 
             <!-- Q2: Resume Social 1 (Ans: Flyer) -->
@@ -3235,8 +3153,6 @@
                     <div class="qa-option">G. Lasagna made by his mother.</div>
                     <div class="qa-option">H. A phone call from an unknown number.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
-                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
             </div>
 
             <!-- Q3: Resume Social 2 (Ans: Phone call from girl) -->
@@ -3253,8 +3169,6 @@
                     <div class="qa-option">G. His family coming to persuade him to go outside.</div>
                     <div class="qa-option">H. Picking up the lasagna made by his mother.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
-                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
             </div>
 
             <!-- Q4: Return to Quiet (Ans: Turning off phone) -->
@@ -3271,8 +3185,6 @@
                     <div class="qa-option">G. Making an emergency call that gets hung up on.</div>
                     <div class="qa-option">H. Being rejected by a girl at the dance party.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Complex Plot Comprehension · Narrative Turning Point</div>
-                <div class="qa-dimension" data-lang-zh>📏 复杂剧情理解 · 叙事转折点检测</div>
             </div>
 
         </div>
@@ -3293,10 +3205,10 @@
             <span data-lang-zh>🪵 木雕工艺 — 通用技能获取</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Consistency:</strong> Tests <em>video-based knowledge acquisition</em>. Can the model learn specific technical details (material selection, reversed operation logic, error analysis, cutting techniques) from a tutorial?
+            <strong>Capability Consistency:</strong> All 4 questions test <em>video-based knowledge acquisition</em> (General Skills), same granularity but different knowledge targets (material selection → reversed operation logic → error analysis → cutting technique analysis). Requires extracting and applying technical knowledge from instructional videos, belonging to Level 3 (Complex Reasoning).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>一致性测评：</strong>测试<em>基于视频的知识获取</em>。模型能否从教程中学会具体的技术细节（选材、镜像操作逻辑、错误分析、刀法辨析）？
+            <strong>能力一致性测评：</strong>4个问题均测试<em>基于视频的知识获取</em>（通用技能），同一粒度但不同知识目标（选材→镜像操作逻辑→错误分析→刀法辨析）。需从教学视频中提取并应用技术知识，属于 Level 3（复杂推理）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -3320,8 +3232,6 @@
                     <div class="qa-option">G. Choose straight-grained softwood with the grain direction aligned with the design shape.</div>
                     <div class="qa-option">H. Choose lightweight wood with a stable source, free of visible wormholes and cracks.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
-                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
             </div>
 
             <!-- Q2: Reversed Orientation Logic (Ans: Push lower both -> V lower-right -> Sweep upper-left) -->
@@ -3338,8 +3248,6 @@
                     <div class="qa-option correct">✓ G. Use a push cut to remove wood from the lower-left area of the head, and use only push cuts on the right side to remove excess material from the upper area.</div>
                     <div class="qa-option">H. First use a sweeping cut to remove wood from the lower areas on both sides of the head to make it left–right symmetrical, then use a V cut to remove wood from the lower-left area of the head, and finally use a push cut to remove wood from the upper-left area of the head.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
-                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
             </div>
 
             <!-- Q3: Error Analysis (Ans: Inner curve changed ratio) -->
@@ -3356,8 +3264,6 @@
                     <div class="qa-option">G. The tail tip and the lines on the abdomen are too sharp, possibly because rough cut was used initially to carve the general shape.</div>
                     <div class="qa-option">H. The tail tip and the lines on the abdomen are too sharp, possibly because a pencil outline was not drawn before carving.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
-                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
             </div>
 
             <!-- Q4: Technique Analysis (Ans: Push cut for delicate lines) -->
@@ -3374,8 +3280,6 @@
                     <div class="qa-option">G. Sweeping cut is mainly used for carving general shapes and smooth lines, such as carving the head's approximate shape and the connection between the upper head and beak, and is not used for later refinement due to space limitations.</div>
                     <div class="qa-option correct">✓ H. V cut can be used for later refinement, such as deepening wing edges and clarifying the connection line between the head and beak.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Video-Based Knowledge Acquisition · General Skills</div>
-                <div class="qa-dimension" data-lang-zh>📏 基于视频的知识获取 · 通用技能</div>
             </div>
 
         </div>
@@ -3397,10 +3301,10 @@
             <span data-lang-zh>💦 水枪大战 — 反事实推理</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Coherence:</strong> Linear logic chain <code>[1,2,3,4]</code>. Q1 establishes elimination rules → Q2 identifies first death scenario → Q3 analyzes attacker's preparation → Q4 performs counterfactual reasoning: <em>If the player survives, what weapon upgrade and tactical choice would follow?</em>
+            <strong>Reasoning Coherence:</strong> Linear logic chain <code>[1,2,3,4]</code>. Q1 establishes elimination rules → Q2 identifies first death scenario → Q3 analyzes attacker's preparation → Q4 performs counterfactual reasoning on weapon upgrade and tactics. Requires understanding game mechanics and hypothetical scenarios, belonging to Level 3 (Complex Reasoning).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。Q1 确立淘汰判定规则 → Q2 识别首次阵亡场景 → Q3 分析攻击者准备动作 → Q4 进行反事实推理：<em>若玩家存活，将升级何武器并采取何战术？</em>
+            <strong>推理连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。Q1 确立淘汰判定规则 → Q2 识别首次阵亡场景 → Q3 分析攻击者准备动作 → Q4 进行武器升级与战术的反事实推理。需理解游戏机制与假设场景，属于 Level 3（复杂推理）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -3425,8 +3329,6 @@
                     <div class="qa-option">G. Opponent can no longer move.</div>
                     <div class="qa-option">H. Opponent plays a death sound effect.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
             </div>
 
             <!-- Q2: First Death Scenario (Correct Answer: A → shuffled to position G) -->
@@ -3446,8 +3348,6 @@
                     <div class="qa-option correct">✓ G. He is using an X-Shot Pump Action water gun, and the target he is aiming at is a player on the yard's lawn.</div>
                     <div class="qa-option">H. His X-Shot Pump Action had just run out of water and he was preparing to jump into the pool to refill it.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
             </div>
 
             <!-- Q3: Attacker's Preparation (Correct Answer: A → shuffled to position C) -->
@@ -3467,8 +3367,6 @@
                     <div class="qa-option">G. He had just respawned and used his brief invincibility period to eliminate an opponent from an open position with ease.</div>
                     <div class="qa-option">H. He was reloading his red water gun, and his position on the elevated lawn gave him a clear line of sight over the pool.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
             </div>
 
             <!-- Q4: Counterfactual Weapon Upgrade (Correct Answer: A → shuffled to position E) -->
@@ -3488,8 +3386,6 @@
                     <div class="qa-option">G. He will upgrade to a rocket launcher. His most logical next move would be to set up a launch pad in the courtyard to attack players on large inflatable floating beds.</div>
                     <div class="qa-option">H. The game will end directly, as this is the last level up.</div>
                 </div>
-                <div class="qa-dimension" data-lang-en>📏 Physical World Reasoning · Counterfactual Reasoning</div>
-                <div class="qa-dimension" data-lang-zh>📏 物理世界推理 · 反事实推理</div>
             </div>
 
         </div>
@@ -4249,54 +4145,71 @@
 
     // Leaderboard Data - each metric has [w_sub, wo_sub]; updated from benchmark final_rating (level_1, level_2, level_3, relevance_linear_score, logic_score)
     const leaderboardDataRaw = [
-        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", frames: "1fps", level1: [58.4, 58.4], level2: [38.1, 38.0], level3: [30.3, 30.2], relevance: [42.0, 42.1], logic: [35.6, 35.5] },
-        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", frames: "1fps", level1: [30.7, 30.8], level2: [27.5, 27.5], level3: [20.0, 20.1], relevance: [27.0, 26.9], logic: [21.5, 21.4] },
-        { name: "GPT-5", logo: "openai", type: "proprietary", frames: "1fps", level1: [30.2, 30.1], level2: [25.5, 25.6], level3: [20.7, 20.7], relevance: [26.1, 26.0], logic: [21.8, 21.9] },
-        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [32.6, 23.3], level2: [25.4, 17.7], level3: [23.4, 15.8], relevance: [42.3, 34.9], logic: [24.8, 14.9] },
-        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [30.3, 18.8], level2: [27.0, 16.5], level3: [22.3, 13.3], relevance: [40.6, 31.6], logic: [26.1, 12.7] },
-        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [26.9, 25.6], level2: [17.7, 15.0], level3: [17.3, 16.9], relevance: [34.6, 33.4], logic: [20.3, 18.0] },
-        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [22.7, 23.4], level2: [15.9, 15.2], level3: [15.2, 15.6], relevance: [31.4, 31.7], logic: [18.5, 18.1] },
-        { name: "InternVL3_5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [19.4, 19.4], level2: [15.5, 15.5], level3: [14.0, 14.0], relevance: [17.4, 17.4], logic: [12.9, 12.9] },
-        { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [34.4, 26.5], logic: [20.9, 9.4] },
-        { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [33.8, 26.3], logic: [17.6, 7.4] },
-        { name: "Qwen3vl-8B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [23.0, 14.9], level2: [16.9, 12.5], level3: [15.7, 10.8], relevance: [32.7, 27.6], logic: [17.4, 9.3] },
-        { name: "Qwen3vl-4B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [23.1, 15.8], level2: [14.3, 9.8], level3: [14.2, 9.1], relevance: [31.2, 25.1], logic: [16.0, 9.0] },
-        { name: "InternVL3_5-8B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [22.5, 15.7], level2: [13.7, 10.0], level3: [14.2, 9.5], relevance: [29.9, 24.8], logic: [16.3, 9.6] },
-        { name: "Qwen3vl-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [14.7, 14.7], level2: [12.3, 12.3], level3: [10.9, 10.9], relevance: [27.7, 27.7], logic: [9.6, 9.6] },
-        { name: "InternVL3_5-30B-A3B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [21.2, 11.1], level2: [13.9, 7.7], level3: [13.3, 6.5], relevance: [30.5, 20.6], logic: [15.3, 6.0] },
-        { name: "Qwen3vl-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [20.0, 9.4], level2: [17.5, 9.3], level3: [14.2, 5.6], relevance: [29.5, 21.0], logic: [18.1, 5.1] },
-        { name: "Qwen2_5-VL-7B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [20.4, 13.6], level2: [14.8, 11.0], level3: [12.7, 8.3], relevance: [28.6, 23.6], logic: [16.2, 9.2] },
-        { name: "InternVL_3_5-4B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [20.4, 13.9], level2: [12.8, 10.0], level3: [12.5, 7.4], relevance: [29.4, 23.9], logic: [14.0, 7.2] },
-        { name: "Qwen2_5-VL-72B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [16.1, 16.1], level2: [13.6, 13.6], level3: [11.5, 11.5], relevance: [14.7, 14.7], logic: [10.5, 10.5] },
-        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", frames: "1fps", level1: [17.4, 17.4], level2: [11.8, 11.8], level3: [13.0, 13.0], relevance: [15.3, 15.3], logic: [10.8, 10.8] },
-        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "1fps", level1: [15.8, 15.8], level2: [12.0, 12.0], level3: [9.4, 9.4], relevance: [13.4, 13.4], logic: [8.8, 8.8] },
-        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", frames: "1fps", level1: [15.8, 15.8], level2: [8.9, 8.9], level3: [8.6, 8.6], relevance: [11.5, 11.5], logic: [8.7, 8.7] },
-        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "1fps", level1: [15.7, 15.7], level2: [11.4, 11.4], level3: [11.0, 11.0], relevance: [13.2, 13.2], logic: [10.6, 10.6] },
-        { name: "GLM4.5v-think", logo: "glm", type: "open", frames: "1fps", level1: [15.7, 15.7], level2: [13.4, 13.4], level3: [11.7, 11.7], relevance: [14.1, 14.1], logic: [11.6, 11.6] },
-        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", frames: "1fps", level1: [13.2, 13.2], level2: [6.6, 6.6], level3: [6.6, 6.6], relevance: [9.2, 9.2], logic: [6.4, 6.4] },
-        { name: "GLM4.1v-think", logo: "glm", type: "open", frames: "1fps", level1: [13.2, 13.2], level2: [8.7, 8.7], level3: [7.3, 7.3], relevance: [10.4, 10.4], logic: [6.8, 6.8] },
-        { name: "Keye-VL-1_5-8B", logo: "keye", type: "open", frames: "1fps", level1: [12.9, 12.9], level2: [9.4, 9.4], level3: [7.5, 7.5], relevance: [10.8, 10.8], logic: [6.9, 6.9] },
-        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", frames: "1fps", level1: [12.1, 12.1], level2: [9.4, 9.4], level3: [7.8, 7.8], relevance: [10.5, 10.5], logic: [7.3, 7.3] },
-        { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", frames: "1fps", level1: [8.2, 8.2], level2: [8.8, 8.8], level3: [6.7, 6.7], relevance: [9.4, 9.4], logic: [4.4, 4.4] },
-        { name: "GLM4.6-flash", logo: "glm", type: "open", frames: "1fps", level1: [3.6, 3.6], level2: [3.8, 3.8], level3: [3.1, 3.1], relevance: [4.6, 4.6], logic: [1.1, 1.1] },
+        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", frames: "1fps", level1: [58.4, 58.4], level2: [38.1, 38.0], level3: [30.3, 30.2], relevance: [42.0, 42.1], logic: [35.6, 35.5], overall: [null, null], avg_acc: [null, null] },
+        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", frames: "1fps", level1: [30.7, 30.8], level2: [27.5, 27.5], level3: [20.0, 20.1], relevance: [27.0, 26.9], logic: [21.5, 21.4], overall: [null, null], avg_acc: [null, null] },
+        { name: "GPT-5", logo: "openai", type: "proprietary", frames: "1fps", level1: [30.2, 30.1], level2: [25.5, 25.6], level3: [20.7, 20.7], relevance: [26.1, 26.0], logic: [21.8, 21.9], overall: [null, null], avg_acc: [null, null] },
+        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [32.6, 23.3], level2: [25.4, 17.7], level3: [23.4, 15.8], relevance: [42.3, 34.9], logic: [48.4, 38.4], overall: [26.3, 18.3], avg_acc: [44.4, 36.1] },
+        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [30.3, 18.8], level2: [27.0, 16.5], level3: [22.3, 13.3], relevance: [40.6, 31.6], logic: [49.9, 35.7], overall: [25.8, 15.7], avg_acc: [43.8, 33.0] },
+        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [26.9, 25.6], level2: [17.7, 15.0], level3: [17.3, 16.9], relevance: [34.6, 33.4], logic: [44.8, 41.4], overall: [19.9, 18.5], avg_acc: [38.1, 36.1] },
+        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [22.7, 23.4], level2: [15.9, 15.2], level3: [15.2, 15.6], relevance: [31.4, 31.7], logic: [40.9, 40.8], overall: [17.3, 17.5], avg_acc: [34.7, 34.8] },
+        { name: "InternVL3_5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [25.7, 18.3], level2: [22.3, 14.2], level3: [19.2, 14.7], relevance: [37.4, 31.3], logic: [47.2, 37.5], overall: [21.8, 15.5], avg_acc: [40.7, 33.4] },
+        { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [34.4, 26.5], logic: [42.7, 27.3], overall: [20.3, 12.2], avg_acc: [37.2, 26.8] },
+        { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [33.8, 26.3], logic: [39.1, 24.5], overall: [18.8, 11.2], avg_acc: [35.6, 25.7] },
+        { name: "Qwen3vl-8B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [23.0, 14.9], level2: [16.9, 12.5], level3: [15.7, 10.8], relevance: [32.7, 27.6], logic: [41.4, 31.0], overall: [17.9, 12.4], avg_acc: [35.7, 28.8] },
+        { name: "Qwen3vl-4B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [23.1, 15.8], level2: [14.3, 9.8], level3: [14.2, 9.1], relevance: [31.2, 25.1], logic: [38.6, 29.6], overall: [16.5, 11], avg_acc: [33.7, 26.6] },
+        { name: "InternVL3_5-8B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [22.5, 15.7], level2: [13.7, 10.0], level3: [14.2, 9.5], relevance: [29.9, 24.8], logic: [39.1, 30.2], overall: [16.1, 11.2], avg_acc: [33.1, 26.7] },
+        { name: "Qwen3vl-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [20.0, 14.7], level2: [20.9, 12.3], level3: [14.7, 10.9], relevance: [31.1, 27.7], logic: [39.1, 29.8], overall: [18.0, 12.3], avg_acc: [33.8, 28.4] },
+        { name: "InternVL3_5-30B-A3B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [21.2, 11.1], level2: [13.9, 7.7], level3: [13.3, 6.5], relevance: [30.5, 20.6], logic: [37.4, 23.0], overall: [15.5, 8.0], avg_acc: [32.8, 21.4] },
+        { name: "Qwen3vl-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [20.0, 9.4], level2: [17.5, 9.3], level3: [14.2, 5.6], relevance: [29.5, 21.0], logic: [38.3, 23.8], overall: [16.7, 7.7], avg_acc: [32.5, 22.0] },
+        { name: "Qwen2_5-VL-7B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [20.4, 13.6], level2: [14.8, 11.0], level3: [12.7, 8.3], relevance: [28.6, 23.6], logic: [38.8, 27.8], overall: [15.3, 10.5], avg_acc: [32.1, 25.0] },
+        { name: "InternVL_3_5-4B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [20.4, 13.9], level2: [12.8, 10.0], level3: [12.5, 7.4], relevance: [29.4, 23.9], logic: [36.2, 27.2], overall: [14.6, 9.9], avg_acc: [31.7, 25.0] },
+        { name: "Qwen2_5-VL-72B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [26.1, 17.3], level2: [20.4, 13.0], level3: [20.3, 12.9], relevance: [36.1, 28.7], logic: [45.5, 33.3], overall: [21.8, 14.0], avg_acc: [39.3, 30.2] },
+        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", frames: "1fps", level1: [22.8, 20.4], level2: [17.0, 13.0], level3: [18.2, 13.6], relevance: [35.3, 31.0], logic: [41.9, 33.6], overall: [19.0, 15.1], avg_acc: [37.6, 31.9] },
+        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "1fps", level1: [23.2, 15.2], level2: [18.5, 11.9], level3: [16.1, 9.5], relevance: [33.0, 26.3], logic: [41.3, 29.4], overall: [18.6, 11.7], avg_acc: [35.8, 27.4] },
+        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", frames: "1fps", level1: [19.0, 14.5], level2: [12.2, 9.7], level3: [11.7, 8.1], relevance: [27.7, 24.2], logic: [36.2, 26.8], overall: [13.7, 10.2], avg_acc: [30.6, 25.1] },
+        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "1fps", level1: [22.0, 17.7], level2: [15.5, 11.9], level3: [12.6, 8.5], relevance: [30.6, 25.6], logic: [37.1, 29.9], overall: [15.9, 11.9], avg_acc: [32.8, 27.1] },
+        { name: "GLM4.5v-think", logo: "glm", type: "open", frames: "1fps", level1: [null, null], level2: [null, null], level3: [null, null], relevance: [null, null], logic: [null, null], overall: [null, null], avg_acc: [null, null] },
+        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", frames: "1fps", level1: [16.0, 12.8], level2: [6.9, 5.7], level3: [7.2, 5.5], relevance: [22.1, 19.3], logic: [27.4, 21.0], overall: [9.4, 7.4], avg_acc: [23.9, 19.9] },
+        { name: "GLM4.1v-think", logo: "glm", type: "open", frames: "1fps", level1: [null, null], level2: [null, null], level3: [null, null], relevance: [null, null], logic: [null, null], overall: [null, null], avg_acc: [null, null] },
+        { name: "Keye-VL-1_5-8B", logo: "keye", type: "open", frames: "1fps", level1: [21.2, 14.6], level2: [13.6, 9.9], level3: [11.4, 6.8], relevance: [28.7, 24.3], logic: [37.4, 27.4], overall: [14.6, 9.8], avg_acc: [31.7, 25.3] },
+        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", frames: "1fps", level1: [18.1, 12.5], level2: [12.7, 10.0], level3: [13.1, 8.0], relevance: [27.0, 23.6], logic: [36.5, 26.4], overall: [14.3, 9.8], avg_acc: [30.2, 24.6] },
+        { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", frames: "1fps", level1: [8.2, 8.2], level2: [8.8, 8.8], level3: [6.7, 6.7], relevance: [9.4, 9.4], logic: [4.4, 4.4], overall: [null, null], avg_acc: [null, null] },
+        { name: "GLM4.6-flash", logo: "glm", type: "open", frames: "1fps", level1: [null, null], level2: [null, null], level3: [null, null], relevance: [null, null], logic: [null, null], overall: [null, null], avg_acc: [null, null] },
     ];
 
-    // Expand data with computed avg_acc [w_sub, wo_sub], overall [w_sub, wo_sub], and sort keys
+    // Expand data - all values are directly provided, no calculations
     const leaderboardData = leaderboardDataRaw.map(item => {
-        const avg_acc_w = (item.level1[0] + item.level2[0] + item.level3[0] + item.relevance[0] + item.logic[0]) / 5;
-        const avg_acc_o = (item.level1[1] + item.level2[1] + item.level3[1] + item.relevance[1] + item.logic[1]) / 5;
-        const overall_w = (item.relevance[0] + item.logic[0]) / 2;
-        const overall_o = (item.relevance[1] + item.logic[1]) / 2;
-        const l1 = (item.level1[0] + item.level1[1]) / 2, l2 = (item.level2[0] + item.level2[1]) / 2, l3 = (item.level3[0] + item.level3[1]) / 2;
-        const rel = (item.relevance[0] + item.relevance[1]) / 2, log = (item.logic[0] + item.logic[1]) / 2;
+        // Helper function to calculate average for sorting (only if both values exist)
+        const calcAvg = (arr) => {
+            if (arr[0] !== null && arr[0] !== undefined && arr[1] !== null && arr[1] !== undefined) {
+                return (arr[0] + arr[1]) / 2;
+            }
+            return arr[0] !== null && arr[0] !== undefined ? arr[0] : (arr[1] !== null && arr[1] !== undefined ? arr[1] : null);
+        };
+        
+        // Use directly provided values, or calculate avg for sorting only
+        const avg_acc = item.avg_acc || [null, null];
+        const overall = item.overall || item.overall_direct || [null, null];
+        
         return {
             ...item,
             frames: item.frames || "1fps",
-            level1_avg: l1, level2_avg: l2, level3_avg: l3, relevance_avg: rel, logic_avg: log,
-            avg_acc: [avg_acc_w, avg_acc_o],
-            overall: [overall_w, overall_o],
-            avg_acc_avg: (avg_acc_w + avg_acc_o) / 2,
-            overall_avg: (overall_w + overall_o) / 2
+            level1_avg: calcAvg(item.level1),
+            level2_avg: calcAvg(item.level2),
+            level3_avg: calcAvg(item.level3),
+            relevance_avg: calcAvg(item.relevance),
+            logic_avg: calcAvg(item.logic),
+            avg_acc: avg_acc,
+            overall: overall,
+            avg_acc_avg: calcAvg(avg_acc),
+            overall_avg: calcAvg(overall),
+            overall_w: overall[0],
+            level1_w: item.level1[0],
+            level2_w: item.level2[0],
+            level3_w: item.level3[0],
+            relevance_w: item.relevance[0],
+            logic_w: item.logic[0],
+            avg_acc_w: avg_acc[0]
         };
     });
 
@@ -4317,10 +4230,13 @@
     };
 
     // Current sort state
-    let currentSort = { column: 'avg_acc', direction: 'desc' };
+    let currentSort = { column: 'overall', direction: 'desc' };
     let currentFilter = 'all';
 
-    function fmt(v) { return typeof v === 'number' ? v.toFixed(1) : v; }
+    function fmt(v) { 
+        if (v === null || v === undefined || isNaN(v)) return '-';
+        return typeof v === 'number' ? v.toFixed(1) : v; 
+    }
 
     // Render leaderboard
     function renderLeaderboard() {
@@ -4331,7 +4247,7 @@
         }
         
         const sortCol = currentSort.column;
-        const sortKey = { level1: 'level1_avg', level2: 'level2_avg', level3: 'level3_avg', relevance: 'relevance_avg', logic: 'logic_avg', avg_acc: 'avg_acc_avg', overall: 'overall_avg' }[sortCol] || sortCol;
+        const sortKey = { level1: 'level1_w', level2: 'level2_w', level3: 'level3_w', relevance: 'relevance_w', logic: 'logic_w', avg_acc: 'avg_acc_w', overall: 'overall_w' }[sortCol] || sortCol;
         data.sort((a, b) => {
             let aVal = a[sortKey] != null ? (typeof a[sortKey] === 'string' ? parseFloat(a[sortKey]) : a[sortKey]) : 0;
             let bVal = b[sortKey] != null ? (typeof b[sortKey] === 'string' ? parseFloat(b[sortKey]) : b[sortKey]) : 0;
@@ -4353,6 +4269,8 @@
                         </div>
                     </td>
                     <td>${item.frames || '1fps'}</td>
+                    <td>${fmt(item.overall[0])}</td>
+                    <td>${fmt(item.overall[1])}</td>
                     <td class="${l1w >= 30 ? 'score-high' : l1w >= 15 ? 'score-mid' : ''}">${fmt(l1w)}</td>
                     <td class="${l1o >= 30 ? 'score-high' : l1o >= 15 ? 'score-mid' : ''}">${fmt(l1o)}</td>
                     <td class="${l2w >= 25 ? 'score-high' : l2w >= 12 ? 'score-mid' : ''}">${fmt(l2w)}</td>
@@ -4365,8 +4283,6 @@
                     <td>${fmt(logo)}</td>
                     <td>${fmt(item.avg_acc[0])}</td>
                     <td>${fmt(item.avg_acc[1])}</td>
-                    <td>${fmt(item.overall[0])}</td>
-                    <td>${fmt(item.overall[1])}</td>
                 </tr>
             `;
         }).join('');
