@@ -1929,7 +1929,7 @@
                         <li>一个好的视频理解模型需要什么能力？</li>
                         <li>这些能力如何得到正确的、充分的评估？</li>
                     </ul>
-                    <p style="margin-top: 1rem; margin-bottom: 0;">为此，我们提出了：<strong>(1)</strong> 完整的能力评估体系，通过构建 Multi-level 的视频理解能力评估体系，Video-MME-v2 实现了单点信息聚合—时序理解—复杂视频推理的全方位评价体系；<strong>(2)</strong> 鲁棒的评估机制，引入基于任务分组的评测方式，以问题组为单位的评估更进一步强调模型能力的鲁棒性。</p>
+                    <p style="margin-top: 1rem; margin-bottom: 0;">为此，我们提出了：<strong>(1)</strong> 完整的能力评估体系，通过构建 Multi-level 的视频理解能力评估体系，Video-MME-v2 实现了多点信息聚合—时序信息理解—时序复杂推理的全方位评价体系；<strong>(2)</strong> 鲁棒的评估机制，引入基于任务分组的评测方式，以问题组为单位的评估更进一步强调模型能力的鲁棒性。</p>
                 </div>
 
                 <h3 class="intro-h3">1. 能力评估体系</h3>
@@ -1937,21 +1937,21 @@
                 <div class="capability-grid">
                     <div class="capability-card">
                         <span class="level-badge lvl-1">Level 1</span>
-                        <h4>单点信息聚合</h4>
-                        <p>强调对于一个/多个固定时间点的信息整合能力。</p>
+                        <h4>多点信息聚合</h4>
+                        <p>考察模型对多个离散时间点内视觉特征的提取与整合能力。要求模型能够精准定位并识别特定帧内的物体、属性及场景要素，这是视频理解的基础感知层。</p>
                     </div>
                     <div class="capability-card">
                         <span class="level-badge lvl-2">Level 2</span>
-                        <h4>时序理解</h4>
-                        <p>关注于时序相关的任务解决能力。</p>
+                        <h4>时序信息理解</h4>
+                        <p>聚焦于视频的动态演变与因果关联。模型需具备长时序上下文建模能力，能够正确解析动作序列、状态变化以及事件发生的先后逻辑等时间强相关信息。</p>
                     </div>
                     <div class="capability-card">
                         <span class="level-badge lvl-3">Level 3</span>
-                        <h4>复杂推理</h4>
-                        <p>引入复杂任务推理的场景，检验模型在真实、多样化视频理解场景中的真实能力。</p>
+                        <h4>时序复杂推理</h4>
+                        <p>构建真实视频场景中的高阶认知任务。模型不仅能处理多模态信息，还需结合世界知识、社会习惯等高阶能力进行多跳推理，以应对真实场景中非结构化、高复杂度的理解挑战。</p>
                     </div>
                 </div>
-                <p>这一评价体系融合了已有的视频评估数据集以及我们对于在真实场景中可用的视频理解模型的思考，从而全方位地检验模型从基础到落地的真实水平。</p>
+                <p>这一评价体系融合了已有的视频评估数据集分类以及我们对于在真实场景中可用的视频理解模型的思考，从而全方位地检验模型从基础到落地的真实水平。</p>
 
                 <h3 class="intro-h3">2. 基于任务分组的评测方式</h3>
                 <p>我们构建了两种重要的任务分组：</p>
@@ -1959,15 +1959,31 @@
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>能力一致性</h4>
-                        <p>针对一种能力，通过不同广度和粒度进行评估。</p>
+                        <p>旨在验证模型在特定能力域下的鲁棒性。通过构建多粒度与多跨度的测试样本，在不同上下文长度及视觉复杂度下，对同一核心能力（如视频计数、动作理解）进行压力测试。这能有效区分模型是真正掌握了该能力，还是仅在特定分布下表现良好。</p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
                         <h4>推理连贯性</h4>
-                        <p>对推理逻辑链路的关键节点进行检查；</p>
+                        <p>侧重于评估模型思维链的严密性。不仅关注最终答案的准确性，更引入了中间过程监督机制，对推理路径中的关键逻辑节点进行显式验证。旨在确保模型的输出是基于正确的因果推导，而非源于语言模型的统计相关性猜测。</p>
                     </div>
                 </div>
-                <p>这两种任务分组共同评估了模型能力的鲁棒性和全面性。</p>
+                <p>这两种分组策略相辅相成，共同构成了对模型鲁棒性与全链路推理能力的全面评估，使得视频理解的评估从结果正确迈向过程正确。</p>
+                
+                <h3 class="intro-h3">3. 视频标注与模型评估</h3>
+                <p>我们精心设计了基于人工检验的数据标注流程以及基于问题分组的模型评估流程：</p>
+                <div class="framework-grid">
+                    <div class="framework-card consistency">
+                        <div class="icon">🎯</div>
+                        <h4>视频标注</h4>
+                        <p>构建了全链路严谨的基于人工标注的流水线。严格筛选高时效性数据以规避数据污染；采用 Group-based 策略构建包含显式推理链的问答对，并引入 8 选项对抗性设计以降低随机猜测基线；最终通过 Text-Only 测试与多轮交叉校验消除语言先验与主观偏差，确保标注数据的多模态强依赖性与逻辑完备性。</p>
+                    </div>
+                    <div class="framework-card coherence">
+                        <div class="icon">🔗</div>
+                        <h4>模型评估</h4>
+                        <p>建立以问题组为核心单元的 Group-based Evaluation 体系。引入渐进式一致性加权，通过非线性分数增益衡量模型在同一问题组内的鲁棒性。针对逻辑链，实施首错截断的评分机制，以首个逻辑错误作为置信度边界，杜绝错误前提下的伪正确，确保评估指标具备高度的因果保真度。</p>
+                    </div>
+                </div>
+                <p>严谨的人工介入标注流水线与对抗性层级评估体系构成了双重质检闭环。二者协同作用，将评估维度从单一的结果准确率提升至全链路理解推理鲁棒性，为多模态模型的真实认知能力确立了高置信度的度量基准。</p>
             </div>
         </article>
     </section>
@@ -3624,10 +3640,10 @@
                             <span>视频筛选</span>
                         </div>
                         <div class="ann-criterion-body">
-                            <div class="ann-subitem">来源：YouTube 视频，2025 年起发布的视频以保证时效性</div>
-                            <div class="ann-subitem">视频多样性，覆盖不同类别与风格</div>
-                            <div class="ann-subitem">播放量门槛，确保内容质量</div>
-                            <div class="ann-subitem">人工筛选去除经典视频内容：经典电影、知名 up 主的代表性视频</div>
+                            <div class="ann-subitem">时效性数据源：严格限定数据源为 2025 年及以后发布的 YouTube 视频，以确保评估基准的时效性，无数据污染。</div>
+                            <div class="ann-subitem">多样性覆盖：构建多层次分类体系，确保样本在题材类别与视觉风格上的广泛分布。</div>
+                            <div class="ann-subitem">质量控制阈值：引入播放量作为内容质量的近似指标，剔除低质噪点数据。</div>
+                            <div class="ann-subitem">人工去污染：人工剔除经典影视作品及头部博主内容，最大限度规避模型因训练集记忆产生的评估偏差。</div>
                         </div>
                     </div>
 
@@ -3637,9 +3653,9 @@
                             <span>问题设计</span>
                         </div>
                         <div class="ann-criterion-body">
-                            <div class="ann-subitem">Group-based 设计：横向扩展能力覆盖（相关性）；纵向标注推理过程（逻辑链）</div>
-                            <div class="ann-subitem">人工检验相关性与逻辑推理节点的严谨性</div>
-                            <div class="ann-subitem">标注过程中使用 frontier 模型对各类问题进行校验，确保问题有效性</div>
+                            <div class="ann-subitem">Group-based 分层架构：确保能力一致性问题的覆盖广度，以及逻辑连贯性的问题深度。</div>
+                            <div class="ann-subitem">严谨性校验：通过人工审核机制，严格验证图文相关性及推理节点的逻辑完备性。</div>
+                            <div class="ann-subitem">实时追踪模型能力：在标注流程中使用最先进的模型 (Gemini-3.0-Pro) 进行对抗性校验，确保benchmark的挑战性和题目的严谨性。</div>
                         </div>
                     </div>
 
@@ -3649,8 +3665,8 @@
                             <span>选项设计</span>
                         </div>
                         <div class="ann-criterion-body">
-                            <div class="ann-subitem">8 选项设计，降低模型蒙对的概率</div>
-                            <div class="ann-subitem">每道题至少标注一个强干扰项；干扰项基于 GT 选出后进行人工润色</div>
+                            <div class="ann-subitem">高困惑度设计：采用 8 选项设计，将随机猜测基线降低至 12.5%，显著提升评估区分度和模型困惑度。</div>
+                            <div class="ann-subitem">强干扰项构建：每题预设至少一个基于 Ground Truth 构建的强干扰项，并经人工精细润色，以精准测试模型的细粒度辨析能力。</div>
                         </div>
                     </div>
 
@@ -3662,20 +3678,20 @@
                         <div class="ann-criterion-body">
                             <div class="ann-qa-grid">
                                 <div class="ann-qa-item">
-                                    <strong>a. Text-Only 检查</strong>
-                                    <p>Gemini-3-Pro text-only 控制纯文本可解题比例</p>
+                                    <strong>a. 文本基线测试</strong>
+                                    <p>利用 Gemini-3-Pro 进行 Text-Only 模式下的基线测试，剔除无需视觉信息即可作答的题目，从而严格控制语言先验偏差，确保多模态推理的必要性。</p>
                                 </div>
                                 <div class="ann-qa-item">
-                                    <strong>b. 交错检查</strong>
-                                    <p>标注同学互相审核；每道题至少 3–4 人初步审核，修改问题描述（歧义）、选项设置等</p>
+                                    <strong>b. 交叉验证机制</strong>
+                                    <p>实施多轮次同行评审流程，每道题目至少经由 4 名标注人员交叉审核，重点修正语义歧义及优化选项设置，确保标注的一致性与准确性。</p>
                                 </div>
                                 <div class="ann-qa-item">
-                                    <strong>c. 外部测评</strong>
-                                    <p>新同学（未见过视频与问题）进行细粒度检查，降低标注同学主观性对质量的影响</p>
+                                    <strong>c. 独立盲测</strong>
+                                    <p>引入未接触过特定视频数据的独立评估人员进行细粒度校验，以客观视角降低标注者的主观偏差，提升数据集的泛化质量。</p>
                                 </div>
                                 <div class="ann-qa-item">
-                                    <strong>d. 修改后复验</strong>
-                                    <p>针对修改后问题重新 text-only 实验；交由未见过该视频的同学再次 validation，确保修改有效性</p>
+                                    <strong>d. 闭环迭代验证</strong>
+                                    <p>建立修正-复验的闭环机制。针对修正后的题目执行二次 Text-Only 检测及独立盲测，确保每一轮修改均有效提升了数据质量，实现评估集的收敛。</p>
                                 </div>
                             </div>
                         </div>
