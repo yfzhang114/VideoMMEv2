@@ -1997,8 +1997,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Consistency</em> = capability consistency across dimensions. <em>Coherence</em> = reasoning coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric, average of Consistency and Coherence.</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>Consistency</em> = 能力一致性。<em>Coherence</em> = 推理连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标，即 Consistency 与 Coherence 的平均值。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., Qwen-Omni, Gemini 3.0 Flash, Gemini 3.0 Pro), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric.</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 Qwen-Omni、Gemini 3.0 Flash、Gemini 3.0 Pro），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
@@ -4145,13 +4145,14 @@
 
     // Leaderboard Data - each metric has [w_sub, wo_sub]; updated from benchmark final_rating (level_1, level_2, level_3, relevance_linear_score, logic_score)
     const leaderboardDataRaw = [
-        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", frames: "1fps", level1: [58.4, 58.4], level2: [38.1, 38.0], level3: [30.3, 30.2], relevance: [42.0, 42.1], logic: [35.6, 35.5], overall: [null, null], avg_acc: [null, null] },
-        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", frames: "1fps", level1: [30.7, 30.8], level2: [27.5, 27.5], level3: [20.0, 20.1], relevance: [27.0, 26.9], logic: [21.5, 21.4], overall: [null, null], avg_acc: [null, null] },
-        { name: "GPT-5", logo: "openai", type: "proprietary", frames: "1fps", level1: [30.2, 30.1], level2: [25.5, 25.6], level3: [20.7, 20.7], relevance: [26.1, 26.0], logic: [21.8, 21.9], overall: [null, null], avg_acc: [null, null] },
+        { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [58.4, null], level2: [38.1, null], level3: [30.3, null], relevance: [42.0, null], logic: [35.6, null], overall: [39.8, null], avg_acc: [58.2, null] },
+        { name: "Gemini-3-Pro", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [58.4, null], level2: [41.8, null], level3: [34.0, null], relevance: [43.3, null], logic: [41.2, null], overall: [42.6, null], avg_acc: [60.5, null] },
+        { name: "Doubao-Seed-1.6-Vision-250815", logo: "doubao", type: "proprietary", frames: "1fps", level1: [30.7, 30.8], level2: [27.5, 27.5], level3: [20.0, 20.1], relevance: [27.0, 26.9], logic: [21.5, 21.4], overall: [25.1, 25.1], avg_acc: [43.6, 43.6] },
+        { name: "GPT-5", logo: "openai", type: "proprietary", frames: "1fps", level1: [30.2, 30.2], level2: [25.5, 25.5], level3: [20.7, 20.7], relevance: [26.1, 26.1], logic: [21.8, 21.8], overall: [24.6, 24.6], avg_acc: [43.7, 43.7] },
         { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [32.6, 23.3], level2: [25.4, 17.7], level3: [23.4, 15.8], relevance: [42.3, 34.9], logic: [48.4, 38.4], overall: [26.3, 18.3], avg_acc: [44.4, 36.1] },
         { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [30.3, 18.8], level2: [27.0, 16.5], level3: [22.3, 13.3], relevance: [40.6, 31.6], logic: [49.9, 35.7], overall: [25.8, 15.7], avg_acc: [43.8, 33.0] },
-        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", frames: "1fps", level1: [26.9, 25.6], level2: [17.7, 15.0], level3: [17.3, 16.9], relevance: [34.6, 33.4], logic: [44.8, 41.4], overall: [19.9, 18.5], avg_acc: [38.1, 36.1] },
-        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "1fps", level1: [22.7, 23.4], level2: [15.9, 15.2], level3: [15.2, 15.6], relevance: [31.4, 31.7], logic: [40.9, 40.8], overall: [17.3, 17.5], avg_acc: [34.7, 34.8] },
+        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", omni: true, frames: "1fps", level1: [26.9, null], level2: [17.7, null], level3: [17.3, null], relevance: [34.6, null], logic: [44.8, null], overall: [19.9, null], avg_acc: [38.1, null] },
+        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", omni: true, frames: "1fps", level1: [22.7, null], level2: [15.9, null], level3: [15.2, null], relevance: [31.4, null], logic: [40.9, null], overall: [17.3, null], avg_acc: [34.7, null] },
         { name: "InternVL3_5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "1fps", level1: [25.7, 18.3], level2: [22.3, 14.2], level3: [19.2, 14.7], relevance: [37.4, 31.3], logic: [47.2, 37.5], overall: [21.8, 15.5], avg_acc: [40.7, 33.4] },
         { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [34.4, 26.5], logic: [42.7, 27.3], overall: [20.3, 12.2], avg_acc: [37.2, 26.8] },
         { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", frames: "1fps", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [33.8, 26.3], logic: [39.1, 24.5], overall: [18.8, 11.2], avg_acc: [35.6, 25.7] },
@@ -4233,7 +4234,8 @@
     let currentSort = { column: 'overall', direction: 'desc' };
     let currentFilter = 'all';
 
-    function fmt(v) { 
+    function fmt(v, isOmniWo) { 
+        if (isOmniWo) return '/';
         if (v === null || v === undefined || isNaN(v)) return '-';
         return typeof v === 'number' ? v.toFixed(1) : v; 
     }
@@ -4255,10 +4257,12 @@
         });
 
         const tbody = document.getElementById('leaderboardBody');
+        const isOmni = (item) => item.omni === true;
         tbody.innerHTML = data.map((item, index) => {
             const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-default';
             const l1w = item.level1[0], l1o = item.level1[1], l2w = item.level2[0], l2o = item.level2[1], l3w = item.level3[0], l3o = item.level3[1];
             const relw = item.relevance[0], relo = item.relevance[1], logw = item.logic[0], logo = item.logic[1];
+            const omniWo = isOmni(item);
             return `
                 <tr>
                     <td>
@@ -4270,19 +4274,19 @@
                     </td>
                     <td>${item.frames || '1fps'}</td>
                     <td>${fmt(item.overall[0])}</td>
-                    <td>${fmt(item.overall[1])}</td>
+                    <td>${fmt(item.overall[1], omniWo)}</td>
                     <td class="${l1w >= 30 ? 'score-high' : l1w >= 15 ? 'score-mid' : ''}">${fmt(l1w)}</td>
-                    <td class="${l1o >= 30 ? 'score-high' : l1o >= 15 ? 'score-mid' : ''}">${fmt(l1o)}</td>
+                    <td class="${l1o >= 30 ? 'score-high' : l1o >= 15 ? 'score-mid' : ''}">${fmt(l1o, omniWo)}</td>
                     <td class="${l2w >= 25 ? 'score-high' : l2w >= 12 ? 'score-mid' : ''}">${fmt(l2w)}</td>
-                    <td class="${l2o >= 25 ? 'score-high' : l2o >= 12 ? 'score-mid' : ''}">${fmt(l2o)}</td>
+                    <td class="${l2o >= 25 ? 'score-high' : l2o >= 12 ? 'score-mid' : ''}">${fmt(l2o, omniWo)}</td>
                     <td class="${l3w >= 20 ? 'score-high' : l3w >= 10 ? 'score-mid' : ''}">${fmt(l3w)}</td>
-                    <td class="${l3o >= 20 ? 'score-high' : l3o >= 10 ? 'score-mid' : ''}">${fmt(l3o)}</td>
+                    <td class="${l3o >= 20 ? 'score-high' : l3o >= 10 ? 'score-mid' : ''}">${fmt(l3o, omniWo)}</td>
                     <td>${fmt(relw)}</td>
-                    <td>${fmt(relo)}</td>
+                    <td>${fmt(relo, omniWo)}</td>
                     <td>${fmt(logw)}</td>
-                    <td>${fmt(logo)}</td>
+                    <td>${fmt(logo, omniWo)}</td>
                     <td>${fmt(item.avg_acc[0])}</td>
-                    <td>${fmt(item.avg_acc[1])}</td>
+                    <td>${fmt(item.avg_acc[1], omniWo)}</td>
                 </tr>
             `;
         }).join('');
