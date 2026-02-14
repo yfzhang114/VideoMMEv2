@@ -1,284 +1,268 @@
-<svg width="1486" height="1187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 1486 1187">
-<rect width="1486" height="1187" x="0" y="0" fill="none"></rect>
-<path d="M743 546.02A47.48 47.48 0 1 1 742.9953 546.02Z" fill="#3a5f7d" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" filter="url(#zr1-s0)" class="zr1-cls-40"></path>
-<path d="M743 406.8434A20 20 0 0 1 765.1308 386.9573A207.725 207.725 0 0 1 950.6648 588.501A20 20 0 0 1 929.019 608.914L807.2279 598.8221A20 20 0 0 1 789.3539 583.2204A47.48 47.48 0 0 0 757.0723 548.1533A20 20 0 0 1 743 529.052Z" fill="#6b9ac4" stroke="#fff" stroke-width="2" stroke-linejoin="bevel" class="zr1-cls-41"></path>
-<path d="M743 228.2722A20 20 0 0 1 764.0936 208.3021A385.775 385.775 0 0 1 1012.113 317.0935A20 20 0 0 1 1011.7068 346.1379L909.8953 439.862A20 20 0 0 1 882.8817 439.9331A207.725 207.725 0 0 0 761.2435 386.5777A20 20 0 0 1 743 366.655Z" fill="#8fb3d9" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-42"></path>
-<path d="M743 196.0322A11.87 11.87 0 0 1 755.2243 184.1675A409.515 409.515 0 0 1 841.5227 196.0131A11.87 11.87 0 0 1 850.0979 210.7329L850.0979 210.7329A11.87 11.87 0 0 1 835.8112 219.0558A385.775 385.775 0 0 0 754.5157 207.8969A11.87 11.87 0 0 1 743 196.0322Z" fill="#b3d1ee" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-43"></path>
-<path d="M850.0979 210.7329A11.87 11.87 0 0 1 865.0671 202.6008A409.515 409.515 0 0 1 944.9818 237.2615A11.87 11.87 0 0 1 949.2737 253.7474L949.2737 253.7474A11.87 11.87 0 0 1 933.2728 257.913A385.775 385.775 0 0 0 857.9907 225.2617A11.87 11.87 0 0 1 850.0979 210.7329Z" fill="#c9e0f5" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-44"></path>
-<path d="M949.2737 253.7474A11.87 11.87 0 0 1 965.8804 249.9496A409.515 409.515 0 0 1 1035.8764 307.2729A11.87 11.87 0 0 1 1035.4266 324.3024L1035.4266 324.3024A11.87 11.87 0 0 1 1018.8981 323.8658A385.775 385.775 0 0 0 952.9598 269.8656A11.87 11.87 0 0 1 949.2737 253.7474Z" fill="#dbe9f7" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-45"></path>
-<path d="M1011.7068 346.1379A20 20 0 0 1 1040.6856 348.1316A385.775 385.775 0 0 1 1128.6241 604.2879A20 20 0 0 1 1106.9804 623.6603L969.0703 612.2327A20 20 0 0 1 950.7221 592.4063A207.725 207.725 0 0 0 907.5937 466.7775A20 20 0 0 1 909.8953 439.862Z" fill="#7fa5d6" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-46"></path>
-<path d="M1035.4266 324.3024A11.87 11.87 0 0 1 1052.435 325.2604A409.515 409.515 0 0 1 1102.1682 396.775A11.87 11.87 0 0 1 1097.1464 413.0534L1097.1464 413.0534A11.87 11.87 0 0 1 1081.3469 408.1793A385.775 385.775 0 0 0 1034.4968 340.8105A11.87 11.87 0 0 1 1035.4266 324.3024Z" fill="#a3c6eb" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-47"></path>
-<path d="M1097.1464 413.0534A11.87 11.87 0 0 1 1113.2677 418.5589A409.515 409.515 0 0 1 1141.8918 500.8291A11.87 11.87 0 0 1 1132.6695 515.1523L1132.6695 515.1523A11.87 11.87 0 0 1 1118.7676 506.2013A385.775 385.775 0 0 0 1091.8029 428.7004A11.87 11.87 0 0 1 1097.1464 413.0534Z" fill="#c0daf2" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-48"></path>
-<path d="M1132.6695 515.1523A11.87 11.87 0 0 1 1146.711 524.7981A409.515 409.515 0 0 1 1151.9439 615.1198A11.87 11.87 0 0 1 1139.1102 626.3226L1139.1102 626.3226A11.87 11.87 0 0 1 1128.237 613.8665A385.775 385.775 0 0 0 1123.3075 528.7808A11.87 11.87 0 0 1 1132.6695 515.1523Z" fill="#d5e6f8" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-49"></path>
-<path d="M929.019 608.914A20 20 0 0 1 947.0097 632.6114A207.725 207.725 0 0 1 664.16 785.682A20 20 0 0 1 654.1613 757.6596L712.3261 650.1804A20 20 0 0 1 733.7936 640.0789A47.48 47.48 0 0 0 787.0297 611.269A20 20 0 0 1 807.2279 598.8221Z" fill="#d98c6c" stroke="#fff" stroke-width="2" stroke-linejoin="bevel" class="zr1-cls-50"></path>
-<path d="M1106.9804 623.6603A20 20 0 0 1 1125.1403 646.3309A385.775 385.775 0 0 1 1040.6856 838.8684A20 20 0 0 1 1011.7068 840.8621L909.8953 747.138A20 20 0 0 1 907.5937 720.2225A207.725 207.725 0 0 0 947.709 628.7687A20 20 0 0 1 969.0703 612.2327Z" fill="#e1a287" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-51"></path>
-<path d="M1139.1102 626.3226A11.87 11.87 0 0 1 1149.925 639.485A409.515 409.515 0 0 1 1142.8079 682.1349A11.87 11.87 0 0 1 1128.3054 691.0726L1128.3054 691.0726A11.87 11.87 0 0 1 1119.6307 676.9967A385.775 385.775 0 0 0 1126.3351 636.8192A11.87 11.87 0 0 1 1139.1102 626.3226Z" fill="#ebc0ab" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-52"></path>
-<path d="M1128.3054 691.0726A11.87 11.87 0 0 1 1136.8061 705.8355A409.515 409.515 0 0 1 1122.7662 746.7323A11.87 11.87 0 0 1 1106.9904 753.161L1106.9904 753.161A11.87 11.87 0 0 1 1100.7508 737.8493A385.775 385.775 0 0 0 1113.9768 699.3233A11.87 11.87 0 0 1 1128.3054 691.0726Z" fill="#f2d5c5" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-53"></path>
-<path d="M1106.9904 753.161A11.87 11.87 0 0 1 1112.9453 769.1217A409.515 409.515 0 0 1 1092.3655 807.1499A11.87 11.87 0 0 1 1075.7467 810.8943L1075.7467 810.8943A11.87 11.87 0 0 1 1072.1125 794.7644A385.775 385.775 0 0 0 1091.4992 758.9407A11.87 11.87 0 0 1 1106.9904 753.161Z" fill="#f6e2d4" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-54"></path>
-<path d="M1075.7467 810.8943A11.87 11.87 0 0 1 1078.9934 827.6175A409.515 409.515 0 0 1 1052.435 861.7396A11.87 11.87 0 0 1 1035.4266 862.6976L1035.4266 862.6976A11.87 11.87 0 0 1 1034.4968 846.1895A385.775 385.775 0 0 0 1059.5155 814.0454A11.87 11.87 0 0 1 1075.7467 810.8943Z" fill="#f8e5dc" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-55"></path>
-<path d="M1011.7068 840.8621A20 20 0 0 1 1012.113 869.9065A385.775 385.775 0 0 1 827.2074 969.9724A20 20 0 0 1 803.1145 953.7466L780.3375 817.2512A20 20 0 0 1 795.053 794.5974A207.725 207.725 0 0 0 882.8817 747.0669A20 20 0 0 1 909.8953 747.138Z" fill="#d29a7c" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-56"></path>
-<path d="M1035.4266 862.6976A11.87 11.87 0 0 1 1035.8764 879.7271A409.515 409.515 0 0 1 985.3779 923.584A11.87 11.87 0 0 1 968.5794 920.7531L968.5794 920.7531A11.87 11.87 0 0 1 971.327 904.4487A385.775 385.775 0 0 0 1018.8981 863.1342A11.87 11.87 0 0 1 1035.4266 862.6976Z" fill="#e4b59f" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-57"></path>
-<path d="M968.5794 920.7531A11.87 11.87 0 0 1 965.2482 937.4597A409.515 409.515 0 0 1 906.294 969.0497A11.87 11.87 0 0 1 890.539 962.5703L890.539 962.5703A11.87 11.87 0 0 1 896.8277 947.2787A385.775 385.775 0 0 0 952.3643 917.52A11.87 11.87 0 0 1 968.5794 920.7531Z" fill="#f0d0c0" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-58"></path>
-<path d="M890.539 962.5703A11.87 11.87 0 0 1 883.5922 978.125A409.515 409.515 0 0 1 822.4315 995.2377A11.87 11.87 0 0 1 808.421 985.5469L808.421 985.5469A11.87 11.87 0 0 1 817.8268 971.9485A385.775 385.775 0 0 0 875.4419 955.8279A11.87 11.87 0 0 1 890.539 962.5703Z" fill="#f5e1d2" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-59"></path>
-<path d="M803.1145 953.7466A20 20 0 0 1 785.5956 976.9162A385.775 385.775 0 0 1 578.2173 942.3109A20 20 0 0 1 569.1708 914.7083L635.0337 793.0043A20 20 0 0 1 660.5605 784.1657A207.725 207.725 0 0 0 759.0636 800.603A20 20 0 0 1 780.3375 817.2512Z" fill="#c78b6e" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-60"></path>
-<path d="M808.421 985.5469A11.87 11.87 0 0 1 798.3163 999.2618A409.515 409.515 0 0 1 687.6837 999.2618A11.87 11.87 0 0 1 677.579 985.5469L677.579 985.5469A11.87 11.87 0 0 1 690.8904 975.7394A385.775 385.775 0 0 0 795.1096 975.7394A11.87 11.87 0 0 1 808.421 985.5469Z" fill="#dfb09b" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-61"></path>
-<path d="M677.579 985.5469A11.87 11.87 0 0 1 663.5685 995.2377A409.515 409.515 0 0 1 558.9302 959.3153A11.87 11.87 0 0 1 553.8262 943.0625L553.8262 943.0625A11.87 11.87 0 0 1 569.6009 938.1086A385.775 385.775 0 0 0 668.1732 971.9485A11.87 11.87 0 0 1 677.579 985.5469Z" fill="#ecd1c5" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-62"></path>
-<path d="M654.1613 757.6596A20 20 0 0 1 625.2331 764.6158A207.725 207.725 0 0 1 720.8692 386.9573A20 20 0 0 1 743 406.8434L743 529.052A20 20 0 0 1 728.9277 548.1533A47.48 47.48 0 0 0 709.0411 626.6835A20 20 0 0 1 712.3261 650.1804Z" fill="#7fb7a5" stroke="#fff" stroke-width="2" stroke-linejoin="bevel" class="zr1-cls-63"></path>
-<path d="M569.1708 914.7083A20 20 0 0 1 541.1148 922.232A385.775 385.775 0 0 1 398.7192 767.5492A20 20 0 0 1 408.5341 740.2103L535.2614 684.6226A20 20 0 0 1 560.8344 693.3267A207.725 207.725 0 0 0 628.4712 766.7998A20 20 0 0 1 635.0337 793.0043Z" fill="#97c6b3" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-64"></path>
-<path d="M553.8262 943.0625A11.87 11.87 0 0 1 537.4283 947.6791A409.515 409.515 0 0 1 501.2295 924.0292A11.87 11.87 0 0 1 498.8702 907.1579L498.8702 907.1579A11.87 11.87 0 0 1 515.2452 904.8681A385.775 385.775 0 0 0 549.3455 927.1469A11.87 11.87 0 0 1 553.8262 943.0625Z" fill="#b5d8cb" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-65"></path>
-<path d="M498.8702 907.1579A11.87 11.87 0 0 1 481.9361 909.0125A409.515 409.515 0 0 1 450.1236 879.7271A11.87 11.87 0 0 1 450.5734 862.6976L450.5734 862.6976A11.87 11.87 0 0 1 467.1019 863.1342A385.775 385.775 0 0 0 497.0702 890.7219A11.87 11.87 0 0 1 498.8702 907.1579Z" fill="#cde5dd" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-66"></path>
-<path d="M450.5734 862.6976A11.87 11.87 0 0 1 433.565 861.7396A409.515 409.515 0 0 1 407.0066 827.6175A11.87 11.87 0 0 1 410.2533 810.8943L410.2533 810.8943A11.87 11.87 0 0 1 426.4845 814.0454A385.775 385.775 0 0 0 451.5032 846.1895A11.87 11.87 0 0 1 450.5734 862.6976Z" fill="#dfece6" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-67"></path>
-<path d="M410.2533 810.8943A11.87 11.87 0 0 1 393.6345 807.1499A409.515 409.515 0 0 1 373.0547 769.1217A11.87 11.87 0 0 1 379.0096 753.161L379.0096 753.161A11.87 11.87 0 0 1 394.5008 758.9407A385.775 385.775 0 0 0 413.8875 794.7644A11.87 11.87 0 0 1 410.2533 810.8943Z" fill="#e9f2ed" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-68"></path>
-<path d="M408.5341 740.2103A20 20 0 0 1 381.7729 728.9153A385.775 385.775 0 0 1 364.4109 519.3876A20 20 0 0 1 388.9481 503.8419L523.0964 537.8128A20 20 0 0 1 537.9309 560.3888A207.725 207.725 0 0 0 546.1777 659.9128A20 20 0 0 1 535.2614 684.6226Z" fill="#8dbcc2" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-69"></path>
-<path d="M379.0096 753.161A11.87 11.87 0 0 1 363.2338 746.7323A409.515 409.515 0 0 1 336.075 639.485A11.87 11.87 0 0 1 346.8898 626.3226L346.8898 626.3226A11.87 11.87 0 0 1 359.6649 636.8192A385.775 385.775 0 0 0 385.2492 737.8493A11.87 11.87 0 0 1 379.0096 753.161Z" fill="#b0d2d7" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-70"></path>
-<path d="M346.8898 626.3226A11.87 11.87 0 0 1 334.0561 615.1198A409.515 409.515 0 0 1 343.1921 504.8651A11.87 11.87 0 0 1 357.6946 495.9274L357.6946 495.9274A11.87 11.87 0 0 1 366.3693 510.0033A385.775 385.775 0 0 0 357.763 613.8665A11.87 11.87 0 0 1 346.8898 626.3226Z" fill="#cde6e9" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-71"></path>
-<path d="M388.9481 503.8419A20 20 0 0 1 374.7672 478.4914A385.775 385.775 0 0 1 489.7608 302.4807A20 20 0 0 1 518.6724 305.2839L603.6689 414.4874A20 20 0 0 1 601.509 441.4146A207.725 207.725 0 0 0 546.888 525.0183A20 20 0 0 1 523.0964 537.8128Z" fill="#9cafc7" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-72"></path>
-<path d="M357.6946 495.9274A11.87 11.87 0 0 1 349.1939 481.1645A409.515 409.515 0 0 1 372.7323 418.5589A11.87 11.87 0 0 1 388.8536 413.0534L388.8536 413.0534A11.87 11.87 0 0 1 394.1971 428.7004A385.775 385.775 0 0 0 372.0232 487.6767A11.87 11.87 0 0 1 357.6946 495.9274Z" fill="#bbcfe0" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-73"></path>
-<path d="M388.8536 413.0534A11.87 11.87 0 0 1 383.8318 396.775A409.515 409.515 0 0 1 420.6453 340.9333A11.87 11.87 0 0 1 437.5853 339.1331L437.5853 339.1331A11.87 11.87 0 0 1 439.3325 355.5748A385.775 385.775 0 0 0 404.6531 408.1793A11.87 11.87 0 0 1 388.8536 413.0534Z" fill="#d5e3ec" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-74"></path>
-<path d="M437.5853 339.1331A11.87 11.87 0 0 1 436.2916 322.1469A409.515 409.515 0 0 1 481.9361 277.9875A11.87 11.87 0 0 1 498.8702 279.8421L498.8702 279.8421A11.87 11.87 0 0 1 497.0702 296.2781A385.775 385.775 0 0 0 454.0718 337.8775A11.87 11.87 0 0 1 437.5853 339.1331Z" fill="#e6edf5" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-75"></path>
-<path d="M518.6724 305.2839A20 20 0 0 1 523.0524 276.5688A385.775 385.775 0 0 1 721.9064 208.3021A20 20 0 0 1 743 228.2722L743 366.655A20 20 0 0 1 724.7565 386.5777A207.725 207.725 0 0 0 630.3024 419.0038A20 20 0 0 1 603.6689 414.4874Z" fill="#a7b0c9" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr1-cls-76"></path>
-<path d="M498.8702 279.8421A11.87 11.87 0 0 1 501.2295 262.9708A409.515 409.515 0 0 1 537.4283 239.3209A11.87 11.87 0 0 1 553.8262 243.9375L553.8262 243.9375A11.87 11.87 0 0 1 549.3455 259.8531A385.775 385.775 0 0 0 515.2452 282.1319A11.87 11.87 0 0 1 498.8702 279.8421Z" fill="#c0c9dd" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-77"></path>
-<path d="M553.8262 243.9375A11.87 11.87 0 0 1 558.9302 227.6847A409.515 409.515 0 0 1 598.528 210.3155A11.87 11.87 0 0 1 613.9424 217.5681L613.9424 217.5681A11.87 11.87 0 0 1 606.9032 232.5291A385.775 385.775 0 0 0 569.6009 248.8914A11.87 11.87 0 0 1 553.8262 243.9375Z" fill="#d5ddf2" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-78"></path>
-<path d="M613.9424 217.5681A11.87 11.87 0 0 1 621.6519 202.377A409.515 409.515 0 0 1 663.5685 191.7623A11.87 11.87 0 0 1 677.579 201.4531L677.579 201.4531A11.87 11.87 0 0 1 668.1732 215.0515A385.775 385.775 0 0 0 628.6866 225.0508A11.87 11.87 0 0 1 613.9424 217.5681Z" fill="#e4e9f8" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-79"></path>
-<path d="M677.579 201.4531A11.87 11.87 0 0 1 687.6837 187.7382A409.515 409.515 0 0 1 730.7757 184.1675A11.87 11.87 0 0 1 743 196.0322L743 196.0322A11.87 11.87 0 0 1 731.4843 207.8969A385.775 385.775 0 0 0 690.8904 211.2606A11.87 11.87 0 0 1 677.579 201.4531Z" fill="#edf1fb" stroke="#fff" stroke-linejoin="bevel" class="zr1-cls-68"></path>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:28px;font-family:Microsoft YaHei;font-weight:600;" xml:space="preserve" y="-14" transform="matrix(0.677,0.736,-0.736,0.677,836.8802,507.0772)" fill="#ffffff">L1: Perception &amp;</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:28px;font-family:Microsoft YaHei;font-weight:600;" y="14" transform="matrix(0.677,0.736,-0.736,0.677,836.8802,507.0772)" fill="#ffffff">Aggregation</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" transform="matrix(0.916,0.402,-0.402,0.916,862.2031,321.7443)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Visual-Only</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" transform="matrix(0.136,-0.991,0.991,0.136,799.3693,182.8357)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Recognition</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.398,-0.917,0.917,0.398,907.9382,213.2132)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Spatial</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.398,-0.917,0.917,0.398,907.9382,213.2132)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Counting</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.634,-0.774,0.774,0.634,1005.6343,272.804)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Visual</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.634,-0.774,0.774,0.634,1005.6343,272.804)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Calculation</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="-12" transform="matrix(0.325,0.946,-0.946,0.325,1023.6713,497.1454)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Audio-Visual</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.325,0.946,-0.946,0.325,1023.6713,497.1454)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Fusion</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.821,-0.571,0.571,0.821,1083.3135,356.8369)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Cross-Modal</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.821,-0.571,0.571,0.821,1083.3135,356.8369)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Matching</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.944,-0.329,0.329,0.944,1134.4957,457.2877)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Audio→Visual</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.944,-0.329,0.329,0.944,1134.4957,457.2877)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">QA</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.998,-0.058,0.058,0.998,1156.8211,569.5248)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Visual→Audio</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.998,-0.058,0.058,0.998,1156.8211,569.5248)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">QA</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:28px;font-family:Microsoft YaHei;font-weight:600;" xml:space="preserve" y="-14" transform="matrix(0.879,-0.476,0.476,0.879,803.7321,705.723)" fill="#ffffff">L2: Temporal</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:28px;font-family:Microsoft YaHei;font-weight:600;" y="14" transform="matrix(0.879,-0.476,0.476,0.879,803.7321,705.723)" fill="#ffffff">Understanding</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" xml:space="preserve" y="-12" transform="matrix(0.402,-0.916,0.916,0.402,1014.7557,712.7031)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Action &amp;</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.402,-0.916,0.916,0.402,1014.7557,712.7031)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Motion</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.986,0.165,-0.165,0.986,1151.8616,661.7269)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Action</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.986,0.165,-0.165,0.986,1151.8616,661.7269)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Recognition</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.946,0.325,-0.325,0.946,1135.0554,728.0928)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Repetitive</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.946,0.325,-0.325,0.946,1135.0554,728.0928)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Counting</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.879,0.476,-0.476,0.879,1107.5551,790.7873)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Temporal</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.879,0.476,-0.476,0.879,1107.5551,790.7873)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Localization</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.789,0.614,-0.614,0.789,1070.1106,848.1004)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Motion</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.789,0.614,-0.614,0.789,1070.1106,848.1004)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Analysis</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="-12" transform="matrix(0.879,-0.476,0.476,0.879,884.2374,854.4838)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Sequential</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.879,-0.476,0.476,0.879,884.2374,854.4838)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Reasoning</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" transform="matrix(0.656,0.755,-0.755,0.656,1014.8026,906.4633)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Ordering</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0.472,0.881,-0.881,0.472,938.7787,958.8675)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">State</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0.472,0.881,-0.881,0.472,938.7787,958.8675)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Change</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" transform="matrix(0.269,0.963,-0.963,0.269,854.6913,992.6838)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Periodicity</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="-12" transform="matrix(0.986,0.165,-0.165,0.986,694.1566,886.2027)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Event-Level</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.986,0.165,-0.165,0.986,694.1566,886.2027)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Temporal</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="-9" transform="matrix(0,1,-1,0,743,1008.015)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Causal</text>
-<text dominant-baseline="central" text-anchor="start" style="font-size:18px;font-family:Microsoft YaHei;" x="6" y="9" transform="matrix(0,1,-1,0,743,1008.015)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Reasoning</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.325,-0.946,0.946,0.325,608.4072,985.5554)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Short-term</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.325,-0.946,0.946,0.325,608.4072,985.5554)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Prediction</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:28px;font-family:Microsoft YaHei;font-weight:600;" xml:space="preserve" y="-14" transform="matrix(0.245,-0.969,0.969,0.245,619.3021,562.1754)" fill="#ffffff">L3: Complex</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:28px;font-family:Microsoft YaHei;font-weight:600;" y="14" transform="matrix(0.245,-0.969,0.969,0.245,619.3021,562.1754)" fill="#ffffff">Reasoning</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="-12" transform="matrix(0.677,0.736,-0.736,0.677,524.6739,794.4833)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Narrative</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.677,0.736,-0.736,0.677,524.6739,794.4833)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Comprehension</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.547,-0.837,0.837,0.547,516.2818,940.5181)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Turning</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.547,-0.837,0.837,0.547,516.2818,940.5181)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Point</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.677,-0.736,0.736,0.677,462.2566,898.4686)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Narrative</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.677,-0.736,0.736,0.677,462.2566,898.4686)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Cloze</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.789,-0.614,0.614,0.789,415.8894,848.1004)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Symbolic</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.789,-0.614,0.614,0.789,415.8894,848.1004)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Interpretation</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.879,-0.476,0.476,0.879,378.4449,790.7873)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Cinematic</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.879,-0.476,0.476,0.879,378.4449,790.7873)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Technique</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="-12" transform="matrix(0.083,0.997,-0.997,0.083,447.2636,618.0054)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Knowledge</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.083,0.997,-0.997,0.083,447.2636,618.0054)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Grounding</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.969,-0.245,0.245,0.969,341.169,695.2574)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Concept</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.969,-0.245,0.245,0.969,341.169,695.2574)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Acquisition</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.997,0.083,-0.083,0.997,329.9008,559.2696)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Skill</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.997,0.083,-0.083,0.997,329.9008,559.2696)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Learning</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="-12" transform="matrix(0.547,-0.837,0.837,0.547,494.5708,431.1931)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Social</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.547,-0.837,0.837,0.547,494.5708,431.1931)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Intelligence</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.936,0.352,-0.352,0.936,355.0027,447.6207)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Individual</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.936,0.352,-0.352,0.936,355.0027,447.6207)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Cognition</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.835,0.55,-0.55,0.835,396.9221,365.3493)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Dyadic</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.835,0.55,-0.55,0.835,396.9221,365.3493)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Interaction</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.695,0.719,-0.719,0.695,454.7799,295.5875)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Collective</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.695,0.719,-0.719,0.695,454.7799,295.5875)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Dynamics</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" xml:space="preserve" y="-12" transform="matrix(0.946,-0.325,0.325,0.946,646.6454,312.8287)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Physical &amp;</text>
-<text dominant-baseline="central" text-anchor="middle" style="font-size:24px;font-family:Microsoft YaHei;" y="12" transform="matrix(0.946,-0.325,0.325,0.946,646.6454,312.8287)" fill="#222" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Spatial</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="-9" transform="matrix(0.547,0.837,-0.837,0.547,516.2818,246.4819)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Object</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" y="9" transform="matrix(0.547,0.837,-0.837,0.547,516.2818,246.4819)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Permanence</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" transform="matrix(0.402,0.916,-0.916,0.402,576.4912,213.8982)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">3D Spatial</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" transform="matrix(0.245,0.969,-0.969,0.245,641.2426,191.669)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Counterfactual</text>
-<text dominant-baseline="central" text-anchor="end" style="font-size:18px;font-family:Microsoft YaHei;" x="-6" transform="matrix(0.083,0.997,-0.997,0.083,708.7696,180.4008)" fill="#111" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-miterlimit="2">Counterintuitive</text>
+<svg width="1179" height="998" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 1179 998">
+<rect width="1179" height="998" x="0" y="0" fill="none"></rect>
+<path d="M589.5 459.08A39.92 39.92 0 1 1 589.496 459.08Z" fill="#7ba3c4" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" filter="url(#zr0-s0)" class="zr0-cls-32"></path>
+<path d="M589.5 320.5171A20 20 0 0 1 611.7272 300.6415A199.6 199.6 0 0 1 771.2816 416.5645A20 20 0 0 1 759.2474 443.8457L643.2192 481.5456A20 20 0 0 1 621.1714 474.6992A39.92 39.92 0 0 0 602.8244 461.3693A20 20 0 0 1 589.5 442.5163Z" fill="rgb(155,196,224)" stroke="#fff" stroke-width="2" stroke-linejoin="bevel" class="zr0-cls-33"></path>
+<path d="M589.5 170.3079A20 20 0 0 1 610.7147 150.3448A349.3 349.3 0 0 1 777.2713 204.4624A20 20 0 0 1 782.7004 233.0825L718.0412 322.0782A20 20 0 0 1 691.6276 327.5062A199.6 199.6 0 0 0 607.6785 300.2295A20 20 0 0 1 589.5 280.3126Z" fill="rgb(179,212,237)" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-34"></path>
+<path d="M589.5 139.8586A9.98 9.98 0 0 1 599.7572 129.8825A369.26 369.26 0 0 1 655.45 135.6771A9.98 9.98 0 0 1 663.4338 147.5511L663.4338 147.5511A9.98 9.98 0 0 1 651.8851 155.3162A349.3 349.3 0 0 0 599.2028 149.8348A9.98 9.98 0 0 1 589.5 139.8586Z" fill="#cde4f5" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-35"></path>
+<path d="M663.4338 147.5511A9.98 9.98 0 0 1 675.525 139.9002A369.26 369.26 0 0 1 728.832 157.0358A9.98 9.98 0 0 1 734.2004 170.299L734.2004 170.299A9.98 9.98 0 0 1 721.3005 175.5203A349.3 349.3 0 0 0 670.875 159.311A9.98 9.98 0 0 1 663.4338 147.5511Z" fill="#e0eef9" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-36"></path>
+<path d="M734.2004 170.299A9.98 9.98 0 0 1 747.6077 165.3012A369.26 369.26 0 0 1 798.1636 194.3486A9.98 9.98 0 0 1 800.598 208.4485L800.598 208.4485A9.98 9.98 0 0 1 786.8845 210.8163A349.3 349.3 0 0 0 739.0613 183.3389A9.98 9.98 0 0 1 734.2004 170.299Z" fill="rgb(235,244,252)" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M782.7004 233.0825A20 20 0 0 1 811.5974 229.4017A349.3 349.3 0 0 1 914.5351 371.0832A20 20 0 0 1 902.1048 397.4286L797.484 431.4219A20 20 0 0 1 772.9245 420.2878A199.6 199.6 0 0 0 721.0411 348.8764A20 20 0 0 1 718.0412 322.0782Z" fill="#a8cce8" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-38"></path>
+<path d="M800.598 208.4485A9.98 9.98 0 0 1 814.7601 206.4067A369.26 369.26 0 0 1 843.2525 230.7416A9.98 9.98 0 0 1 843.4513 245.0487L843.4513 245.0487A9.98 9.98 0 0 1 829.5362 245.242A349.3 349.3 0 0 0 802.5839 222.2226A9.98 9.98 0 0 1 800.598 208.4485Z" fill="#c5dff2" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-39"></path>
+<path d="M843.4513 245.0487A9.98 9.98 0 0 1 857.7584 245.2475A369.26 369.26 0 0 1 882.0933 273.7399A9.98 9.98 0 0 1 880.0515 287.902L880.0515 287.902A9.98 9.98 0 0 1 866.2774 285.9161A349.3 349.3 0 0 0 843.258 258.9638A9.98 9.98 0 0 1 843.4513 245.0487Z" fill="#dbeaf7" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-40"></path>
+<path d="M880.0515 287.902A9.98 9.98 0 0 1 894.1514 290.3364A369.26 369.26 0 0 1 913.7294 322.2849A9.98 9.98 0 0 1 909.4973 335.9532L909.4973 335.9532A9.98 9.98 0 0 1 896.2035 331.8371A349.3 349.3 0 0 0 877.6837 301.6155A9.98 9.98 0 0 1 880.0515 287.902Z" fill="#e8f2fa" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M909.4973 335.9532A9.98 9.98 0 0 1 923.0428 340.5634A369.26 369.26 0 0 1 937.382 375.1812A9.98 9.98 0 0 1 931.0637 388.0192L931.0637 388.0192A9.98 9.98 0 0 1 918.5775 381.8741A349.3 349.3 0 0 0 905.0135 349.1275A9.98 9.98 0 0 1 909.4973 335.9532Z" fill="#f2f7fc" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M759.2474 443.8457A20 20 0 0 1 785.0188 458.8431A199.6 199.6 0 0 1 490.8899 672.5402A20 20 0 0 1 484.5904 643.3957L556.2997 544.6963A20 20 0 0 1 578.161 537.2757A39.92 39.92 0 0 0 629.4064 500.0438A20 20 0 0 1 643.2192 481.5456Z" fill="rgb(232,184,163)" stroke="#fff" stroke-width="2" stroke-linejoin="bevel" class="zr0-cls-41"></path>
+<path d="M902.1048 397.4286A20 20 0 0 1 927.6465 411.436A349.3 349.3 0 0 1 927.6465 586.564A20 20 0 0 1 902.1048 600.5714L797.484 566.5781A20 20 0 0 1 784.1594 543.1347A199.6 199.6 0 0 0 784.1594 454.8653A20 20 0 0 1 797.484 431.4219Z" fill="#efc9b8" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-42"></path>
+<path d="M931.0637 388.0192A9.98 9.98 0 0 1 943.7213 394.6916A369.26 369.26 0 0 1 950.1574 419.7587A9.98 9.98 0 0 1 942.28 431.7036L942.28 431.7036A9.98 9.98 0 0 1 930.6624 424.042A349.3 349.3 0 0 0 924.5742 400.3299A9.98 9.98 0 0 1 931.0637 388.0192Z" fill="#f3d9cd" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-43"></path>
+<path d="M942.28 431.7036A9.98 9.98 0 0 1 954.0014 439.9098A369.26 369.26 0 0 1 957.2451 465.5859A9.98 9.98 0 0 1 947.9327 476.4493L947.9327 476.4493A9.98 9.98 0 0 1 937.367 467.3921A349.3 349.3 0 0 0 934.2987 443.1039A9.98 9.98 0 0 1 942.28 431.7036Z" fill="#f7e5dc" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-44"></path>
+<path d="M947.9327 476.4493A9.98 9.98 0 0 1 958.5332 486.0599A369.26 369.26 0 0 1 958.5332 511.9401A9.98 9.98 0 0 1 947.9327 521.5507L947.9327 521.5507A9.98 9.98 0 0 1 938.5855 511.2406A349.3 349.3 0 0 0 938.5855 486.7594A9.98 9.98 0 0 1 947.9327 476.4493Z" fill="#f9ece5" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-45"></path>
+<path d="M947.9327 521.5507A9.98 9.98 0 0 1 957.2451 532.4141A369.26 369.26 0 0 1 954.0014 558.0902A9.98 9.98 0 0 1 942.28 566.2964L942.28 566.2964A9.98 9.98 0 0 1 934.2987 554.8961A349.3 349.3 0 0 0 937.367 530.6079A9.98 9.98 0 0 1 947.9327 521.5507Z" fill="#fbf2ed" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M942.28 566.2964A9.98 9.98 0 0 1 950.1574 578.2413A369.26 369.26 0 0 1 943.7213 603.3084A9.98 9.98 0 0 1 931.0637 609.9808L931.0637 609.9808A9.98 9.98 0 0 1 924.5742 597.6701A349.3 349.3 0 0 0 930.6624 573.958A9.98 9.98 0 0 1 942.28 566.2964Z" fill="#fdf7f4" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M902.1048 600.5714A20 20 0 0 1 914.5351 626.9167A349.3 349.3 0 0 1 811.5974 768.5983A20 20 0 0 1 782.7004 764.9175L718.0412 675.9218A20 20 0 0 1 721.0411 649.1236A199.6 199.6 0 0 0 772.9245 577.7122A20 20 0 0 1 797.484 566.5781Z" fill="#ecc4b0" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-46"></path>
+<path d="M931.0637 609.9808A9.98 9.98 0 0 1 937.382 622.8188A369.26 369.26 0 0 1 914.661 673.9951A9.98 9.98 0 0 1 900.901 677.9189L900.901 677.9189A9.98 9.98 0 0 1 897.0847 664.5359A349.3 349.3 0 0 0 918.5775 616.1259A9.98 9.98 0 0 1 931.0637 609.9808Z" fill="#f4ddd2" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-47"></path>
+<path d="M900.901 677.9189A9.98 9.98 0 0 1 904.441 691.7826A369.26 369.26 0 0 1 871.6714 737.1854A9.98 9.98 0 0 1 857.3983 738.1924L857.3983 738.1924A9.98 9.98 0 0 1 856.4189 724.3105A349.3 349.3 0 0 0 887.4171 681.3619A9.98 9.98 0 0 1 900.901 677.9189Z" fill="#f9ebe5" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-45"></path>
+<path d="M857.3983 738.1924A9.98 9.98 0 0 1 858.0085 752.4879A369.26 369.26 0 0 1 814.7601 791.5933A9.98 9.98 0 0 1 800.598 789.5515L800.598 789.5515A9.98 9.98 0 0 1 802.5839 775.7774A349.3 349.3 0 0 0 843.4945 738.7859A9.98 9.98 0 0 1 857.3983 738.1924Z" fill="#fcf4f0" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M782.7004 764.9175A20 20 0 0 1 777.2713 793.5376A349.3 349.3 0 0 1 610.7147 847.6552A20 20 0 0 1 589.5 827.6921L589.5 717.6874A20 20 0 0 1 607.6785 697.7705A199.6 199.6 0 0 0 691.6276 670.4938A20 20 0 0 1 718.0412 675.9218Z" fill="#e5beab" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-48"></path>
+<path d="M800.598 789.5515A9.98 9.98 0 0 1 798.1636 803.6514A369.26 369.26 0 0 1 749.7012 831.6988A9.98 9.98 0 0 1 736.2628 826.7853L736.2628 826.7853A9.98 9.98 0 0 1 741.0417 813.7151A349.3 349.3 0 0 0 786.8845 787.1837A9.98 9.98 0 0 1 800.598 789.5515Z" fill="#f0d5c8" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-49"></path>
+<path d="M736.2628 826.7853A9.98 9.98 0 0 1 730.9778 840.0821A369.26 369.26 0 0 1 677.7796 857.5522A9.98 9.98 0 0 1 665.6405 849.9774L665.6405 849.9774A9.98 9.98 0 0 1 673.0077 838.171A349.3 349.3 0 0 0 723.3304 821.6452A9.98 9.98 0 0 1 736.2628 826.7853Z" fill="#f6e6de" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-50"></path>
+<path d="M665.6405 849.9774A9.98 9.98 0 0 1 657.7315 861.9014A369.26 369.26 0 0 1 599.7572 868.1175A9.98 9.98 0 0 1 589.5 858.1414L589.5 858.1414A9.98 9.98 0 0 1 599.2028 848.1652A349.3 349.3 0 0 0 654.0433 842.2851A9.98 9.98 0 0 1 665.6405 849.9774Z" fill="#faf0eb" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M589.5 827.6921A20 20 0 0 1 568.2853 847.6552A349.3 349.3 0 0 1 401.7287 793.5376A20 20 0 0 1 396.2996 764.9175L460.9588 675.9218A20 20 0 0 1 487.3724 670.4938A199.6 199.6 0 0 0 571.3215 697.7705A20 20 0 0 1 589.5 717.6874Z" fill="#e2b6a2" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-51"></path>
+<path d="M589.5 858.1414A9.98 9.98 0 0 1 579.2428 868.1175A369.26 369.26 0 0 1 485.1916 853.2213A9.98 9.98 0 0 1 478.5192 840.5637A9.98 9.98 0 0 1 490.8299 834.0742A349.3 349.3 0 0 0 579.7972 848.1652A9.98 9.98 0 0 1 589.5 858.1414Z" fill="#efd2c5" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-52"></path>
+<path d="M478.5192 840.5637A9.98 9.98 0 0 1 465.6812 846.882A369.26 369.26 0 0 1 380.8364 803.6514A9.98 9.98 0 0 1 378.402 789.5515A9.98 9.98 0 0 1 392.1155 787.1837A349.3 349.3 0 0 0 472.3741 828.0775A9.98 9.98 0 0 1 478.5192 840.5637Z" fill="#f7e8e1" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-53"></path>
+<path d="M484.5904 643.3957A20 20 0 0 1 454.9256 646.4106A199.6 199.6 0 0 1 567.2728 300.6415A20 20 0 0 1 589.5 320.5171L589.5 442.5163A20 20 0 0 1 576.1756 461.3693A39.92 39.92 0 0 0 556.6016 521.6119A20 20 0 0 1 556.2997 544.6963Z" fill="rgb(168,212,200)" stroke="#fff" stroke-width="2" stroke-linejoin="bevel" class="zr0-cls-54"></path>
+<path d="M396.2996 764.9175A20 20 0 0 1 367.4026 768.5983A349.3 349.3 0 0 1 264.4649 626.9168A20 20 0 0 1 276.8952 600.5714L381.516 566.5781A20 20 0 0 1 406.0755 577.7122A199.6 199.6 0 0 0 457.9589 649.1236A20 20 0 0 1 460.9588 675.9218Z" fill="rgb(189,224,214)" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-55"></path>
+<path d="M378.402 789.5515A9.98 9.98 0 0 1 364.2399 791.5933A369.26 369.26 0 0 1 335.7475 767.2584A9.98 9.98 0 0 1 335.5487 752.9513A9.98 9.98 0 0 1 349.4638 752.758A349.3 349.3 0 0 0 376.4161 775.7774A9.98 9.98 0 0 1 378.402 789.5515Z" fill="#d2ebe3" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-56"></path>
+<path d="M335.5487 752.9513A9.98 9.98 0 0 1 321.2416 752.7525A369.26 369.26 0 0 1 296.9067 724.2601A9.98 9.98 0 0 1 298.9485 710.098A9.98 9.98 0 0 1 312.7226 712.0839A349.3 349.3 0 0 0 335.742 739.0362A9.98 9.98 0 0 1 335.5487 752.9513Z" fill="rgb(227,242,236)" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-57"></path>
+<path d="M298.9485 710.098A9.98 9.98 0 0 1 284.8486 707.6636A369.26 369.26 0 0 1 265.2706 675.7151A9.98 9.98 0 0 1 269.5027 662.0468A9.98 9.98 0 0 1 282.7965 666.1629A349.3 349.3 0 0 0 301.3163 696.3845A9.98 9.98 0 0 1 298.9485 710.098Z" fill="#edf6f2" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M269.5027 662.0468A9.98 9.98 0 0 1 255.9572 657.4366A369.26 369.26 0 0 1 241.618 622.8188A9.98 9.98 0 0 1 247.9363 609.9808A9.98 9.98 0 0 1 260.4225 616.1259A349.3 349.3 0 0 0 273.9865 648.8725A9.98 9.98 0 0 1 269.5027 662.0468Z" fill="#f4faf7" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M276.8952 600.5714A20 20 0 0 1 251.3535 586.564A349.3 349.3 0 0 1 251.3535 411.436A20 20 0 0 1 276.8952 397.4286L381.516 431.4219A20 20 0 0 1 394.8406 454.8653A199.6 199.6 0 0 0 394.8406 543.1347A20 20 0 0 1 381.516 566.5781Z" fill="rgb(181,216,212)" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-58"></path>
+<path d="M247.9363 609.9808A9.98 9.98 0 0 1 235.2787 603.3084A369.26 369.26 0 0 1 220.3825 509.2572A9.98 9.98 0 0 1 230.3586 499A9.98 9.98 0 0 1 240.3348 508.7028A349.3 349.3 0 0 0 254.4258 597.6701A9.98 9.98 0 0 1 247.9363 609.9808Z" fill="#cce8e5" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-59"></path>
+<path d="M230.3586 499A9.98 9.98 0 0 1 220.3825 488.7428A369.26 369.26 0 0 1 235.2787 394.6916A9.98 9.98 0 0 1 247.9363 388.0192L247.9363 388.0192A9.98 9.98 0 0 1 254.4258 400.3299A349.3 349.3 0 0 0 240.3348 489.2972A9.98 9.98 0 0 1 230.3586 499Z" fill="#e3f2f1" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-57"></path>
+<path d="M276.8952 397.4286A20 20 0 0 1 264.4649 371.0833A349.3 349.3 0 0 1 367.4026 229.4017A20 20 0 0 1 396.2996 233.0825L460.9588 322.0782A20 20 0 0 1 457.9589 348.8764A199.6 199.6 0 0 0 406.0755 420.2878A20 20 0 0 1 381.516 431.4219Z" fill="rgb(194,212,226)" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-60"></path>
+<path d="M247.9363 388.0192A9.98 9.98 0 0 1 241.618 375.1812A369.26 369.26 0 0 1 264.339 324.0049A9.98 9.98 0 0 1 278.099 320.0811L278.099 320.0811A9.98 9.98 0 0 1 281.9153 333.4641A349.3 349.3 0 0 0 260.4225 381.8741A9.98 9.98 0 0 1 247.9363 388.0192Z" fill="#d8e6ef" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-61"></path>
+<path d="M278.099 320.0811A9.98 9.98 0 0 1 274.559 306.2174A369.26 369.26 0 0 1 307.3286 260.8146A9.98 9.98 0 0 1 321.6017 259.8076L321.6017 259.8076A9.98 9.98 0 0 1 322.5811 273.6895A349.3 349.3 0 0 0 291.5829 316.6381A9.98 9.98 0 0 1 278.099 320.0811Z" fill="#e8f0f6" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M321.6017 259.8076A9.98 9.98 0 0 1 320.9915 245.5121A369.26 369.26 0 0 1 364.2399 206.4067A9.98 9.98 0 0 1 378.402 208.4485L378.402 208.4485A9.98 9.98 0 0 1 376.4161 222.2226A349.3 349.3 0 0 0 335.5055 259.2141A9.98 9.98 0 0 1 321.6017 259.8076Z" fill="#f2f7fa" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M396.2996 233.0825A20 20 0 0 1 401.7287 204.4624A349.3 349.3 0 0 1 568.2853 150.3448A20 20 0 0 1 589.5 170.3079L589.5 280.3126A20 20 0 0 1 571.3215 300.2295A199.6 199.6 0 0 0 487.3724 327.5062A20 20 0 0 1 460.9588 322.0782Z" fill="rgb(200,212,228)" stroke="#fff" stroke-width="3" stroke-linejoin="bevel" class="zr0-cls-62"></path>
+<path d="M378.402 208.4485A9.98 9.98 0 0 1 380.8364 194.3486A369.26 369.26 0 0 1 412.7849 174.7706A9.98 9.98 0 0 1 426.4532 179.0027L426.4532 179.0027A9.98 9.98 0 0 1 422.3371 192.2965A349.3 349.3 0 0 0 392.1155 210.8163A9.98 9.98 0 0 1 378.402 208.4485Z" fill="#dce4ef" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-63"></path>
+<path d="M426.4532 179.0027A9.98 9.98 0 0 1 431.0634 165.4572A369.26 369.26 0 0 1 465.6812 151.118A9.98 9.98 0 0 1 478.5192 157.4363L478.5192 157.4363A9.98 9.98 0 0 1 472.3741 169.9225A349.3 349.3 0 0 0 439.6275 183.4865A9.98 9.98 0 0 1 426.4532 179.0027Z" fill="rgb(232,238,246)" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M478.5192 157.4363A9.98 9.98 0 0 1 485.1916 144.7787A369.26 369.26 0 0 1 521.6264 136.0315A9.98 9.98 0 0 1 533.3179 144.2803L533.3179 144.2803A9.98 9.98 0 0 1 525.2952 155.6514A349.3 349.3 0 0 0 490.8299 163.9258A9.98 9.98 0 0 1 478.5192 157.4363Z" fill="rgb(242,245,250)" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<path d="M533.3179 144.2803A9.98 9.98 0 0 1 541.8882 132.8224A369.26 369.26 0 0 1 579.2428 129.8825A9.98 9.98 0 0 1 589.5 139.8586L589.5 139.8586A9.98 9.98 0 0 1 579.7972 149.8348A349.3 349.3 0 0 0 544.4618 152.6157A9.98 9.98 0 0 1 533.3179 144.2803Z" fill="#f8fafc" stroke="#fff" stroke-linejoin="bevel" class="zr0-cls-37"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22px;font-family:Microsoft YaHei;font-weight:600;" xml:space="preserve" y="-11" transform="matrix(0.809,0.588,-0.588,0.809,659.8932,402.1121)" fill="#2c3e50">L1: Retrieval &amp;</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22px;font-family:Microsoft YaHei;font-weight:600;" y="11" transform="matrix(0.809,0.588,-0.588,0.809,659.8932,402.1121)" fill="#2c3e50">Aggregation</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" transform="matrix(0.951,0.309,-0.309,0.951,674.3097,237.9825)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Frame-Only</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" transform="matrix(0.103,-0.995,0.995,0.103,628.231,126.7495)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Visual Recognition</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" transform="matrix(0.306,-0.952,0.952,0.306,704.0339,142.696)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Basic Counting</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" transform="matrix(0.498,-0.867,0.867,0.498,775.9508,174.4901)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Numerical Calculation</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" xml:space="preserve" transform="matrix(0.588,0.809,-0.809,0.588,811.5347,337.6823)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Frames &amp; Audio</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.649,-0.76,0.76,0.649,832.5624,214.4105)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Cross-Modal Semantic</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.649,-0.76,0.76,0.649,832.5624,214.4105)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Consistency</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.76,-0.649,0.649,0.76,874.0895,255.9376)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Audio-Guided Visual</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.76,-0.649,0.649,0.76,874.0895,255.9376)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Description</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.853,-0.522,0.522,0.853,908.6091,303.4497)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Vision-Guided Audio</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.853,-0.522,0.522,0.853,908.6091,303.4497)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Description</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="-6.5" transform="matrix(0.924,-0.383,0.383,0.924,935.2712,355.7769)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Visual-Audio</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="6.5" transform="matrix(0.924,-0.383,0.383,0.924,935.2712,355.7769)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Collaborative Reasoning</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22px;font-family:Microsoft YaHei;font-weight:600;" xml:space="preserve" y="-11" transform="matrix(0.809,-0.588,0.588,0.809,659.8932,595.8879)" fill="#2c3e50">L2: Temporal</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22px;font-family:Microsoft YaHei;font-weight:600;" y="11" transform="matrix(0.809,-0.588,0.588,0.809,659.8932,595.8879)" fill="#2c3e50">Understanding</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" xml:space="preserve" y="-10" transform="matrix(0,-1,1,0,863.95,499)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Action &amp;</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="10" transform="matrix(0,-1,1,0,863.95,499)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Motion</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.969,-0.249,0.249,0.969,952.0019,405.9253)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Fine-Grained Action</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.969,-0.249,0.249,0.969,952.0019,405.9253)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Recognition</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.992,-0.125,0.125,0.992,960.8088,452.0928)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Repetitive Action</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.992,-0.125,0.125,0.992,960.8088,452.0928)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Counting</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="translate(963.76 499)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Temporal Action</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="translate(963.76 499)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Localization</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.992,0.125,-0.125,0.992,960.8088,545.9072)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Motion Trajectory</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.992,0.125,-0.125,0.992,960.8088,545.9072)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Estimation</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.969,0.249,-0.249,0.969,952.0019,592.0747)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Motion Properties</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.969,0.249,-0.249,0.969,952.0019,592.0747)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Analysis</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" transform="matrix(0.588,-0.809,0.809,0.588,811.5347,660.3177)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Order</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.914,0.406,-0.406,0.914,931.5627,650.8671)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Object Appearance</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.914,0.406,-0.406,0.914,931.5627,650.8671)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Ordering</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.811,0.585,-0.585,0.811,892.9723,718.0322)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Event Sequence</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.811,0.585,-0.585,0.811,892.9723,718.0322)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Ordering</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.671,0.742,-0.742,0.671,840.5108,776.6043)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Temporal Periodicity</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.671,0.742,-0.742,0.671,840.5108,776.6043)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Detection</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" transform="matrix(0.951,-0.309,0.309,0.951,674.3097,760.0175)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Change</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.501,0.866,-0.866,0.501,776.9693,822.9225)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Entity Existence</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="6.5" transform="matrix(0.501,0.866,-0.866,0.501,776.9693,822.9225)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Change Detection</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.312,0.95,-0.95,0.312,706.2704,854.5773)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Entity Attribute</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="6.5" transform="matrix(0.312,0.95,-0.95,0.312,706.2704,854.5773)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Change Detection</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="6" y="-6.5" transform="matrix(0.107,0.994,-0.994,0.107,629.4003,871.127)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Scene Transformation</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:Microsoft YaHei;" x="6" y="6.5" transform="matrix(0.107,0.994,-0.994,0.107,629.4003,871.127)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Detection</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="-10" transform="matrix(0.951,0.309,-0.309,0.951,504.6903,760.0175)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Temporal</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="10" transform="matrix(0.951,0.309,-0.309,0.951,504.6903,760.0175)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Reasoning</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" transform="matrix(0.156,-0.988,0.988,0.156,530.9528,868.6522)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Causal Reasoning</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.454,-0.891,0.891,0.454,419.5895,832.4681)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Future Event</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.454,-0.891,0.891,0.454,419.5895,832.4681)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Prediction</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22px;font-family:Microsoft YaHei;font-weight:600;" xml:space="preserve" y="-11" transform="matrix(0.309,-0.951,0.951,0.309,475.6015,461.9921)" fill="#2c3e50">L3: Complex</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:22px;font-family:Microsoft YaHei;font-weight:600;" y="11" transform="matrix(0.309,-0.951,0.951,0.309,475.6015,461.9921)" fill="#2c3e50">Reasoning</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" xml:space="preserve" y="-10" transform="matrix(0.588,0.809,-0.809,0.588,367.4653,660.3177)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Complex Plot</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="10" transform="matrix(0.588,0.809,-0.809,0.588,367.4653,660.3177)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Comprehension</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.649,-0.76,0.76,0.649,346.4376,783.5895)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Narrative Turning</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="6.5" transform="matrix(0.649,-0.76,0.76,0.649,346.4376,783.5895)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Point Detection</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.76,-0.649,0.649,0.76,304.9105,742.0624)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Narrative Cloze</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.76,-0.649,0.649,0.76,304.9105,742.0624)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Inference</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.853,-0.522,0.522,0.853,270.3909,694.5503)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Symbolic / Metaphorical</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.853,-0.522,0.522,0.853,270.3909,694.5503)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Interpretation</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.924,-0.383,0.383,0.924,243.7288,642.2231)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">High-Order Narrative</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.924,-0.383,0.383,0.924,243.7288,642.2231)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Deconstruction</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="-10" transform="matrix(0,1,-1,0,315.05,499)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Knowledge</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="10" transform="matrix(0,1,-1,0,315.05,499)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Acquisition</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.988,-0.156,0.156,0.988,219.8478,557.5472)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Professional Knowledge</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.988,-0.156,0.156,0.988,219.8478,557.5472)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Acquisition</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.988,0.156,-0.156,0.988,219.8478,440.4528)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">General Skills</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.988,0.156,-0.156,0.988,219.8478,440.4528)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Acquisition</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" xml:space="preserve" y="-10" transform="matrix(0.588,-0.809,0.809,0.588,367.4653,337.6823)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Social Behavior</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="10" transform="matrix(0.588,-0.809,0.809,0.588,367.4653,337.6823)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Analysis</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.914,0.406,-0.406,0.914,247.4373,347.1329)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Individual Social</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.914,0.406,-0.406,0.914,247.4373,347.1329)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Cognition</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.811,0.585,-0.585,0.811,286.0277,279.9678)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Dyadic Interaction</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.811,0.585,-0.585,0.811,286.0277,279.9678)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Dynamics</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.671,0.742,-0.742,0.671,338.4892,221.3957)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Collective Dynamics</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.671,0.742,-0.742,0.671,338.4892,221.3957)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Analysis</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" xml:space="preserve" y="-10" transform="matrix(0.951,-0.309,0.309,0.951,504.6903,237.9825)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Physical World</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:20px;font-family:Microsoft YaHei;" y="10" transform="matrix(0.951,-0.309,0.309,0.951,504.6903,237.9825)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Reasoning</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" y="-6.5" transform="matrix(0.522,0.853,-0.853,0.522,393.9497,179.8909)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Entity Persistence</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.522,0.853,-0.853,0.522,393.9497,179.8909)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Tracking</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" xml:space="preserve" x="-6" transform="matrix(0.383,0.924,-0.924,0.383,446.2769,153.2288)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Spatial Understanding</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="-6.5" transform="matrix(0.233,0.972,-0.972,0.233,502.1307,135.0808)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Counterfactual</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.233,0.972,-0.972,0.233,502.1307,135.0808)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Reasoning</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="-6.5" transform="matrix(0.078,0.997,-0.997,0.078,560.1359,125.8937)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Counterintuitive</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei;" x="-6" y="6.5" transform="matrix(0.078,0.997,-0.997,0.078,560.1359,125.8937)" fill="#333" stroke="#fff" stroke-width="2" paint-order="stroke" stroke-miterlimit="2">Comprehension</text>
 <defs >
-<filter id="zr1-s0" x="-100%" y="-100%" width="300%" height="300%">
-<feDropShadow dx="0" dy="0" stdDeviation="3 3" flood-color="rgb(0,0,0)" flood-opacity="0.1"></feDropShadow>
+<filter id="zr0-s0" x="-100%" y="-100%" width="300%" height="300%">
+<feDropShadow dx="0" dy="0" stdDeviation="3 3" flood-color="rgb(0,0,0)" flood-opacity="0.08"></feDropShadow>
 </filter>
 </defs>
 <style ><![CDATA[
-.zr1-cls-40:hover {
+.zr0-cls-32:hover {
 cursor:pointer;
-fill:rgba(63,104,137,1);
+fill:rgba(135,179,215,1);
 }
-.zr1-cls-41:hover {
+.zr0-cls-33:hover {
 cursor:pointer;
-fill:rgba(117,169,215,1);
+fill:rgba(170,215,246,1);
 }
-.zr1-cls-42:hover {
+.zr0-cls-34:hover {
 cursor:pointer;
-fill:rgba(157,196,238,1);
+fill:rgba(196,233,255,1);
 }
-.zr1-cls-43:hover {
+.zr0-cls-35:hover {
 cursor:pointer;
-fill:rgba(196,229,255,1);
+fill:rgba(225,250,255,1);
 }
-.zr1-cls-44:hover {
+.zr0-cls-36:hover {
 cursor:pointer;
-fill:rgba(221,246,255,1);
+fill:rgba(246,255,255,1);
 }
-.zr1-cls-45:hover {
-cursor:pointer;
-fill:rgba(240,255,255,1);
-}
-.zr1-cls-46:hover {
-cursor:pointer;
-fill:rgba(139,181,235,1);
-}
-.zr1-cls-47:hover {
-cursor:pointer;
-fill:rgba(179,217,255,1);
-}
-.zr1-cls-48:hover {
-cursor:pointer;
-fill:rgba(211,239,255,1);
-}
-.zr1-cls-49:hover {
-cursor:pointer;
-fill:rgba(234,253,255,1);
-}
-.zr1-cls-50:hover {
-cursor:pointer;
-fill:rgba(238,154,118,1);
-}
-.zr1-cls-51:hover {
-cursor:pointer;
-fill:rgba(247,178,148,1);
-}
-.zr1-cls-52:hover {
-cursor:pointer;
-fill:rgba(255,211,188,1);
-}
-.zr1-cls-53:hover {
-cursor:pointer;
-fill:rgba(255,234,216,1);
-}
-.zr1-cls-54:hover {
-cursor:pointer;
-fill:rgba(255,248,233,1);
-}
-.zr1-cls-55:hover {
-cursor:pointer;
-fill:rgba(255,251,242,1);
-}
-.zr1-cls-56:hover {
-cursor:pointer;
-fill:rgba(231,169,136,1);
-}
-.zr1-cls-57:hover {
-cursor:pointer;
-fill:rgba(250,199,174,1);
-}
-.zr1-cls-58:hover {
-cursor:pointer;
-fill:rgba(255,228,211,1);
-}
-.zr1-cls-59:hover {
-cursor:pointer;
-fill:rgba(255,247,231,1);
-}
-.zr1-cls-60:hover {
-cursor:pointer;
-fill:rgba(218,152,121,1);
-}
-.zr1-cls-61:hover {
-cursor:pointer;
-fill:rgba(245,193,170,1);
-}
-.zr1-cls-62:hover {
-cursor:pointer;
-fill:rgba(255,229,216,1);
-}
-.zr1-cls-63:hover {
-cursor:pointer;
-fill:rgba(139,201,181,1);
-}
-.zr1-cls-64:hover {
-cursor:pointer;
-fill:rgba(166,217,196,1);
-}
-.zr1-cls-65:hover {
-cursor:pointer;
-fill:rgba(199,237,223,1);
-}
-.zr1-cls-66:hover {
-cursor:pointer;
-fill:rgba(225,251,243,1);
-}
-.zr1-cls-67:hover {
-cursor:pointer;
-fill:rgba(245,255,253,1);
-}
-.zr1-cls-68:hover {
+.zr0-cls-37:hover {
 cursor:pointer;
 fill:rgba(255,255,255,1);
 }
-.zr1-cls-69:hover {
+.zr0-cls-38:hover {
 cursor:pointer;
-fill:rgba(155,206,213,1);
+fill:rgba(184,224,255,1);
 }
-.zr1-cls-70:hover {
+.zr0-cls-39:hover {
 cursor:pointer;
-fill:rgba(193,231,236,1);
+fill:rgba(216,245,255,1);
 }
-.zr1-cls-71:hover {
+.zr0-cls-40:hover {
 cursor:pointer;
-fill:rgba(225,253,255,1);
+fill:rgba(240,255,255,1);
 }
-.zr1-cls-72:hover {
+.zr0-cls-41:hover {
 cursor:pointer;
-fill:rgba(171,192,218,1);
+fill:rgba(255,202,179,1);
 }
-.zr1-cls-73:hover {
+.zr0-cls-42:hover {
 cursor:pointer;
-fill:rgba(205,227,246,1);
+fill:rgba(255,221,202,1);
 }
-.zr1-cls-74:hover {
+.zr0-cls-43:hover {
 cursor:pointer;
-fill:rgba(234,249,255,1);
+fill:rgba(255,238,225,1);
 }
-.zr1-cls-75:hover {
+.zr0-cls-44:hover {
 cursor:pointer;
-fill:rgba(253,255,255,1);
+fill:rgba(255,251,242,1);
 }
-.zr1-cls-76:hover {
+.zr0-cls-45:hover {
 cursor:pointer;
-fill:rgba(183,193,221,1);
+fill:rgba(255,255,251,1);
 }
-.zr1-cls-77:hover {
+.zr0-cls-46:hover {
 cursor:pointer;
-fill:rgba(211,221,243,1);
+fill:rgba(255,215,193,1);
 }
-.zr1-cls-78:hover {
+.zr0-cls-47:hover {
 cursor:pointer;
-fill:rgba(234,243,255,1);
+fill:rgba(255,243,231,1);
 }
-.zr1-cls-79:hover {
+.zr0-cls-48:hover {
 cursor:pointer;
-fill:rgba(250,255,255,1);
+fill:rgba(251,209,188,1);
+}
+.zr0-cls-49:hover {
+cursor:pointer;
+fill:rgba(255,234,220,1);
+}
+.zr0-cls-50:hover {
+cursor:pointer;
+fill:rgba(255,253,244,1);
+}
+.zr0-cls-51:hover {
+cursor:pointer;
+fill:rgba(248,200,178,1);
+}
+.zr0-cls-52:hover {
+cursor:pointer;
+fill:rgba(255,231,216,1);
+}
+.zr0-cls-53:hover {
+cursor:pointer;
+fill:rgba(255,255,247,1);
+}
+.zr0-cls-54:hover {
+cursor:pointer;
+fill:rgba(184,233,220,1);
+}
+.zr0-cls-55:hover {
+cursor:pointer;
+fill:rgba(207,246,235,1);
+}
+.zr0-cls-56:hover {
+cursor:pointer;
+fill:rgba(231,255,249,1);
+}
+.zr0-cls-57:hover {
+cursor:pointer;
+fill:rgba(249,255,255,1);
+}
+.zr0-cls-58:hover {
+cursor:pointer;
+fill:rgba(199,237,233,1);
+}
+.zr0-cls-59:hover {
+cursor:pointer;
+fill:rgba(224,255,251,1);
+}
+.zr0-cls-60:hover {
+cursor:pointer;
+fill:rgba(213,233,248,1);
+}
+.zr0-cls-61:hover {
+cursor:pointer;
+fill:rgba(237,253,255,1);
+}
+.zr0-cls-62:hover {
+cursor:pointer;
+fill:rgba(220,233,250,1);
+}
+.zr0-cls-63:hover {
+cursor:pointer;
+fill:rgba(242,250,255,1);
 }
 
 ]]>

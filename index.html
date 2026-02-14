@@ -659,6 +659,45 @@
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
         }
 
+        /* Figure 1 hierarchy detail: levels and subcategories */
+        .hierarchy-detail {
+            margin: 1.25rem 0;
+            display: grid;
+            gap: 1rem;
+            text-align: left;
+        }
+        .hierarchy-detail .level-detail {
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            border-left: 4px solid;
+            background: var(--bg-secondary);
+            border-color: #6b9ac4;
+        }
+        .hierarchy-detail .level-detail.l2 { border-color: #d98c6c; }
+        .hierarchy-detail .level-detail.l3 { border-color: #7fb7a5; }
+        .hierarchy-detail .level-detail h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+        .hierarchy-detail .level-detail .cat-row {
+            font-size: 0.875rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.35rem;
+            line-height: 1.45;
+        }
+        .hierarchy-detail .level-detail .cat-row:last-child { margin-bottom: 0; }
+        .hierarchy-detail .level-detail .cat-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .hierarchy-detail .level-detail .cat-count {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-right: 0.25rem;
+        }
+
         .level-badge {
             flex-shrink: 0;
             width: 60px;
@@ -1070,12 +1109,15 @@
         .qa-options {
             font-size: 0.85rem;
             color: var(--secondary-color);
+            text-align: left;
         }
 
         .qa-option {
             padding: 4px 0;
             display: flex;
+            align-items: flex-start;
             gap: 8px;
+            text-align: left;
         }
 
         .qa-option.correct {
@@ -2013,8 +2055,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., Qwen-Omni, Gemini 3.0 Flash, Gemini 3.0 Pro), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric.</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 Qwen-Omni、Gemini 3.0 Flash、Gemini 3.0 Pro），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., Qwen-Omni, Gemini 3.0 Flash, Gemini 3.0 Pro), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric.</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 Qwen-Omni、Gemini 3.0 Flash、Gemini 3.0 Pro），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
@@ -3430,50 +3472,37 @@
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 Three-Level Capability Hierarchy</h3>
                 
-                <div class="level-container">
-                    <div class="level-item">
-                        <div class="level-badge l1">
-                            <span>LEVEL</span>
-                            1
-                        </div>
-                        <div class="level-content">
-                            <h4>Retrieval & Aggregation</h4>
-                            <p>Basic visual information recognition and extraction capabilities, including object recognition, attribute judgment, scene understanding, and other perception-level tasks.</p>
-                        </div>
+                <p style="margin-bottom: 0.5rem;">
+                    Figure 1 below shows the three levels and their capability dimensions. Each level contains several categories; each category groups related sub-dimensions as follows.
+                </p>
+
+                <div class="hierarchy-detail">
+                    <div class="level-detail">
+                        <h4>Level 1 — Retrieval &amp; Aggregation</h4>
+                        <div class="cat-row"><span class="cat-name">Frame-Only</span> <span class="cat-count">(3 types)</span> — Visual Recognition (object/attribute/scene); Basic Counting; Numerical Calculation (rates, comparisons).</div>
+                        <div class="cat-row"><span class="cat-name">Frames &amp; Audio</span> <span class="cat-count">(4 types)</span> — Cross-Modal Semantic Consistency (tone–mood alignment); Audio-Guided Visual Description; Vision-Guided Audio Description; Visual-Audio Collaborative Reasoning.</div>
                     </div>
-                    <div class="level-item">
-                        <div class="level-badge l2">
-                            <span>LEVEL</span>
-                            2
-                        </div>
-                        <div class="level-content">
-                            <h4>Temporal Understanding</h4>
-                            <p>Dynamic capture of temporal sequences, actions, and changes, including action recognition, state change tracking, temporal order understanding, and other cognitive-level tasks.</p>
-                        </div>
+                    <div class="level-detail l2">
+                        <h4>Level 2 — Level 1 + Temporal Understanding</h4>
+                        <div class="cat-row"><span class="cat-name">Action &amp; Motion</span> <span class="cat-count">(5 types)</span> — Fine-Grained Action Recognition; Repetitive Action Counting; Temporal Action Localization; Motion Trajectory Estimation; Motion Properties Analysis.</div>
+                        <div class="cat-row"><span class="cat-name">Order</span> <span class="cat-count">(3 types)</span> — Object Appearance Ordering; Event Sequence Ordering; Temporal Periodicity Detection.</div>
+                        <div class="cat-row"><span class="cat-name">Change</span> <span class="cat-count">(3 types)</span> — Entity Existence Change Detection; Entity Attribute Change Detection; Scene Transformation Detection.</div>
+                        <div class="cat-row"><span class="cat-name">Temporal Reasoning</span> <span class="cat-count">(2 types)</span> — Causal Reasoning (why/what-if); Future Event Prediction.</div>
                     </div>
-                    <div class="level-item">
-                        <div class="level-badge l3">
-                            <span>LEVEL</span>
-                            3
-                        </div>
-                        <div class="level-content">
-                            <h4>Complex Reasoning</h4>
-                            <p>Complex reasoning about plots, the physical world, and social behaviors, including causal reasoning, intention understanding, common sense inference, and other high-level reasoning tasks.</p>
-                        </div>
+                    <div class="level-detail l3">
+                        <h4>Level 3 — Level 2 + Complex Reasoning</h4>
+                        <div class="cat-row"><span class="cat-name">Complex Plot Comprehension</span> <span class="cat-count">(4 types)</span> — Narrative Turning Point Detection; Narrative Cloze Inference; Symbolic / Metaphorical Interpretation; High-Order Narrative Deconstruction.</div>
+                        <div class="cat-row"><span class="cat-name">Video-Based Knowledge Acquisition</span> <span class="cat-count">(2 types)</span> — Professional Knowledge Acquisition; General Skills Acquisition.</div>
+                        <div class="cat-row"><span class="cat-name">Social Behavior Analysis</span> <span class="cat-count">(3 types)</span> — Individual Social Cognition; Dyadic Interaction Dynamics; Collective Dynamics Analysis.</div>
+                        <div class="cat-row"><span class="cat-name">Physical World Reasoning</span> <span class="cat-count">(4 types)</span> — Entity Persistence Tracking; Spatial Understanding; Counterfactual Reasoning; Counterintuitive Comprehension.</div>
                     </div>
                 </div>
 
                 <figure>
                     <img src="figs/imgs/area-basic.svg" 
                         alt="Video-MME V2 Three-Level Capability Hierarchy" 
-                        style="width:90%; max-width:800px; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 1: Video-MME V2 Three-Level Capability Hierarchy</figcaption>
-                </figure>
-                <figure>
-                    <img src="figs/imgs/teaser_3level.svg" 
-                        alt="Video-MME V2 Three-Level Capability Hierarchy" 
-                        style="width:90%; max-width:800px; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 1: Video-MME V2 Three-Level Capability Hierarchy</figcaption>
+                        style="width:100%; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 1: Video-MME V2 three-level capability hierarchy — capability dimensions and their distribution across Level 1 (Retrieval &amp; Aggregation), Level 2 (Temporal Understanding), and Level 3 (Complex Reasoning).</figcaption>
                 </figure>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 Annotation Pipeline</h3>
@@ -3554,22 +3583,36 @@
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 Data Statistics</h3>
 
                 <p>
-                    The figure below presents statistics of our group-based evaluation. For each group of four question-answer pairs, we analyze the length distribution of questions and answers, as well as the average length and variance of the eight choices (A–H) in multiple-choice questions.
+                    The figure below presents statistics of our group-based evaluation: word counts for questions, answers, and the eight choices (A–H), and the distribution of video lengths.
                 </p>
 
                 <p>
-                    For the <strong>choices</strong>, lengths remain fairly consistent across options, indicating no positional bias. For the <strong>Q&amp;A pairs</strong>, we observe an <em>increasing trend</em> in length from Q1 to Q4. This is mainly because our <strong>Reasoning Coherence</strong> questions are designed with escalating difficulty—later questions typically require deeper reasoning, longer problem descriptions, and more elaborate answers.
+                    <strong>Choices:</strong> Mean word count across options is highly consistent (13.8–14.0 words, std ~11–11.3), indicating no obvious positional bias.
+                </p>
+                <p>
+                    <strong>Questions &amp; answers:</strong> In our Reasoning Coherence design, later questions are designed to be harder, so they tend to need longer descriptions and more detailed answers; this leads to the observed increase in mean question length (19.6 → 23.8 words) and answer length (11.1 → 15.3 words) from Q1 to Q4.
                 </p>
 
                 <p>
-                    The <strong>video length distribution</strong> shows that the vast majority of videos are within 20 minutes, with a diverse range. Many short-form videos under 10 minutes are included. Although the video durations are not particularly long, the <a href="#leaderboard">leaderboard</a> demonstrates that our questions remain highly challenging for current MLLMs.
+                    <strong>Video length:</strong> Among 821 videos, 99% are 20 minutes or shorter; 53% are 10 minutes or shorter. The distribution is relatively uniform and diverse across 1-minute bins, with the peak in the 7–10 minute range.
                 </p>
 
                 <figure>
                     <img src="figs/exps/data_sta.png" 
                         alt="Video-MME V2 Data Statistics" 
-                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption>Figure 3: Data Statistics — Q&amp;A and choice lengths per group, and video length distribution</figcaption>
+                </figure>
+
+                <p>
+                    To ensure broad coverage of real-world content, we organize video sources into a two-level category taxonomy. The figure below shows the distribution: <strong>Sports &amp; Competition</strong> (e.g. Gym &amp; Fitness, Outdoor &amp; Extreme, Basketball, Soccer, Combat Sports, Racing &amp; Speed, Other Sports), <strong>Lifestyle &amp; Entertainment</strong> (e.g. Variety &amp; Comedy, Cooking &amp; Baking, Digital &amp; Auto, Travel &amp; Exploration, Home &amp; Living, Gaming &amp; Play, Pets &amp; Animals, Vlogs &amp; Review), <strong>Art &amp; Literature</strong> (e.g. Film, Performing Arts, TV Series, Animation &amp; Comics, Painting &amp; Handicraft, Fashion &amp; Beauty, Architecture &amp; Design), and <strong>Knowledge &amp; Education</strong> (e.g. Physics &amp; Math, Nature &amp; Geography, Mechanics &amp; Structures, Politics &amp; Global News, Economics &amp; Law, Computer Science &amp; AI, Humanities &amp; History, Philosophy &amp; Wisdom, Chemistry &amp; Materials, Documentary &amp; Bio). Together these span everyday life, media and storytelling, sports and recreation, and formal and informal learning, so that the benchmark reflects diverse and commonly encountered scenarios.
+                </p>
+
+                <figure>
+                    <img src="figs/imgs/video_category.svg" 
+                        alt="Video-MME V2 video category distribution (sunburst)" 
+                        style="width:100%; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 4: Video category distribution — four top-level categories and their subcategories (sample counts per slice)</figcaption>
                 </figure>
             </div>
 
@@ -3581,50 +3624,37 @@
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 三级能力层级体系</h3>
                 
-                <div class="level-container">
-                    <div class="level-item">
-                        <div class="level-badge l1">
-                            <span>LEVEL</span>
-                            1
-                        </div>
-                        <div class="level-content">
-                            <h4>信息检索与聚合 (Retrieval & Aggregation)</h4>
-                            <p>基础的视觉信息识别与提取能力，包括对象识别、属性判断、场景理解等感知层任务。</p>
-                        </div>
+                <p style="margin-bottom: 0.5rem;">
+                    下图 Figure 1 展示三个层级及其能力维度。每层包含若干类，每类下为相关子维度，对应关系如下。
+                </p>
+
+                <div class="hierarchy-detail">
+                    <div class="level-detail">
+                        <h4>Level 1 — 信息检索与聚合</h4>
+                        <div class="cat-row"><span class="cat-name">仅帧 (Frame-Only)</span> <span class="cat-count">共 3 类</span> — 视觉识别（物体/属性/场景）；基础计数；数值计算（比例、比较）。</div>
+                        <div class="cat-row"><span class="cat-name">帧+音频 (Frames &amp; Audio)</span> <span class="cat-count">共 4 类</span> — 跨模态语义一致性（色调–情绪对应）；音频引导的视觉描述；视觉引导的音频描述；视听觉协同推理。</div>
                     </div>
-                    <div class="level-item">
-                        <div class="level-badge l2">
-                            <span>LEVEL</span>
-                            2
-                        </div>
-                        <div class="level-content">
-                            <h4>时序理解 (Temporal Understanding)</h4>
-                            <p>对时序、动作与变化的动态捕捉，包括动作识别、状态变化跟踪、时间顺序理解等认知层任务。</p>
-                        </div>
+                    <div class="level-detail l2">
+                        <h4>Level 2 — Level 1 + 时序理解</h4>
+                        <div class="cat-row"><span class="cat-name">动作与运动 (Action &amp; Motion)</span> <span class="cat-count">共 5 类</span> — 细粒度动作识别；重复动作计数；时序动作定位；运动轨迹估计；运动属性分析。</div>
+                        <div class="cat-row"><span class="cat-name">顺序 (Order)</span> <span class="cat-count">共 3 类</span> — 物体出现顺序；事件序列排序；时序周期性检测。</div>
+                        <div class="cat-row"><span class="cat-name">变化 (Change)</span> <span class="cat-count">共 3 类</span> — 实体存在变化检测；实体属性变化检测；场景变换检测。</div>
+                        <div class="cat-row"><span class="cat-name">时序推理 (Temporal Reasoning)</span> <span class="cat-count">共 2 类</span> — 因果推理（原因/反事实）；未来事件预测。</div>
                     </div>
-                    <div class="level-item">
-                        <div class="level-badge l3">
-                            <span>LEVEL</span>
-                            3
-                        </div>
-                        <div class="level-content">
-                            <h4>复杂推理 (Complex Reasoning)</h4>
-                            <p>对剧情、物理世界及社会行为的复杂推理，包括因果推理、意图理解、常识推断等高阶推理任务。</p>
-                        </div>
+                    <div class="level-detail l3">
+                        <h4>Level 3 — Level 2 + 复杂推理</h4>
+                        <div class="cat-row"><span class="cat-name">复杂剧情理解 (Complex Plot Comprehension)</span> <span class="cat-count">共 4 类</span> — 叙事转折点检测；叙事填空推理；符号/隐喻解读；高阶叙事解构。</div>
+                        <div class="cat-row"><span class="cat-name">基于视频的知识获取 (Video-Based Knowledge Acquisition)</span> <span class="cat-count">共 2 类</span> — 专业知识获取；通用技能获取。</div>
+                        <div class="cat-row"><span class="cat-name">社会行为分析 (Social Behavior Analysis)</span> <span class="cat-count">共 3 类</span> — 个体社会认知；二元互动动态；群体动态分析。</div>
+                        <div class="cat-row"><span class="cat-name">物理世界推理 (Physical World Reasoning)</span> <span class="cat-count">共 4 类</span> — 实体持久性追踪；空间理解；反事实推理；反直觉理解。</div>
                     </div>
                 </div>
 
                 <figure>
                     <img src="figs/imgs/area-basic.svg" 
                         alt="Video-MME V2 的三级能力层级分类体系" 
-                        style="width:90%; max-width:800px; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 1: Video-MME V2 的三级能力层级分类体系</figcaption>
-                </figure>
-                <figure>
-                    <img src="figs/imgs/teaser_3level.svg" 
-                        alt="Video-MME V2 的三级能力层级分类体系" 
-                        style="width:90%; max-width:800px; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 2: Video-MME V2 的三级能力层级分类体系中的样本示例。</figcaption>
+                        style="width:100%; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 1: Video-MME V2 三级能力层级体系 — 各能力维度及其在 Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布。</figcaption>
                 </figure>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 标注流程</h3>
@@ -3706,22 +3736,35 @@
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 数据统计</h3>
 
                 <p>
-                    下图展示了我们基于分组（group-based）评测的数据统计。对于每组四个问答对，我们分析了问题与答案的长度分布，以及八选题中八个选项（A–H）的平均长度和方差。
+                    下图展示了基于分组评测的数据统计：问题与答案的词数、八选题选项（A–H）的词数，以及视频时长分布。
                 </p>
 
                 <p>
-                    对于<strong>选项（choice）</strong>，各选项长度基本一致，不存在位置偏差。对于<strong>问答对</strong>，我们观察到从 Q1 到 Q4 呈<em>递增趋势</em>。这主要是因为我们的<strong>推理连贯性（Reasoning Coherence）</strong>测试题通常越往后难度越大，描述和答案相应也就越长。
+                    <strong>选项：</strong>八个选项的平均词数高度一致（13.8–14.0 词，标准差约 11–11.3），无明显位置偏差。
+                </p>
+                <p>
+                    <strong>问题与答案：</strong>在推理连贯性设计中，题目越往后难度越大，因此需要更长的描述、回答也需更细致，从而呈现出问题与答案平均长度由 Q1 到 Q4 递增（19.6 → 23.8 词，11.1 → 15.3 词）的现象。
                 </p>
 
                 <p>
-                    <strong>视频长度分布</strong>显示绝大多数视频在 20 分钟以内，分布较为多样。10 分钟以内的短视频占比较高。虽然视频长度并不算长，但从<a href="#leaderboard">排行榜</a>中可以看到，我们的问题对目前的 MLLM 极具挑战性。
+                    <strong>视频时长：</strong>共 821 个视频，99% 在 20 分钟以内，53% 在 10 分钟以内；时长分布较为均匀且多样化，按 1 分钟区间统计，峰值集中在 7–10 分钟。
                 </p>
 
                 <figure>
                     <img src="figs/exps/data_sta.png" 
                         alt="Video-MME V2 数据统计" 
-                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 3: 数据统计 — 每组的问答与选项长度，以及视频长度分布</figcaption>
+                        style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption>Figure 2: 数据统计 — 每组的问答与选项长度，以及视频长度分布</figcaption>
+                </figure>
+
+                <p>
+                    为覆盖多样化的真实场景，我们将视频来源划分为两级类别体系。下图展示了各类别分布：<strong>体育与竞技</strong>（如健身、户外与极限、篮球、足球、格斗、竞速、其他运动），<strong>生活与娱乐</strong>（如综艺喜剧、烹饪烘焙、数码与汽车、旅行探索、家居生活、游戏与玩乐、宠物动物、vlog 与测评），<strong>艺术与文艺</strong>（如电影、表演艺术、剧集、动画与漫画、绘画与手工艺、时尚美妆、建筑与设计），<strong>知识与教育</strong>（如物理数学、自然地理、机械与结构、政治与全球新闻、经济与法律、计算机与人工智能、人文历史、哲学与智慧、化学与材料、纪录片与生物）。四类共同覆盖日常生活、媒体叙事、运动休闲与正式/非正式学习等常见场景，使基准在视频类型上具有较好的多样性与代表性。
+                </p>
+                <figure>
+                    <img src="figs/imgs/video_category.png" 
+                        alt="Video-MME V2 视频类别分布（旭日图）" 
+                        style="width:100%; height:auto; display:block; margin:0 auto;">
+                    <figcaption>Figure 3: 视频类别分布 — 四个一级类别及其子类（图中为各扇区样本数）</figcaption>
                 </figure>
             </div>
         </article>
@@ -4163,21 +4206,21 @@
     const leaderboardDataRaw = [
         { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [58.4, null], level2: [38.1, null], level3: [30.3, null], relevance: [42.0, null], logic: [35.6, null], overall: [39.8, null], avg_acc: [58.2, null] },
         { name: "Gemini-3-Pro", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [58.4, null], level2: [41.8, null], level3: [34.0, null], relevance: [43.3, null], logic: [41.2, null], overall: [42.6, null], avg_acc: [60.5, null] },
-        { name: "Doubao-Seed-1.6-Vision", logo: "doubao", type: "proprietary", omni: true, frames: "1fps", level1: [30.7, null], level2: [27.5, null], level3: [20.0, null], relevance: [27.0, null], logic: [21.5, null], overall: [25.1, null], avg_acc: [43.6, null] },
-        { name: "GPT-5", logo: "openai", type: "proprietary", frames: "50", level1: [30.2, 30.2], level2: [25.5, 25.5], level3: [20.7, 20.7], relevance: [26.1, 26.1], logic: [21.8, 21.8], overall: [24.6, 24.6], avg_acc: [43.7, 43.7] },
+        { name: "Doubao-Seed-1.6-Vision", logo: "doubao", type: "proprietary", noWsub: true, frames: "1fps", level1: [null, 30.7], level2: [null, 27.5], level3: [null, 20.0], relevance: [null, 27.0], logic: [null, 21.5], overall: [null, 25.1], avg_acc: [null, 43.6] },
+        { name: "GPT-5", logo: "openai", type: "proprietary", noWsub: true, frames: "50", level1: [null, 30.2], level2: [null, 25.5], level3: [null, 20.7], relevance: [null, 26.1], logic: [null, 21.8], overall: [null, 24.6], avg_acc: [null, 43.7] },
         { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [32.6, 23.3], level2: [25.4, 17.7], level3: [23.4, 15.8], relevance: [42.3, 34.9], logic: [48.4, 38.4], overall: [26.3, 18.3], avg_acc: [44.4, 36.1] },
         { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "64", level1: [30.3, 18.8], level2: [27.0, 16.5], level3: [22.3, 13.3], relevance: [40.6, 31.6], logic: [49.9, 35.7], overall: [25.8, 15.7], avg_acc: [43.8, 33.0] },
         { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", omni: true, frames: "64", level1: [26.9, null], level2: [17.7, null], level3: [17.3, null], relevance: [34.6, null], logic: [44.8, null], overall: [19.9, null], avg_acc: [38.1, null] },
         { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", omni: true, frames: "64", level1: [22.7, null], level2: [15.9, null], level3: [15.2, null], relevance: [31.4, null], logic: [40.9, null], overall: [17.3, null], avg_acc: [34.7, null] },
         { name: "InternVL3-5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "64", level1: [25.7, 18.3], level2: [22.3, 14.2], level3: [19.2, 14.7], relevance: [37.4, 31.3], logic: [47.2, 37.5], overall: [21.8, 15.5], avg_acc: [40.7, 33.4] },
-        { name: "Qwen3vl-8B-think", logo: "qwen", type: "open", frames: "64", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [34.4, 26.5], logic: [42.7, 27.3], overall: [20.3, 12.2], avg_acc: [37.2, 26.8] },
-        { name: "Qwen3vl-4B-think", logo: "qwen", type: "open", frames: "64", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [33.8, 26.3], logic: [39.1, 24.5], overall: [18.8, 11.2], avg_acc: [35.6, 25.7] },
-        { name: "Qwen3vl-8B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.0, 14.9], level2: [16.9, 12.5], level3: [15.7, 10.8], relevance: [32.7, 27.6], logic: [41.4, 31.0], overall: [17.9, 12.4], avg_acc: [35.7, 28.8] },
-        { name: "Qwen3vl-4B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.1, 15.8], level2: [14.3, 9.8], level3: [14.2, 9.1], relevance: [31.2, 25.1], logic: [38.6, 29.6], overall: [16.5, 11], avg_acc: [33.7, 26.6] },
+        { name: "Qwen3-VL-8B-Think", logo: "qwen", type: "open", frames: "64", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [34.4, 26.5], logic: [42.7, 27.3], overall: [20.3, 12.2], avg_acc: [37.2, 26.8] },
+        { name: "Qwen3-VL-4B-Think", logo: "qwen", type: "open", frames: "64", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [33.8, 26.3], logic: [39.1, 24.5], overall: [18.8, 11.2], avg_acc: [35.6, 25.7] },
+        { name: "Qwen3-VL-8B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.0, 14.9], level2: [16.9, 12.5], level3: [15.7, 10.8], relevance: [32.7, 27.6], logic: [41.4, 31.0], overall: [17.9, 12.4], avg_acc: [35.7, 28.8] },
+        { name: "Qwen3-VL-4B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.1, 15.8], level2: [14.3, 9.8], level3: [14.2, 9.1], relevance: [31.2, 25.1], logic: [38.6, 29.6], overall: [16.5, 11], avg_acc: [33.7, 26.6] },
         { name: "InternVL3-5-8B-Instruct", logo: "intern", type: "open", frames: "64", level1: [22.5, 15.7], level2: [13.7, 10.0], level3: [14.2, 9.5], relevance: [29.9, 24.8], logic: [39.1, 30.2], overall: [16.1, 11.2], avg_acc: [33.1, 26.7] },
-        { name: "Qwen3vl-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [20.0, 14.7], level2: [20.9, 12.3], level3: [14.7, 10.9], relevance: [31.1, 27.7], logic: [39.1, 29.8], overall: [18.0, 12.3], avg_acc: [33.8, 28.4] },
+        { name: "Qwen3-VL-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [20.0, 14.7], level2: [20.9, 12.3], level3: [14.7, 10.9], relevance: [31.1, 27.7], logic: [39.1, 29.8], overall: [18.0, 12.3], avg_acc: [33.8, 28.4] },
         { name: "InternVL3-5-30B-A3B-Instruct", logo: "intern", type: "open", frames: "64", level1: [21.2, 11.1], level2: [13.9, 7.7], level3: [13.3, 6.5], relevance: [30.5, 20.6], logic: [37.4, 23.0], overall: [15.5, 8.0], avg_acc: [32.8, 21.4] },
-        { name: "Qwen3vl-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [20.0, 9.4], level2: [17.5, 9.3], level3: [14.2, 5.6], relevance: [29.5, 21.0], logic: [38.3, 23.8], overall: [16.7, 7.7], avg_acc: [32.5, 22.0] },
+        { name: "Qwen3-VL-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [20.0, 9.4], level2: [17.5, 9.3], level3: [14.2, 5.6], relevance: [29.5, 21.0], logic: [38.3, 23.8], overall: [16.7, 7.7], avg_acc: [32.5, 22.0] },
         { name: "Qwen2-5-VL-7B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [20.4, 13.6], level2: [14.8, 11.0], level3: [12.7, 8.3], relevance: [28.6, 23.6], logic: [38.8, 27.8], overall: [15.3, 10.5], avg_acc: [32.1, 25.0] },
         { name: "InternVL-3-5-4B-Instruct", logo: "intern", type: "open", frames: "64", level1: [20.4, 13.9], level2: [12.8, 10.0], level3: [12.5, 7.4], relevance: [29.4, 23.9], logic: [36.2, 27.2], overall: [14.6, 9.9], avg_acc: [31.7, 25.0] },
         { name: "Qwen2-5-VL-72B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [26.1, 17.3], level2: [20.4, 13.0], level3: [20.3, 12.9], relevance: [36.1, 28.7], logic: [45.5, 33.3], overall: [21.8, 14.0], avg_acc: [39.3, 30.2] },
@@ -4185,13 +4228,13 @@
         { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "64", level1: [23.2, 15.2], level2: [18.5, 11.9], level3: [16.1, 9.5], relevance: [33.0, 26.3], logic: [41.3, 29.4], overall: [18.6, 11.7], avg_acc: [35.8, 27.4] },
         { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", frames: "64", level1: [19.0, 14.5], level2: [12.2, 9.7], level3: [11.7, 8.1], relevance: [27.7, 24.2], logic: [36.2, 26.8], overall: [13.7, 10.2], avg_acc: [30.6, 25.1] },
         { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "64", level1: [22.0, 17.7], level2: [15.5, 11.9], level3: [12.6, 8.5], relevance: [30.6, 25.6], logic: [37.1, 29.9], overall: [15.9, 11.9], avg_acc: [32.8, 27.1] },
-        { name: "GLM4.5v-think", logo: "glm", type: "open", frames: "64", level1: [25.7, 16.3], level2: [21.7, 13.4], level3: [18.2, 11.2], relevance: [37.0, 28.4], logic: [44.4, 29.9], overall: [21.2, 13.2], avg_acc: [39.5, 28.9] },
+        { name: "GLM4.5-V-Think", logo: "glm", type: "open", frames: "64", level1: [25.7, 16.3], level2: [21.7, 13.4], level3: [18.2, 11.2], relevance: [37.0, 28.4], logic: [44.4, 29.9], overall: [21.2, 13.2], avg_acc: [39.5, 28.9] },
         { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", frames: "64", level1: [16.0, 12.8], level2: [6.9, 5.7], level3: [7.2, 5.5], relevance: [22.1, 19.3], logic: [27.4, 21.0], overall: [9.4, 7.4], avg_acc: [23.9, 19.9] },
-        { name: "GLM4.1v-think", logo: "glm", type: "open", frames: "64", level1: [19.5, 13.1], level2: [13.6, 8.8], level3: [13.3, 7.4], relevance: [29.1, 22.6], logic: [36.3, 24.0], overall: [15.0, 9.3], avg_acc: [31.5, 23.1] },
+        { name: "GLM4.1-V-Think", logo: "glm", type: "open", frames: "64", level1: [19.5, 13.1], level2: [13.6, 8.8], level3: [13.3, 7.4], relevance: [29.1, 22.6], logic: [36.3, 24.0], overall: [15.0, 9.3], avg_acc: [31.5, 23.1] },
         { name: "Keye-VL-1-5-8B", logo: "keye", type: "open", frames: "64", level1: [21.2, 14.6], level2: [13.6, 9.9], level3: [11.4, 6.8], relevance: [28.7, 24.3], logic: [37.4, 27.4], overall: [14.6, 9.8], avg_acc: [31.7, 25.3] },
         { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", frames: "64", level1: [18.1, 12.5], level2: [12.7, 10.0], level3: [13.1, 8.0], relevance: [27.0, 23.6], logic: [36.5, 26.4], overall: [14.3, 9.8], avg_acc: [30.2, 24.6] },
         { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", frames: "64", level1: [8.2, 8.2], level2: [8.8, 8.8], level3: [6.7, 6.7], relevance: [9.4, 9.4], logic: [4.4, 4.4], overall: [null, null], avg_acc: [null, null] },
-        { name: "GLM4.6-flash", logo: "glm", type: "open", frames: "64", level1: [27.1, 15.9], level2: [18.9, 13.0], level3: [17.0, 9.5], relevance: [36.1, 26.9], logic: [42.5, 28.6], overall: [20.1, 12.2], avg_acc: [38.3, 27.5] },
+        { name: "GLM4.6-Flash", logo: "glm", type: "open", frames: "64", level1: [27.1, 15.9], level2: [18.9, 13.0], level3: [17.0, 9.5], relevance: [36.1, 26.9], logic: [42.5, 28.6], overall: [20.1, 12.2], avg_acc: [38.3, 27.5] },
     ];
 
     // Expand data - all values are directly provided, no calculations
@@ -4208,6 +4251,8 @@
         const avg_acc = item.avg_acc || [null, null];
         const overall = item.overall || item.overall_direct || [null, null];
         
+        // For sorting: use w_sub when available, else wo_sub
+        const primary = (arr) => (arr && (arr[0] != null && arr[0] !== undefined ? arr[0] : arr[1]));
         return {
             ...item,
             frames: item.frames || "64",
@@ -4226,7 +4271,14 @@
             level3_w: item.level3[0],
             relevance_w: item.relevance[0],
             logic_w: item.logic[0],
-            avg_acc_w: avg_acc[0]
+            avg_acc_w: avg_acc[0],
+            overall_sort: primary(overall),
+            level1_sort: primary(item.level1),
+            level2_sort: primary(item.level2),
+            level3_sort: primary(item.level3),
+            relevance_sort: primary(item.relevance),
+            logic_sort: primary(item.logic),
+            avg_acc_sort: primary(avg_acc)
         };
     });
 
@@ -4265,20 +4317,25 @@
         }
         
         const sortCol = currentSort.column;
-        const sortKey = { level1: 'level1_w', level2: 'level2_w', level3: 'level3_w', relevance: 'relevance_w', logic: 'logic_w', avg_acc: 'avg_acc_w', overall: 'overall_w' }[sortCol] || sortCol;
-        data.sort((a, b) => {
-            let aVal = a[sortKey] != null ? (typeof a[sortKey] === 'string' ? parseFloat(a[sortKey]) : a[sortKey]) : 0;
-            let bVal = b[sortKey] != null ? (typeof b[sortKey] === 'string' ? parseFloat(b[sortKey]) : b[sortKey]) : 0;
-            return currentSort.direction === 'desc' ? bVal - aVal : aVal - bVal;
-        });
+        const sortKey = sortCol ? (sortCol + '_sort') : null;
+        if (sortKey) {
+            data.sort((a, b) => {
+                let aVal = a[sortKey] != null ? (typeof a[sortKey] === 'string' ? parseFloat(a[sortKey]) : a[sortKey]) : -Infinity;
+                let bVal = b[sortKey] != null ? (typeof b[sortKey] === 'string' ? parseFloat(b[sortKey]) : b[sortKey]) : -Infinity;
+                if (aVal === bVal) return 0;
+                return currentSort.direction === 'desc' ? (bVal - aVal) : (aVal - bVal);
+            });
+        }
 
         const tbody = document.getElementById('leaderboardBody');
         const isOmni = (item) => item.omni === true;
+        const noWsub = (item) => item.noWsub === true;
         tbody.innerHTML = data.map((item, index) => {
             const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : 'rank-default';
             const l1w = item.level1[0], l1o = item.level1[1], l2w = item.level2[0], l2o = item.level2[1], l3w = item.level3[0], l3o = item.level3[1];
             const relw = item.relevance[0], relo = item.relevance[1], logw = item.logic[0], logo = item.logic[1];
             const omniWo = isOmni(item);
+            const wSlash = noWsub(item);
             return `
                 <tr>
                     <td>
@@ -4289,19 +4346,19 @@
                         </div>
                     </td>
                     <td>${item.frames || '64'}</td>
-                    <td>${fmt(item.overall[0])}</td>
+                    <td>${fmt(item.overall[0], wSlash)}</td>
                     <td>${fmt(item.overall[1], omniWo)}</td>
-                    <td class="${l1w >= 30 ? 'score-high' : l1w >= 15 ? 'score-mid' : ''}">${fmt(l1w)}</td>
+                    <td class="${(l1w != null ? l1w : l1o) >= 30 ? 'score-high' : (l1w != null ? l1w : l1o) >= 15 ? 'score-mid' : ''}">${fmt(l1w, wSlash)}</td>
                     <td class="${l1o >= 30 ? 'score-high' : l1o >= 15 ? 'score-mid' : ''}">${fmt(l1o, omniWo)}</td>
-                    <td class="${l2w >= 25 ? 'score-high' : l2w >= 12 ? 'score-mid' : ''}">${fmt(l2w)}</td>
+                    <td class="${(l2w != null ? l2w : l2o) >= 25 ? 'score-high' : (l2w != null ? l2w : l2o) >= 12 ? 'score-mid' : ''}">${fmt(l2w, wSlash)}</td>
                     <td class="${l2o >= 25 ? 'score-high' : l2o >= 12 ? 'score-mid' : ''}">${fmt(l2o, omniWo)}</td>
-                    <td class="${l3w >= 20 ? 'score-high' : l3w >= 10 ? 'score-mid' : ''}">${fmt(l3w)}</td>
+                    <td class="${(l3w != null ? l3w : l3o) >= 20 ? 'score-high' : (l3w != null ? l3w : l3o) >= 10 ? 'score-mid' : ''}">${fmt(l3w, wSlash)}</td>
                     <td class="${l3o >= 20 ? 'score-high' : l3o >= 10 ? 'score-mid' : ''}">${fmt(l3o, omniWo)}</td>
-                    <td>${fmt(relw)}</td>
+                    <td>${fmt(relw, wSlash)}</td>
                     <td>${fmt(relo, omniWo)}</td>
-                    <td>${fmt(logw)}</td>
+                    <td>${fmt(logw, wSlash)}</td>
                     <td>${fmt(logo, omniWo)}</td>
-                    <td>${fmt(item.avg_acc[0])}</td>
+                    <td>${fmt(item.avg_acc[0], wSlash)}</td>
                     <td>${fmt(item.avg_acc[1], omniWo)}</td>
                 </tr>
             `;
@@ -4312,11 +4369,10 @@
             const column = th.dataset.sort;
             if (column === currentSort.column) {
                 th.classList.add('sorted');
-                arrow.classList.add('active');
-                arrow.classList.toggle('asc', currentSort.direction === 'asc');
+                if (arrow) { arrow.classList.add('active'); arrow.classList.toggle('asc', currentSort.direction === 'asc'); }
             } else {
                 th.classList.remove('sorted');
-                arrow.classList.remove('active', 'asc');
+                if (arrow) arrow.classList.remove('active', 'asc');
             }
         });
     }
