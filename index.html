@@ -294,6 +294,10 @@
             margin-bottom: 4rem;
         }
 
+        #dataset {
+            overflow-x: visible;
+        }
+
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -1132,7 +1136,8 @@
         }
 
         figure img {
-            max-width: 100%;
+            max-width: 80%;
+            width: 80%;
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
@@ -1153,6 +1158,35 @@
             margin-top: 12px;
             font-size: 0.9rem;
             color: var(--secondary-color);
+        }
+
+        /* Two figures side by side — 整块宽度 110% 用 margin 居中 */
+        .figures-row {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: nowrap;
+            margin: 2.5rem -10%;
+            width: 120%;
+            max-width: 120%;
+            box-sizing: border-box;
+        }
+        /* 两图占比：改 first-child / last-child 的 flex 第一个数即可，如 1.2 与 1 约为 55% : 45%，1.5 与 1 约为 60% : 40%，2 与 1 约为 67% : 33% */
+        .figures-row figure {
+            flex: 1 1 0;
+            min-width: 0;
+            margin: 0;
+        }
+        .figures-row figure:first-child {
+            flex: 1.08 1 0;
+        }
+        .figures-row figure:last-child {
+            flex: 1 1 0;
+        }
+        .figures-row figure img {
+            width: 110%;
+            max-width: 100%;
         }
 
         /* Citation */
@@ -3506,7 +3540,7 @@
                 <figure>
                     <img src="figs/imgs/area-basic.svg" 
                         alt="Video-MME V2 Three-Level Capability Hierarchy" 
-                        style="width:100%; height:auto; display:block; margin:0 auto;">
+                        style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
                     <figcaption>Figure 1: Video-MME V2 three-level capability hierarchy — capability dimensions and their distribution across Level 1 (Retrieval &amp; Aggregation), Level 2 (Temporal Understanding), and Level 3 (Complex Reasoning).</figcaption>
                 </figure>
 
@@ -3599,26 +3633,27 @@
                 </p>
 
                 <p>
-                    <strong>Video length:</strong> Among 821 videos, 99% are 20 minutes or shorter; 53% are 10 minutes or shorter. The distribution is relatively uniform and diverse across 1-minute bins, with the peak in the 7–10 minute range.
+                    <strong>Video length:</strong> Among 801 videos, the average length is 10.43 minutes (625.85 seconds); 99% are 20 minutes or shorter; 53% are 10 minutes or shorter. The distribution is relatively uniform and diverse across 1-minute bins, with the peak in the 7–10 minute range.
                 </p>
-
-                <figure>
-                    <img src="figs/exps/data_sta.png" 
-                        alt="Video-MME V2 Data Statistics" 
-                        style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 3: Data Statistics — Q&amp;A and choice lengths per group, and video length distribution</figcaption>
-                </figure>
 
                 <p>
                     To ensure broad coverage of real-world content, we organize video sources into a two-level category taxonomy. The figure below shows the distribution: <strong>Sports &amp; Competition</strong> (e.g. Gym &amp; Fitness, Outdoor &amp; Extreme, Basketball, Soccer, Combat Sports, Racing &amp; Speed, Other Sports), <strong>Lifestyle &amp; Entertainment</strong> (e.g. Variety &amp; Comedy, Cooking &amp; Baking, Digital &amp; Auto, Travel &amp; Exploration, Home &amp; Living, Gaming &amp; Play, Pets &amp; Animals, Vlogs &amp; Review), <strong>Art &amp; Literature</strong> (e.g. Film, Performing Arts, TV Series, Animation &amp; Comics, Painting &amp; Handicraft, Fashion &amp; Beauty, Architecture &amp; Design), and <strong>Knowledge &amp; Education</strong> (e.g. Physics &amp; Math, Nature &amp; Geography, Mechanics &amp; Structures, Politics &amp; Global News, Economics &amp; Law, Computer Science &amp; AI, Humanities &amp; History, Philosophy &amp; Wisdom, Chemistry &amp; Materials, Documentary &amp; Bio). Together these span everyday life, media and storytelling, sports and recreation, and formal and informal learning, so that the benchmark reflects diverse and commonly encountered scenarios.
                 </p>
 
-                <figure>
-                    <img src="figs/imgs/video_category.png" 
-                        alt="Video-MME V2 video category distribution (sunburst)" 
-                        style="width:100%; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 4: Video category distribution — four top-level categories and their subcategories (sample counts per slice)</figcaption>
-                </figure>
+                <div class="figures-row">
+                    <figure>
+                        <img src="figs/exps/data_sta.png" 
+                            alt="Video-MME V2 Data Statistics" 
+                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        <figcaption>Figure 3: Data Statistics — Q&amp;A and choice lengths per group, and video length distribution</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="figs/imgs/video_category.png" 
+                            alt="Video-MME V2 video category distribution (sunburst)" 
+                            style="width:100%; height:auto; display:block; margin:0 auto;">
+                        <figcaption>Figure 4: Video category distribution — four top-level categories and their subcategories (sample counts per slice)</figcaption>
+                    </figure>
+                </div>
             </div>
 
             <!-- Chinese Content -->
@@ -3658,7 +3693,7 @@
                 <figure>
                     <img src="figs/imgs/area-basic.svg" 
                         alt="Video-MME V2 的三级能力层级分类体系" 
-                        style="width:100%; height:auto; display:block; margin:0 auto;">
+                        style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
                     <figcaption>Figure 1: Video-MME V2 三级能力层级体系 — 各能力维度及其在 Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布。</figcaption>
                 </figure>
 
@@ -3745,32 +3780,32 @@
                 </p>
 
                 <p>
-                    <strong>选项：</strong>八个选项的平均词数高度一致（13.8–14.0 词，标准差约 11–11.3），无明显位置偏差。
+                    <strong>视频时长：</strong>共 801 个视频，平均长度约 10.4 分钟（625.85 秒），99% 在 20 分钟以内，53% 在 10 分钟以内；时长分布较为均匀且多样化，按 1 分钟区间统计，峰值集中在 7–10 分钟。
+                </p>
+                <p>
+                    <strong>视频类别：</strong>为覆盖多样化的真实场景，我们将视频来源划分为两级类别体系。下图展示了各类别分布：<strong>体育与竞技</strong>（如健身、篮球、足球等），<strong>生活与娱乐</strong>（如综艺喜剧、烹饪烘焙、数码与汽车等），<strong>艺术与文艺</strong>（如电影、剧集、动画与漫画等），<strong>知识与教育</strong>（如物理数学、计算机与人工智能、人文历史等）。四类共同覆盖日常生活、媒体叙事、运动休闲与正式/非正式学习等常见场景，使基准在视频类型上具有较好的多样性与代表性。
                 </p>
                 <p>
                     <strong>问题与答案：</strong>在推理连贯性设计中，题目越往后难度越大，因此需要更长的描述、回答也需更细致，从而呈现出问题与答案平均长度由 Q1 到 Q4 递增（19.6 → 23.8 词，11.1 → 15.3 词）的现象。
                 </p>
-
                 <p>
-                    <strong>视频时长：</strong>共 821 个视频，99% 在 20 分钟以内，53% 在 10 分钟以内；时长分布较为均匀且多样化，按 1 分钟区间统计，峰值集中在 7–10 分钟。
+                    <strong>选项分布：</strong>八个选项的平均词数高度一致（13.8–14.0 词，标准差约 11–11.3），无明显位置偏差。
                 </p>
 
-                <figure>
-                    <img src="figs/exps/data_sta.png" 
-                        alt="Video-MME V2 数据统计" 
-                        style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 2: 数据统计 — 每组的问答与选项长度，以及视频长度分布</figcaption>
-                </figure>
-
-                <p>
-                    为覆盖多样化的真实场景，我们将视频来源划分为两级类别体系。下图展示了各类别分布：<strong>体育与竞技</strong>（如健身、户外与极限、篮球、足球、格斗、竞速、其他运动），<strong>生活与娱乐</strong>（如综艺喜剧、烹饪烘焙、数码与汽车、旅行探索、家居生活、游戏与玩乐、宠物动物、vlog 与测评），<strong>艺术与文艺</strong>（如电影、表演艺术、剧集、动画与漫画、绘画与手工艺、时尚美妆、建筑与设计），<strong>知识与教育</strong>（如物理数学、自然地理、机械与结构、政治与全球新闻、经济与法律、计算机与人工智能、人文历史、哲学与智慧、化学与材料、纪录片与生物）。四类共同覆盖日常生活、媒体叙事、运动休闲与正式/非正式学习等常见场景，使基准在视频类型上具有较好的多样性与代表性。
-                </p>
-                <figure>
-                    <img src="figs/imgs/video_category.png" 
-                        alt="Video-MME V2 视频类别分布（旭日图）" 
-                        style="width:100%; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 3: 视频类别分布 — 四个一级类别及其子类（图中为各扇区样本数）</figcaption>
-                </figure>
+                <div class="figures-row">
+                    <figure>
+                        <img src="figs/exps/data_sta.png" 
+                            alt="Video-MME V2 数据统计" 
+                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        <figcaption>Figure 2: 数据统计 — 每组的问答与选项长度，以及视频长度分布</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="figs/imgs/video_category.png" 
+                            alt="Video-MME V2 视频类别分布（旭日图）" 
+                            style="width:100%; height:auto; display:block; margin:0 auto;">
+                        <figcaption>Figure 3: 视频类别分布 — 四个一级类别及其子类（图中为各扇区样本数）</figcaption>
+                    </figure>
+                </div>
             </div>
         </article>
     </section>
@@ -3797,7 +3832,7 @@
                 <figure>
                     <img src="figs/exps/performance.jpg" 
                         alt="Level-wise Overall Performance Chart" 
-                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        style="width:80%; max-width:720px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption>Figure 3: Overall Performance by Level</figcaption>
                 </figure>
                 <!-- <div class="analysis-card-body">
@@ -3819,7 +3854,7 @@
                 <figure>
                     <img src="figs/exps/Code_Generated_Image.png" 
                         alt="Capability Radar Chart" 
-                        style="width:100%; max-width:900px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        style="width:80%; max-width:720px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption>Figure 4: Capability Radar Chart</figcaption>
                 </figure>
             </div>
