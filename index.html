@@ -3898,6 +3898,74 @@
             </div>
         </div>
 
+        <!-- Why Our Index Score Is More Informative -->
+        <div class="analysis-card full-width" style="margin-bottom: 2rem;">
+            <div class="analysis-card-header">
+                <h4>📊 <span data-lang-en>Why Our Index Score Better Reflects Model Capability</span><span data-lang-zh>为何我们的指数打分更能反映模型能力</span></h4>
+                <span class="tag tag-chart">Analysis</span>
+            </div>
+            <div class="analysis-card-body" style="padding: 20px;">
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    We compare our group-based index score (Overall) with average accuracy (Avg Acc) over all questions. The gap between the two reveals both the value of our evaluation design and differences in model robustness.
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    我们将基于分组的指数得分（Overall）与按题目统计的平均准确率（Avg Acc）进行对比。二者之间的差距既能说明我们评估方式的设计优势，也能反映模型在鲁棒性上的差异。
+                </p>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    <strong>Same-model comparison:</strong> <strong>Gemini-3-Pro</strong> and <strong>Gemini-Flash</strong> reach Avg Acc 60.5% and 58.2% respectively—close to a “passing” level—but our Overall score gives only 42.6% and 39.8%. This shows that even strong models rarely get all questions in a group correct; their capability is not as comprehensive as raw accuracy suggests. Our metric better exploits the group structure, is more rigorous and robust, and reflects true ability.
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    <strong>同一模型内对比：</strong><strong>Gemini-3-Pro</strong> 与 <strong>Gemini-Flash</strong> 的平均准确率分别为 60.5% 与 58.2%，接近「及格」水平，但按我们的指数打分仅有 42.6% 与 39.8%。说明即便强模型也较难在同一组内把题目都做对，能力并未如平均准确率所显示的那样全面。我们的评估方式能更好利用 group 结构，更鲁棒、更严谨，更能体现模型的真实能力。
+                </p>
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    <strong>Cross-model comparison:</strong> For Gemini-3-Pro and Gemini-Flash, Overall is about 70% of Avg Acc. By contrast, <strong>InternVL3-5-241B-A28B-Instruct</strong> has Avg Acc 40.7% but Overall only 21.8%—the former is nearly twice the latter. Smaller models such as <strong>LLaVA-Video-7B</strong> show Acc 23.9% vs Overall 9.5%, a ratio of about 2.5×, revealing low robustness (e.g. only getting a few questions right per group). Comparing each model’s Avg Acc with our score thus helps distinguish true capability from fragile, uneven performance.
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    <strong>不同模型间对比：</strong>Gemini-3-Pro 与 Gemini-Flash 的 Overall 约为其 Avg Acc 的约 70%。而 <strong>InternVL3-5-241B-A28B-Instruct</strong> 的 Avg Acc 为 40.7%，Overall 仅 21.8%，前者接近后者的两倍；一些小模型如 <strong>LLaVA-Video-7B</strong> 的 Acc 与 Overall 分别为 23.9% 与 9.5%，二者接近 2.5 倍，揭示出这些模型的低鲁棒性（如在各个 group 中往往只能做对部分题目）。因此，观察各模型的 Avg Acc 与我们的得分的差异，能更好理解模型的能力与鲁棒性。
+                </p>
+                <div style="overflow-x: auto; margin-top: 1.25rem;">
+                    <table class="comparison-table" style="width: 100%; max-width: 900px; margin: 0 auto;">
+                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-en>Avg Acc vs Overall (index score) — selected models</caption>
+                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-zh>Avg Acc 与 Overall（指数得分）对比 — 部分模型</caption>
+                        <thead>
+                            <tr>
+                                <th><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
+                                <th><span data-lang-en>Avg Acc (%)</span><span data-lang-zh>Avg Acc (%)</span></th>
+                                <th><span data-lang-en>Overall (Ours)</span><span data-lang-zh>Overall（指数得分）</span></th>
+                                <th><span data-lang-en>Acc / Overall</span><span data-lang-zh>Acc / Overall</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gemini-3-Pro</td>
+                                <td>60.5%</td>
+                                <td>42.6%</td>
+                                <td>1.42</td>
+                            </tr>
+                            <tr>
+                                <td>Gemini-Flash</td>
+                                <td>58.2%</td>
+                                <td>39.8%</td>
+                                <td>1.46</td>
+                            </tr>
+                            <tr>
+                                <td>InternVL3-5-241B-A28B-Instruct</td>
+                                <td>40.7%</td>
+                                <td>21.8%</td>
+                                <td>1.87</td>
+                            </tr>
+                            <tr>
+                                <td>LLaVA-Video-7B</td>
+                                <td>23.9%</td>
+                                <td>9.5%</td>
+                                <td>2.52</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div class="analysis-grid">
 
             <!-- Chart Placeholder 3 & 4 -->
