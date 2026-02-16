@@ -1141,6 +1141,11 @@
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
+        /* 单图占满栏宽（如 Thinking 效应图） */
+        figure.figure-full-width img {
+            width: 100%;
+            max-width: 100%;
+        }
 
         .figure-placeholder {
             background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
@@ -3835,107 +3840,65 @@
             我们对多个前沿视频多模态大模型进行了全面评测，以下是主要实验结果与深入分析。
         </p>
 
+        <!-- Subsection: Effect of Thinking -->
+        <div class="analysis-card full-width" style="margin-bottom: 2rem;">
+            <div class="analysis-card-header">
+                <h4>🧠 <span data-lang-en>Effect of Thinking Mode on Video-MME v2</span><span data-lang-zh>Thinking 模式在 Video-MME v2 上的作用</span></h4>
+                <span class="tag tag-chart">Chart</span>
+            </div>
+            <div class="analysis-card-body" style="padding: 20px;">
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    We evaluate the impact of enabling reasoning mode (Thinking Mode) on model performance on Video-MME v2, “thinking”  under both with- and without-subtitle settings. The figure shows the instruction-tuned baseline (Instruct Baseline), the gain and regression brought by reasoning (Gain / Regression).
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    我们在 Video-MME v2 上评估了开启推理模式（Thinking Mode）对模型性能的影响，并对比了有/无字幕两种设置。图中展示了指令微调基线（Instruct Baseline）、推理带来的增益（Gain）与回退（Regression）。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/imgs/scientific_think_effect_v2.png" 
+                        alt="Effect of Thinking with and without subtitle by level and overall" 
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 3: Effect of Thinking — Score by level and overall, w. / wo. subtitle (Qwen3-VL-8B, Qwen3-VL-235B, Kimi-VL-16B, MiMo-VL-7B)</figcaption>
+                    <figcaption data-lang-zh>Figure 3: Thinking 效应 — 各层级与整体得分（有/无字幕）：Qwen3-VL-8B、Qwen3-VL-235B、Kimi-VL-16B、MiMo-VL-7B</figcaption>
+                </figure>
+                <p data-lang-en style="margin-top: 1rem;">
+                    <strong>(1) Text modality has a significant complementary effect on visual reasoning.</strong> Effective reasoning mechanisms can substantially improve model performance, but this improvement depends heavily on textual information. Under the "with subtitle" setting, models with stronger reasoning ability show notable gains. For example, <strong>MiMo-VL-7B</strong> achieves +5.1, +5.8, and +3.0 at Level 1–3 respectively, with an overall gain of <strong>+4.3</strong>; <strong>Qwen3-VL-8B</strong> also shows steady improvement (overall <strong>+2.4</strong>). These results indicate that for models with effective reasoning, the semantic information provided by subtitles compensates for the limitations of pure visual perception, and the synergy of "vision + text" enables the chain-of-thought process to yield more accurate predictions.
+                </p>
+                <p data-lang-zh style="margin-top: 1rem;">
+                    <strong>（1）文本模态对视觉推理具有显著的互补效应。</strong> 有效的推理机制能显著增强模型表现，但这在很大程度上依赖于文本信息的辅助。在「有字幕」设置下，推理能力较强的模型表现出显著的性能提升。例如，<strong>MiMo-VL-7B</strong> 在 Level 1 至 Level 3 的各层级中分别取得了 +5.1、+5.8 和 +3.0 的提升，整体增益达 <strong>+4.3</strong>；<strong>Qwen3-VL-8B</strong> 亦表现出稳健的增长。这一结果表明，对于具备有效推理能力的模型，字幕提供的语义信息有效弥补了纯视觉感知的不足，「视觉+文本」的协同作用使思维链（Chain-of-Thought）过程能够产生更准确的预测。
+                </p>
+                <p data-lang-en style="margin-top: 0.75rem;">
+                    <strong>(2) Our benchmark remains perception-driven; thinking is not universally helpful and RL may lean toward reinforcing text-side capabilities.</strong> Some models exhibit <em>Thinking Regression</em> even with subtitles: <strong>Qwen3-VL-235B</strong> regresses −4.5 (L1), −1.2 (L2), −2.5 (L3), <strong>−2.6 overall</strong>; <strong>Kimi-VL-16B</strong> regresses −2.7, −1.5, −5.1 by level and <strong>−3.2 overall</strong>. So on our bench, thinking has limited or negative effect for part of the models. Moreover, <strong>thinking + subtitle is strong, but without subtitle thinking is much weaker</strong>: e.g. Qwen3-VL-8B has +2.4 overall with subtitle but <strong>−0.2 overall without subtitle</strong>; MiMo-VL-7B drops from +4.3 (w. sub) to <strong>+1.9 (wo. sub)</strong>, and in Level 2 from +5.8 to +1.9. This suggests that in the setting of video understanding, current models' “thinking” capability remains more oriented toward text reasoning and has difficulty directly improving visual understanding.
+                </p>
+                <p data-lang-zh style="margin-top: 0.75rem;">
+                    <strong>（2）本 benchmark 仍以感知为主，thinking 并非对所有模型都有益，且 RL 可能更偏文本能力强化。</strong> 部分模型即便有字幕也出现 <em>Thinking 回退</em>：<strong>Qwen3-VL-235B</strong> 在 L1/L2/L3 分别为 −4.5、−1.2、−2.5，<strong>整体 −2.6</strong>；<strong>Kimi-VL-16B</strong> 各层级 −2.7、−1.5、−5.1，<strong>整体 −3.2</strong>。可见在本评测中，thinking 对部分模型作用有限甚至为负。同时，<strong>thinking + 字幕</strong> 效果很强，<strong>但去掉字幕后 thinking 明显变弱</strong>：例如 Qwen3-VL-8B 有字幕时整体 +2.4，无字幕时整体 <strong>−0.2</strong>；MiMo-VL-7B 从有字幕的 +4.3 降至无字幕的 <strong>+1.9</strong>，Level 2 从 +5.8 降至 +1.9。这说明在视频理解的设定下，当前模型的「thinking」能力仍更倾向于文本推理，难以直接提升视觉理解能力。
+                </p>
+            </div>
+        </div>
+
+        <!-- Capability Radar -->
+        <div class="analysis-card full-width" style="margin-bottom: 2rem;">
+            <div class="analysis-card-header">
+                <h4>🎯 <span data-lang-en>Capability Radar</span><span data-lang-zh>能力雷达图</span></h4>
+                <span class="tag tag-chart">Chart</span>
+            </div>
+            <div class="analysis-card-body" style="padding: 20px;">
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    The figure below compares selected models on the capability dimensions defined by Video-MME v2. <strong>Gemini-3-Pro</strong> leads across dimensions overall; two findings can be drawn. <strong>Substantial gain from audio:</strong> On the Frames &amp; Audio dimension, Gemini shows a very high peak, indicating that when processing synchronized multimodal information (vision + audio), it has deeper fusion capability than models that rely mainly on visual frames (e.g. GPT-5 or the Qwen family). <strong>Long-horizon reasoning advantage:</strong> On Temporal Reasoning and Complex Plot (complex plot understanding), Gemini’s lead is also large, suggesting that its context window or temporal modeling mechanism is more robust when processing long-form video. In contrast, this model still scores below 30 on dimensions such as <em>physical-world reasoning</em> and <em>behavior/action understanding</em>; other evaluated models mostly score below 20 on these dimensions, underscoring the difficulty of these dimensions in our benchmark and current models’ shortcomings in physical laws and fine-grained action semantics.
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    下图雷达图在 Video-MME v2 定义的能力维度上对部分模型进行对比。<strong>Gemini-3-Pro</strong> 在各维度上整体领先，可归纳出两点发现。<strong>音频辅助的巨大增益：</strong>在 Frames &amp; Audio 维度上，Gemini 表现出了极高的峰值，说明该模型在处理多模态同步信息（视觉+音频）时，相较主要依赖视觉帧的模型（如 GPT-5 或 Qwen 系列）具有更深层的融合能力。<strong>长程推理优势：</strong>在 Temporal Reasoning（时间推理）与 Complex Plot（复杂剧情理解）上，Gemini 的领先幅度也很大，表明其上下文窗口或时序建模机制在处理长视频时更具鲁棒性。与之相对，该模型在<em>物理世界推理</em>与<em>行为/动作理解</em>等维度上仍不足 30 分，其余参评模型在这些维度上多不足 20 分，凸显了本 benchmark 在这些维度上的难度以及当前模型在物理规律与细粒度动作语义方面的不足。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/exps/radar_second_head.png" 
+                        alt="Capability radar: model performance across Video-MME v2 dimensions" 
+                        style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 4: Capability radar — model performance across Video-MME v2 dimensions</figcaption>
+                    <figcaption data-lang-zh>Figure 4: 能力雷达图 — 各模型在 Video-MME v2 能力维度上的表现</figcaption>
+                </figure>
+            </div>
+        </div>
+
         <div class="analysis-grid">
-            <!-- Chart Placeholder 1: Overall Performance -->
-            <div class="analysis-card">
-                <div class="analysis-card-header">
-                    <h4>📈 <span data-lang-en>Overall Performance by Level</span><span data-lang-zh>各层级整体表现</span></h4>
-                    <span class="tag tag-chart">Chart</span>
-                </div>
-                <figure>
-                    <img src="figs/exps/performance.jpg" 
-                        alt="Level-wise Overall Performance Chart" 
-                        style="width:80%; max-width:720px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 3: Overall Performance by Level</figcaption>
-                </figure>
-                <!-- <div class="analysis-card-body">
-                    <div class="chart-placeholder">
-                        <div class="icon">📊</div>
-                        <div class="text" data-lang-en>Comparison of model performance across three cognitive levels</div>
-                        <div class="text" data-lang-zh>各模型在三个认知层级上的整体表现对比图</div>
-                        <div class="hint">Bar Chart / Grouped Bar Chart</div>
-                    </div>
-                </div> -->
-            </div>
-
-            <!-- Chart Placeholder 2: Radar Chart -->
-            <div class="analysis-card">
-                <div class="analysis-card-header">
-                    <h4>🎯 <span data-lang-en>Capability Radar</span><span data-lang-zh>能力雷达图</span></h4>
-                    <span class="tag tag-chart">Chart</span>
-                </div>
-                <figure>
-                    <img src="figs/exps/Code_Generated_Image.png" 
-                        alt="Capability Radar Chart" 
-                        style="width:80%; max-width:720px; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption>Figure 4: Capability Radar Chart</figcaption>
-                </figure>
-            </div>
-
-            <!-- Case Study 1: Model Comparison -->
-            <div class="analysis-card full-width">
-                <div class="analysis-card-header">
-                    <h4>🔍 <span data-lang-en>Case Study: Multi-step Reasoning</span><span data-lang-zh>案例研究：多步推理</span></h4>
-                    <span class="tag tag-case">Case</span>
-                    <span class="tag tag-comparison">Comparison</span>
-                </div>
-                <div class="analysis-card-body">
-                    <div class="case-study">
-                        <div class="case-video-preview" style="background: linear-gradient(135deg, #1e3a5f, #3182ce);"></div>
-                        
-                        <div class="case-question">
-                            <div class="case-question-label">QUESTION (Level 3 - Causal Reasoning)</div>
-                            <div class="case-question-text" data-lang-en>In the video, after the red ball hits the blue ball, why does the blue ball move to the right instead of to the left? Please analyze based on the physical scene shown in the video.</div>
-                            <div class="case-question-text" data-lang-zh>视频中，当红色小球撞击蓝色小球后，蓝色小球为什么会向右移动而不是向左？请根据视频中展示的物理场景进行分析。</div>
-                        </div>
-
-                        <div class="model-responses">
-                            <div class="model-response correct">
-                                <div class="response-model-info">
-                                    <div class="response-model-name">GPT-5.2-high</div>
-                                    <div class="response-status correct">✓ Correct</div>
-                                </div>
-                                <div class="response-content" data-lang-en>
-                                    Based on the collision scene shown in the video, the red ball hits the stationary blue ball at high speed from the left. According to the law of conservation of momentum, momentum is transferred along the collision direction after impact, so the blue ball moves to the right...
-                                </div>
-                                <div class="response-content" data-lang-zh>
-                                    根据视频中展示的碰撞场景，红色小球从左侧以较高速度撞击静止的蓝色小球。根据动量守恒定律，碰撞后动量会沿着碰撞方向传递，因此蓝色小球会向右侧移动...
-                                </div>
-                            </div>
-                            <div class="model-response correct">
-                                <div class="response-model-info">
-                                    <div class="response-model-name">Gemini-3-Pro</div>
-                                    <div class="response-status correct">✓ Correct</div>
-                                </div>
-                                <div class="response-content" data-lang-en>
-                                    The video shows the red ball rolling from the left side of the screen and hitting the blue ball. Since the red ball's direction of motion is from left to right, when the two balls collide, the red ball transfers its momentum to the blue ball, causing the blue ball to move in the same direction (to the right).
-                                </div>
-                                <div class="response-content" data-lang-zh>
-                                    视频显示红球从画面左侧滚动并撞击蓝球。由于红球的运动方向是从左向右，当两球发生碰撞时，红球将其动量传递给蓝球，导致蓝球沿相同方向（向右）运动。
-                                </div>
-                            </div>
-                            <div class="model-response incorrect">
-                                <div class="response-model-info">
-                                    <div class="response-model-name">Model-X-7B</div>
-                                    <div class="response-status incorrect">✗ Incorrect</div>
-                                </div>
-                                <div class="response-content" data-lang-en>
-                                    The blue ball moves to the right because the table is tilted, and the ball naturally rolls toward the lower side. The red ball's collision only triggered this movement.
-                                </div>
-                                <div class="response-content" data-lang-zh>
-                                    蓝色小球向右移动是因为桌面是倾斜的，球会自然滚向低处。红色小球的碰撞只是触发了这一运动。
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="insight-box">
-                            <h5>💡 <span data-lang-en>Key Insight</span><span data-lang-zh>关键洞察</span></h5>
-                            <p data-lang-en>This case demonstrates the differences between models in physical reasoning tasks. High-performance models can correctly identify collision dynamics, while weaker models tend to produce "shortcut reasoning," attributing motion to non-existent scene factors.</p>
-                            <p data-lang-zh>此案例展示了模型在物理推理任务中的差异。高性能模型能够正确识别碰撞动力学，而较弱模型容易产生"捷径推理"，将运动归因于不存在的场景因素。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Chart Placeholder 3 & 4 -->
             <div class="analysis-card">
@@ -4017,64 +3980,6 @@
                             <p data-lang-zh>时序理解是视频理解的核心能力之一。此案例表明，许多模型在处理多事件时序排列时容易出错，尤其是当事件间隔较短或存在因果关联时。</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Comparison Table -->
-            <div class="analysis-card full-width">
-                <div class="analysis-card-header">
-                    <h4>📋 <span data-lang-en>Detailed Performance Comparison</span><span data-lang-zh>详细性能对比</span></h4>
-                    <span class="tag tag-comparison">Comparison</span>
-                </div>
-                <div class="analysis-card-body">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th><span data-lang-en>Capability</span><span data-lang-zh>能力</span></th>
-                                <th>GPT-5.2-high</th>
-                                <th>Gemini-3-Pro</th>
-                                <th>Qwen3-VL-235B</th>
-                                <th>InternVL3.5-241B</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span data-lang-en>Spatial Understanding</span><span data-lang-zh>空间理解</span></td>
-                                <td style="color: var(--success-color); font-weight: 600;">92.3</td>
-                                <td>89.7</td>
-                                <td>88.4</td>
-                                <td>87.9</td>
-                            </tr>
-                            <tr>
-                                <td><span data-lang-en>Temporal Reasoning</span><span data-lang-zh>时序推理</span></td>
-                                <td>88.5</td>
-                                <td style="color: var(--success-color); font-weight: 600;">90.1</td>
-                                <td>87.2</td>
-                                <td>86.8</td>
-                            </tr>
-                            <tr>
-                                <td><span data-lang-en>Causal Inference</span><span data-lang-zh>因果推理</span></td>
-                                <td style="color: var(--success-color); font-weight: 600;">85.2</td>
-                                <td>82.4</td>
-                                <td>80.9</td>
-                                <td>79.5</td>
-                            </tr>
-                            <tr>
-                                <td><span data-lang-en>Action Recognition</span><span data-lang-zh>动作识别</span></td>
-                                <td>91.8</td>
-                                <td>90.5</td>
-                                <td style="color: var(--success-color); font-weight: 600;">92.1</td>
-                                <td>91.2</td>
-                            </tr>
-                            <tr>
-                                <td><span data-lang-en>Object Counting</span><span data-lang-zh>对象计数</span></td>
-                                <td>78.4</td>
-                                <td>76.2</td>
-                                <td>79.8</td>
-                                <td style="color: var(--success-color); font-weight: 600;">81.3</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
 
