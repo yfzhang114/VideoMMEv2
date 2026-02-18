@@ -3655,6 +3655,13 @@
                 </p>
 
                 <p>
+                    <strong>Video Publication Time:</strong> To minimize potential data leakage risks, 87.5% of the videos in the dataset were published after October 2024, and 39.2% were published after October 2025, indicating strong temporal recency in the overall distribution.
+                </p>
+                <p>
+                    <strong>Video View Count:</strong> As of February 10, 2025, the mean and median view counts are 4.67 million and 365 thousand, respectively. Specifically, 94.2% of the videos have more than 1,000 views, and 84.6% exceed 10,000 views, reflecting generally high exposure and representativeness.
+                </p>
+
+                <p>
                     To ensure broad coverage of real-world content, we organize video sources into a two-level category taxonomy. The figure below shows the distribution: <strong>Sports &amp; Competition</strong> (e.g. Gym &amp; Fitness, Outdoor &amp; Extreme, Basketball, Soccer, Combat Sports, Racing &amp; Speed, Other Sports), <strong>Lifestyle &amp; Entertainment</strong> (e.g. Variety &amp; Comedy, Cooking &amp; Baking, Digital &amp; Auto, Travel &amp; Exploration, Home &amp; Living, Gaming &amp; Play, Pets &amp; Animals, Vlogs &amp; Review), <strong>Art &amp; Literature</strong> (e.g. Film, Performing Arts, TV Series, Animation &amp; Comics, Painting &amp; Handicraft, Fashion &amp; Beauty, Architecture &amp; Design), and <strong>Knowledge &amp; Education</strong> (e.g. Physics &amp; Math, Nature &amp; Geography, Mechanics &amp; Structures, Politics &amp; Global News, Economics &amp; Law, Computer Science &amp; AI, Humanities &amp; History, Philosophy &amp; Wisdom, Chemistry &amp; Materials, Documentary &amp; Bio). Together these span everyday life, media and storytelling, sports and recreation, and formal and informal learning, so that the benchmark reflects diverse and commonly encountered scenarios.
                 </p>
 
@@ -3670,6 +3677,20 @@
                             alt="Video-MME V2 video category distribution (sunburst)" 
                             style="width:100%; height:auto; display:block; margin:0 auto;">
                         <figcaption>Figure 4: Video category distribution — four top-level categories and their subcategories (sample counts per slice)</figcaption>
+                    </figure>
+                </div>
+                <div class="figures-row">
+                    <figure>
+                        <img src="figs/exps/video_publish_month.png" 
+                            alt="Video-MME V2 Video Publication Time Distribution" 
+                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        <figcaption>Figure 4: Video Publication Time Distribution — Publication Month Breakdown</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="figs/exps/video_viewcount.png" 
+                            alt="Video-MME V2 Video View Count Distribution" 
+                            style="width:100%; height:auto; display:block; margin:0 auto;">
+                        <figcaption>Figure 5: Video View Count Distribution — Sample Counts Across View Count Ranges</figcaption>
                     </figure>
                 </div>
             </div>
@@ -3833,15 +3854,15 @@
                 <div class="figures-row">
                     <figure>
                         <img src="figs/exps/video_publish_month.png" 
-                            alt="Video-MME V2 数据统计" 
+                            alt="Video-MME V2 视频发布时间分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                        <figcaption>Figure 4: 发布时间分布 — 各视频发布月份样本数</figcaption>
+                        <figcaption>Figure 4: 视频发布时间分布 — 视频发布月份</figcaption>
                     </figure>
                     <figure>
-                        <img src="figs/imgs/video_viewcount.png" 
+                        <img src="figs/exps/video_viewcount.png" 
                             alt="Video-MME V2 视频观看量分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto;">
-                        <figcaption>Figure 5: 视频观看量分布 — 各视频观看量区间样本数</figcaption>
+                        <figcaption>Figure 5: 视频观看量分布 — 各观看量区间样本数</figcaption>
                     </figure>
                 </div>
             </div>
