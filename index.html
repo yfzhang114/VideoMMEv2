@@ -3898,8 +3898,8 @@
                     <img src="figs/imgs/scientific_think_effect_v2.png" 
                         alt="Effect of Thinking with and without subtitle by level and overall" 
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 3: Effect of Thinking — Score by level and overall, w. / wo. subtitle (Qwen3-VL-8B, Qwen3-VL-235B, Kimi-VL-16B, MiMo-VL-7B)</figcaption>
-                    <figcaption data-lang-zh>Figure 3: Thinking 效应 — 各层级与整体得分（有/无字幕）：Qwen3-VL-8B、Qwen3-VL-235B、Kimi-VL-16B、MiMo-VL-7B</figcaption>
+                    <figcaption data-lang-en>Figure 6: Effect of Thinking — Score by level and overall, w. / wo. subtitle (Qwen3-VL-8B, Qwen3-VL-235B, Kimi-VL-16B, MiMo-VL-7B)</figcaption>
+                    <figcaption data-lang-zh>Figure 6: Thinking 效应 — 各层级与整体得分（有/无字幕）：Qwen3-VL-8B、Qwen3-VL-235B、Kimi-VL-16B、MiMo-VL-7B</figcaption>
                 </figure>
                 <p data-lang-en style="margin-top: 1rem;">
                     <strong>(1) Text modality has a significant complementary effect on visual reasoning.</strong> Effective reasoning mechanisms can substantially improve model performance, but this improvement depends heavily on textual information. Under the "with subtitle" setting, models with stronger reasoning ability show notable gains. For example, <strong>MiMo-VL-7B</strong> achieves +5.1, +5.8, and +3.0 at Level 1–3 respectively, with an overall gain of <strong>+4.3</strong>; <strong>Qwen3-VL-8B</strong> also shows steady improvement (overall <strong>+2.4</strong>). These results indicate that for models with effective reasoning, the semantic information provided by subtitles compensates for the limitations of pure visual perception, and the synergy of "vision + text" enables the chain-of-thought process to yield more accurate predictions.
@@ -3933,8 +3933,8 @@
                     <img src="figs/exps/radar_second_head.png" 
                         alt="Capability radar: model performance across Video-MME v2 dimensions" 
                         style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 4: Capability radar — model performance across Video-MME v2 dimensions</figcaption>
-                    <figcaption data-lang-zh>Figure 4: 能力雷达图 — 各模型在 Video-MME v2 能力维度上的表现</figcaption>
+                    <figcaption data-lang-en>Figure 7: Capability radar — model performance across Video-MME v2 dimensions</figcaption>
+                    <figcaption data-lang-zh>Figure 7: 能力雷达图 — 各模型在 Video-MME v2 能力维度上的表现</figcaption>
                 </figure>
             </div>
         </div>
@@ -4004,6 +4004,49 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Acc of Relevance Group & Logic Group -->
+        <div class="analysis-card full-width" style="margin-bottom: 2rem;">
+            <div class="analysis-card-header">
+                <h4>📉 <span data-lang-en>Experimental Results on Capability Consistency and Reasoning Coherence</span><span data-lang-zh>能力一致性与推理连贯性实验结果</span></h4>
+                <span class="tag tag-chart">Analysis</span>
+            </div>
+            <div class="analysis-card-body" style="padding: 20px;">
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    We computed the overall accuracy for different questions (Q1–Q4) associated with the same video under the capability consistency and reasoning coherence groupings. The results show that, in the capability-consistency grouping, the accuracies of Q1–Q4 are broadly comparable, indicating that the intra-group question difficulty is well balanced. In contrast, in the reasoning-coherence grouping, accuracy exhibits a monotonic decline from Q1 to Q4, suggesting an intentionally increasing difficulty progression and tighter logical dependencies across questions.
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    <strong>问题组内不同问题的正确率对比：</strong>我们统计了“能力一致性“与”推理连贯性”分组下，同一视频对应不同问题（Q1-Q4）的总体准确率。结果显示：在一致性分组下，Q1-Q4的准确率整体接近，表明组内题目难度较为均衡；而在连贯性分组下，Q1–Q4 的准确率呈现逐步下降的趋势，说明组内题目难度按序递增，问题之间的逻辑依赖较为紧密。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/imgs/q1-q4_acc_proprietary.png" 
+                        alt="Proprietary models: Q1–Q4 accuracy" 
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 8: Q1–Q4 Accuracy of Proprietary Models</figcaption>
+                    <figcaption data-lang-zh>Figure 8: 闭源模型的Q1-Q4准确率</figcaption>
+                </figure>
+                <figure class="figure-full-width">
+                    <img src="figs/imgs/q1-q4_acc_opensource.png" 
+                        alt="Open-Source Models Q1-Q4 Accuracy" 
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 9: Q1–Q4 Accuracy of Open-Source Models</figcaption>
+                    <figcaption data-lang-zh>Figure 9: 开源模型的Q1-Q4准确率</figcaption>
+                </figure>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    <strong>Accuracy comparison across models on the consistency question set:</strong> We summarize the mean and variance of overall accuracy across the four questions under the capability consistency grouping for four closed-source models and twenty open-source models. These two statistics respectively characterize a model’s average performance on the targeted capability and its robustness (i.e., stability) across questions. The results indicate that, among all evaluated models, Gemini-3-Pro achieves the highest mean accuracy, while GPT-5 exhibits the smallest accuracy variance, demonstrating the strongest robustness.
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    <strong>不同模型在一致性问题组上的准确率对比：</strong>我们统计了 4 个闭源模型与 20 个开源模型在“能力一致性”分组下，Q1-Q4的整体准确率的均值与方差，分别用于衡量模型在该特定能力维度上的平均性能与结果稳定性（鲁棒性）。结果显示：所有模型中，Gemini-3-Pro性能最强，GPT-5鲁棒性最强。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/imgs/mean_variance_24models.png" 
+                        alt="Mean and variance of Q1–Q4 accuracy (Relevance)" 
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 10: Mean and Variance of Q1–Q4 Accuracy</figcaption>
+                    <figcaption data-lang-zh>Figure 10: Q1-Q4准确率的均值与方差</figcaption>
+                </figure>
             </div>
         </div>
 
