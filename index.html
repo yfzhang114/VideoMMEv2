@@ -4015,37 +4015,60 @@
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    We computed the overall accuracy for different questions (Q1–Q4) associated with the same video under the capability consistency and reasoning coherence groupings. The results show that, in the capability-consistency grouping, the accuracies of Q1–Q4 are broadly comparable, indicating that the intra-group question difficulty is well balanced. In contrast, in the reasoning-coherence grouping, accuracy exhibits a monotonic decline from Q1 to Q4, suggesting an intentionally increasing difficulty progression and tighter logical dependencies across questions.
+                    <strong>Overall Accuracy for Q1-Q4:</strong> We report the overall accuracy of seven models (four proprietary and three open-source) on Q1-Q4 under two question groups—“capability consistency” and “reasoning coherence”—and analyze the results from both data- and model-centric perspectives.
+                </p>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    (1) Data perspective: In the “capability consistency” group, the Q1-Q4 accuracies of all models are broadly comparable, indicating that the overall difficulty across question indices is well balanced. In contrast, in the “reasoning coherence” group, all models except the no-subtitle <strong>Qwen3-VL-235B-A22B-Instruct</strong> exhibit a monotonic decline in accuracy from Q1 to Q4 (Q1 → Q4), suggesting an intentionally increasing difficulty progression and tighter logical dependencies among questions within the group.
+                </p>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    (2) Model perspective: In the “capability consistency” group, <strong>GPT-5</strong> shows the smallest variation in overall accuracy across Q1-Q4, reflecting strong stability and robustness across different capability dimensions/granularities. In the “reasoning coherence” group, discrepancies between model rankings on Q1 and Q4 indicate differentiation in long-horizon reasoning. For example, when comparing <strong>GPT-5</strong> and <strong>Doubao-Seed-1.6</strong>, as logical depth and the number of reasoning steps increase (Q1 → Q4), <strong>GPT-5</strong>'s relative advantage gradually expands and eventually overtakes, implying stronger inference capability under complex reasoning chains; its relative weakness on shallower questions is more likely attributable to input frame-budget limitations.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>问题组内不同问题的正确率对比：</strong>我们统计了“能力一致性“与”推理连贯性”分组下，同一视频对应不同问题（Q1-Q4）的总体准确率。结果显示：在一致性分组下，Q1-Q4的准确率整体接近，表明组内题目难度较为均衡；而在连贯性分组下，Q1–Q4 的准确率呈现逐步下降的趋势，说明组内题目难度按序递增，问题之间的逻辑依赖较为紧密。
-                </p>
-                <figure class="figure-full-width">
-                    <img src="figs/exps/q1-q4_acc_proprietary.png" 
-                        alt="Proprietary models: Q1–Q4 accuracy" 
-                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 8: Q1–Q4 Accuracy of Proprietary Models</figcaption>
-                    <figcaption data-lang-zh>Figure 8: 闭源模型的Q1-Q4准确率</figcaption>
-                </figure>
-                <figure class="figure-full-width">
-                    <img src="figs/exps/q1-q4_acc_opensource.png" 
-                        alt="Open-Source Models Q1-Q4 Accuracy" 
-                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 9: Q1–Q4 Accuracy of Open-Source Models</figcaption>
-                    <figcaption data-lang-zh>Figure 9: 开源模型的Q1-Q4准确率</figcaption>
-                </figure>
-                <p data-lang-en style="margin-bottom: 0.75rem;">
-                    <strong>Accuracy comparison across models on the consistency question set:</strong> We summarize the mean and variance of overall accuracy across the four questions under the capability consistency grouping for four closed-source models and twenty open-source models. These two statistics respectively characterize a model’s average performance on the targeted capability and its robustness (i.e., stability) across questions. The results indicate that, among all evaluated models, Gemini-3-Pro achieves the highest mean accuracy, while GPT-5 exhibits the smallest accuracy variance, demonstrating the strongest robustness.
+                    <strong>Q1-Q4的整体准确率：</strong>我们统计了7个模型（4个闭源和3个开源）分别在“能力一致性”与“推理连贯性”两类问题组中Q1-Q4的总体准确率，并从数据和模型两个角度对实验结果进行了分析。
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
-                    <strong>不同模型在一致性问题组上的准确率对比：</strong>我们统计了 4 个闭源模型与 20 个开源模型在“能力一致性”分组下，Q1-Q4的整体准确率的均值与方差，分别用于衡量模型在该特定能力维度上的平均性能与结果稳定性（鲁棒性）。结果显示：所有模型中，Gemini-3-Pro性能最强，GPT-5鲁棒性最强。
+                    （1）数据角度：在“能力一致性”组中，各模型的Q1-Q4准确率均接近，表明不同编号题目的总体难度设置较为均衡。而在“推理连贯性”组中，除无字幕的<strong>Qwen3-VL-235B-A22B-Instruct</strong>模型外，其余所有模型的准确率均呈现Q1 → Q4逐步下降的趋势，说明组内题目难度按序递增，问题之间的逻辑依赖较为紧密。
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    （2）模型角度：在“能力一致性”组中，<strong>GPT-5</strong>的Q1-Q4整体准确率波动最小，体现出其能力在不同维度/粒度下具有较强的稳定性与鲁棒性；在“推理连贯性”组中，不同模型在Q1与Q4的排名存在差异，反映出模型在长程推理能力上的分化。例如，对比<strong>GPT-5</strong>与<strong>Doubao-Seed-1.6</strong>，随着逻辑深度与推理步数增加（Q1 → Q4），<strong>GPT-5</strong>的相对优势逐步扩大并实现反超，表明其在复杂推理链条下具备更强的推断能力；其在浅层问题上的相对劣势更可能由输入帧数限制所致。
                 </p>
                 <figure class="figure-full-width">
-                    <img src="figs/exps/mean_variance_24models.png" 
+                    <img src="figs/exps/q1-q4_models_acc.png"
+                        alt="Proprietary models: Q1–Q4 accuracy"
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 8: Overall Accuracy for Q1-Q4</figcaption>
+                    <figcaption data-lang-zh>Figure 8: Q1-Q4的整体准确率</figcaption>
+                </figure>
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    <strong>Mean and Variance of Overall Accuracy in the “Capability Consistency” Group:</strong> We further summarize the mean and variance of overall Q1-Q4 accuracy for the seven models in the “capability consistency” group. As shown in the figure, the x-axis and y-axis respectively represent average performance and output stability (lower variance indicates higher stability), thereby jointly characterizing the level of video understanding and robustness. Considering mean accuracy together with the stability reflected by its variance, we derive the following three key findings:
+                </p>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    (1) <strong>Gemini-3-Pro</strong> achieves the highest mean accuracy, while <strong>GPT-5</strong> attains the smallest accuracy variance, indicating the strongest average performance and the strongest stability, respectively.
+                </p>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    (2) Overall, proprietary models outperform open-source models not only in average performance but also exhibit an advantage in result stability.
+                </p>
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    (3) Providing subtitles as additional input typically improves mean accuracy but yields limited gains in stability, suggesting that subtitles mainly enhance information availability and parseability rather than substantially reducing cross-question fluctuations.
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    <strong>“能力一致性”组整体准确率的均值与方差：</strong>我们进一步统计了7个模型在“能力一致性”组上Q1-Q4整体准确率的均值与方差。如下图所示，横轴与纵轴分别表征模型的平均表现与结果稳定性（方差越小表示越稳定），从而同时刻画视频理解能力的水平与鲁棒性。综合考虑平均准确率及其方差所反映的稳定性，有如下三点主要发现：
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    （1）<strong>Gemini-3-Pro</strong>的平均准确率最高，<strong>GPT-5</strong>的准确率方差最小，分别体现出最强的平均表现与最强的稳定性。
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    （2）总体上，闭源模型不仅在平均表现上优于开源模型，在结果稳定性方面也呈现一定优势。
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    （3）引入字幕输入通常能够提升平均准确率，但对稳定性提升不明显，说明字幕主要提高了信息可得性与可解析性，而未显著缓解跨问题波动。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/exps/mean_variance_scatter.png" 
                         alt="Mean and variance of Q1–Q4 accuracy (Relevance)" 
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 10: Mean and Variance of Q1–Q4 Accuracy</figcaption>
-                    <figcaption data-lang-zh>Figure 10: Q1-Q4准确率的均值与方差</figcaption>
+                    <figcaption data-lang-en>Figure 9: Mean and Variance of Q1–Q4 Overall Accuracy</figcaption>
+                    <figcaption data-lang-zh>Figure 9: Q1-Q4整体准确率的均值与方差</figcaption>
                 </figure>
             </div>
         </div>
