@@ -1682,6 +1682,18 @@
             text-align: justify;
         }
 
+        /* 正文内引用链接：与文字同色，悬停时轻微下划线，不抢眼 */
+        .intro-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.35);
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+        .intro-link:hover {
+            border-bottom-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
         .intro-h3 {
             font-size: 1.15rem;
             font-weight: 700;
@@ -1946,7 +1958,7 @@
             <!-- English Content -->
             <div class="intro-container" data-lang-en>
                 <p class="intro-lead">
-                    In 2024, we released the VideoMME dataset as the first comprehensive benchmark for evaluating video understanding capabilities of multimodal large models. Following its release, VideoMME has driven significant progress in the field of multimodal video understanding. As video understanding models continue to advance, we see them moving from simple video recognition toward deeper semantic understanding and complex reasoning, which places higher demands on evaluation. However, existing methods still focus largely on narrow, task-specific benchmarks, making it difficult to determine whether models truly understand video content or merely exploit dataset biases. Meanwhile, in complex video reasoning tasks, prior work has focused on evaluating specific reasoning abilities while paying less attention to models' overall reasoning coherence, leaving us uncertain whether models perform systematic reasoning or merely generate plausible-looking answers. These limitations hinder comprehensive evaluation of state-of-the-art video understanding models and underscore the need to probe their true understanding and reliable reasoning capabilities. Therefore, we present Video-MME v2. Through over six months of data collection, cleaning, annotation, and curation, we hope to share our in-depth perspectives on next-generation video understanding evaluation at this critical juncture, and to advance further technical progress in the field.
+                    In 2024, we released the <a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a> dataset as the first comprehensive benchmark for evaluating video understanding capabilities of multimodal large models. Following its release, <a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a> has driven significant progress in the field of multimodal video understanding. As video understanding models continue to advance, we see them moving from simple video recognition toward deeper semantic understanding and complex reasoning, which places higher demands on evaluation. However, existing methods still focus largely on narrow, task-specific benchmarks, making it difficult to determine whether models truly understand video content or merely exploit dataset biases. Meanwhile, in complex video reasoning tasks, prior work has focused on evaluating specific reasoning abilities while paying less attention to models' overall reasoning coherence, leaving us uncertain whether models perform systematic reasoning or merely generate plausible-looking answers. These limitations hinder comprehensive evaluation of state-of-the-art video understanding models and underscore the need to probe their true understanding and reliable reasoning capabilities. Therefore, we present Video-MME v2. Through over six months of data collection, cleaning, annotation, and curation, we hope to share our in-depth perspectives on next-generation video understanding evaluation at this critical juncture, and to advance further technical progress in the field.
                 </p>
 
                 <div class="philosophy-box">
@@ -2001,7 +2013,7 @@
             <!-- Chinese Content -->
             <div class="intro-container" data-lang-zh>
                 <p class="intro-lead">
-                    我们于2024年发布了<a href="https://video-mme.github.io/" target="_blank" rel="noopener">Video-MME</a>，重点考察模型在不同时长条件下的跨模态视频理解能力，成为包括 Gemini和GPT 在内众多大模型的标准评测集之一。然而，随着模型能力持续提升，我们观察到：<a href="https://video-mme.github.io/" target="_blank" rel="noopener">Video-MME</a>以及多项同类基准的指标逐渐趋于饱和，而用户体验、真实任务表现与榜单分数之间，依然存在明显偏差。这意味着当前评测范式在能力刻画维度与鲁棒性方面仍有不足，社区迫切需要一种新的综合评测基准，以更真实地度量模型的视频理解能力。为此，经过一年多的打磨，我们正式推出Video-MME-v2。我们希望在视频理解能力演进的关键节点，分享我们对于下一代视频理解评估的思考与见解，并以此推动视频理解模型进入更高质量的技术迭代阶段。
+                    我们于2024年发布了<a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a>，重点考察模型在不同时长条件下的跨模态视频理解能力，成为包括 Gemini和GPT 在内众多大模型的标准评测集之一。然而，随着模型能力持续提升，我们观察到：<a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a>以及多项同类基准的指标逐渐趋于饱和，而用户体验、真实任务表现与榜单分数之间，依然存在明显偏差。这意味着当前评测范式在能力刻画维度与鲁棒性方面仍有不足，社区迫切需要一种新的综合评测基准，以更真实地度量模型的视频理解能力。为此，经过一年多的打磨，我们正式推出Video-MME-v2。我们希望在视频理解能力演进的关键节点，分享我们对于下一代视频理解评估的思考与见解，并以此推动视频理解模型进入更高质量的技术迭代阶段。
                 </p>
 
                 <div class="philosophy-box">
