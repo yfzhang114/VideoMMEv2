@@ -4120,6 +4120,82 @@
             </div>
         </div>
 
+        <!-- Subsection: Video Duration Analysis -->
+        <div class="analysis-card full-width" style="margin-bottom: 2rem;">
+            <div class="analysis-card-header">
+                <h4>⏱ <span data-lang-en>Impact of Video Duration on QA Accuracy</span><span data-lang-zh>视频时长对问答准确率的影响</span></h4>
+                <span class="tag tag-chart">Analysis</span>
+            </div>
+            <div class="analysis-card-body" style="padding: 20px;">
+                <p data-lang-en style="margin-bottom: 1rem;">
+                    We investigate how video duration affects question-answering accuracy by grouping 801 videos into 4-minute bins (0–4, 4–8, 8–12, 12–16, 16–20 min) and computing per-bin accuracy for all 19 evaluated models. Closed-source models are shown with <strong>solid lines</strong> and open-source models with <strong>dashed lines</strong>. We report an overall figure as well as per-level breakdowns (Level 1–3), with bins containing fewer than 30 questions excluded for statistical reliability.
+                </p>
+                <p data-lang-zh style="margin-bottom: 1rem;">
+                    我们将所有视频按时长分为 4 分钟一档（0–4、4–8、8–12、12–16、16–20 分钟），分析视频时长对问答准确率的影响。闭源模型以<strong>实线</strong>表示，开源模型以<strong>虚线</strong>表示。我们同时报告了总体及各难度等级（Level 1–3）的结果。
+                </p>
+
+                <!-- Overall -->
+                <p data-lang-en style="margin-bottom: 0.75rem;">
+                    <strong>Overall:</strong> As shown in Figure 10, closed-source models consistently outperform open-source ones across all duration bins. <strong>Gemini-3-Pro</strong> achieves the highest accuracy, ranging from 57% to 67%, while <strong>Gemini-3-Flash</strong> follows closely at 48–62%. Both exhibit a mild upward trend with longer videos, suggesting better temporal modeling at scale. Among open-source models, <strong>Qwen3-Omni-30B-A3B-Instruct</strong> and <strong>InternVL3_5-241B-A28B</strong> lead at roughly 30–37%, and their accuracy curves remain largely flat, indicating limited sensitivity to duration. The "Thinking" variants of open-source models score notably lower (9–14%), implying that chain-of-thought reasoning does not help under the current evaluation protocol.
+                </p>
+                <p data-lang-zh style="margin-bottom: 0.75rem;">
+                    <strong>总体：</strong>如 Figure 10 所示，闭源模型在所有时长区间上均显著优于开源模型。<strong>Gemini-3-Pro</strong> 准确率最高，<strong>Gemini-3-Flash</strong> 紧随其后，两者均随视频变长而小幅上升，表明在大规模时序建模上具有优势。开源模型中，<strong>Qwen3-Omni-30B-A3B-Instruct</strong> 与 <strong>InternVL3_5-241B-A28B</strong> 领先，且准确率曲线较为平坦，对时长不敏感。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/exps/all_duration_vs_accuracy.png"
+                        alt="QA Accuracy vs. Video Duration — All Models"
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 10: QA Accuracy vs. Video Duration — Overall (All Levels)</figcaption>
+                    <figcaption data-lang-zh>Figure 10: 问答准确率随视频时长变化 — 总体（所有难度等级）</figcaption>
+                </figure>
+
+                <!-- Level 1 -->
+                <p data-lang-en style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+                    <strong>Level 1 (Perception):</strong> The performance gap between closed-source and open-source models is most pronounced at this level. <strong>Gemini-3-Pro</strong> reaches up to 78% at 16–20 min, while the best open-source model (<strong>Qwen3-Omni</strong>) peaks at only 47%. Interestingly, both Gemini models show a steady upward trend with increasing video length, suggesting that longer context windows actually benefit perceptual question-answering when the model has sufficient capacity to process them.
+                </p>
+                <p data-lang-zh style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+                    <strong>Level 1：</strong>闭源与开源模型的差距在此层级最为显著。<strong>Gemini-3-Pro</strong> 平均准确率达到70%，而最佳开源模型（<strong>Qwen3-Omni</strong>）仅为 40%左右。值得注意的是，两个 Gemini 模型均随视频变长呈稳步上升趋势，表明当模型具备足够的处理能力时，更长的上下文窗口反而有利于感知类问答。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/exps/all_duration_vs_accuracy_level1.png"
+                        alt="QA Accuracy vs. Video Duration — Level 1"
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 11: QA Accuracy vs. Video Duration — Level 1 (Perception)</figcaption>
+                    <figcaption data-lang-zh>Figure 11: 问答准确率随视频时长变化 — Level 1</figcaption>
+                </figure>
+
+                <!-- Level 2 -->
+                <p data-lang-en style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+                    <strong>Level 2 (Comprehension):</strong> A similar separation persists at this level. <strong>Gemini-3-Pro</strong> rises from 55% to 66% as duration increases, indicating that richer temporal context helps with comprehension tasks. <strong>GPT-5</strong> and <strong>Doubao</strong> plateau around 41–48%, with GPT-5 showing a slight dip in longer videos. Open-source models cluster between 12% and 36%, with the "Instruct" variants consistently outperforming their "Thinking" counterparts.
+                </p>
+                <p data-lang-zh style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+                    <strong>Level 2：</strong>此层级呈现类似的分层。<strong>Gemini-3-Pro</strong> 随着视频时间增长，性能略有上升，说明更丰富的时序上下文有助于理解类任务。而开源模型在这一层级的分数普遍偏低，说明开源模型的长上下文建模能力仍有待提升。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/exps/all_duration_vs_accuracy_level2.png"
+                        alt="QA Accuracy vs. Video Duration — Level 2"
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 12: QA Accuracy vs. Video Duration — Level 2 (Comprehension)</figcaption>
+                    <figcaption data-lang-zh>Figure 12: 问答准确率随视频时长变化 — Level 2</figcaption>
+                </figure>
+
+                <!-- Level 3 -->
+                <p data-lang-en style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+                    <strong>Level 3 (Reasoning):</strong> This level is the most sensitive to video duration. <strong>Gemini-3-Pro</strong> starts at 71% for the shortest videos (0–4 min) but drops to 50% at 16–20 min—a 21-point decline—indicating that complex reasoning degrades significantly as temporal context grows. <strong>Gemini-3-Flash</strong> shows a more stable trajectory (50–54%), suggesting its architecture may be more robust for reasoning over long sequences. Among open-source models, accuracy curves are flatter (20–35%), with the performance gap between open-source and closed-source narrowing compared to Level 1 and Level 2, implying that reasoning difficulty acts as a stronger equalizer than duration length.
+                </p>
+                <p data-lang-zh style="margin-top: 1.5rem; margin-bottom: 0.75rem;">
+                    <strong>Level 3：</strong>此层级对视频时长最为敏感。<strong>Gemini-3-Pro</strong> 在短视频（0–4 分钟）上高达 71%，但在 16–20 分钟降至 50%，下降了 21 个百分点，表明复杂推理能力随时序长度增长而显著衰减。<strong>Gemini-3-Flash</strong> 表现更为稳定（50%–54%），其架构在长序列推理上可能更具鲁棒性。开源模型的准确率曲线较为平坦（20%–35%），且与闭源模型的差距相比 Level 1 和 Level 2 有所缩小，说明推理难度本身比视频时长更能拉平模型间的差异。
+                </p>
+                <figure class="figure-full-width">
+                    <img src="figs/exps/all_duration_vs_accuracy_level3.png"
+                        alt="QA Accuracy vs. Video Duration — Level 3"
+                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                    <figcaption data-lang-en>Figure 13: QA Accuracy vs. Video Duration — Level 3 (Reasoning)</figcaption>
+                    <figcaption data-lang-zh>Figure 13: 问答准确率随视频时长变化 — Level 3</figcaption>
+                </figure>
+            </div>
+        </div>
+
         <div class="analysis-grid">
 
             <!-- Chart Placeholder 3 & 4 -->
