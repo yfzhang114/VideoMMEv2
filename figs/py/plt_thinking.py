@@ -49,52 +49,52 @@ def plot_stacked_effect(ax, model_names, data_instruct, data_think, title):
     """
     n_models = len(model_names)
     indices = np.arange(n_models)
-    
+
     # Dimensions
     bar_width = 0.35
     spacing = 0.05
-    
+
     # Metrics indices: 0 = w_sub (With Subtitle), 1 = wo_sub (Without Subtitle)
-    # But usually strictly speaking w_sub is better. 
+    # But usually strictly speaking w_sub is better.
     # Let's organize as: Group 1 (No Sub), Group 2 (With Sub) per model
-    
+
     # We will plot "No Sub" on the left (offset -width/2 - small_gap)
     # We will plot "With Sub" on the right (offset +width/2 + small_gap)
-    
-    modes = [("Wo/ Subtitle", 1, STYLE_CONFIG["no_sub_hatch"]), 
+
+    modes = [("Wo/ Subtitle", 1, STYLE_CONFIG["no_sub_hatch"]),
              ("W/ Subtitle", 0, None)]
-    
+
     for i, (mode_label, col_idx, hatch) in enumerate(modes):
         # Calculate positions
         offset = (i - 0.5) * (bar_width + spacing)
         x = indices + offset
-        
+
         # Extract values
         val_inst = np.array([row[col_idx] for row in data_instruct])
         val_think = np.array([row[col_idx] for row in data_think])
-        
+
         # Calculate Delta
         delta = val_think - val_inst
-        
+
         # 1. Plot Base (Instruct)
         # We plot the full Instruct height first
-        ax.bar(x, val_inst, width=bar_width, 
+        ax.bar(x, val_inst, width=bar_width,
                color=STYLE_CONFIG["base_color"], edgecolor='white', linewidth=0.8,
                label="Instruct (Base)" if i==1 else "", hatch=hatch, alpha=0.9)
-        
+
         # 2. Plot Effect (Thinking)
         # Case A: Gain (Think > Instruct) -> Stack ON TOP of Instruct
         # Case B: Regression (Think < Instruct) -> Stack DOWNWARDS from Instruct top (overlay)
-        
+
         # Separate gains and losses for cleaner plotting
         gains = np.maximum(delta, 0)
         losses = np.minimum(delta, 0) # Negative values
-        
+
         # Plot Gains (Blue) on top of Instruct
         ax.bar(x, gains, bottom=val_inst, width=bar_width,
                color=STYLE_CONFIG["gain_color"], edgecolor='white', linewidth=0.8,
                label="Think Gain" if i==1 else "", hatch=hatch)
-        
+
         # Plot Losses (Red) starting from Instruct height downwards
         # height=losses (negative), bottom=val_inst
         ax.bar(x, losses, bottom=val_inst, width=bar_width,
@@ -119,7 +119,7 @@ def plot_stacked_effect(ax, model_names, data_instruct, data_think, title):
     ax.set_xticks(indices)
     ax.set_xticklabels(model_names, fontweight='medium', rotation=25, ha='right')
     ax.set_title(title, loc='left', pad=15, fontweight='bold', color='#2C3E50')
-    
+
     # Aesthetic Grid
     ax.grid(axis='y', linestyle='--', alpha=0.3, color='gray', zorder=0)
     ax.set_axisbelow(True)
@@ -127,12 +127,12 @@ def plot_stacked_effect(ax, model_names, data_instruct, data_think, title):
 def create_custom_legend(fig):
     """Create a global aesthetic legend."""
     handles = [
-        mpatches.Patch(facecolor=STYLE_CONFIG["base_color"], label='Instruct Baseline (w. subtitle)'),
+        mpatches.Patch(facecolor='white', edgecolor='gray', hatch=STYLE_CONFIG["no_sub_hatch"], label='Instruct Baseline (wo. subtitle)'),
+        mpatches.Patch(facecolor=STYLE_CONFIG["base_color"], label='w. subtitle'),
         mpatches.Patch(facecolor=STYLE_CONFIG["gain_color"], label='Thinking Gain'),
         mpatches.Patch(facecolor=STYLE_CONFIG["loss_color"], label='Thinking Regression'),
-        mpatches.Patch(facecolor='white', edgecolor='gray', hatch=STYLE_CONFIG["no_sub_hatch"], label='wo. subtitle'),
     ]
-    fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(0.5, 0.02), 
+    fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(0.5, 0.0),
                ncol=4, frameon=False, fontsize=STYLE_CONFIG["font_size"])
 
 # ---------------------------------------------------------------------------
@@ -169,18 +169,18 @@ def parse_data(raw_list):
 
 def main():
     apply_style()
-    
+
     # Setup Figure: four plots in one row, shared y-axis
     fig, axes = plt.subplots(1, 4, figsize=(20, 6), sharey=True)
     fig.subplots_adjust(bottom=0.22, wspace=0.12)
-    
+
     metrics = [
         (RAW_L1, "Level 1"),
         (RAW_L2, "Level 2"),
         (RAW_L3, "Level 3"),
         (RAW_ALL, "Overall Performance"),
     ]
-    
+
     global_max = 0
     for ax, (raw_data, title) in zip(axes, metrics):
         inst_data, think_data = parse_data(raw_data)
@@ -189,7 +189,7 @@ def main():
         global_max = max(global_max, all_vals.max())
     for ax in axes:
         ax.set_ylim(0, global_max * 1.15)
-    
+
     # Only leftmost plot keeps y-axis and ticks
     axes[0].set_ylabel("Score")
     for ax in axes[1:]:
@@ -197,11 +197,11 @@ def main():
         ax.spines["left"].set_visible(False)
 
     create_custom_legend(fig)
-    
+
     # Save
-    out_dir = Path(__file__).resolve().parent
-    out_path = out_dir / "scientific_think_effect_v2.png"
+    out_path = "scientific_think_effect_v2.png"
     print(f"Saving scientific figure to {out_path} ...")
+    # plt.show()
     plt.savefig(out_path, dpi=300, bbox_inches='tight')
     plt.close()
     print("Done.")
