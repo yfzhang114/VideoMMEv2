@@ -1850,6 +1850,130 @@
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
+        /* Scoped styles: Only applies to elements inside .mme-chart-wrapper */
+        .mme-chart-wrapper {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.5;
+            max-width: 900px; /* Increased width to give long names more room */
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .mme-chart-wrapper h2 {
+            margin-top: 0;
+            margin-bottom: 32px;
+            font-size: 1.75rem;
+            color: #0f172a;
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: -0.025em;
+        }
+
+        .mme-chart-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background: transparent;
+        }
+        
+        .mme-chart-wrapper th, 
+        .mme-chart-wrapper td {
+            text-align: left;
+            padding: 14px 16px; /* Tightened padding to fix sparsity */
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+        
+        .mme-chart-wrapper th {
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e2e8f0;
+            border-top: 1px solid #e2e8f0; /* Added top border to match the image */
+        }
+
+        /* Prevent the first column from wrapping */
+        .mme-chart-wrapper td:first-child {
+            white-space: nowrap; 
+            font-weight: 500;
+        }
+        
+        /* Subtle zebra striping matching the image */
+        .mme-chart-wrapper tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .mme-chart-wrapper tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .mme-chart-wrapper .tag-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            max-width: 140px; /* Encourages the tags to wrap slightly like in your design */
+        }
+        
+        .mme-chart-wrapper .tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 12px;
+            border-radius: 9999px; 
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+        }
+        
+        /* Adjusted tag colors to match the new image perfectly */
+        .mme-chart-wrapper .tag-c1 {
+            background-color: #e0e7ff;
+            color: #3730a3;
+        }
+        .mme-chart-wrapper .tag-c2 {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        .mme-chart-wrapper .tag-c3 {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        /* Legend Box */
+        .mme-chart-wrapper .legend-container {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            border: none;
+        }
+        
+        .mme-chart-wrapper .legend-title {
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0f172a;
+            font-size: 1.05rem;
+        }
+        
+        .mme-chart-wrapper .legend-list {
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .mme-chart-wrapper .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #475569;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
@@ -3906,24 +4030,112 @@
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     我们针对VideoMME-v2中所提出的三个任务层级，提出了针对这三个层级的任务模型所需的主要基本能力，分别是全模态信息聚合，长程时序理解，以及复杂思考推理。基于这三种能力，我们对已有的模型进行了分类，并对比了它们在VideoMME-v2上的分数。
                 </p>
-                <figure class="figure-full-width">
-                    <img src="figs/exps/Figure_model.png" 
-                        alt="Scores of Models with Different Capabilities on VideoMME-v2" 
-                        style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 6: Performance Comparison of Leading Models on the VideoMME v2 Benchmark: A Breakdown by Core Capabilities.</figcaption>
-                    <figcaption data-lang-zh>Figure 6: 按模型核心能力拆解的主流模型在 VideoMME v2 基准测试中的性能对比。</figcaption>
-                </figure>
+        <div class="mme-chart-wrapper">
+            <h2>Model Performance with Different Capabilities</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model Name</th>
+                        <th>Performance Score</th>
+                        <th>Capabilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gemini-3-Pro</td>
+                        <td>42.6</td>
+                        <td>
+                            <div class="tag-container">
+                                <span class="tag tag-c1">c1</span>
+                                <span class="tag tag-c2">c2</span>
+                                <span class="tag tag-c3">c3</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gemini-3-Flash</td>
+                        <td>39.8</td>
+                        <td>
+                            <div class="tag-container">
+                                <span class="tag tag-c1">c1</span>
+                                <span class="tag tag-c2">c2</span>
+                                <span class="tag tag-c3">c3</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Qwen3-VL-235B-A22B-Instruct</td>
+                        <td>26.3</td>
+                        <td>
+                            <div class="tag-container">
+                                <span class="tag tag-c2">c2</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Qwen3-VL-235B-A22B-Think</td>
+                        <td>25.8</td>
+                        <td>
+                            <div class="tag-container">
+                                <span class="tag tag-c2">c2</span>
+                                <span class="tag tag-c3">c3</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Qwen3-Omni-30B-A3B-Think</td>
+                        <td>19.9</td>
+                        <td>
+                            <div class="tag-container">
+                                <span class="tag tag-c1">c1</span>
+                                <span class="tag tag-c2">c2</span>
+                                <span class="tag tag-c3">c3</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Qwen3-Omni-30B-A3B-Instruct</td>
+                        <td>17.3</td>
+                        <td>
+                            <div class="tag-container">
+                                <span class="tag tag-c1">c1</span>
+                                <span class="tag tag-c2">c2</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="legend-container">
+                <div class="legend-title">Capability Legend:</div>
+                <ul class="legend-list">
+                    <li class="legend-item">
+                        <span class="tag tag-c1">c1</span> 
+                        <span>Omni-model (Omni-modal joint perception)</span>
+                    </li>
+                    <li class="legend-item">
+                        <span class="tag tag-c2">c2</span> 
+                        <span>Long-context (Ability to process extended inputs)</span>
+                    </li>
+                    <li class="legend-item">
+                        <span class="tag tag-c3">c3</span> 
+                        <span>Thinking (Advanced reasoning/chain-of-thought)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
                 <p data-lang-en style="margin-top: 1rem;">
                     <strong>(1) Text modality has a significant complementary effect on visual reasoning.</strong> Effective reasoning mechanisms can substantially improve model performance, but this improvement depends heavily on textual information. Under the "with subtitle" setting, models with stronger reasoning ability show notable gains. For example, <strong>MiMo-VL-7B</strong> achieves +5.1, +5.8, and +3.0 at Level 1–3 respectively, with an overall gain of <strong>+4.3</strong>; <strong>Qwen3-VL-8B</strong> also shows steady improvement (overall <strong>+2.4</strong>). These results indicate that for models with effective reasoning, the semantic information provided by subtitles compensates for the limitations of pure visual perception, and the synergy of "vision + text" enables the chain-of-thought process to yield more accurate predictions.
                 </p>
                 <p data-lang-zh style="margin-top: 1rem;">
-                    <strong>（1）全维度的能力融合是突破视频理解性能天花板的关键。</strong> 在 VideoMME v2 这类需要处理极长视频序列、复杂时空跨度以及细粒度多模态信息的评测中，模型的最终得分与其能力图谱的完整度呈现出高度的正相关。从图表中可以清晰地观察到，集齐全模态（Omni-modal）、长文本（Long-Context）与复杂思考（Thinking）三大核心能力的模型占据了绝对的统治地位。其中，Gemini-3-Pro 以 42.6 分的断层优势登顶，同系模型 Gemini-3-Flash 也紧随其后达到 39.8 分。此外，在 Qwen3-Omni 系列的对比中这一趋势同样显著：Qwen3-Omni-30B-A3B-Think（19.9分）明显优于缺少该能力的 Instruct 版本（17.3分）。这表明，面对高难度的动态视频基准，单一维度的垂直优化已触及瓶颈，构建“感知-记忆-推理”三位一体的复合能力架构，是实现分数阶跃的核心路径。
+                    <strong>（1）多维核心能力的协同整合是突破复杂视频理解性能瓶颈的关键因素。</strong> Video-MME-v2 对跨越复杂时空维度的信息聚合和推理提出了较高的要求，模型的评测表现与其具备的核心能力完整度呈显著正相关。实验数据表明，同时具备全模态感知（C1）、长上下文处理（C2）与高级推理（C3）三大特性的模型在性能上展现出显著优势。具体而言，Gemini-3-Pro 凭借完整的能力矩阵以 42.6 分的显著优势位居榜首，其同系列模型 Gemini-3-Flash 亦达到 39.8 分。此外，同等参数规模下的消融对比进一步验证了这一结论：具备思考能力（C3）的 Qwen3-Omni-30B-A3B-Think（19.9分）相较于缺失该能力的 Instruct 版本（17.3分）实现了明显的性能提升。这印证了在应对高复杂度动态视觉任务时，单一维度的能力演进存在局限性，而构建融合“全模态感知-长时序理解-深度推理”的复合能力架构，是推动模型性能实现阶跃的核心路径。
                 </p>
                 <p data-lang-en style="margin-top: 0.75rem;">
                     <strong>(2) Our benchmark remains perception-driven; thinking is not universally helpful and RL may lean toward reinforcing text-side capabilities.</strong> Some models exhibit <em>Thinking Regression</em> even with subtitles: <strong>Qwen3-VL-235B</strong> regresses −4.5 (L1), −1.2 (L2), −2.5 (L3), <strong>−2.6 overall</strong>; <strong>Kimi-VL-16B</strong> regresses −2.7, −1.5, −5.1 by level and <strong>−3.2 overall</strong>. So on our bench, thinking has limited or negative effect for part of the models. Moreover, <strong>thinking + subtitle is strong, but without subtitle thinking is much weaker</strong>: e.g. Qwen3-VL-8B has +2.4 overall with subtitle but <strong>−0.2 overall without subtitle</strong>; MiMo-VL-7B drops from +4.3 (w. sub) to <strong>+1.9 (wo. sub)</strong>, and in Level 2 from +5.8 to +1.9. This suggests that in the setting of video understanding, current models' “thinking” capability remains more oriented toward text reasoning and has difficulty directly improving visual understanding and may even be harmful.
                 </p>
                 <p data-lang-zh style="margin-top: 0.75rem;">
-                    <strong>（2）参数规模的扩张在一定程度上能弥补核心能力的缺失</strong> 尽管全能力融合是面向全面视频理解的最优解，但从图中的结果依然可以看出，庞大的参数量依然是模型能力的基础，甚至能够跨越能力维度的代差。以图中的Qwen3-VL-235B-Instruct为例，虽然并未叠加“思考”或“全模态”能力，但凭借 235B 的超大参数规模，它依然稳居开源梯队榜首。它的得分甚至大幅领先于具备完整能力的 Qwen3-Omni-30B-A3B-Think。这种现象说明，当模型容量足够庞大时，其内部涌现的庞大知识储备和强大的模式匹配能力，能够在很大程度上对冲由于缺乏特定能力所带来的劣势。
+                    <strong>（2）参数规模的量级扩张可部分代偿特定维度的能力缺失。</strong> 尽管多维能力的融合对实现全面视频理解至关重要，但实验结果同样揭示了参数规模在奠定模型基础性能方面的决定性作用，其所带来的能力涌现甚至能够跨越特定能力标签的代差。以图表中的 Qwen3-VL-235B-A22B-Instruct 为例，尽管该模型在架构上仅具备长上下文能力（C2），而未引入全模态感知（C1）或高级推理（C3）机制，但依托其 235B 的超大规模参数量，依然取得了 26.3 分的成绩。这一表现显著超越了具备完整核心能力（C1, C2, C3）但参数规模仅为 30B 的 Qwen3-Omni-30B-A3B-Think（19.9分）。此现象表明，当模型参数容量达到特定量级时，其内部蕴含的庞大参数化知识储备与高维模式匹配能力，能够在一定程度上有效对冲因缺失特定架构能力所导致的性能损耗。
                 </p>
             </div>
         </div>
