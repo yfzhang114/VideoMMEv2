@@ -68,6 +68,35 @@ def _extract_levels(detail_cell: object) -> tuple[float | None, float | None, fl
     return to_float(l1), to_float(l2), to_float(l3)
 
 
+def _extract_relevance_logic(detail_cell: object) -> tuple[float | None, float | None]:
+    """从详细结果里抽 relevance_score、logic_score。失败返回 (None, None)。"""
+    
+    s = _normalize_json_cell(detail_cell)
+    
+    if s is None:
+        return None, None
+
+    try:
+        obj = json.loads(s)
+    except Exception:
+        return None, None
+
+    if not isinstance(obj, dict):
+        return None, None
+    # import pdb; pdb.set_trace()
+    fr = obj.get("final_rating", {}) if isinstance(obj, dict) else {}
+    rel = fr.get("relevance_score")
+    logic = fr.get("logic_score")
+
+    def to_float(v):
+        try:
+            return float(v)
+        except Exception:
+            return None
+
+    return to_float(rel), to_float(logic)
+
+
 def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
     # 列名去空格，避免 “总Acc ” 这种匹配不到
     df = df.copy()
@@ -78,6 +107,14 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
     if "详细结果" not in df.columns:
         # 没有该列就原样返回
         return df
+
+    # 用详细结果中的 relevance_score、logic_score 覆盖 相关性Acc、逻辑链Acc
+    # import pdb; pdb.set_trace()
+    scores = df["详细结果"].apply(_extract_relevance_logic)
+    if "相关性Acc" in df.columns:
+        df["相关性Acc"] = scores.apply(lambda t: t[0])
+    if "逻辑链Acc" in df.columns:
+        df["逻辑链Acc"] = scores.apply(lambda t: t[1])
 
     levels = df["详细结果"].apply(_extract_levels)
     df["Level 1"] = levels.apply(lambda t: t[0])
