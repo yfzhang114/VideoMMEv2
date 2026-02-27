@@ -3821,34 +3821,34 @@
             <!-- Chinese Content -->
             <div data-lang-zh>
                 <p>
-                    为了全面评估多模态大模型的视频理解能力，Video-MME V2 构建了一套循序渐进的层级化分类体系。我们摒弃了扁平化的任务堆叠，而是将能力维度划分为三个认知阶段：从基础的信息检索与聚合，进阶到对时序、动作与变化的动态捕捉，最终上升至对剧情、物理世界及社会行为的复杂推理。
+                    为全面评估模态的视频理解能力，我们为Video-MME-v2构建了一套循序渐进的层级化能力体系。不再采用扁平化的任务堆砌，而是将能力维度划分为三个递进阶段：首先是对分散线索的信息检索与聚合；其次是对状态变化、动作序列等时序动态的准确建模；最终进一步要求模型结合真实世界知识与社会常识等外部先验，完成更高阶的复杂推理。
                 </p>
 
-                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 三级能力层级体系</h3>
+                <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 三级能力层级</h3>
                 
                 <p style="margin-bottom: 0.5rem;">
-                    下图 Figure 1 展示三个层级及其能力维度。每层包含若干类，每类下为相关子维度，对应关系如下。
+                    下图Fig. 1展示了能力层级。每层包含若干类，每类下为相关子维度，对应关系如下：
                 </p>
 
                 <div class="hierarchy-detail">
                     <div class="level-detail">
                         <h4>Level 1 — 信息检索与聚合</h4>
-                        <div class="cat-row"><span class="cat-name">仅帧 (Frame-Only)</span> <span class="cat-count">共 3 类</span> — 视觉识别（物体/属性/场景）；基础计数；数值计算（比例、比较）。</div>
-                        <div class="cat-row"><span class="cat-name">帧+音频 (Frames &amp; Audio)</span> <span class="cat-count">共 4 类</span> — 跨模态语义一致性（色调–情绪对应）；音频引导的视觉描述；视觉引导的音频描述；视听觉协同推理。</div>
+                        <div class="cat-row"><span class="cat-name">仅帧 (Frame-Only)</span> <span class="cat-count">共3类</span> — 视觉识别；基础计数；帧相关的数值计算。</div>
+                        <div class="cat-row"><span class="cat-name">帧+音频 (Frames &amp; Audio)</span> <span class="cat-count">共4类</span> — 跨模态语义一致性；音频引导的视觉描述；视觉引导的音频描述；视听觉协同理解。</div>
                     </div>
                     <div class="level-detail l2">
-                        <h4>Level 2 — Level 1 + 时序理解</h4>
-                        <div class="cat-row"><span class="cat-name">动作与运动 (Action &amp; Motion)</span> <span class="cat-count">共 5 类</span> — 细粒度动作识别；重复动作计数；时序动作定位；运动轨迹估计；运动属性分析。</div>
-                        <div class="cat-row"><span class="cat-name">顺序 (Order)</span> <span class="cat-count">共 3 类</span> — 物体出现顺序；事件序列排序；时序周期性检测。</div>
-                        <div class="cat-row"><span class="cat-name">变化 (Change)</span> <span class="cat-count">共 3 类</span> — 实体存在变化检测；实体属性变化检测；场景变换检测。</div>
-                        <div class="cat-row"><span class="cat-name">时序推理 (Temporal Reasoning)</span> <span class="cat-count">共 2 类</span> — 因果推理（原因/反事实）；未来事件预测。</div>
+                        <h4>Level 2 — Level 1 + 时序</h4>
+                        <div class="cat-row"><span class="cat-name">动作与运动 (Action &amp; Motion)</span> <span class="cat-count">共5类</span> — 细粒度动作识别；重复动作计数；时序动作定位；运动轨迹估计；运动属性分析。</div>
+                        <div class="cat-row"><span class="cat-name">顺序 (Order)</span> <span class="cat-count">共3类</span> — 物体出现顺序；事件序列排序；时序周期性检测。</div>
+                        <div class="cat-row"><span class="cat-name">变化 (Change)</span> <span class="cat-count">共3类</span> — 实体存在变化检测；实体属性变化检测；场景变换检测。</div>
+                        <div class="cat-row"><span class="cat-name">时序推理 (Temporal Reasoning)</span> <span class="cat-count">共2类</span> — 因果推理；未来事件预测。</div>
                     </div>
                     <div class="level-detail l3">
                         <h4>Level 3 — Level 2 + 复杂推理</h4>
-                        <div class="cat-row"><span class="cat-name">复杂剧情理解 (Complex Plot Comprehension)</span> <span class="cat-count">共 4 类</span> — 叙事转折点检测；叙事填空推理；符号/隐喻解读；高阶叙事解构。</div>
-                        <div class="cat-row"><span class="cat-name">基于视频的知识获取 (Video-Based Knowledge Acquisition)</span> <span class="cat-count">共 2 类</span> — 专业知识获取；通用技能获取。</div>
-                        <div class="cat-row"><span class="cat-name">社会行为分析 (Social Behavior Analysis)</span> <span class="cat-count">共 3 类</span> — 个体社会认知；二元互动动态；群体动态分析。</div>
-                        <div class="cat-row"><span class="cat-name">物理世界推理 (Physical World Reasoning)</span> <span class="cat-count">共 4 类</span> — 实体持久性追踪；空间理解；反事实推理；反直觉理解。</div>
+                        <div class="cat-row"><span class="cat-name">复杂剧情理解 (Complex Plot Comprehension)</span> <span class="cat-count">共4类</span> — 叙事转折点检测；叙事填空推理；符号/隐喻解读；高阶叙事解构。</div>
+                        <div class="cat-row"><span class="cat-name">基于视频的知识获取 (Video-Based Knowledge Acquisition)</span> <span class="cat-count">共2类</span> — 专业知识获取；通用技能获取。</div>
+                        <div class="cat-row"><span class="cat-name">社会行为分析 (Social Behavior Analysis)</span> <span class="cat-count">共3类</span> — 个体社会认知；二元互动动态；群体动态分析。</div>
+                        <div class="cat-row"><span class="cat-name">物理世界推理 (Physical World Reasoning)</span> <span class="cat-count">共4类</span> — 实体持久性追踪；空间理解；反事实推理；反直觉理解。</div>
                     </div>
                 </div>
 
@@ -3856,7 +3856,7 @@
                     <img src="figs/imgs/area-basic.svg" 
                         alt="Video-MME V2 的三级能力层级分类体系" 
                         style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 1: Video-MME V2 三级能力层级体系 — 各能力维度及其在 Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布。</figcaption>
+                    <figcaption>Figure 1: Video-MME-v2三级能力层级：各能力维度及其在Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布。</figcaption>
                 </figure>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 标注流程</h3>
@@ -3872,10 +3872,10 @@
                             <span>视频筛选</span>
                         </div>
                         <div class="ann-criterion-body">
-                            <div class="ann-subitem">时效性数据源：确保数据源中超过80%为 2025 年及以后发布的 YouTube 视频，以确保评估基准的时效性，减少数据污染。</div>
-                            <div class="ann-subitem">多样性覆盖：构建具有四个一级类别和32个二级类别的分类体系，确保样本在题材类别与视觉风格上的广泛分布。</div>
-                            <div class="ann-subitem">质量控制阈值：引入播放量作为内容质量的近似指标，数据集中约85%的视频观看量超过10,000次，有效剔除低质噪点数据。</div>
-                            <div class="ann-subitem">人工去污染：人工剔除经典影视作品及头部博主内容，最大限度规避模型因训练集记忆产生的评估偏差。</div>
+                            <div class="ann-subitem">视频来源：数据集中80%+为2025年及以后发布的YouTube视频，以确保评估基准的时效性并降低数据污染风险。</div>
+                            <div class="ann-subitem">多样性覆盖：构建包含4个一级类别、32个二级类别的分类体系，确保题材与风格广泛分布。</div>
+                            <div class="ann-subitem">内容质量控制：引入播放量作为内容质量的近似指标，近85%的视频观看量超过10,000次，从源头减少低质噪声样本。</div>
+                            <div class="ann-subitem">人工防污染：人工剔除经典影视作品及头部博主内容，最大限度规避模型"记忆效应"带来的评估偏差。</div>
                         </div>
                     </div>
 
@@ -3885,9 +3885,8 @@
                             <span>问题设计</span>
                         </div>
                         <div class="ann-criterion-body">
-                            <div class="ann-subitem">基于问题组的分层架构：由10名人工专家进行数据标注工作，每个问题组的四个问题平均标注时长1.5小时，确保能力一致性问题的覆盖广度，以及逻辑连贯性的问题深度。</div>
-                            <div class="ann-subitem">严谨性校验：在标注过程中通过2-4轮问题严谨性校验，严格验证图文相关性及推理节点的逻辑完备性。</div>
-                            <div class="ann-subitem">实时追踪模型能力：在标注流程中使用Gemini-3.0-Pro进行测试，确保benchmark的挑战性和题目的严谨性。</div>
+                            <div class="ann-subitem">问题组标注：由10名人工专家负责，确保能力一致性问题的覆盖广度，以及逻辑连贯性的问题深度。</div>
+                            <div class="ann-subitem">严谨性校验：标注过程中实时使用Gemini-3-Pro进行对照测试与校验，确保题目表述与答案设置的严谨性。</div>
                         </div>
                     </div>
 
@@ -3897,33 +3896,33 @@
                             <span>选项设计</span>
                         </div>
                         <div class="ann-criterion-body">
-                            <div class="ann-subitem">高困惑度设计：采用 8 选项设计，将随机猜测基线降低至 12.5%，显著提升评估区分度和模型困惑度。</div>
-                            <div class="ann-subitem">强干扰项构建：每题在常规干扰项之外，预设至少一个基于实际答案针对性构建的更强干扰项，并经人工精细润色，以精准测试模型的细粒度辨析能力。</div>
+                            <div class="ann-subitem">高困惑度选项：采用8选项设计，提高区分度与评测强度。</div>
+                            <div class="ann-subitem">强干扰项设计：除常规强干扰项之外，每题至少额外设置一个基于真实答案针对性构造的迷惑选项，并经人工精细润色，以精准测试模型的细粒度辨析能力。</div>
                         </div>
                     </div>
 
                     <div class="ann-criterion">
                         <div class="ann-criterion-header">
                             <span class="step-num">4</span>
-                            <span>标注质量检查</span>
+                            <span>质量把控</span>
                         </div>
                         <div class="ann-criterion-body">
                             <div class="ann-qa-grid">
                                 <div class="ann-qa-item">
                                     <strong>a. 文本基线测试</strong>
-                                    <p>利用 Gemini-3-Pro 进行纯文本模式下的基线测试，剔除无需视觉信息即可作答的题目，从而严格控制语言先验偏差，确保多模态推理的必要性。</p>
+                                    <p>利用Gemini-3-Pro在纯文本模式下进行基线测试，剔除无需视觉信息仍可作答的题目，从而严格控制语言先验偏差，确保多模态感知的必要性。</p>
                                 </div>
                                 <div class="ann-qa-item">
-                                    <strong>b. 交叉验证机制</strong>
-                                    <p>实施多轮次同行评审流程，每道题目经由2-4轮标注人员交叉审核，重点修正语义歧义及优化选项设置，确保标注的一致性与准确性。</p>
+                                    <strong>b. 交叉校验</strong>
+                                    <p>实施多轮交叉评审流程，每道题目由标注人员进行3轮交叉审核，重点消除语义歧义、修正潜在漏洞并优化选项设置。</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>c. 独立盲测</strong>
-                                    <p>引入未接触过特定视频数据的独立评估人员，对每个视频问题进行至少两次独立的细粒度校验，以客观视角降低标注者的主观偏差，提升数据集的泛化质量。</p>
+                                    <p>引入未参与该标注任务的独立评估人员，对每个视频问题进行至少2轮细粒度核查，以更客观视角降低标注人员的主观偏差。</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>d. 闭环迭代验证</strong>
-                                    <p>建立修正-复验的闭环机制。针对修正后的题目执行二次纯文本检测及独立盲测，确保每一轮修改均有效提升了数据质量，实现评估集的收敛。</p>
+                                    <p>建立"修正-复验"的闭环机制：对修改后的题目再次执行纯文本检测与独立盲测，确保每一轮修订均带来可控的质量提升。</p>
                                 </div>
                             </div>
                         </div>
@@ -3938,26 +3937,26 @@
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 数据统计</h3>
 
                 <p>
-                    下图展示了基于分组评测的数据统计：问题与答案的词数、八选题选项（A–H）的词数，以及视频时长分布。
+                    下图展示了基于分组评测的数据统计：问题与答案的词数、八选题选项（A–H）的词数，以及视频时长和视频分布等信息。
                 </p>
 
                 <p>
-                    <strong>视频时长：</strong>共 801 个视频，平均长度约 10.4 分钟（625.85 秒），99% 在 20 分钟以内，53% 在 10 分钟以内；时长分布较为均匀且多样化，按 1 分钟区间统计，峰值集中在 7–10 分钟。
+                    <strong>视频时长：</strong>如 Fig. 2 所示，平均长度约 10.4 分钟。其中 99% 在 20 分钟以内，53% 在 10 分钟以内，整体时长分布较为均匀且多样。
                 </p>
                 <p>
-                    <strong>视频类别：</strong>为覆盖多样化的真实场景，我们将视频来源划分为两级类别体系。下图展示了各类别分布：<strong>体育与竞技</strong>（如健身、篮球、足球等），<strong>生活与娱乐</strong>（如综艺喜剧、烹饪烘焙、数码与汽车等），<strong>艺术与文艺</strong>（如电影、剧集、动画与漫画等），<strong>知识与教育</strong>（如物理数学、计算机与人工智能、人文历史等）。四类共同覆盖日常生活、媒体叙事、运动休闲与正式/非正式学习等常见场景，使基准在视频类型上具有较好的多样性与代表性。
+                    <strong>视频类别：</strong>如 Fig. 3 所示，视频类型覆盖 4 大类、32 小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。
                 </p>
                 <p>
-                    <strong>视频发布时间：</strong>为最大限度降低潜在的数据泄露风险，数据集中 87.5% 的视频发布于 2024 年 10 月之后，39.2% 的视频发布于 2025 年 10 月之后，整体时间分布具有较强的时效性。
+                    <strong>视频发布时间：</strong>如 Fig. 4 所示，80%+ 的视频发布于 2025 年之后，其中近 40% 发布于 2025 年 10 月之后。
                 </p>
                 <p>
-                    <strong>视频观看量：</strong>截至 2025 年 2 月 10 日，视频的观看量的平均值和中位数分别为 467 万次和 36.5 万次，其中 94.2% 的视频观看量超过 1,000 次，84.6% 超过 10,000 次，整体具有较高的曝光度与代表性。
+                    <strong>视频观看量：</strong>如 Fig. 5 所示，视频观看量的均值和中位数分别为 467 万次和 36.5 万次，其中 84.6% 的视频观看量超过 10,000 次，94.2% 超过 1,000 次。
                 </p>
                 <p>
-                    <strong>问题与答案：</strong>在推理连贯性设计中，题目越往后难度越大，因此需要更长的描述、回答也需更细致，从而呈现出问题与答案平均长度由 Q1 到 Q4 递增（19.6 → 23.8 词，11.1 → 15.3 词）的现象。
+                    <strong>问题与答案：</strong>如 Fig. 2 所示，问题与答案的平均长度从 Q1 到 Q4 呈递增趋势。这与“推理连贯性”设计一致：序列后段问题难度更高，通常需要更充分的上下文描述与更细致的作答。
                 </p>
                 <p>
-                    <strong>选项分布：</strong>八个选项的平均词数高度一致（13.8–14.0 词，标准差约 11–11.3），无明显位置偏差。
+                    <strong>选项分布：</strong>如 Fig. 2 所示，8 个选项的平均词数高度一致。
                 </p>
 
                 <div class="figures-row">
@@ -3965,13 +3964,13 @@
                         <img src="figs/exps/data_sta.png" 
                             alt="Video-MME V2 数据统计" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                        <figcaption>Figure 2: 数据统计 — 每组的问答与选项长度，以及视频长度分布</figcaption>
+                        <figcaption>Figure 2：视频长度、以及问题与选项长度分布</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/imgs/video_category.png" 
                             alt="Video-MME V2 视频类别分布（旭日图）" 
                             style="width:100%; height:auto; display:block; margin:0 auto;">
-                        <figcaption>Figure 3: 视频类别分布 — 四个一级类别及其子类（图中为各扇区样本数）</figcaption>
+                        <figcaption>Figure 3：视频类别分布，含4个一级类别、32个二级类别</figcaption>
                     </figure>
                 </div>
                 <div class="figures-row">
@@ -3979,13 +3978,13 @@
                         <img src="figs/exps/video_publish_month.png" 
                             alt="Video-MME V2 视频发布时间分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                        <figcaption>Figure 4: 视频发布时间分布 — 视频发布月份</figcaption>
+                        <figcaption>Figure 4：视频发布时间分布</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/exps/video_viewcount.png" 
                             alt="Video-MME V2 视频观看量分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto;">
-                        <figcaption>Figure 5: 视频观看量分布 — 各观看量区间样本数</figcaption>
+                        <figcaption>Figure 5：视频观看量分布</figcaption>
                     </figure>
                 </div>
             </div>
