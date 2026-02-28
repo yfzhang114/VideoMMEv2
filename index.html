@@ -375,13 +375,14 @@
 
         /* ==================== LEADERBOARD STYLES ==================== */
         .leaderboard-section {
-            max-width: 87%;
+            max-width: 70%;
             margin: 0 auto;
             padding: 60px 24px;
         }
 
         .leaderboard-container {
             width: 100%;
+            max-width: 100%;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
@@ -436,6 +437,8 @@
 
         .leaderboard-table-wrapper {
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: visible;
         }
 
         .leaderboard-table caption.leaderboard-caption {
@@ -536,6 +539,7 @@
         .leaderboard-table tbody tr {
             border-bottom: 1px solid var(--border-color);
             transition: background-color 0.2s;
+            white-space: nowrap;
         }
 
         .leaderboard-table tbody tr:last-child {
@@ -551,6 +555,7 @@
             text-align: center;
             color: var(--primary-color);
             font-variant-numeric: tabular-nums;
+            white-space: nowrap;
         }
 
         .leaderboard-table td:first-child {
@@ -886,6 +891,48 @@
             margin: 1rem 0;
         }
 
+        /* Data Statistics — compact list (one line per item) */
+        .stats-criteria {
+            margin: 1rem 0;
+        }
+        .stats-criterion {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.98rem;
+            color: #374151;
+            line-height: 1.6;
+        }
+        .stats-criterion:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .stats-criterion .stats-num {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .stats-criterion .stats-content {
+            flex: 1;
+        }
+        .stats-criterion .stats-content strong {
+            color: var(--primary-color);
+            margin-right: 4px;
+        }
+
         /* Video Examples Section */
         .examples-section {
             background: var(--bg-secondary);
@@ -1139,16 +1186,16 @@
             color: var(--secondary-color);
         }
 
-        /* Two figures side by side — 整块宽度 110% 用 margin 居中 */
+        /* Two figures side by side — 居中展示 */
         .figures-row {
             display: flex;
             gap: 1.5rem;
             align-items: flex-start;
             justify-content: center;
             flex-wrap: nowrap;
-            margin: 2.5rem -10%;
-            width: 120%;
-            max-width: 120%;
+            margin: 2.5rem auto;
+            width: 100%;
+            max-width: 100%;
             box-sizing: border-box;
         }
         /* 两图占比：改 first-child / last-child 的 flex 第一个数即可，如 1.2 与 1 约为 55% : 45%，1.5 与 1 约为 60% : 40%，2 与 1 约为 67% : 33% */
@@ -1158,13 +1205,13 @@
             margin: 0;
         }
         .figures-row figure:first-child {
-            flex: 1.08 1 0;
+            flex: 1.0 1 0;
         }
         .figures-row figure:last-child {
             flex: 1 1 0;
         }
         .figures-row figure img {
-            width: 110%;
+            width: 100%;
             max-width: 100%;
         }
 
@@ -1919,13 +1966,13 @@
         .mme-chart-wrapper .legend-container {
             background-color: #f8fafc;
             border-radius: 12px;
-            padding: 24px;
+            padding: 12px 16px;
             border: none;
         }
         
         .mme-chart-wrapper .legend-title {
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             color: #0f172a;
             font-size: 1.05rem;
         }
@@ -1935,16 +1982,18 @@
             padding: 0;
             margin: 0;
             display: flex;
-            flex-direction: column;
-            gap: 16px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 8px 20px;
         }
         
         .mme-chart-wrapper .legend-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 16px;
+            gap: 6px;
             color: #475569;
             font-size: 0.95rem;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -2044,7 +2093,7 @@
                         <li>How can we evaluate it sufficiently and fairly?</li>
                     </ul>
                     <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Our answer is reflected in two core designs:</p>
-                    <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level evaluation dimensions</strong><br>From multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from "finding information" to "modeling time" to "cross-temporal reasoning".</p>
+                    <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level evaluation dimensions</strong><br>From multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from 「finding information」 to 「modeling time」 to 「cross-temporal reasoning」.</p>
                     <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear evaluation mechanism</strong><br>Questions are organized into groups along <em>capability consistency</em> and <em>reasoning coherence</em>. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.</p>
                 </div>
 
@@ -2068,13 +2117,13 @@
                     </div>
                 </div>
                 <h3 class="intro-h3">2. Grouped Non-Linear Evaluation Mechanism</h3>
-                <p>Many prior benchmarks adopt a "scatter-shot" evaluation paradigm where each question is scored independently, often ignoring dependencies between questions and weakening evaluation efficiency and robustness. To address this, we introduce a group-based evaluation mechanism with two key task group types:</p>
+                <p>Many prior benchmarks adopt a 「scatter-shot」 evaluation paradigm where each question is scored independently, often ignoring dependencies between questions and weakening evaluation efficiency and robustness. To address this, we introduce a group-based evaluation mechanism with two key task group types:</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>Capability Consistency</h4>
                         <p><strong>Grouping strategy</strong><br>
-                            This group type probes the <strong>true mastery</strong> of a specific capability. For a single capability, we construct <strong>4 questions at different levels</strong> within a group around different facets of that capability. For example, in a counting scenario, we may evaluate: the number of players in a single frame, the number of action types within a short clip, the number of times a given action appears across clips, and the total number of segments in the full video. By moving from local to global and from static to cross-temporal, we more effectively distinguish between "lucky guesses" and genuinely robust capability.
+                            This group type probes the <strong>true mastery</strong> of a specific capability. For a single capability, we construct <strong>4 questions at different levels</strong> within a group around different facets of that capability. For example, in a counting scenario, we may evaluate: the number of players in a single frame, the number of action types within a short clip, the number of times a given action appears across clips, and the total number of segments in the full video. By moving from local to global and from static to cross-temporal, we more effectively distinguish between 「lucky guesses」 and genuinely robust capability.
                         </p>
                         <p><strong>Scoring method</strong><br>
                             We count the number of correctly answered questions <var>N</var> within each group and define the group score as <var>(N/4)²</var>. This non-linear gain suppresses random benefits from isolated correct answers while rewarding stable, group-wide consistency.
@@ -2084,10 +2133,10 @@
                         <div class="icon">🔗</div>
                         <h4>Reasoning Coherence</h4>
                         <p><strong>Grouping strategy</strong><br>
-                            This group type emphasizes the <strong>tightness of the reasoning chain</strong>. Instead of only checking the final answer, we introduce intermediate supervision by constructing <strong>4 progressive questions</strong> around key logical nodes in the same reasoning chain. For example, when a character in a video "fakes death" to deceive others, we evaluate whether the model can: identify direct visual cues of apparent death, detect anomalous details that deviate from normal patterns, infer the purpose behind the fake death, and, under these constraints, arrive at the final conclusion. This layered "clue localization → anomaly verification → goal inference → conclusion closure" process helps distinguish whether a model truly relies on video evidence for coherent reasoning.
+                            This group type emphasizes the <strong>tightness of the reasoning chain</strong>. Instead of only checking the final answer, we introduce intermediate supervision by constructing <strong>4 progressive questions</strong> around key logical nodes in the same reasoning chain. For example, when a character in a video 「fakes death」 to deceive others, we evaluate whether the model can: identify direct visual cues of apparent death, detect anomalous details that deviate from normal patterns, infer the purpose behind the fake death, and, under these constraints, arrive at the final conclusion. This layered 「clue localization → anomaly verification → goal inference → conclusion closure」 process helps distinguish whether a model truly relies on video evidence for coherent reasoning.
                         </p>
                         <p><strong>Scoring method</strong><br>
-                            On top of non-linear scoring, we introduce a <strong>"first-error truncation" mechanism</strong>: during evaluation, we treat the first error within a group as the boundary of effective reasoning and only count the number of consecutive correct answers before that point. This suppresses "pseudo-correct" answers derived from incorrect premises and enforces stricter validity of the reasoning chain.
+                            On top of non-linear scoring, we introduce a <strong>「first-error truncation」 mechanism</strong>: during evaluation, we treat the first error within a group as the boundary of effective reasoning and only count the number of consecutive correct answers before that point. This suppresses 「pseudo-correct」 answers derived from incorrect premises and enforces stricter validity of the reasoning chain.
                         </p>
                     </div>
                 </div>
@@ -2134,19 +2183,19 @@
                     </div>
                 </div>
                 <h3 class="intro-h3">2. Grouped Non-Linear评估机制</h3>
-                <p>以往的Benchmark多采用"散点评测"范式，即对每个问题独立计分。这种方式往往忽略问题之间的关联关系，进而影响评测的效率与鲁棒性。为此，我们引入分组式评估机制，并设计了两类关键任务组：</p>
+                <p>以往的Benchmark多采用「散点评测」范式，即对每个问题独立计分。这种方式往往忽略问题之间的关联关系，进而影响评测的效率与鲁棒性。为此，我们引入分组式评估机制，并设计了两类关键任务组：</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>能力一致性</h4>
-                        <p><strong>分组方式</strong><br>该类分组用于验证模型对某一具体能力的<strong>真实掌握程度</strong>。针对单项能力，我们围绕同一能力的不同方面，在问题组内构造<strong>4个不同层级</strong>的问题。以视频计数为例，我们分别评估：单帧内运动员人数、单片段内动作种类、跨片段同一动作的执行次数以及全视频的片段总数。通过从局部到全局、从静态到跨时序的多层次考察，更高效区分模型是"偶然答对"，还是在该能力上具有鲁棒的表现。</p>
+                        <p><strong>分组方式</strong><br>该类分组用于验证模型对某一具体能力的<strong>真实掌握程度</strong>。针对单项能力，我们围绕同一能力的不同方面，在问题组内构造<strong>4个不同层级</strong>的问题。以视频计数为例，我们分别评估：单帧内运动员人数、单片段内动作种类、跨片段同一动作的执行次数以及全视频的片段总数。通过从局部到全局、从静态到跨时序的多层次考察，更高效区分模型是「偶然答对」，还是在该能力上具有鲁棒的表现。</p>
                         <p><strong>计分方法</strong><br>我们统计每个问题组内答对的问题数量<var>N</var>，并将该组得分定义为<var>(N/4)²</var>。这种非线性增益的计分方式能够降低单题命中带来的偶然性收益，同时强化组内整体一致性与稳定正确的奖励。</p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
                         <h4>推理连贯性</h4>
-                        <p><strong>分组方式</strong><br>该类分组侧重评估模型的<strong>推理链严密性</strong>。不同于仅关注最终答案，我们在问题组内引入中间过程监督，围绕同一推理链的关键逻辑节点构造<strong>4个递进式问题</strong>进行显示验证。以行为推断为例，若视频中人物通过"假死"实现瞒天过海，我们分别评估：模型是否能够识别死亡表象的直接线索、捕捉与常规情形不一致的反常细节、推断假死行为的目的、以及在前述证据约束下给出最终结论。通过这种"线索定位—反常核验—目的解释—结论闭环"的层级化检验，更高效区分模型是否真正基于视频证据进行连贯推理。</p>
-                        <p><strong>计分方法</strong><br>在非线性计分的基础上，我们进一步引入<strong>“首错截断”机制</strong>：评估时以模型在组内首次出错的节点作为有效推理的边界，仅统计该断点之前连续答对的问题数量。该机制能够抑制错误前提下继续推导带来的“伪正确”得分，从而更严格地约束推理链的有效性。</p>
+                        <p><strong>分组方式</strong><br>该类分组侧重评估模型的<strong>推理链严密性</strong>。不同于仅关注最终答案，我们在问题组内引入中间过程监督，围绕同一推理链的关键逻辑节点构造<strong>4个递进式问题</strong>进行显示验证。以行为推断为例，若视频中人物通过「假死」实现瞒天过海，我们分别评估：模型是否能够识别死亡表象的直接线索、捕捉与常规情形不一致的反常细节、推断假死行为的目的、以及在前述证据约束下给出最终结论。通过这种「线索定位—反常核验—目的解释—结论闭环」的层级化检验，更高效区分模型是否真正基于视频证据进行连贯推理。</p>
+                        <p><strong>计分方法</strong><br>在非线性计分的基础上，我们进一步引入<strong>「首错截断」机制</strong>：评估时以模型在组内首次出错的节点作为有效推理的边界，仅统计该断点之前连续答对的问题数量。该机制能够抑制错误前提下继续推导带来的「伪正确」得分，从而更严格地约束推理链的有效性。</p>
                     </div>
                 </div>
                 
@@ -2156,7 +2205,7 @@
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>数据标注</h4>
-                        <p>我们组建了由<strong>10名人类专家</strong>组成的标注团队，负责视频数据的采集与全流程标注，并通过"流程化规范+交叉校验"进行严格质控：从视频筛选、问题设计到选项构造，各环节均严格对齐统一标准。同时设置<strong>3轮</strong>交叉复核与修改，对每条样本进行反复打磨，尤其注重能力一致性与逻辑连贯性约束。包括修改2轮数据质检意见的时间在内，共花费约<strong>2200人工时</strong>。</p>
+                        <p>我们组建了由<strong>10名人类专家</strong>组成的标注团队，负责视频数据的采集与全流程标注，并通过「流程化规范+交叉校验」进行严格质控：从视频筛选、问题设计到选项构造，各环节均严格对齐统一标准。同时设置<strong>3轮</strong>交叉复核与修改，对每条样本进行反复打磨，尤其注重能力一致性与逻辑连贯性约束。包括修改2轮数据质检意见的时间在内，共花费约<strong>2200人工时</strong>。</p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
@@ -3373,7 +3422,7 @@
             <!-- Q4: Return to Quiet (Ans: Turning off phone) -->
             <div class="qa-content" data-qa-index="3">
                 <div class="qa-question" data-lang-en>Q4: Which event marks the male protagonist's return to a "quiet life" after briefly resuming his social life?</div>
-                <div class="qa-question" data-lang-zh>Q4: 什么事件标志着男主角在短暂恢复社交生活后回归“平静生活”？</div>
+                <div class="qa-question" data-lang-zh>Q4: 什么事件标志着男主角在短暂恢复社交生活后回归「平静生活」？</div>
                 <div class="qa-options">
                     <div class="qa-option">A. Turning off his phone after scrolling through a large number of social media videos.</div>
                     <div class="qa-option correct">✓ B. Hanging up on the phone call from the girl he met at the dance party.</div>
@@ -3662,7 +3711,7 @@
                             <div class="ann-subitem">Video source: Over 80% of the videos are YouTube uploads from 2025 onward, ensuring temporal freshness and reducing contamination risk.</div>
                             <div class="ann-subitem">Diversity coverage: A taxonomy with 4 top-level categories and 32 subcategories guarantees broad coverage of topics and visual styles.</div>
                             <div class="ann-subitem">Content quality control: View-count thresholds (about 85% of videos exceed 10,000 views) filter out low-quality, noisy samples at the source.</div>
-                            <div class="ann-subitem">Manual decontamination: Classic films and flagship videos from top creators are manually removed to minimize evaluation bias from model “memorization effects”.</div>
+                            <div class="ann-subitem">Manual decontamination: Classic films and flagship videos from top creators are manually removed to minimize evaluation bias from model 「memorization effects」.</div>
                         </div>
                     </div>
 
@@ -3709,7 +3758,7 @@
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>d. Re-Validation</strong>
-                                    <p>Establish a “revision–retest” loop: any modified question is re-run under the text-only baseline and independently re-validated to ensure each round of changes yields controlled quality improvements.</p>
+                                    <p>Establish a 「revision–retest」 loop: any modified question is re-run under the text-only baseline and independently re-validated to ensure each round of changes yields controlled quality improvements.</p>
                                 </div>
                             </div>
                         </div>
@@ -3718,24 +3767,32 @@
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 Data Statistics</h3>
 
-                <p>
-                    <strong>Video length:</strong> As shown in Fig. 2, the average length is about 10.4 minutes. 99% are 20 minutes or shorter; 53% are 10 minutes or shorter. The distribution is relatively uniform and diverse.
-                </p>
-                <p>
-                    <strong>Video category:</strong> As shown in Fig. 3, video types cover 4 major categories and 32 subcategories, including Sports &amp; Competition (e.g. basketball, soccer), Lifestyle &amp; Entertainment (e.g. variety shows, digital), Art &amp; Literature (e.g. film, comics), and Knowledge &amp; Education (e.g. AI, humanities &amp; history).
-                </p>
-                <p>
-                    <strong>Video publication time:</strong> As shown in Fig. 4, more than 80% of the videos were published after 2025, with nearly 40% published after October 2025.
-                </p>
-                <p>
-                    <strong>Video view count:</strong> As shown in Fig. 5, the mean and median view counts are 4.67 million and 365 thousand respectively. 84.6% of videos exceed 10,000 views, and 94.2% exceed 1,000 views.
-                </p>
-                <p>
-                    <strong>Questions &amp; answers:</strong> As shown in Fig. 2, the average length of questions and answers increases from Q1 to Q4. This aligns with our Reasoning Coherence design: later questions in the sequence are harder and typically require more contextual description and more detailed answers.
-                </p>
-                <p>
-                    <strong>Options distribution:</strong> As shown in Fig. 2, the mean word count across the 8 options is highly consistent.
-                </p>
+                <div class="stats-criteria">
+                    <div class="stats-criterion">
+                        <span class="stats-num">1</span>
+                        <div class="stats-content"><strong>Video length:</strong> As shown in Fig. 2, the average length is about 10.4 minutes. 99% are 20 minutes or shorter; 53% are 10 minutes or shorter. The distribution is relatively uniform and diverse.</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">2</span>
+                        <div class="stats-content"><strong>Video category:</strong> As shown in Fig. 3, video types cover 4 major categories and 32 subcategories, including Sports &amp; Competition (e.g. basketball, soccer), Lifestyle &amp; Entertainment (e.g. variety shows, digital), Art &amp; Literature (e.g. film, comics), and Knowledge &amp; Education (e.g. AI, humanities &amp; history).</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">3</span>
+                        <div class="stats-content"><strong>Video publication time:</strong> As shown in Fig. 4, more than 80% of the videos were published after 2025, with nearly 40% published after October 2025.</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">4</span>
+                        <div class="stats-content"><strong>Video view count:</strong> As shown in Fig. 5, the mean and median view counts are 4.67 million and 365 thousand respectively. 84.6% of videos exceed 10,000 views, and 94.2% exceed 1,000 views.</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">5</span>
+                        <div class="stats-content"><strong>Questions &amp; answers:</strong> As shown in Fig. 2, the average length of questions and answers increases from Q1 to Q4. This aligns with our Reasoning Coherence design: later questions in the sequence are harder and typically require more contextual description and more detailed answers.</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">6</span>
+                        <div class="stats-content"><strong>Options distribution:</strong> As shown in Fig. 2, the mean word count across the 8 options is highly consistent.</div>
+                    </div>
+                </div>
 
                 <div class="figures-row">
                     <figure>
@@ -3824,7 +3881,7 @@
                             <div class="ann-subitem">视频来源：数据集中80%+为2025年及以后发布的YouTube视频，以确保评估基准的时效性并降低数据污染风险。</div>
                             <div class="ann-subitem">多样性覆盖：构建包含4个一级类别、32个二级类别的分类体系，确保题材与风格广泛分布。</div>
                             <div class="ann-subitem">内容质量控制：引入播放量作为内容质量的近似指标，近85%的视频观看量超过10,000次，从源头减少低质噪声样本。</div>
-                            <div class="ann-subitem">人工防污染：人工剔除经典影视作品及头部博主内容，最大限度规避模型"记忆效应"带来的评估偏差。</div>
+                            <div class="ann-subitem">人工防污染：人工剔除经典影视作品及头部博主内容，最大限度规避模型「记忆效应」带来的评估偏差。</div>
                         </div>
                     </div>
 
@@ -3880,24 +3937,32 @@
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 数据统计</h3>
 
-                <p>
-                    <strong>视频时长：</strong>如 Fig. 2 所示，平均长度约 10.4 分钟。其中 99% 在 20 分钟以内，53% 在 10 分钟以内，整体时长分布较为均匀且多样。
-                </p>
-                <p>
-                    <strong>视频类别：</strong>如 Fig. 3 所示，视频类型覆盖 4 大类、32 小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。
-                </p>
-                <p>
-                    <strong>视频发布时间：</strong>如 Fig. 4 所示，80%+ 的视频发布于 2025 年之后，其中近 40% 发布于 2025 年 10 月之后。
-                </p>
-                <p>
-                    <strong>视频观看量：</strong>如 Fig. 5 所示，视频观看量的均值和中位数分别为 467 万次和 36.5 万次，其中 84.6% 的视频观看量超过 10,000 次，94.2% 超过 1,000 次。
-                </p>
-                <p>
-                    <strong>问题与答案：</strong>如 Fig. 2 所示，问题与答案的平均长度从 Q1 到 Q4 呈递增趋势。这与“推理连贯性”设计一致：序列后段问题难度更高，通常需要更充分的上下文描述与更细致的作答。
-                </p>
-                <p>
-                    <strong>选项分布：</strong>如 Fig. 2 所示，8 个选项的平均词数高度一致。
-                </p>
+                <div class="stats-criteria">
+                    <div class="stats-criterion">
+                        <span class="stats-num">1</span>
+                        <div class="stats-content"><strong>视频时长：</strong>如 Fig. 2 所示，平均长度约 10.4 分钟。其中 99% 在 20 分钟以内，53% 在 10 分钟以内，整体时长分布较为均匀且多样。</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">2</span>
+                        <div class="stats-content"><strong>视频类别：</strong>如 Fig. 3 所示，视频类型覆盖 4 大类、32 小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">3</span>
+                        <div class="stats-content"><strong>视频发布时间：</strong>如 Fig. 4 所示，80%+ 的视频发布于 2025 年之后，其中近 40% 发布于 2025 年 10 月之后。</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">4</span>
+                        <div class="stats-content"><strong>视频观看量：</strong>如 Fig. 5 所示，视频观看量的均值和中位数分别为 467 万次和 36.5 万次，其中 84.6% 的视频观看量超过 10,000 次，94.2% 超过 1,000 次。</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">5</span>
+                        <div class="stats-content"><strong>问题与答案：</strong>如 Fig. 2 所示，问题与答案的平均长度从 Q1 到 Q4 呈递增趋势。这与「推理连贯性」设计一致：序列后段问题难度更高，通常需要更充分的上下文描述与更细致的作答。</div>
+                    </div>
+                    <div class="stats-criterion">
+                        <span class="stats-num">6</span>
+                        <div class="stats-content"><strong>选项分布：</strong>如 Fig. 2 所示，8 个选项的平均词数高度一致。</div>
+                    </div>
+                </div>
 
                 <div class="figures-row">
                     <figure>
@@ -3947,7 +4012,6 @@
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
                 <h4>📊 <span data-lang-en>Advantage of Non-Linear Scoring</span><span data-lang-zh>非线性打分优势</span></h4>
-                <span class="tag tag-chart">Analysis</span>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
@@ -3957,13 +4021,13 @@
                     我们对比了两种指标：<strong>基于分组的非线性得分（Non-Lin Score）</strong>与<strong>逐题统计的平均准确率（Avg Acc）</strong>。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.75rem;">
-                    <strong>1. Within-model comparison:</strong> <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> reach average accuracy of 60.5% and 58.2% respectively—close to a passing level. Under our group-based non-linear scoring, however, their scores are only 42.6% and 39.8%. This shows that even SOTA models rarely answer all related questions in a group correctly. Our non-linear design exploits the group structure and reduces sensitivity to “scattered hits.”
+                    <strong>1. Within-model comparison:</strong> <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> reach average accuracy of 60.5% and 58.2% respectively—close to a passing level. Under our group-based non-linear scoring, however, their scores are only 42.6% and 39.8%. This shows that even SOTA models rarely answer all related questions in a group correctly. Our non-linear design exploits the group structure and reduces sensitivity to 「scattered hits.」
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
                     <strong>1. 同一模型内对比：</strong><strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的平均准确率分别为 60.5% 与 58.2%，接近及格水平。但在分组非线性计分下，得分仅为 42.6% 与 39.8%。这表明即使是 SOTA 模型，也难以在同一组内稳定地将多道关联问题全部答对。我们设计的非线性打分能够利用 Group 结构，降低对「零散命中」的敏感性。
                 </p>
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>2. Cross-model comparison:</strong> The ratio <strong>Non-Lin Score / Avg Acc</strong> reflects how much a model “drops” from single-question correctness to group-stable correctness, and thus indicates robustness. For example, <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> both have a ratio of about 70%, while <strong>InternVL3-5-241B-A28B-Instruct</strong> is about 53%, and smaller models such as <strong>LLaVA-Video-7B</strong> are only about 40%. A lower ratio means the model more often gets only some questions right within a group—weaker stability and robustness. Non-linear scoring thus better reflects true capability and reveals model robustness.
+                    <strong>2. Cross-model comparison:</strong> The ratio <strong>Non-Lin Score / Avg Acc</strong> reflects how much a model 「drops」 from single-question correctness to group-stable correctness, and thus indicates robustness. For example, <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> both have a ratio of about 70%, while <strong>InternVL3-5-241B-A28B-Instruct</strong> is about 53%, and smaller models such as <strong>LLaVA-Video-7B</strong> are only about 40%. A lower ratio means the model more often gets only some questions right within a group—weaker stability and robustness. Non-linear scoring thus better reflects true capability and reveals model robustness.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     <strong>2. 不同模型间对比：</strong>「Non-Lin Score / Avg Acc」的比值可用于衡量模型从「单题正确」到「组内稳定正确」的折损程度，从而反映模型鲁棒性差异。例如，<strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的比值均约为 70%，而 <strong>InternVL3-5-241B-A28B-Instruct</strong> 约为 53%，一些小模型如 <strong>LLaVA-Video-7B</strong> 仅为约 40%。比值越低，说明模型越容易出现「组内只能答对部分题」的现象，稳定性与鲁棒性越弱。由此可见非线性打分在真实刻画能力水平、揭示模型鲁棒性方面的优势。
@@ -4015,29 +4079,28 @@
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
                 <h4>📉 <span data-lang-en>Capability Consistency and Reasoning Coherence</span><span data-lang-zh>能力一致性与推理连贯性分析</span></h4>
-                <span class="tag tag-chart">Analysis</span>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>1. Overall Q1→Q4 accuracy trend:</strong> We report overall accuracy from Q1 to Q4 for five models (three proprietary and two open-source) on both “capability consistency” and “reasoning coherence” question groups, and analyze from both data and model perspectives.
+                    <strong>1. Overall Q1→Q4 accuracy trend:</strong> We report overall accuracy from Q1 to Q4 for five models (three proprietary and two open-source) on both 「capability consistency」 and 「reasoning coherence」 question groups, and analyze from both data and model perspectives.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     <strong>1. Q1→Q4 的整体准确率趋势：</strong>我们统计了 5 个模型（3 个闭源和 2 个开源）在「能力一致性」与「推理连贯性」两类问题组中 Q1→Q4 的整体准确率，并从数据和模型两个视角进行分析。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>（1）Data perspective:</strong> In the “capability consistency” group, accuracy across Q1–Q4 is similar for all models, indicating that difficulty is well balanced across question indices. In the “reasoning coherence” group, accuracy consistently decreases from Q1 to Q4 for all models, indicating that difficulty increases along the sequence—consistent with our design.
+                    <strong>（1）Data perspective:</strong> In the 「capability consistency」 group, accuracy across Q1–Q4 is similar for all models, indicating that difficulty is well balanced across question indices. In the 「reasoning coherence」 group, accuracy consistently decreases from Q1 to Q4 for all models, indicating that difficulty increases along the sequence—consistent with our design.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
                     <strong>（1）数据角度：</strong>在「能力一致性」组中，各模型在 Q1→Q4 上的准确率整体接近，说明不同编号题目的总体难度分布较为均衡。而在「推理连贯性」组中，所有模型的准确率均呈现 Q1→Q4 逐步下降的趋势，表明组内题目难度按序递增。这符合我们的原始设定。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>（2）Model perspective:</strong> In the “capability consistency” group, <strong>GPT-5</strong> has the smallest variation in Q1–Q4 accuracy, showing stronger stability. In the “reasoning coherence” group, differences across models from Q1 to Q4 reflect divergence in reasoning-chain ability. For example, comparing <strong>GPT-5</strong> with <strong>Doubao-Seed-1.6</strong> / <strong>Qwen3-VL-235B-A22B-Instruct</strong>, as reasoning depth increases from Q1 to Q4, GPT-5’s relative advantage grows and it eventually overtakes, indicating stronger inference ability on complex reasoning chains.
+                    <strong>（2）Model perspective:</strong> In the 「capability consistency」 group, <strong>GPT-5</strong> has the smallest variation in Q1–Q4 accuracy, showing stronger stability. In the 「reasoning coherence」 group, differences across models from Q1 to Q4 reflect divergence in reasoning-chain ability. For example, comparing <strong>GPT-5</strong> with <strong>Doubao-Seed-1.6</strong> / <strong>Qwen3-VL-235B-A22B-Instruct</strong>, as reasoning depth increases from Q1 to Q4, GPT-5’s relative advantage grows and it eventually overtakes, indicating stronger inference ability on complex reasoning chains.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>GPT-5</strong> 的 Q1→Q4 准确率波动最小，体现更强的能力稳定性。在「推理连贯性」组中，不同模型在 Q1→Q4 的表现变化反映出模型在推理链条上的能力分化。例如，对比 <strong>GPT-5</strong> 与 <strong>Doubao-Seed-1.6</strong> / <strong>Qwen3-VL-235B-A22B-Instruct</strong>，随着 Q1→Q4 推理深度增加，GPT-5 的相对优势逐步扩大并实现反超，表明其在复杂推理链条下具备更强的推断能力。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>2. Mean and variance in the “capability consistency” group:</strong> We further report mean and variance of overall Q1–Q4 accuracy for nine models (four proprietary and five open-source) on the “capability consistency” group. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
+                    <strong>2. Mean and variance in the 「capability consistency」 group:</strong> We further report mean and variance of overall Q1–Q4 accuracy for nine models (four proprietary and five open-source) on the 「capability consistency」 group. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.5rem;">
                     <strong>2. 「能力一致性」组的均值与方差：</strong>我们进一步统计了 9 个模型（4 个闭源 5 个开源）在「能力一致性」组上 Q1→Q4 整体准确率的均值与方差。如最右侧图所示，横轴与纵轴分别对应模型的平均表现与结果稳定性，从而同时刻画视频理解能力的性能与鲁棒性。主要观察到两点结论：
@@ -4054,7 +4117,7 @@
                     <img src="figs/exps/q1-q4_models_acc_0226.png"
                         alt="Q1-Q4 accuracy and mean/variance in capability consistency"
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 6: Overall Q1→Q4 accuracy in “capability consistency” and “reasoning coherence” groups, and mean &amp; variance in the “capability consistency” group.</figcaption>
+                    <figcaption data-lang-en>Figure 6: Overall Q1→Q4 accuracy in 「capability consistency」 and 「reasoning coherence」 groups, and mean &amp; variance in the 「capability consistency」 group.</figcaption>
                     <figcaption data-lang-zh>Figure 6：「能力一致性」组与「推理连贯性」组 Q1→Q4 的整体准确率变化，以及「能力一致性」组的均值与方差统计</figcaption>
                 </figure>
             </div>
@@ -4064,7 +4127,6 @@
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
                 <h4>🧠 <span data-lang-en>Effect of Thinking Mode on Video-MME v2</span><span data-lang-zh>Thinking 模式在 Video-MME v2 上的作用</span></h4>
-                <span class="tag tag-chart">Chart</span>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
@@ -4080,7 +4142,7 @@
                     <strong>1. 文本模态有助于激发推理能力：</strong>从整体趋势来看，同一模型在「有字幕」条件下开启 Thinking 往往获得更稳定、更显著的提升，而在「无字幕」时增益通常更弱。以 <strong>MiMo-VL-7B</strong> 为例，在无/有字幕设定下，Thinking 带来的提升为 +1.9 / +4.3。这一现象表明，文本模态提供的显式语义线索更容易促使模型的 Thinking 能力得到充分发挥。
                 </p>
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>2. Current Thinking mode can also cause regression:</strong> Besides the general pattern that “subtitles help Thinking,” we observe that some models regress when Thinking is enabled, and this is more pronounced without subtitles. For example, <strong>Qwen3-VL-235B</strong> shows -2.6 / -0.5 (no / with subtitle), and <strong>Kimi-VL-16B</strong> -3.2 / -3.1 (and on Level 3, where Thinking matters most, -5.1 / -5.6). This shows that the current Thinking mechanism in video MLLMs does not always bring positive benefit on video understanding tasks and still has substantial room for improvement.
+                    <strong>2. Current Thinking mode can also cause regression:</strong> Besides the general pattern that 「subtitles help Thinking,」 we observe that some models regress when Thinking is enabled, and this is more pronounced without subtitles. For example, <strong>Qwen3-VL-235B</strong> shows -2.6 / -0.5 (no / with subtitle), and <strong>Kimi-VL-16B</strong> -3.2 / -3.1 (and on Level 3, where Thinking matters most, -5.1 / -5.6). This shows that the current Thinking mechanism in video MLLMs does not always bring positive benefit on video understanding tasks and still has substantial room for improvement.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     <strong>2. 当前 Thinking 模式也会导致性能倒退：</strong>除了「字幕更利于 Thinking」的总体规律外，我们也观察到部分模型在开启 Thinking 后出现性能倒退，且在「无字幕」条件下更为明显。例如 <strong>Qwen3-VL-235B</strong> 在无/有字幕设定下，Thinking 带来的提升为 -2.6 / -0.5，<strong>Kimi-VL-16B</strong> 为 -3.2 / -3.1（在最需要 Thinking 能力的 Level 3 甚至达到 -5.1 / -5.6）。表现出当前多模态大模型的 Thinking 机制在视频理解任务中并非总能带来正向收益，仍有较大提升空间。
@@ -4099,7 +4161,6 @@
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
                 <h4>🧠 <span data-lang-en>Overall Model Performance on Video-MME v2</span><span data-lang-zh>Video-MME v2 上对整体模型性能分析</span></h4>
-                <span class="tag tag-chart">Chart</span>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
@@ -4115,7 +4176,7 @@
                         <thead>
                             <tr>
                                 <th><span data-lang-en>Model Name</span><span data-lang-zh>模型名称</span></th>
-                                <th><span data-lang-en>Performance Score</span><span data-lang-zh>得分</span></th>
+                                <th><span data-lang-en>Non-Lin Score (w. sub)</span><span data-lang-zh>Non-Lin Score（有字幕）</span></th>
                                 <th><span data-lang-en>Capabilities</span><span data-lang-zh>能力</span></th>
                             </tr>
                         </thead>
@@ -4180,7 +4241,6 @@
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
                 <h4>🎯 <span data-lang-en>Capability Radar</span><span data-lang-zh>能力雷达图</span></h4>
-                <span class="tag tag-chart">Chart</span>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
