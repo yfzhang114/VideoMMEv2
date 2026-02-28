@@ -38,7 +38,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.06);
             border-radius: 8px;
             padding: 4px;
             margin-left: 16px;
@@ -48,7 +48,7 @@
             padding: 6px 12px;
             border: none;
             background: transparent;
-            color: rgba(255,255,255,0.7);
+            color: var(--secondary-color);
             font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
@@ -58,8 +58,8 @@
         }
 
         .lang-btn:hover {
-            color: white;
-            background: rgba(255,255,255,0.1);
+            color: var(--primary-color);
+            background: rgba(0,0,0,0.06);
         }
 
         .lang-btn.active {
@@ -104,13 +104,13 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-            color: white;
+            background: #f1f5f9;
+            color: var(--primary-color);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
 
         .nav-container {
@@ -126,7 +126,7 @@
             font-weight: 700;
             font-size: 1.3rem;
             text-decoration: none;
-            color: white;
+            color: var(--primary-color);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -158,7 +158,7 @@
         }
 
         .nav-links a {
-            color: rgba(255,255,255,0.8);
+            color: var(--secondary-color);
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 6px;
@@ -167,14 +167,14 @@
         }
 
         .nav-links a:hover, .nav-links a.active {
-            color: white;
-            background: rgba(255,255,255,0.1);
+            color: var(--primary-color);
+            background: rgba(0,0,0,0.06);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 50%, #3b3b5c 100%);
-            color: white;
+            background: #ffffff;
+            color: var(--primary-color);
             padding: 80px 24px;
             text-align: center;
         }
@@ -190,6 +190,7 @@
             margin-bottom: 1.5rem;
             line-height: 1.2;
             letter-spacing: -0.02em;
+            color: var(--primary-color);
         }
 
         .hero h1 .highlight {
@@ -201,37 +202,10 @@
 
         .hero .subtitle {
             font-size: 1.25rem;
-            color: rgba(255,255,255,0.85);
+            color: var(--secondary-color);
             max-width: 700px;
             margin: 0 auto 2rem;
             line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 2.5rem 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 4px;
         }
 
         /* Button Group */
@@ -269,13 +243,13 @@
         }
 
         .btn-secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.15);
+            background: var(--bg-secondary);
         }
 
         .btn svg {
@@ -1250,8 +1224,6 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .hero .subtitle { font-size: 1rem; }
-            .hero-stats { gap: 24px; }
-            .stat-number { font-size: 1.8rem; }
             .section-title { font-size: 1.5rem; }
             .video-card { width: 320px; }
             .nav-links { display: none; }
@@ -2027,27 +1999,6 @@
         <p class="subtitle" data-lang-zh>
             一个系统评估视频多模态大语言模型<strong>真实理解与推理能力</strong>的综合性基准
         </p>
-        
-        <div class="hero-stats">
-            <div class="stat-item">
-                <div class="stat-number">800</div>
-                <div class="stat-label">Videos</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">3,200</div>
-                <div class="stat-label">Questions</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">3</div>
-                <div class="stat-label" data-lang-en>Cognitive Levels</div>
-                <div class="stat-label" data-lang-zh>认知层级</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label" data-lang-en>Human Annotated</div>
-                <div class="stat-label" data-lang-zh>人工标注</div>
-            </div>
-        </div>
 
         <div class="button-group">
             <a href="#" class="btn btn-primary">
@@ -2076,7 +2027,7 @@
         <!-- English Title -->
         <h2 class="section-title" data-lang-en>Introduction</h2>
         <!-- Chinese Title -->
-        <h2 class="section-title" data-lang-zh>介绍</h2>
+        <h2 class="section-title" data-lang-zh>一、介绍</h2>
         
         <article class="intro-article">
             <!-- English Content -->
@@ -2092,11 +2043,9 @@
                         <li>What exactly should video understanding evaluate?</li>
                         <li>How can we evaluate it sufficiently and fairly?</li>
                     </ul>
-                    <p style="margin-top: 1rem; margin-bottom: 0;">
-                        Our answer is reflected in two core designs:
-                        <strong>(1) Progressive Multi-Level evaluation dimensions</strong> — from multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from "finding information" to "modeling time" to "cross-temporal reasoning";
-                        <strong>(2) Grouped Non-Linear evaluation mechanism</strong> — questions are organized into groups along <em>capability consistency</em> and <em>reasoning coherence</em>. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.
-                    </p>
+                    <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Our answer is reflected in two core designs:</p>
+                    <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level evaluation dimensions</strong><br>From multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from "finding information" to "modeling time" to "cross-temporal reasoning".</p>
+                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear evaluation mechanism</strong><br>Questions are organized into groups along <em>capability consistency</em> and <em>reasoning coherence</em>. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.</p>
                 </div>
 
                 <h3 class="intro-h3">1. Progressive Multi-Level Evaluation Dimensions</h3>
@@ -2118,8 +2067,6 @@
                         <p>Building on temporal understanding, this level targets higher-order reasoning. Models must combine multimodal temporal information with external priors such as world knowledge and social commonsense to perform multi-step reasoning and handle <strong>highly complex</strong> real-world scenarios.</p>
                     </div>
                 </div>
-                <p>This evaluation system integrates existing video benchmarks with our reflections on practically deployable video understanding models, enabling a comprehensive assessment from foundational capability to real-world performance.</p>
-
                 <h3 class="intro-h3">2. Grouped Non-Linear Evaluation Mechanism</h3>
                 <p>Many prior benchmarks adopt a "scatter-shot" evaluation paradigm where each question is scored independently, often ignoring dependencies between questions and weakening evaluation efficiency and robustness. To address this, we introduce a group-based evaluation mechanism with two key task group types:</p>
                 <div class="framework-grid">
@@ -2144,7 +2091,6 @@
                         </p>
                     </div>
                 </div>
-                <p>These two grouping strategies complement each other to jointly assess robustness and full-chain reasoning capability, pushing video understanding evaluation from merely correct outcomes toward correctness of the reasoning process itself.</p>
             </div>
 
             <!-- Chinese Content -->
@@ -2163,7 +2109,9 @@
                         <li>视频理解到底应该测什么？</li>
                         <li>怎样测试才充分且公平？</li>
                     </ul>
-                    <p style="margin-top: 1rem; margin-bottom: 0;">我们给出的答案体现在两项核心设计上：<strong>(1)Progressive Multi-Level评估维度</strong>。多点信息聚合→时序信息理解→时序复杂推理。三层结构对应从"找信息"到"建模时间"再到"跨时序推理"的能力递进。<strong>(2)Grouped Non-Linear评估机制</strong>。将问题按能力一致性与推理连贯性组织为多个Group，每个Group由4个相互关联的问题构成。评估时采用非线性计分：评分不仅取决于单题正确性，还考虑同一Group内答案之间的整体一致性与推理闭环的完成度。</p>
+                    <p style="margin-top: 1rem; margin-bottom: 0.5rem;">我们给出的答案体现在两项核心设计上：</p>
+                    <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level评估维度</strong><br>多点信息聚合→时序信息理解→时序复杂推理。三层结构对应从「找信息」到「建模时间」再到「跨时序推理」的能力递进。</p>
+                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear评估机制</strong><br>将问题按能力一致性与推理连贯性组织为多个Group，每个Group由4个相互关联的问题构成。评估时采用非线性计分：评分不仅取决于单题正确性，还考虑同一Group内答案之间的整体一致性与推理闭环的完成度。</p>
                 </div>
 
                 <h3 class="intro-h3">1. Progressive Multi-Level评估维度</h3>
@@ -2185,8 +2133,6 @@
                         <p>在时序理解之上，进一步考察高阶推理能力。模型在感知多模态时序信息的基础上，结合世界知识、社会常识等外部先验进行多步推理，以应对真实场景中<strong>高复杂度</strong>的理解挑战。</p>
                     </div>
                 </div>
-                <p>这一评价体系融合了已有的视频评估数据集分类以及我们对于在真实场景中可用的视频理解模型的思考，从而全方位地检验模型从基础到落地的真实水平。</p>
-
                 <h3 class="intro-h3">2. Grouped Non-Linear评估机制</h3>
                 <p>以往的Benchmark多采用"散点评测"范式，即对每个问题独立计分。这种方式往往忽略问题之间的关联关系，进而影响评测的效率与鲁棒性。为此，我们引入分组式评估机制，并设计了两类关键任务组：</p>
                 <div class="framework-grid">
@@ -2203,7 +2149,6 @@
                         <p><strong>计分方法</strong><br>在非线性计分的基础上，我们进一步引入<strong>“首错截断”机制</strong>：评估时以模型在组内首次出错的节点作为有效推理的边界，仅统计该断点之前连续答对的问题数量。该机制能够抑制错误前提下继续推导带来的“伪正确”得分，从而更严格地约束推理链的有效性。</p>
                     </div>
                 </div>
-                <p>这两种分组策略相辅相成，共同构成了对模型鲁棒性与全链路推理能力的全面评估，使得视频理解的评估从结果正确迈向过程正确。</p>
                 
                 <h3 class="intro-h3">3. 数据标注与质检</h3>
                 <p>Video-MME-v2的评估体系对人工标注质量提出了极高要求。为此，我们建立了一套完整、严密的数据标注与质量检测规范。在花费<strong>3200人工时</strong>后，最终收录<strong>800个视频</strong>，每个视频配套4个问题，每个问题提供8个选项。</p>
@@ -2227,7 +2172,7 @@
 <!-- Leaderboard Section (Full Width) -->
 <section id="leaderboard" class="leaderboard-section">
     <h2 class="section-title" data-lang-en>Leaderboard</h2>
-    <h2 class="section-title" data-lang-zh>排行榜</h2>
+    <h2 class="section-title" data-lang-zh>二、排行榜</h2>
     
     <div class="leaderboard-container">
         <div class="leaderboard-header">
@@ -2248,14 +2193,14 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., Qwen-Omni, Gemini 3.0 Flash, Gemini 3.0 Pro), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Overall</em> = group-level metric.</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 Qwen-Omni、Gemini 3.0 Flash、Gemini 3.0 Pro），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Overall</em> = 组级别指标。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., Qwen-Omni, Gemini 3.0 Flash, Gemini 3.0 Pro), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 Qwen-Omni、Gemini 3.0 Flash、Gemini 3.0 Pro），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
                         <th rowspan="2" class="th-model"><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
                         <th rowspan="2" class="th-frames">Frames</th>
-                        <th colspan="2" class="th-group" data-sort="overall">Overall <span class="sort-arrow">↓</span></th>
+                        <th colspan="2" class="th-group" data-sort="overall"><span data-lang-en>Non-Lin Score</span><span data-lang-zh>Non-Lin Score</span> <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="level1">Level 1 <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="level2">Level 2 <span class="sort-arrow">↓</span></th>
                         <th colspan="2" class="th-group" data-sort="level3">Level 3 <span class="sort-arrow">↓</span></th>
@@ -2293,7 +2238,7 @@
     <!-- Video Examples Section -->
     <section id="examples">
         <h2 class="section-title" data-lang-en>Dataset Examples</h2>
-        <h2 class="section-title" data-lang-zh>数据集示例</h2>
+        <h2 class="section-title" data-lang-zh>三、数据集示例</h2>
         
         <div class="examples-section">
             <p style="margin-bottom: 0.5rem; color: var(--secondary-color);" data-lang-en>
@@ -2362,56 +2307,56 @@
                                     <div class="qa-question" data-lang-en>Q1: How many latte art appearances were there in the video?</div>
                                     <div class="qa-question" data-lang-zh>Q1: 视频中出现了几次拉花？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. 8</div>
-                                        <div class="qa-option">B. 5</div>
-                                        <div class="qa-option">C. 7</div>
-                                        <div class="qa-option correct">✓ D. 9</div>
-                                        <div class="qa-option">E. 6</div>
-                                        <div class="qa-option">F. 4</div>
-                                        <div class="qa-option">G. 10</div>
-                                        <div class="qa-option">H. 3</div>
+                                        <div class="qa-option">A. 8.</div>
+                                        <div class="qa-option">B. 5.</div>
+                                        <div class="qa-option">C. 7.</div>
+                                        <div class="qa-option correct">✓ D. 9.</div>
+                                        <div class="qa-option">E. 6.</div>
+                                        <div class="qa-option">F. 4.</div>
+                                        <div class="qa-option">G. 10.</div>
+                                        <div class="qa-option">H. 3.</div>
                                     </div>
                                 </div>
                                 <div class="qa-content" data-qa-index="1">
                                     <div class="qa-question" data-lang-en>Q2: How many take-away coffee orders appeared in the video?</div>
                                     <div class="qa-question" data-lang-zh>Q2: 视频中出现了几个外带咖啡订单？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. 4</div>
-                                        <div class="qa-option">B. 2</div>
-                                        <div class="qa-option">C. 3</div>
-                                        <div class="qa-option">D. 5</div>
-                                        <div class="qa-option">E. 1</div>
-                                        <div class="qa-option">F. 6</div>
-                                        <div class="qa-option">G. 7</div>
-                                        <div class="qa-option">H. 8</div>
+                                        <div class="qa-option correct">✓ A. 4.</div>
+                                        <div class="qa-option">B. 2.</div>
+                                        <div class="qa-option">C. 3.</div>
+                                        <div class="qa-option">D. 5.</div>
+                                        <div class="qa-option">E. 1.</div>
+                                        <div class="qa-option">F. 6.</div>
+                                        <div class="qa-option">G. 7.</div>
+                                        <div class="qa-option">H. 8.</div>
                                     </div>
                                 </div>
                                 <div class="qa-content" data-qa-index="2">
                                     <div class="qa-question" data-lang-en>Q3: How many dine-in coffee orders appeared in the video?</div>
                                     <div class="qa-question" data-lang-zh>Q3: 视频中出现了几个堂食咖啡订单？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. 6</div>
-                                        <div class="qa-option">B. 4</div>
-                                        <div class="qa-option">C. 5</div>
-                                        <div class="qa-option">D. 7</div>
-                                        <div class="qa-option">E. 3</div>
-                                        <div class="qa-option">F. 8</div>
-                                        <div class="qa-option">G. 9</div>
-                                        <div class="qa-option">H. 2</div>
+                                        <div class="qa-option correct">✓ A. 6.</div>
+                                        <div class="qa-option">B. 4.</div>
+                                        <div class="qa-option">C. 5.</div>
+                                        <div class="qa-option">D. 7.</div>
+                                        <div class="qa-option">E. 3.</div>
+                                        <div class="qa-option">F. 8.</div>
+                                        <div class="qa-option">G. 9.</div>
+                                        <div class="qa-option">H. 2.</div>
                                     </div>
                                 </div>
                                 <div class="qa-content" data-qa-index="3">
                                     <div class="qa-question" data-lang-en>Q4: How many cups of coffee beverages were sold in total in the video?</div>
                                     <div class="qa-question" data-lang-zh>Q4: 视频中总共卖出了多少杯咖啡饮品？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. 9</div>
-                                        <div class="qa-option">B. 7</div>
-                                        <div class="qa-option">C. 8</div>
-                                        <div class="qa-option"> D. 6</div>
-                                        <div class="qa-option correct">✓ E. 10</div>
-                                        <div class="qa-option">F. 5</div>
-                                        <div class="qa-option">G. 11</div>
-                                        <div class="qa-option">H. 12</div>
+                                        <div class="qa-option">A. 9.</div>
+                                        <div class="qa-option">B. 7.</div>
+                                        <div class="qa-option">C. 8.</div>
+                                        <div class="qa-option"> D. 6.</div>
+                                        <div class="qa-option correct">✓ E. 10.</div>
+                                        <div class="qa-option">F. 5.</div>
+                                        <div class="qa-option">G. 11.</div>
+                                        <div class="qa-option">H. 12.</div>
                                     </div>
                                 </div>
                             </div>
@@ -2454,14 +2399,14 @@
                                     <div class="qa-question" data-lang-en>Q1: How many arrows did each of the two participants shoot in the video?</div>
                                     <div class="qa-question" data-lang-zh>Q1: 视频中两位参与者各射出了多少支箭？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. 5</div>
-                                        <div class="qa-option">B. 7</div>
-                                        <div class="qa-option correct">✓ C. 6</div>
-                                        <div class="qa-option">D. 8</div>
-                                        <div class="qa-option">E. 4</div>
-                                        <div class="qa-option">F. 9</div>
-                                        <div class="qa-option">G. 10</div>
-                                        <div class="qa-option">H. 12</div>
+                                        <div class="qa-option">A. 5.</div>
+                                        <div class="qa-option">B. 7.</div>
+                                        <div class="qa-option correct">✓ C. 6.</div>
+                                        <div class="qa-option">D. 8.</div>
+                                        <div class="qa-option">E. 4.</div>
+                                        <div class="qa-option">F. 9.</div>
+                                        <div class="qa-option">G. 10.</div>
+                                        <div class="qa-option">H. 12.</div>
                                     </div>
                                 </div>
 
@@ -2473,14 +2418,14 @@
                                     <div class="qa-question" data-lang-en>Q2: What was the hit rate of the participant in black on the target's valid area?</div>
                                     <div class="qa-question" data-lang-zh>Q2: 黑衣参与者在靶心有效区域的命中率是多少？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option">A. 100%</div>
-                                        <div class="qa-option">B. 16.7%</div>
-                                        <div class="qa-option">C. 33.3%</div>
-                                        <div class="qa-option">D. 20%</div>
-                                        <div class="qa-option">E. 57.1%</div>
-                                        <div class="qa-option correct">✓ F. 66.7%</div>
-                                        <div class="qa-option">G. 31.3%</div>
-                                        <div class="qa-option">H. 68.9%</div>
+                                        <div class="qa-option">A. 100%.</div>
+                                        <div class="qa-option">B. 16.7%.</div>
+                                        <div class="qa-option">C. 33.3%.</div>
+                                        <div class="qa-option">D. 20%.</div>
+                                        <div class="qa-option">E. 57.1%.</div>
+                                        <div class="qa-option correct">✓ F. 66.7%.</div>
+                                        <div class="qa-option">G. 31.3%.</div>
+                                        <div class="qa-option">H. 68.9%.</div>
                                     </div>
                                 </div>
 
@@ -2492,14 +2437,14 @@
                                     <div class="qa-question" data-lang-en>Q3: What was the hit rate of the participant in white on the target's valid area?</div>
                                     <div class="qa-question" data-lang-zh>Q3: 白衣参与者在靶心有效区域的命中率是多少？</div>
                                     <div class="qa-options">
-                                        <div class="qa-option correct">✓ A. 33.3%</div>
-                                        <div class="qa-option">B. 50%</div>
-                                        <div class="qa-option">C. 16.7%</div>
-                                        <div class="qa-option">D. 66.7%</div>
-                                        <div class="qa-option">E. 100%</div>
-                                        <div class="qa-option">F. 68.9%</div>
-                                        <div class="qa-option">G. 20%</div>
-                                        <div class="qa-option">H. 57.1%</div>
+                                        <div class="qa-option correct">✓ A. 33.3%.</div>
+                                        <div class="qa-option">B. 50%.</div>
+                                        <div class="qa-option">C. 16.7%.</div>
+                                        <div class="qa-option">D. 66.7%.</div>
+                                        <div class="qa-option">E. 100%.</div>
+                                        <div class="qa-option">F. 68.9%.</div>
+                                        <div class="qa-option">G. 20%.</div>
+                                        <div class="qa-option">H. 57.1%.</div>
                                     </div>
                                 </div>
 
@@ -2823,25 +2768,23 @@
                     <!-- L2 - Coherence Example (Logic Chain) -->
 <div class="video-card">
     <div class="video-card-top">
-        <!-- Football Theme Gradient -->
-                        <div class="video-card-top">
-                            <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="metadata" poster="videos/2-2.png">
-                                <source src="videos/2-2.mp4" type="video/mp4">
-                            </video>
-                            <span class="eval-badge eval-coherence card-badge">Coherence</span>
-                        </div>
+        <div class="video-card-top">
+            <video controls width="100%" preload="metadata" poster="videos/2-2.png">
+                <source src="videos/new2-2.mp4" type="video/mp4">
+            </video>
+            <span class="eval-badge eval-coherence card-badge">Coherence</span>
+        </div>
     </div>
     <div class="video-info">
         <div class="video-title">
-            <span data-lang-en>⚽ Football Match — Event Sequence Ordering</span>
-            <span data-lang-zh>⚽ 足球比赛 — 事件顺序排序</span>
+            <span data-lang-en>🏆 Competitions — Event Sequence Ordering</span>
+            <span data-lang-zh>🏆 比赛项目 — 事件顺序排序</span>
         </div>
         <div class="eval-hint" data-lang-en>
-            <strong>Reasoning Coherence:</strong> Linear logic chain <code>[1,2,3,4]</code>. Q1 confirms goal count → Q2 identifies first/last teams → Q3 identifies first/last scorers → Q4 reconstructs full chronology. Each step builds on prior answers. Requires tracking events across the video timeline, belonging to Level 2 (Temporal Understanding).
+            <strong>Reasoning Coherence:</strong> Linear logic chain <code>[1,2,3,4]</code>. Q1 asks for the order of the first two competitions → Q2 the first three → Q3 the first four → Q4 the full sequence of all competitions. Each step builds on prior answers. Requires tracking the competition order across the video timeline, belonging to Level 2 (Temporal Understanding / Order).
         </div>
         <div class="eval-hint" data-lang-zh>
-            <strong>推理连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。Q1 确认进球数 → Q2 确定首尾球队 → Q3 确定首尾球员 → Q4 重建完整时序。每步依赖前序答案。需追踪视频时间线中的事件，属于 Level 2（时序理解）。
+            <strong>推理连贯性测评：</strong>线性逻辑链 <code>[1,2,3,4]</code>。Q1 问前两项比赛顺序 → Q2 前三项 → Q3 前四项 → Q4 全部比赛顺序。每步依赖前序答案。需追踪视频中比赛项目的时间顺序，属于 Level 2（时序理解 / 顺序）。
         </div>
         <div class="qa-tabs">
             <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -2850,73 +2793,78 @@
             <button class="qa-tab" onclick="switchQA(this, 3)">Q4 <span class="dep-arrow">← Q3</span></button>
         </div>
         <div class="qa-content-wrapper">
-            
-            <!-- Q1: Existence (Base) -->
+
+            <!-- Q1: First two competitions -->
             <div class="qa-content active" data-qa-index="0">
-                <div class="chain-step">Step 1 / 4: Establish Context</div>
-                <div class="qa-question" data-lang-en>Q1: Is the number of goals in this match greater than or equal to 2?</div>
-                <div class="qa-question" data-lang-zh>Q1: 这场比赛的进球数是否大于或等于2个？</div>
+                <div class="chain-step">Step 1 / 4: First Two</div>
+                <div class="qa-question" data-lang-en>Q1: What is the order of the first two competitions?</div>
+                <div class="qa-question" data-lang-zh>Q1: 前两项比赛的顺序是怎样的？</div>
                 <div class="qa-options">
-                    <div class="qa-option correct">✓ A. Yes.</div>
-                    <div class="qa-option">B. No.</div>
-                    <div class="qa-option">C. Cannot be determined.</div>
+                    <div class="qa-option">A. Deadlift, arm wrestling.</div>
+                    <div class="qa-option correct">✓ B. Arm wrestling, deadlift.</div>
+                    <div class="qa-option">C. Punch strength, arm wrestling.</div>
+                    <div class="qa-option">D. Arm wrestling, punch strength.</div>
+                    <div class="qa-option">E. Punch strength, deadlift.</div>
+                    <div class="qa-option">F. Deadlift, punch strength.</div>
+                    <div class="qa-option">G. Push-ups, arm wrestling.</div>
+                    <div class="qa-option">H. Push-ups, punch strength.</div>
                 </div>
             </div>
 
-            <!-- Q2: First/Last Teams (Depends on Q1) -->
+            <!-- Q2: First three competitions -->
             <div class="qa-content" data-qa-index="1">
-                <div class="chain-step">Step 2 / 4: Identify Teams</div>
-                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Knowing there are multiple goals, identify the teams involved at the boundaries.</div>
-                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：已知存在多个进球，确定首尾进球的球队。</div>
-                <div class="qa-question" data-lang-en>Q2: Which teams scored the first and last goals in this match, respectively?</div>
-                <div class="qa-question" data-lang-zh>Q2: 这场比赛中分别打进第一个和最后一个进球的是哪支球队？</div>
+                <div class="chain-step">Step 2 / 4: First Three</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q1: Extend to the order of the first three competitions.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q1：延伸至前三项比赛的顺序。</div>
+                <div class="qa-question" data-lang-en>Q2: What is the order of the first three competitions?</div>
+                <div class="qa-question" data-lang-zh>Q2: 前三项比赛的顺序是怎样的？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. The white team, the blue team.</div>
-                    <div class="qa-option">B. The red team, the red team.</div>
-                    <div class="qa-option">C. The green team, the green team.</div>
-                    <div class="qa-option correct">✓ D. The red team, the green team.</div>
-                    <div class="qa-option">E. The white team, the red team.</div>
-                    <div class="qa-option">F. The white team, the white team.</div>
-                    <div class="qa-option">G. The red team, the white team.</div>
-                    <div class="qa-option">H. The green team, the red team.</div>
+                    <div class="qa-option">A. Punch strength, deadlift, arm wrestling.</div>
+                    <div class="qa-option">B. Arm wrestling, punch strength, deadlift.</div>
+                    <div class="qa-option">C. Deadlift, punch strength, push-ups.</div>
+                    <div class="qa-option">D. Arm wrestling, punch strength, push-ups.</div>
+                    <div class="qa-option correct">✓ E. Arm wrestling, deadlift, punch strength.</div>
+                    <div class="qa-option">F. Punch strength, push-ups, deadlift.</div>
+                    <div class="qa-option">G. Deadlift, push-ups, punch strength.</div>
+                    <div class="qa-option">H. Punch strength, push-ups, one-finger lift.</div>
                 </div>
             </div>
 
-            <!-- Q3: First/Last Players (Depends on Q2) -->
+            <!-- Q3: First four competitions -->
             <div class="qa-content" data-qa-index="2">
-                <div class="chain-step">Step 3 / 4: Identify Players</div>
-                <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Refining from "Red starts, Green ends" to specific jersey numbers.</div>
-                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：从“红队开始，绿队结束”进一步精确到具体球衣号码。</div>
-                <div class="qa-question" data-lang-en>Q3: Which players scored the first and last goals in this match, respectively?</div>
-                <div class="qa-question" data-lang-zh>Q3: 这场比赛中分别打进第一个和最后一个进球的是哪位球员？</div>
+                <div class="chain-step">Step 3 / 4: First Four</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q2: Extend to the order of the first four competitions.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q2：延伸至前四项比赛的顺序。</div>
+                <div class="qa-question" data-lang-en>Q3: What is the order of the first four competitions?</div>
+                <div class="qa-question" data-lang-zh>Q3: 前四项比赛的顺序是怎样的？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. The red team's #19, the red team's #9.</div>
-                    <div class="qa-option correct">✓ B. The red team's #19, the green team's #11.</div>
-                    <div class="qa-option">C. The red team's #7, the red team's #9.</div>
-                    <div class="qa-option">D. The red team's #7, the green team's #11.</div>
-                    <div class="qa-option">E. The green team's #6, the green team's #19.</div>
-                    <div class="qa-option">F. The green team's #11, the red team's #19.</div>
-                    <div class="qa-option">G. The red team's #9, the green team's #6.</div>
-                    <div class="qa-option">H. The green team's #19, the green team's #6.</div>
+                    <div class="qa-option correct">✓ A. Arm wrestling, deadlift, punch strength, push-ups.</div>
+                    <div class="qa-option">B. Arm wrestling, punch strength, deadlift, push-ups.</div>
+                    <div class="qa-option">C. Punch strength, push-ups, deadlift, arm wrestling.</div>
+                    <div class="qa-option">D. Punch strength, arm wrestling, deadlift, push-ups.</div>
+                    <div class="qa-option">E. Deadlift, punch strength, push-ups, arm wrestling.</div>
+                    <div class="qa-option">F. Deadlift, punch strength, push-ups, arm wrestling.</div>
+                    <div class="qa-option">G. Push-ups, punch strength, arm wrestling, deadlift.</div>
+                    <div class="qa-option">H. Push-ups, deadlift, punch strength, arm wrestling.</div>
                 </div>
             </div>
 
-            <!-- Q4: Full Sequence (Depends on Q3) -->
+            <!-- Q4: All competitions -->
             <div class="qa-content" data-qa-index="3">
-                <div class="chain-step">Step 4 / 4: Full Chronology</div>
-                <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Filling the middle timeline between Red #19 (First) and Green #11 (Last).</div>
-                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：填充红队#19（首球）和绿队#11（尾球）中间的时间线。</div>
-                <div class="qa-question" data-lang-en>Q4: What is the chronological order of all goalscorers in this match?</div>
-                <div class="qa-question" data-lang-zh>Q4: 这场比赛所有进球球员的时间顺序是怎样的？</div>
+                <div class="chain-step">Step 4 / 4: Full Sequence</div>
+                <div class="chain-dependency" data-lang-en>⚡ Depends on Q3: Reconstruct the full chronological order of all competitions.</div>
+                <div class="chain-dependency" data-lang-zh>⚡ 依赖 Q3：重建全部比赛项目的完整时间顺序。</div>
+                <div class="qa-question" data-lang-en>Q4: What is the order of all the competitions?</div>
+                <div class="qa-question" data-lang-zh>Q4: 全部比赛项目的顺序是怎样的？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. Red #19, Green #6, Red #7, Red #9, Green #11.</div>
-                    <div class="qa-option">B. Red #7, Red #19, Green #6, Red #9, Green #11.</div>
-                    <div class="qa-option">C. Red #19, Red #7, Green #11, Red #9, Green #6.</div>
-                    <div class="qa-option">D. Green #11, Red #19, Red #7, Green #6, Red #9.</div>
-                    <div class="qa-option correct">✓ E. Red #19, Red #7, Green #6, Red #9, Green #11.</div>
-                    <div class="qa-option">F. Red #19, Red #7, Green #6, Green #11, Red #9.</div>
-                    <div class="qa-option">G. Red #9, Red #19, Red #7, Green #6, Green #11.</div>
-                    <div class="qa-option">H. Red #19, Red #27, Green #6, Red #9, Green #11.</div>
+                    <div class="qa-option correct">✓ A. Arm wrestling, deadlift, punch strength, push-ups, one-finger lift, muscle-ups.</div>
+                    <div class="qa-option">B. Arm wrestling, push-ups, punch strength, one-finger lift, deadlift, muscle-ups.</div>
+                    <div class="qa-option">C. Push-ups, punch strength, one-finger lift, arm wrestling, deadlift, muscle-ups.</div>
+                    <div class="qa-option">D. Push-ups, muscle-ups, one-finger lift, deadlift, punch strength, arm wrestling.</div>
+                    <div class="qa-option">E. One-finger lift, push-ups, punch strength, arm wrestling, muscle-ups, deadlift.</div>
+                    <div class="qa-option">F. One-finger lift, deadlift, push-ups, muscle-ups, arm wrestling, punch strength.</div>
+                    <div class="qa-option">G. Muscle-ups, push-ups, one-finger lift, arm wrestling, deadlift, punch strength.</div>
+                    <div class="qa-option">H. Muscle-ups, arm wrestling, punch strength, push-ups, deadlift, one-finger lift.</div>
                 </div>
             </div>
 
@@ -3057,14 +3005,14 @@
                 <div class="qa-question" data-lang-en>Q1: What happened while Butty was making lasagna?</div>
                 <div class="qa-question" data-lang-zh>Q1: 巴蒂做千层面的时候发生了什么？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. The lasagna spilled onto the carpet</div>
-                    <div class="qa-option">B. The dish with the lasagna didn’t fit into the oven</div>
-                    <div class="qa-option">C. Butty tripped and fell while carrying the lasagna</div>
-                    <div class="qa-option correct">✓ D. The oven exploded</div>
-                    <div class="qa-option">E. Butty didn’t know how long to set the oven timer for</div>
-                    <div class="qa-option">F. There was no prepared lasagna inside the refrigerator</div>
-                    <div class="qa-option">G. The lasagna spilled inside the refrigerator</div>
-                    <div class="qa-option">H. The lasagna in the refrigerator had already gone bad</div>
+                    <div class="qa-option">A. The lasagna spilled onto the carpet.</div>
+                    <div class="qa-option">B. The dish with the lasagna didn’t fit into the oven.</div>
+                    <div class="qa-option">C. Butty tripped and fell while carrying the lasagna.</div>
+                    <div class="qa-option correct">✓ D. The oven exploded.</div>
+                    <div class="qa-option">E. Butty didn’t know how long to set the oven timer for.</div>
+                    <div class="qa-option">F. There was no prepared lasagna inside the refrigerator.</div>
+                    <div class="qa-option">G. The lasagna spilled inside the refrigerator.</div>
+                    <div class="qa-option">H. The lasagna in the refrigerator had already gone bad.</div>
                 </div>
             </div>
 
@@ -3076,14 +3024,14 @@
                 <div class="qa-question" data-lang-en>Q2: Why did the oven explode?</div>
                 <div class="qa-question" data-lang-zh>Q2: 烤箱为什么会爆炸？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. While cleaning the lamp, Butty pulled it down and caused an electrical failure</div>
-                    <div class="qa-option">B. Butty removed the oven knob and replaced it with an unsuitable substitute</div>
-                    <div class="qa-option">C. Butty got distracted staring out the window and forgot to stop the oven</div>
-                    <div class="qa-option">D. Butty was gazing out the window while cleaning it</div>
-                    <div class="qa-option">E. The oven was old and poorly maintained, leading to a short circuit</div>
-                    <div class="qa-option">F. When Butty put the lasagna inside, it spilled and caused a short circuit</div>
-                    <div class="qa-option correct">✓ G. Butty accidentally removed the oven knob and reattached it incorrectly</div>
-                    <div class="qa-option">H. Butty set the oven to the wrong mode</div>
+                    <div class="qa-option">A. While cleaning the lamp, Butty pulled it down and caused an electrical failure.</div>
+                    <div class="qa-option">B. Butty removed the oven knob and replaced it with an unsuitable substitute.</div>
+                    <div class="qa-option">C. Butty got distracted staring out the window and forgot to stop the oven.</div>
+                    <div class="qa-option">D. Butty was gazing out the window while cleaning it.</div>
+                    <div class="qa-option">E. The oven was old and poorly maintained, leading to a short circuit.</div>
+                    <div class="qa-option">F. When Butty put the lasagna inside, it spilled and caused a short circuit.</div>
+                    <div class="qa-option correct">✓ G. Butty accidentally removed the oven knob and reattached it incorrectly.</div>
+                    <div class="qa-option">H. Butty set the oven to the wrong mode.</div>
                 </div>
             </div>
 
@@ -3095,14 +3043,14 @@
                 <div class="qa-question" data-lang-en>Q3: Why did Butty stand on clutter?</div>
                 <div class="qa-question" data-lang-zh>Q3: 巴蒂为什么站在杂物堆上？</div>
                 <div class="qa-options">
-                    <div class="qa-option correct">✓ A. The earlier explosion left stains all over the lamp</div>
-                    <div class="qa-option">B. The lady of the house told Butty to clean the entire kitchen</div>
-                    <div class="qa-option">C. The lamp was covered in dust, and Butty needed to clean it while tidying</div>
-                    <div class="qa-option">D. The lady wanted the house spotless to welcome guests</div>
-                    <div class="qa-option">E. The lampshade was rusted and needed cleaning</div>
-                    <div class="qa-option">F. The earlier explosion caused a power outage, and Butty was trying to fix the lamp</div>
-                    <div class="qa-option">G. Butty piled up some clutter while cleaning and used it as a step to reach the chandelier</div>
-                    <div class="qa-option">H. The explosion shattered the bulb, and Butty was replacing it</div>
+                    <div class="qa-option correct">✓ A. The earlier explosion left stains all over the lamp.</div>
+                    <div class="qa-option">B. The lady of the house told Butty to clean the entire kitchen.</div>
+                    <div class="qa-option">C. The lamp was covered in dust, and Butty needed to clean it while tidying.</div>
+                    <div class="qa-option">D. The lady wanted the house spotless to welcome guests.</div>
+                    <div class="qa-option">E. The lampshade was rusted and needed cleaning.</div>
+                    <div class="qa-option">F. The earlier explosion caused a power outage, and Butty was trying to fix the lamp.</div>
+                    <div class="qa-option">G. Butty piled up some clutter while cleaning and used it as a step to reach the chandelier.</div>
+                    <div class="qa-option">H. The explosion shattered the bulb, and Butty was replacing it.</div>
                 </div>
             </div>
 
@@ -3114,14 +3062,14 @@
                 <div class="qa-question" data-lang-en>Q4: Why did Butty run away from home?</div>
                 <div class="qa-question" data-lang-zh>Q4: 巴蒂为什么要离家出走？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. Butty pulled the chandelier down while cleaning it</div>
-                    <div class="qa-option">B. Butty didn’t clean the kitchen properly</div>
-                    <div class="qa-option">C. Butty broke the oven while making lasagna</div>
-                    <div class="qa-option">D. An explosion happened while Butty was making lasagna</div>
-                    <div class="qa-option correct">✓ E. Butty made a huge mess in the house</div>
-                    <div class="qa-option">F. The lady of the house no longer needed Butty’s help</div>
-                    <div class="qa-option">G. The lady asked Butty to prepare for a party, but he didn’t finish on time</div>
-                    <div class="qa-option">H. The lady was hosting a party and needed Butty to leave temporarily</div>
+                    <div class="qa-option">A. Butty pulled the chandelier down while cleaning it.</div>
+                    <div class="qa-option">B. Butty didn’t clean the kitchen properly.</div>
+                    <div class="qa-option">C. Butty broke the oven while making lasagna.</div>
+                    <div class="qa-option">D. An explosion happened while Butty was making lasagna.</div>
+                    <div class="qa-option correct">✓ E. Butty made a huge mess in the house.</div>
+                    <div class="qa-option">F. The lady of the house no longer needed Butty’s help.</div>
+                    <div class="qa-option">G. The lady asked Butty to prepare for a party, but he didn’t finish on time.</div>
+                    <div class="qa-option">H. The lady was hosting a party and needed Butty to leave temporarily.</div>
                 </div>
             </div>
 
@@ -3229,14 +3177,14 @@
                 <div class="qa-question" data-lang-en>Q4: In Round 1 of the shell game, how many times does the ball change position?</div>
                 <div class="qa-question" data-lang-zh>Q4: 在第一轮游戏中，球的位置总共变换了多少次？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. 0</div>
-                    <div class="qa-option">B. 1</div>
-                    <div class="qa-option">C. 3</div>
-                    <div class="qa-option">D. 4</div>
-                    <div class="qa-option">E. 5</div>
-                    <div class="qa-option">F. 6</div>
-                    <div class="qa-option">G. 7</div>
-                    <div class="qa-option correct">✓ H. 2</div>
+                    <div class="qa-option">A. 0.</div>
+                    <div class="qa-option">B. 1.</div>
+                    <div class="qa-option">C. 3.</div>
+                    <div class="qa-option">D. 4.</div>
+                    <div class="qa-option">E. 5.</div>
+                    <div class="qa-option">F. 6.</div>
+                    <div class="qa-option">G. 7.</div>
+                    <div class="qa-option correct">✓ H. 2.</div>
                 </div>
             </div>
 
@@ -3277,14 +3225,14 @@
                 <div class="qa-question" data-lang-en>Q1: What is the relationship between x and b?</div>
                 <div class="qa-question" data-lang-zh>Q1: x 和 b 之间的关系是什么？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. xb=2</div>
-                    <div class="qa-option">B. xb=4</div>
-                    <div class="qa-option correct">✓ C. xb=6</div>
-                    <div class="qa-option">D. xb=3</div>
-                    <div class="qa-option">E. xb=5</div>
-                    <div class="qa-option">F. xb=7</div>
-                    <div class="qa-option">G. xb=8</div>
-                    <div class="qa-option">H. xb=1</div>
+                    <div class="qa-option">A. xb=2.</div>
+                    <div class="qa-option">B. xb=4.</div>
+                    <div class="qa-option correct">✓ C. xb=6.</div>
+                    <div class="qa-option">D. xb=3.</div>
+                    <div class="qa-option">E. xb=5.</div>
+                    <div class="qa-option">F. xb=7.</div>
+                    <div class="qa-option">G. xb=8.</div>
+                    <div class="qa-option">H. xb=1.</div>
                 </div>
             </div>
 
@@ -3294,14 +3242,14 @@
                 <div class="qa-question" data-lang-en>Q2: What is the relationship between y and a?</div>
                 <div class="qa-question" data-lang-zh>Q2: y 和 a 之间的关系是什么？</div>
                 <div class="qa-options">
-                    <div class="qa-option correct">✓ A. ya=8</div>
-                    <div class="qa-option">B. ya=6</div>
-                    <div class="qa-option">C. ya=4</div>
-                    <div class="qa-option">D. ya=20</div>
-                    <div class="qa-option">E. ya=18</div>
-                    <div class="qa-option">F. ya=12</div>
-                    <div class="qa-option">G. ya=16</div>
-                    <div class="qa-option">H. ya=10</div>
+                    <div class="qa-option correct">✓ A. ya=8.</div>
+                    <div class="qa-option">B. ya=6.</div>
+                    <div class="qa-option">C. ya=4.</div>
+                    <div class="qa-option">D. ya=20.</div>
+                    <div class="qa-option">E. ya=18.</div>
+                    <div class="qa-option">F. ya=12.</div>
+                    <div class="qa-option">G. ya=16.</div>
+                    <div class="qa-option">H. ya=10.</div>
                 </div>
             </div>
 
@@ -3313,14 +3261,14 @@
                 <div class="qa-question" data-lang-en>Q3: What is the area of the entire rectangle?</div>
                 <div class="qa-question" data-lang-zh>Q3: 整个矩形的面积是多少？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. 18</div>
-                    <div class="qa-option">B. 28</div>
-                    <div class="qa-option">C. 14</div>
-                    <div class="qa-option">D. 16</div>
-                    <div class="qa-option">E. 20</div>
-                    <div class="qa-option">F. 22</div>
-                    <div class="qa-option correct">✓ G. 24</div>
-                    <div class="qa-option">H. 26</div>
+                    <div class="qa-option">A. 18.</div>
+                    <div class="qa-option">B. 28.</div>
+                    <div class="qa-option">C. 14.</div>
+                    <div class="qa-option">D. 16.</div>
+                    <div class="qa-option">E. 20.</div>
+                    <div class="qa-option">F. 22.</div>
+                    <div class="qa-option correct">✓ G. 24.</div>
+                    <div class="qa-option">H. 26.</div>
                 </div>
             </div>
 
@@ -3332,14 +3280,14 @@
                 <div class="qa-question" data-lang-en>Q4: What is the value of A?</div>
                 <div class="qa-question" data-lang-zh>Q4: A 的值是多少？</div>
                 <div class="qa-options">
-                    <div class="qa-option">A. 12</div>
-                    <div class="qa-option correct">✓ B. 18</div>
-                    <div class="qa-option">C. 8</div>
-                    <div class="qa-option">D. 6</div>
-                    <div class="qa-option">E. 16</div>
-                    <div class="qa-option">F. 20</div>
-                    <div class="qa-option">G. 22</div>
-                    <div class="qa-option">H. 24</div>
+                    <div class="qa-option">A. 12.</div>
+                    <div class="qa-option correct">✓ B. 18.</div>
+                    <div class="qa-option">C. 8.</div>
+                    <div class="qa-option">D. 6.</div>
+                    <div class="qa-option">E. 16.</div>
+                    <div class="qa-option">F. 20.</div>
+                    <div class="qa-option">G. 22.</div>
+                    <div class="qa-option">H. 24.</div>
                 </div>
             </div>
 
@@ -3654,7 +3602,7 @@
     <!-- Dataset Section -->
     <section id="dataset">
         <h2 class="section-title" data-lang-en>Dataset and Annotation</h2>
-        <h2 class="section-title" data-lang-zh>数据集与标注</h2>
+        <h2 class="section-title" data-lang-zh>四、数据集与标注</h2>
         
         <article>
             <!-- English Content -->
@@ -3767,10 +3715,6 @@
                         </div>
                     </div>
                 </div>
-
-                <p style="margin-top: 1.5rem;">
-                    This multi-stage pipeline—from curation to design to quality assurance—ensures high reliability and low bias in the evaluation data.
-                </p>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 Data Statistics</h3>
 
@@ -3934,11 +3878,6 @@
                     </div>
                 </div>
 
-                <p style="margin-top: 1.5rem;">
-                    从筛选、设计到质量检查，多阶段流程确保评测数据的高可靠性与低偏差。
-                </p>
-
-
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📈 数据统计</h3>
 
                 <p>
@@ -3995,7 +3934,7 @@
     <!-- Analysis Section -->
     <section id="analysis" class="analysis-section">
         <h2 class="section-title" data-lang-en>Experiments & Analysis</h2>
-        <h2 class="section-title" data-lang-zh>实验与分析</h2>
+        <h2 class="section-title" data-lang-zh>五、实验与分析</h2>
         
         <p style="color: var(--secondary-color); margin-bottom: 2rem; font-size: 1.1rem;" data-lang-en>
             We conducted systematic evaluation on a number of leading video multimodal large models; results are shown in the leaderboard above. Building on this, we summarize several representative experimental findings below.
@@ -4031,14 +3970,14 @@
                 </p>
                 <div style="overflow-x: auto; margin-top: 1.25rem;">
                     <table class="comparison-table" style="width: 100%; max-width: 900px; margin: 0 auto;">
-                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-en>Avg Acc vs Non-Lin Score (Overall) — selected models</caption>
-                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-zh>Avg Acc 与 Non-Lin Score（Overall）对比 — 部分模型</caption>
+                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-en>Avg Acc vs Non-Lin Score — selected models</caption>
+                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-zh>Avg Acc 与 Non-Lin Score 对比 — 部分模型</caption>
                         <thead>
                             <tr>
                                 <th><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
                                 <th><span data-lang-en>Avg Acc (%)</span><span data-lang-zh>Avg Acc (%)</span></th>
-                                <th><span data-lang-en>Overall (Non-Lin)</span><span data-lang-zh>Overall（非线性得分）</span></th>
-                                <th><span data-lang-en>Overall / Avg Acc</span><span data-lang-zh>Overall / Avg Acc</span></th>
+                                <th><span data-lang-en>Non-Lin Score</span><span data-lang-zh>Non-Lin Score（组级别指标）</span></th>
+                                <th><span data-lang-en>Non-Lin Score / Avg Acc</span><span data-lang-zh>Non-Lin Score / Avg Acc</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -4283,7 +4222,7 @@
     <!-- Citation Section -->
     <section id="citation">
         <h2 class="section-title" data-lang-en>Citation</h2>
-        <h2 class="section-title" data-lang-zh>引用</h2>
+        <h2 class="section-title" data-lang-zh>六、引用</h2>
         <div class="citation-block">
 <code>@article{videommev2_2025,
   title={Video-MME v2: Evaluating True Understanding and Reasoning in Video MLLMs},
