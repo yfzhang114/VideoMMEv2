@@ -2045,11 +2045,11 @@
         
         <!-- English Subtitle -->
         <p class="subtitle" data-lang-en>
-            A comprehensive benchmark for systematically evaluating <strong>true understanding and reasoning capabilities</strong> of Video Multimodal Large Language Models
+            Towards the next generation of comprehensive video understanding evaluation
         </p>
         <!-- Chinese Subtitle -->
         <p class="subtitle" data-lang-zh>
-            一个系统评估视频多模态大语言模型<strong>真实理解与推理能力</strong>的综合性基准
+            迈向下一代综合视频理解能力评测
         </p>
 
         <div class="button-group">
@@ -2085,7 +2085,7 @@
             <!-- English Content -->
             <div class="intro-container" data-lang-en>
                 <p class="intro-lead">
-                    In 2024, we released the <a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a> benchmark, which focuses on cross-modal video understanding under different video lengths and has become a standard evaluation set for many frontier models, including Gemini and GPT. However, as model capabilities have rapidly improved, we observe that scores on Video-MME and similar benchmarks are gradually saturating, while there remains a clear gap between <strong>user experience and leaderboard performance</strong>. This suggests that current evaluation paradigms still fall short of fully capturing models' true video understanding abilities, and that the community urgently needs a new, more comprehensive benchmark to measure capability more reliably. After nearly a year of continuous refinement, we now introduce <strong>Video-MME v2</strong>. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
+                    In 2024, we released the <a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a> benchmark, which focuses on cross-modal video understanding under different video lengths and has become a standard evaluation set for many frontier models, including <strong>Gemini</strong> and <strong>GPT</strong>. However, as model capabilities have rapidly improved, we observe that scores on Video-MME and similar benchmarks are gradually saturating, while there remains a clear gap between <strong>user experience and leaderboard performance</strong>. This suggests that current evaluation paradigms still fall short of fully capturing models' true video understanding abilities, and that the community urgently needs a new, more comprehensive benchmark to measure capability more reliably. After nearly a year of continuous refinement, we now introduce <strong>Video-MME v2</strong>. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
                 </p>
 
                 <div class="philosophy-box">
@@ -2093,11 +2093,11 @@
                     <p>Video-MME v2 redesigns its evaluation system starting from two fundamental questions:</p>
                     <ul class="philosophy-questions">
                         <li>What exactly should video understanding evaluate?</li>
-                        <li>How can we evaluate it sufficiently and fairly?</li>
+                        <li>How can we evaluate it sufficiently and reliably?</li>
                     </ul>
                     <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Our answer is reflected in two core designs:</p>
                     <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level evaluation dimensions</strong><br>From multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from 「finding information」 to 「modeling time」 to 「cross-temporal reasoning」.</p>
-                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear evaluation mechanism</strong><br>Questions are organized into groups along <em>capability consistency</em> and <em>reasoning coherence</em>. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.</p>
+                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear evaluation mechanism</strong><br>Questions are organized into groups along 「capability consistency」 and 「reasoning coherence」. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.</p>
                 </div>
 
                 <h3 class="intro-h3">1. Progressive Multi-Level Evaluation Dimensions</h3>
@@ -2148,7 +2148,7 @@
             <!-- Chinese Content -->
             <div class="intro-container" data-lang-zh>
                 <p class="intro-lead">
-                    我们于2024年发布了<a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a>，重点考察模型在不同时长条件下的跨模态视频理解能力，成为包括Gemini和GPT在内众多大模型的标准评测集之一。
+                    我们于2024年发布了<a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a>，重点考察模型在不同时长条件下的跨模态视频理解能力，成为包括<strong>Gemini</strong>和<strong>GPT</strong>在内众多大模型的标准评测集之一。
 然而，随着模型能力持续提升，我们观察到：Video-MME以及多项同类基准的指标逐渐趋于饱和，而<strong>用户体验与榜单分数之间，依然存在明显偏差</strong>。
 这意味着现有评测范式对模型真实视频理解能力的刻画仍不充分，社区亟需新的综合评测基准，以更可靠地衡量模型能力。
 为此，历经近一年的持续打磨，我们正式推出<strong>Video-MME-v2</strong>。我们希望在视频理解能力演进的关键节点，分享对下一代评估范式的思考，并以此推动视频理解模型迈向更高质量技术迭代。
@@ -2159,11 +2159,11 @@
                     <p>Video-MME-v2从两个根本问题出发重新设计评估体系：</p>
                     <ul class="philosophy-questions">
                         <li>视频理解到底应该测什么？</li>
-                        <li>怎样测试才充分且公平？</li>
+                        <li>怎样测试才充分且可靠？</li>
                     </ul>
                     <p style="margin-top: 1rem; margin-bottom: 0.5rem;">我们给出的答案体现在两项核心设计上：</p>
                     <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level评估维度</strong><br>多点信息聚合→时序信息理解→时序复杂推理。三层结构对应从「找信息」到「建模时间」再到「跨时序推理」的能力递进。</p>
-                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear评估机制</strong><br>将问题按能力一致性与推理连贯性组织为多个Group，每个Group由4个相互关联的问题构成。评估时采用非线性计分：评分不仅取决于单题正确性，还考虑同一Group内答案之间的整体一致性与推理闭环的完成度。</p>
+                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear评估机制</strong><br>将问题按「能力一致性」与「推理连贯性」组织为多个Group，每个Group由4个相互关联的问题构成。评估时采用非线性计分：评分不仅取决于单题正确性，还考虑同一Group内答案之间的整体一致性与推理闭环的完成度。</p>
                 </div>
 
                 <h3 class="intro-h3">1. Progressive Multi-Level评估维度</h3>
@@ -2191,7 +2191,7 @@
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>能力一致性</h4>
-                        <p><strong>分组方式</strong><br>该类分组用于验证模型对某一具体能力的<strong>真实掌握程度</strong>。针对单项能力，我们围绕同一能力的不同方面，在问题组内构造<strong>4个不同层级</strong>的问题。以视频计数为例，我们分别评估：单帧内运动员人数、单片段内动作种类、跨片段同一动作的执行次数以及全视频的片段总数。通过从局部到全局、从静态到跨时序的多层次考察，更高效区分模型是「偶然答对」，还是在该能力上具有鲁棒的表现。</p>
+                        <p><strong>分组方式</strong><br>该类分组用于验证模型对某一具体能力的<strong>真实掌握程度</strong>。针对单项能力，我们围绕同一能力的不同方面，在问题组内构造<strong>4个不同层级</strong>的问题。以视频计数为例，我们分别评估：单帧内运动员人数、单片段内动作种类、跨片段同一动作的执行次数以及全视频的片段总数。通过从局部到全局、从静态到跨时序的多层次考察，高效区分模型是「偶然答对」，还是在该能力上具有鲁棒的表现。</p>
                         <p><strong>计分方法</strong><br>我们统计每个问题组内答对的问题数量<var>N</var>，并将该组得分定义为<var>(N/4)²</var>。这种非线性增益的计分方式能够降低单题命中带来的偶然性收益，同时强化组内整体一致性与稳定正确的奖励。</p>
                     </div>
                     <div class="framework-card coherence">
@@ -2245,8 +2245,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., Qwen-Omni, Gemini 3.0 Flash, Gemini 3.0 Pro), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 Qwen-Omni、Gemini 3.0 Flash、Gemini 3.0 Pro），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., <strong>Qwen-Omni</strong>, <strong>Gemini 3.0 Flash</strong>, <strong>Gemini 3.0 Pro</strong>), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 <strong>Qwen-Omni</strong>、<strong>Gemini 3.0 Flash</strong>、<strong>Gemini 3.0 Pro</strong>），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
@@ -2333,7 +2333,7 @@
                             <div class="video-card">
                         <div class="video-card-top">
                             <video controls width="100%" preload="metadata" poster="videos/coffee.png">
-                                <source src="videos/level1-1.mp4" type="video/mp4">
+                                <source src="videos/1-1.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-consistency card-badge">Consistency</span>
                         </div>
@@ -2343,10 +2343,10 @@
                                 <span data-lang-zh>☕ 咖啡师工作 — 基础计数</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Capability Consistency:</strong> All 4 questions test <em>basic counting</em>. Same granularity, different counting targets: latte art appearances → take-away orders → dine-in orders → total cups. Answerable by reading key frames; no temporal or cross-modal reasoning required, belonging to Level 1 (Retrieval &amp; Aggregation).
+                                <strong>Capability Consistency:</strong> All 4 questions test <em>basic counting</em>. Same granularity, different counting targets: latte art appearances → take-away orders → dine-in orders → total cups. Answerable by reading key frames; no temporal reasoning required, belonging to Level 1 (Retrieval &amp; Aggregation).
                             </div>
                             <div class="eval-hint" data-lang-zh>
-                                <strong>能力一致性测评：</strong>4个问题均测试<em>基础计数</em>，同一粒度但不同计数目标（拉花次数→外带订单→堂食订单→总杯数）。问题可通过阅读视频中的某些帧作答，无需理解时序或跨模态关联，属于 Level 1（信息检索与聚合）。
+                                <strong>能力一致性测评：</strong>4个问题均测试<em>基础计数</em>，同一粒度但不同计数目标（拉花次数→外带订单→堂食订单→总杯数）。问题可通过阅读视频中的某些帧作答，无需理解时序，属于 Level 1（信息检索与聚合）。
                             </div>
                             <div class="qa-tabs">
                                 <button class="qa-tab active" onclick="switchQA(this, 0)">Q1</button>
@@ -3725,7 +3725,7 @@
                         </div>
                         <div class="ann-criterion-body">
                             <div class="ann-subitem">Question group annotation: A team of 10 human experts annotate question groups, ensuring broad coverage for capability consistency and sufficient depth for reasoning coherence.</div>
-                            <div class="ann-subitem">Rigor check: During annotation, Gemini-3-Pro is used in real time to test and verify question wording and answer settings, ensuring precision and robustness.</div>
+                            <div class="ann-subitem">Rigor check: During annotation, <strong>Gemini-3-Pro</strong> is used in real time to test and verify question wording and answer settings, ensuring precision and robustness.</div>
                         </div>
                     </div>
 
@@ -3749,7 +3749,7 @@
                             <div class="ann-qa-grid">
                                 <div class="ann-qa-item">
                                     <strong>a. Text-Only Check</strong>
-                                    <p>Use Gemini-3-Pro in text-only mode as a baseline to remove questions that can be solved without visual information, strictly controlling language priors and ensuring the necessity of multimodal perception.</p>
+                                    <p>Use <strong>Gemini-3-Pro</strong> in text-only mode as a baseline to remove questions that can be solved without visual information, strictly controlling language priors and ensuring the necessity of multimodal perception.</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>b. Cross-Review</strong>
@@ -3757,7 +3757,7 @@
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>c. External Validation</strong>
-                                    <p>Introduce independent reviewers who did not participate in the original annotation; each video question is checked in at least two fine-grained passes to reduce subjective bias.</p>
+                                    <p>Introduce 35 independent reviewers who did not participate in the original annotation; each video question is checked in at least two fine-grained passes to reduce subjective bias.</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>d. Re-Validation</strong>
@@ -3895,7 +3895,7 @@
                         </div>
                         <div class="ann-criterion-body">
                             <div class="ann-subitem">问题组标注：由10名人工专家负责，确保能力一致性问题的覆盖广度，以及逻辑连贯性的问题深度。</div>
-                            <div class="ann-subitem">严谨性校验：标注过程中实时使用Gemini-3-Pro进行对照测试与校验，确保题目表述与答案设置的严谨性。</div>
+                            <div class="ann-subitem">严谨性校验：标注过程中实时使用<strong>Gemini-3-Pro</strong>进行对照测试与校验，确保题目表述与答案设置的严谨性。</div>
                         </div>
                     </div>
 
@@ -3919,7 +3919,7 @@
                             <div class="ann-qa-grid">
                                 <div class="ann-qa-item">
                                     <strong>a. 文本基线测试</strong>
-                                    <p>利用Gemini-3-Pro在纯文本模式下进行基线测试，剔除无需视觉信息仍可作答的题目，从而严格控制语言先验偏差，确保多模态感知的必要性。</p>
+                                    <p>利用<strong>Gemini-3-Pro</strong>在纯文本模式下进行基线测试，剔除无需视觉信息仍可作答的题目，从而严格控制语言先验偏差，确保多模态感知的必要性。</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>b. 交叉校验</strong>
@@ -3927,7 +3927,7 @@
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>c. 独立盲测</strong>
-                                    <p>引入未参与该标注任务的独立评估人员，对每个视频问题进行至少2轮细粒度核查，以更客观视角降低标注人员的主观偏差。</p>
+                                    <p>引入35名未参与该标注任务的独立评估人员，对每个视频问题进行至少2轮细粒度核查，以更客观视角降低标注人员的主观偏差。</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>d. 闭环迭代验证</strong>
@@ -4100,7 +4100,7 @@
                     <strong>（2）Model perspective:</strong> In the 「capability consistency」 group, <strong>GPT-5</strong> has the smallest variation in Q1–Q4 accuracy, showing stronger stability. In the 「reasoning coherence」 group, differences across models from Q1 to Q4 reflect divergence in reasoning-chain ability. For example, comparing <strong>GPT-5</strong> with <strong>Doubao-Seed-1.6</strong> / <strong>Qwen3-VL-235B-A22B-Instruct</strong>, as reasoning depth increases from Q1 to Q4, GPT-5’s relative advantage grows and it eventually overtakes, indicating stronger inference ability on complex reasoning chains.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>GPT-5</strong> 的 Q1→Q4 准确率波动最小，体现更强的能力稳定性。在「推理连贯性」组中，不同模型在 Q1→Q4 的表现变化反映出模型在推理链条上的能力分化。例如，对比 <strong>GPT-5</strong> 与 <strong>Doubao-Seed-1.6</strong> / <strong>Qwen3-VL-235B-A22B-Instruct</strong>，随着 Q1→Q4 推理深度增加，GPT-5 的相对优势逐步扩大并实现反超，表明其在复杂推理链条下具备更强的推断能力。
+                    <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>GPT-5</strong> 的 Q1→Q4 准确率波动最小，体现更强的能力稳定性。在「推理连贯性」组中，不同模型在 Q1→Q4 的表现变化反映出模型在推理链条上的能力分化。例如，对比 <strong>GPT-5</strong> 与 <strong>Doubao-Seed-1.6</strong> / <strong>Qwen3-VL-235B-A22B-Instruct</strong>，随着 Q1→Q4 推理深度增加，<strong>GPT-5</strong> 的相对优势逐步扩大并实现反超，表明其在复杂推理链条下具备更强的推断能力。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
                     <strong>2. Mean and variance in the 「capability consistency」 group:</strong> We further report mean and variance of overall Q1–Q4 accuracy for nine models (four proprietary and five open-source) on the 「capability consistency」 group. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
@@ -4253,10 +4253,10 @@
                     基于 Video-MME v2 定义的能力项，我们对部分模型的表现进行了对比。如雷达图所示，可以归纳出三点主要观察：
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>1. Significant gain from audio:</strong> On the <strong>Frames &amp; Audio</strong> dimension, <strong>Gemini-3-Pro</strong> shows a relatively high peak, indicating stronger cross-modal alignment and integration when processing synchronized visual and audio information. In contrast, models that rely more on visual frames (e.g. <strong>GPT-5</strong> and the Qwen family) are relatively weaker, reflecting differences in deep multimodal fusion.
+                    <strong>1. Significant gain from audio:</strong> On the <strong>Frames &amp; Audio</strong> dimension, <strong>Gemini-3-Pro</strong> shows a relatively high peak, indicating stronger cross-modal alignment and integration when processing synchronized visual and audio information. In contrast, models that rely more on visual frames (e.g. <strong>GPT-5</strong> and the <strong>Qwen</strong> family) are relatively weaker, reflecting differences in deep multimodal fusion.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.5rem;">
-                    <strong>1. 音频带来的显著增益：</strong>在 Frames&amp;Audio 维度上，<strong>Gemini-3-Pro</strong> 呈现出相对高峰，表明其在处理视觉与音频的同步信息时具备更强的跨模态对齐与整合能力。相比之下，更依赖视觉帧的模型（如 <strong>GPT-5</strong> 和 Qwen 系列）表现相对较弱，反映出不同模型在多模态深度融合上的差异。
+                    <strong>1. 音频带来的显著增益：</strong>在 Frames&amp;Audio 维度上，<strong>Gemini-3-Pro</strong> 呈现出相对高峰，表明其在处理视觉与音频的同步信息时具备更强的跨模态对齐与整合能力。相比之下，更依赖视觉帧的模型（如 <strong>GPT-5</strong> 和 <strong>Qwen</strong> 系列）表现相对较弱，反映出不同模型在多模态深度融合上的差异。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
                     <strong>2. Long-horizon temporal reasoning advantage:</strong> On capabilities such as <strong>Order</strong> and <strong>Video-Based Knowledge Acquisition</strong>, which rely on long-horizon temporal modeling and cross-segment reasoning over long video frames, <strong>Gemini-3-Pro</strong> also maintains a large lead, indicating more robust long-context and temporal modeling, and better ability to integrate and reason over information across segments in long videos.
