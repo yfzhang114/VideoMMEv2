@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video-MME v2 — Opening Figure</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fff;
+            color: #1a1a1a;
+            padding: 20px 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+            font-size: 12px;
+            line-height: 1.35;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1a1a2e;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 10px;
+            color: #64748b;
+            margin-bottom: 14px;
+        }
+        .subtitle span { margin: 0 8px; }
+        /* Column header: Con | Coh + scoring note once */
+        .table-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 6px;
+            align-items: stretch;
+        }
+        .table-header .header-spacer {
+            width: 52px;
+            flex-shrink: 0;
+        }
+        .table-header .col-heads {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-width: 0;
+        }
+        .table-header .col-head {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .table-header .col-head.con { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .table-header .col-head.coh { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+        .table-header .col-head .score-note { font-weight: 500; font-size: 9px; color: #64748b; margin-top: 2px; }
+        /* One row per level */
+        .level-row {
+            display: flex;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fafbfc;
+        }
+        .level-head {
+            width: 52px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 6px;
+            font-weight: 800;
+            font-size: 16px;
+            color: #fff;
+        }
+        .level-head .lvl-name { font-size: 8px; font-weight: 600; margin-top: 4px; opacity: 0.95; text-align: center; line-height: 1.2; letter-spacing: 0.02em; }
+        .level-head span:not(.lvl-name) { display: block; }
+        .level-head.l1 { background: linear-gradient(180deg, #22c55e, #16a34a); }
+        .level-head.l2 { background: linear-gradient(180deg, #3b82f6, #2563eb); }
+        .level-head.l3 { background: linear-gradient(180deg, #7c3aed, #6d28d9); }
+        .level-cases {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-width: 0;
+        }
+        .case-cell {
+            padding: 14px 16px;
+            border-right: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .case-cell:last-child { border-right: none; }
+        .case-cell.consistency { background: #f0fdf4; border-left: 3px solid #22c55e; }
+        .case-cell.coherence { background: #fff1f2; border-left: 3px solid #e11d48; }
+        .case-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .case-label .video-icon {
+            width: 32px;
+            height: 24px;
+            background: linear-gradient(135deg, #334155, #475569);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 12px;
+        }
+        .case-label .tag {
+            font-size: 9px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .case-label .tag.con { background: #bbf7d0; color: #166534; }
+        .case-label .tag.coh { background: #fecdd3; color: #be123c; }
+        /* Filmstrip: video timeline above QA row — larger for readable content */
+        .filmstrip-wrap {
+            margin-bottom: 10px;
+        }
+        .filmstrip {
+            background: #1e293b;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .filmstrip-sprockets {
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                #1e293b 0px,
+                #1e293b 8px,
+                #f1f5f9 8px,
+                #f1f5f9 12px
+            );
+        }
+        .filmstrip-body {
+            display: flex;
+            height: 72px;
+            min-height: 72px;
+            position: relative;
+        }
+        .filmstrip-frame {
+            flex: 1;
+            min-width: 40px;
+            border-right: 2px solid #475569;
+            background-color: #1e293b;
+            background-image: url(3level_example.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 400% 100%;
+        }
+        .filmstrip-frame:nth-child(1) { background-position: 0% 50%; }
+        .filmstrip-frame:nth-child(2) { background-position: 25% 50%; }
+        .filmstrip-frame:nth-child(3) { background-position: 50% 50%; }
+        .filmstrip-frame:nth-child(4) { background-position: 75% 50%; }
+        .filmstrip-frame:last-child { border-right: none; }
+        .case-cell.consistency .filmstrip-frame { border-right-color: #22c55e; }
+        .case-cell.consistency .filmstrip-frame:nth-child(4) { border-right: none; }
+        .case-cell.coherence .filmstrip-frame { border-right-color: #e11d48; }
+        .case-cell.coherence .filmstrip-frame:nth-child(4) { border-right: none; }
+        /* Vertical markers extending up from filmstrip (segment boundaries) */
+        .filmstrip-markers {
+            display: flex;
+            height: 10px;
+            margin-bottom: 4px;
+            position: relative;
+        }
+        .filmstrip-markers span {
+            flex: 1;
+            border-left: 1px solid #94a3b8;
+            opacity: 0.7;
+        }
+        .filmstrip-markers span:first-child { border-left: none; }
+        .case-cell.consistency .filmstrip-markers span { border-color: #4ade80; }
+        .case-cell.coherence .filmstrip-markers span { border-color: #f87171; }
+        /* 4 Q boxes */
+        .qa-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .qa-row.coherence { flex-wrap: wrap; }
+        .q-box {
+            flex: 1;
+            min-width: 0;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .case-cell.consistency .q-box {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+        .case-cell.coherence .q-box {
+            background: #ffe4e6;
+            color: #be123c;
+            border: 1px solid #fda4af;
+        }
+        .arrow {
+            color: #94a3b8;
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+        .chain-tree {
+            font-size: 10px;
+            color: #64748b;
+            font-family: 'Consolas', monospace;
+            margin-top: 4px;
+        }
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding: 10px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            font-size: 10px;
+            color: #475569;
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-item .swatch { width: 12px; height: 12px; border-radius: 3px; }
+        .legend-item .swatch.con { background: #22c55e; }
+        .legend-item .swatch.coh { background: #e11d48; }
+        .fig-caption {
+            text-align: center;
+            font-size: 10px;
+            color: #444;
+            margin-top: 10px;
+            padding: 0 12px;
+            line-height: 1.5;
+        }
+        @media print {
+            body { padding: 12px; }
+            .level-row { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <p class="main-title">Video-MME v2: Two Key Questions &amp; How We Address Them</p>
+    <p class="subtitle">
+        <span><strong>Q1:</strong> What to evaluate?</span>
+        <span><strong>Q2:</strong> How to evaluate reliably?</span>
+    </p>
+
+    <div class="table-header">
+        <div class="header-spacer"></div>
+        <div class="col-heads">
+            <div class="col-head con">Consistency — 4 Qs same capability<span class="score-note">score (N/4)²</span></div>
+            <div class="col-head coh">Coherence — 4 Qs dependency chain<span class="score-note">(N/4)² + first-error truncation</span></div>
+        </div>
+    </div>
+
+    <!-- Level 1 -->
+    <div class="level-row">
+        <div class="level-head l1"><span>L1</span><span class="lvl-name">Retrieval</span></div>
+        <div class="level-cases">
+            <div class="case-cell consistency">
+                <div class="case-label">
+                    <span class="video-icon">☕</span>
+                    Barista
+                </div>
+                <div class="filmstrip-wrap">
+                    <div class="filmstrip-markers"><span></span><span></span><span></span><span></span></div>
+                    <div class="filmstrip">
+                        <div class="filmstrip-sprockets"></div>
+                        <div class="filmstrip-body">
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                        </div>
+                        <div class="filmstrip-sprockets"></div>
+                    </div>
+                </div>
+                <div class="qa-row">
+                    <div class="q-box">Q1</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q2</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q3</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q4</div>
+                </div>
+                <div class="chain-tree">same capability: counting (latte → take-away → dine-in → total)</div>
+            </div>
+            <div class="case-cell coherence">
+                <div class="case-label">
+                    <span class="video-icon">🏹</span>
+                    Archery
+                </div>
+                <div class="filmstrip-wrap">
+                    <div class="filmstrip-markers"><span></span><span></span><span></span><span></span></div>
+                    <div class="filmstrip">
+                        <div class="filmstrip-sprockets"></div>
+                        <div class="filmstrip-body">
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                        </div>
+                        <div class="filmstrip-sprockets"></div>
+                    </div>
+                </div>
+                <div class="qa-row coherence">
+                    <div class="q-box">Q1</div>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q2</div>
+                    <span class="arrow">Q3</span>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q4</div>
+                </div>
+                <div class="chain-tree">[1,[2,3],4] Q2,Q3 depend on Q1; Q4 on Q2+Q3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 2 -->
+    <div class="level-row">
+        <div class="level-head l2"><span>L2</span><span class="lvl-name">Temporal</span></div>
+        <div class="level-cases">
+            <div class="case-cell consistency">
+                <div class="case-label">
+                    <span class="video-icon">🏀</span>
+                    NBA Game
+                </div>
+                <div class="filmstrip-wrap">
+                    <div class="filmstrip-markers"><span></span><span></span><span></span><span></span></div>
+                    <div class="filmstrip">
+                        <div class="filmstrip-sprockets"></div>
+                        <div class="filmstrip-body">
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                        </div>
+                        <div class="filmstrip-sprockets"></div>
+                    </div>
+                </div>
+                <div class="qa-row">
+                    <div class="q-box">Q1</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q2</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q3</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q4</div>
+                </div>
+                <div class="chain-tree">same: causal reasoning (ejection → free throw → anger → tactics)</div>
+            </div>
+            <div class="case-cell coherence">
+                <div class="case-label">
+                    <span class="video-icon">🏆</span>
+                    Competitions
+                </div>
+                <div class="filmstrip-wrap">
+                    <div class="filmstrip-markers"><span></span><span></span><span></span><span></span></div>
+                    <div class="filmstrip">
+                        <div class="filmstrip-sprockets"></div>
+                        <div class="filmstrip-body">
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                        </div>
+                        <div class="filmstrip-sprockets"></div>
+                    </div>
+                </div>
+                <div class="qa-row">
+                    <div class="q-box">Q1</div>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q2</div>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q3</div>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q4</div>
+                </div>
+                <div class="chain-tree">[1,2,3,4] event order: first 2 → first 3 → first 4 → all</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level 3 -->
+    <div class="level-row">
+        <div class="level-head l3"><span>L3</span><span class="lvl-name">Reasoning</span></div>
+        <div class="level-cases">
+            <div class="case-cell consistency">
+                <div class="case-label">
+                    <span class="video-icon">🎩</span>
+                    Shell Game
+                </div>
+                <div class="filmstrip-wrap">
+                    <div class="filmstrip-markers"><span></span><span></span><span></span><span></span></div>
+                    <div class="filmstrip">
+                        <div class="filmstrip-sprockets"></div>
+                        <div class="filmstrip-body">
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                        </div>
+                        <div class="filmstrip-sprockets"></div>
+                    </div>
+                </div>
+                <div class="qa-row">
+                    <div class="q-box">Q1</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q2</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q3</div>
+                    <span class="arrow">+</span>
+                    <div class="q-box">Q4</div>
+                </div>
+                <div class="chain-tree">same: entity tracking (swap1 → swap2 → audience view → total moves)</div>
+            </div>
+            <div class="case-cell coherence">
+                <div class="case-label">
+                    <span class="video-icon">📐</span>
+                    Geometry
+                </div>
+                <div class="filmstrip-wrap">
+                    <div class="filmstrip-markers"><span></span><span></span><span></span><span></span></div>
+                    <div class="filmstrip">
+                        <div class="filmstrip-sprockets"></div>
+                        <div class="filmstrip-body">
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                            <div class="filmstrip-frame"></div>
+                        </div>
+                        <div class="filmstrip-sprockets"></div>
+                    </div>
+                </div>
+                <div class="qa-row coherence">
+                    <div class="q-box">Q1</div>
+                    <div class="q-box">Q2</div>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q3</div>
+                    <span class="arrow">→</span>
+                    <div class="q-box">Q4</div>
+                </div>
+                <div class="chain-tree">[[1,2],3,4] Q1,Q2 independent; Q3=Q1+Q2; Q4 on Q3</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="legend">
+        <span class="legend-item"><i class="swatch con"></i> Same capability, different facets</span>
+        <span class="legend-item"><i class="swatch coh"></i> Dependency chain, first-error truncation</span>
+        <span class="legend-item">Group score (N/4)²</span>
+    </div>
+
+    <p class="fig-caption">
+        <strong>Figure 1.</strong> Video-MME v2: (Top) Two key questions—what to evaluate (3 levels: L1 retrieval &amp; aggregation, L2 temporal understanding, L3 complex reasoning) and how to evaluate (Group QA: Consistency vs Coherence, non-linear score (N/4)²). (Main) Three levels, each with one Consistency and one Coherence case; annotations show group structure and dependency.
+    </p>
+
+</body>
+</html>
