@@ -2143,6 +2143,21 @@
                         </p>
                     </div>
                 </div>
+
+                <h3 class="intro-h3">3. Data Annotation and Quality Control</h3>
+                <p>The evaluation system of Video-MME v2 places extremely high demands on annotation quality. To this end, we established a comprehensive and rigorous data annotation and quality control process. After investing <strong>3,300 person-hours</strong>, we ultimately collected <strong>800 videos</strong>, each paired with 4 questions and 8 answer options per question.</p>
+                <div class="framework-grid">
+                    <div class="framework-card consistency">
+                        <div class="icon">🎯</div>
+                        <h4>Data Annotation</h4>
+                        <p>We assembled an annotation team of <strong>10 human experts</strong> responsible for video data collection and full-pipeline annotation, with strict quality control through 「standardized procedures + cross-validation」: from video selection and question design to option construction, each stage strictly adheres to unified standards. Three rounds of cross-review and revision were conducted, with each sample carefully refined—especially with regard to capability consistency and logical coherence constraints. Including time spent incorporating two rounds of quality-control feedback, approximately <strong>2,200 person-hours</strong> were invested.</p>
+                    </div>
+                    <div class="framework-card coherence">
+                        <div class="icon">🔗</div>
+                        <h4>Data Quality Control</h4>
+                        <p>We assembled an independent quality-control team of <strong>50 experts</strong> to minimize subjective bias from human annotators and the influence of large model priors on data quality. Each video sample was independently reviewed by at least 2 quality-control personnel, who conducted two comprehensive rounds of review covering video content, question wording, option design, and results from <strong>Gemini-3-Pro text-only testing</strong>. The team then collaborated with the annotation team to review and confirm all revisions. In addition, the quality-control team completed all dataset questions themselves to calculate human accuracy rates. This process consumed approximately <strong>1,100 person-hours</strong>.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Chinese Content -->
@@ -2203,7 +2218,7 @@
                 </div>
                 
                 <h3 class="intro-h3">3. 数据标注与质检</h3>
-                <p>Video-MME-v2的评估体系对人工标注质量提出了极高要求。为此，我们建立了一套完整、严密的数据标注与质量检测规范。在花费<strong>3200人工时</strong>后，最终收录<strong>800个视频</strong>，每个视频配套4个问题，每个问题提供8个选项。</p>
+                <p>Video-MME-v2的评估体系对人工标注质量提出了极高要求。为此，我们建立了一套完整、严密的数据标注与质量检测规范。在花费<strong>3300人工时</strong>后，最终收录<strong>800个视频</strong>，每个视频配套4个问题，每个问题提供8个选项。</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
@@ -2213,7 +2228,7 @@
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
                         <h4>数据质检</h4>
-                        <p>我们组建了由<strong>35名专家</strong>组成的独立质检团队，以尽可能降低人工标注的主观偏差及大模型先验等因素对数据质量的影响。每个视频样本均由至少2名质检人员独立负责，围绕视频内容、问题表述、选项设置以及<strong>Gemini-3-Pro纯文本测试</strong>结果开展两轮全方位核查，并与标注团队协作，对所有修改项进行复核与确认。此外，质检团队还对数据集进行了全量人工做题，以统计人类答题准确率。上述流程累计投入约<strong>1000人工时</strong>。</p>
+                        <p>我们组建了由<strong>50名专家</strong>组成的独立质检团队，以尽可能降低人工标注的主观偏差及大模型先验等因素对数据质量的影响。每个视频样本均由至少2名质检人员独立负责，围绕视频内容、问题表述、选项设置以及<strong>Gemini-3-Pro纯文本测试</strong>结果开展两轮全方位核查，并与标注团队协作，对所有修改项进行复核与确认。此外，质检团队还对数据集进行了全量人工做题，以统计人类答题准确率。上述流程累计投入约<strong>1100人工时</strong>。</p>
                     </div>
                 </div>
             </div>
@@ -2245,7 +2260,7 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., <strong>Qwen-Omni</strong>, <strong>Gemini 3.0 Flash</strong>, <strong>Gemini 3.0 Pro</strong>), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., <strong>Qwen-Omni</strong>, <strong>Gemini 3.0 Flash</strong>, <strong>Gemini 3.0 Pro</strong>), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Information Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
                     <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 <strong>Qwen-Omni</strong>、<strong>Gemini 3.0 Flash</strong>、<strong>Gemini 3.0 Pro</strong>），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
                 </caption>
                 <thead>
@@ -2319,7 +2334,7 @@
                 <div class="level-row-header">
                     <div class="level-row-badge l1">L1</div>
                     <div>
-                        <h3 class="level-row-title" data-lang-en>Level 1: Retrieval & Aggregation</h3>
+                        <h3 class="level-row-title" data-lang-en>Level 1: Information Retrieval & Aggregation</h3>
                         <h3 class="level-row-title" data-lang-zh>Level 1: 信息检索与聚合</h3>
                         <p class="level-row-desc" data-lang-en>Basic visual perception — object recognition, counting, attribute judgment, scene understanding</p>
                         <p class="level-row-desc" data-lang-zh>基础视觉感知 — 对象识别、计数、属性判断、场景理解</p>
@@ -2430,7 +2445,7 @@
                                 <span data-lang-zh>🏹 射箭运动 — 数值计算</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
-                                <strong>Reasoning Coherence:</strong> Logical dependency tree <code>[1,[2,3],4]</code>. Q2 & Q3 derive rates from Q1's total. Q4 compares the results of Q2 & Q3. Questions can be answered by reading certain frames in the video, without requiring temporal understanding or complex reasoning, belonging to Level 1 (Retrieval & Aggregation).
+                                <strong>Reasoning Coherence:</strong> Logical dependency tree <code>[1,[2,3],4]</code>. Q2 & Q3 derive rates from Q1's total. Q4 compares the results of Q2 & Q3. Questions can be answered by reading certain frames in the video, without requiring temporal understanding or cross-modal association, belonging to Level 1 (Retrieval & Aggregation).
                             </div>
                             <div class="eval-hint" data-lang-zh>
                                 <strong>推理连贯性测评：</strong>逻辑依赖树 <code>[1,[2,3],4]</code>。Q2 和 Q3 基于 Q1 的总量计算命中率，Q4 比较 Q2 和 Q3 的结果。问题可以通过阅读视频中的某些帧来作答，无需理解时序或跨模态关联，属于 Level 1（信息检索与聚合）。
@@ -2534,7 +2549,7 @@
                         </div>
                         <div class="video-info">
                             <div class="video-title">
-                                <span data-lang-en>🧠 ADHD Explanation — Audio-Visual Association</span>
+                                <span data-lang-en>🧠 ADHD Explanation — Vision-Guided Audio Description</span>
                                 <span data-lang-zh>🧠 ADHD 解释 — 视觉引导的音频描述</span>
                             </div>
                             <div class="eval-hint" data-lang-en>
@@ -2938,7 +2953,7 @@
     </div>
     <div class="video-info">
         <div class="video-title">
-            <span data-lang-en>🚗 RC Car Experiment — Scene Transformation</span>
+            <span data-lang-en>🚗 RC Car Experiment — Scene Transformation Detection</span>
             <span data-lang-zh>🚗 遥控车实验 — 场景变换检测</span>
         </div>
         <div class="eval-hint" data-lang-en>
@@ -3034,7 +3049,7 @@
     </div>
     <div class="video-info">
         <div class="video-title">
-            <span data-lang-en>💥 Butty's Kitchen Mishap — Causal Reasoning</span>
+            <span data-lang-en>💥 Butty's Kitchen Disaster — Causal Reasoning</span>
             <span data-lang-zh>💥 巴蒂的厨房灾难 — 因果推理</span>
         </div>
         <div class="eval-hint" data-lang-en>
@@ -3725,7 +3740,7 @@
                         </div>
                         <div class="ann-criterion-body">
                             <div class="ann-subitem">Question group annotation: A team of 10 human experts annotate question groups, ensuring broad coverage for capability consistency and sufficient depth for reasoning coherence.</div>
-                            <div class="ann-subitem">Rigor check: During annotation, <strong>Gemini-3-Pro</strong> is used in real time to test and verify question wording and answer settings, ensuring precision and robustness.</div>
+                            <div class="ann-subitem">Rigor check: During annotation, Gemini-3-Pro is used in real time to test and verify question wording and answer settings, ensuring precision and robustness.</div>
                         </div>
                     </div>
 
@@ -4043,7 +4058,7 @@
                             <tr>
                                 <th><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
                                 <th><span data-lang-en>Avg Acc (%)</span><span data-lang-zh>Avg Acc (%)</span></th>
-                                <th><span data-lang-en>Non-Lin Score</span><span data-lang-zh>Non-Lin Score（组级别指标）</span></th>
+                                <th><span data-lang-en>Non-Lin Score (group-level metric)</span><span data-lang-zh>Non-Lin Score（组级别指标）</span></th>
                                 <th><span data-lang-en>Non-Lin Score / Avg Acc</span><span data-lang-zh>Non-Lin Score / Avg Acc</span></th>
                             </tr>
                         </thead>
@@ -4081,7 +4096,7 @@
         <!-- 2. 能力一致性与推理连贯性分析 -->
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
-                <h4>📉 <span data-lang-en>Capability Consistency and Reasoning Coherence</span><span data-lang-zh>能力一致性与推理连贯性分析</span></h4>
+                <h4>📉 <span data-lang-en>Capability Consistency and Reasoning Coherence Analysis</span><span data-lang-zh>能力一致性与推理连贯性分析</span></h4>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
@@ -4163,7 +4178,7 @@
         <!-- 4. Video-MME-v2 上对整体模型性能分析 -->
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
-                <h4>🧠 <span data-lang-en>Overall Model Performance on Video-MME v2</span><span data-lang-zh>Video-MME v2 上对整体模型性能分析</span></h4>
+                <h4>🧠 <span data-lang-en>Overall Model Performance Analysis on Video-MME v2</span><span data-lang-zh>Video-MME v2 上对整体模型性能分析</span></h4>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
@@ -4173,7 +4188,7 @@
                     围绕 Video-MME v2 提出的三层任务体系，我们进一步抽象出支撑各层任务的三类关键基础能力：<strong>全模态信息聚合（C1）</strong>、<strong>长程时序/长上下文理解（C2）</strong>与<strong>复杂推理能力（C3）</strong>。基于这三项能力，我们对现有模型进行能力画像与分组，并对比其在 Video-MME v2 上的得分表现。
                 </p>
                 <div class="mme-chart-wrapper">
-                    <h2 data-lang-en>Model Performance with Different Capabilities</h2>
+                    <h2 data-lang-en>Model Capability Profiles and Scores</h2>
                     <h2 data-lang-zh>模型能力画像与得分</h2>
                     <table>
                         <thead>
@@ -4219,9 +4234,9 @@
                     <div class="legend-container">
                         <div class="legend-title"><span data-lang-en>Capability Legend:</span><span data-lang-zh>能力图例：</span></div>
                         <ul class="legend-list">
-                            <li class="legend-item"><span class="tag tag-c1">c1</span> <span data-lang-en>Omni-model (Omni-modal joint perception)</span><span data-lang-zh>全模态信息聚合</span></li>
+                            <li class="legend-item"><span class="tag tag-c1">c1</span> <span data-lang-en>Omni-modal (Omni-modal information aggregation)</span><span data-lang-zh>全模态信息聚合</span></li>
                             <li class="legend-item"><span class="tag tag-c2">c2</span> <span data-lang-en>Long-context (Ability to process extended inputs)</span><span data-lang-zh>长程时序/长上下文</span></li>
-                            <li class="legend-item"><span class="tag tag-c3">c3</span> <span data-lang-en>Thinking (Advanced reasoning/chain-of-thought)</span><span data-lang-zh>复杂推理</span></li>
+                            <li class="legend-item"><span class="tag tag-c3">c3</span> <span data-lang-en>Thinking (Complex reasoning)</span><span data-lang-zh>复杂推理</span></li>
                         </ul>
                     </div>
                 </div>
