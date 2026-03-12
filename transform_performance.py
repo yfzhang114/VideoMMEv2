@@ -1,14 +1,15 @@
 from pathlib import Path
 import re
 import json
+from typing import Optional, Tuple, Union
 import pandas as pd
 
 
-IN_PATH = Path(r"figs\exps\performance.xlsx")
+IN_PATH = Path("figs/exps/performance.xlsx")
 OUT_PATH = IN_PATH.with_name(IN_PATH.stem + "_parsed.xlsx")
 
 
-def _normalize_json_cell(x: object) -> str | None:
+def _normalize_json_cell(x: object) -> Optional[str]:
     """把 Excel 单元格里的“详细结果”清洗成可 json.loads 的字符串；不合法则返回 None。"""
     if x is None:
         return None
@@ -43,7 +44,7 @@ def _normalize_json_cell(x: object) -> str | None:
     return s
 
 
-def _extract_levels(detail_cell: object) -> tuple[float | None, float | None, float | None]:
+def _extract_levels(detail_cell: object) -> Tuple[Optional[float], Optional[float], Optional[float]]:
     """从详细结果里抽 level_1/2/3。失败返回 (None, None, None)。"""
     s = _normalize_json_cell(detail_cell)
     if s is None:
@@ -68,7 +69,7 @@ def _extract_levels(detail_cell: object) -> tuple[float | None, float | None, fl
     return to_float(l1), to_float(l2), to_float(l3)
 
 
-def _extract_relevance_logic(detail_cell: object) -> tuple[float | None, float | None]:
+def _extract_relevance_logic(detail_cell: object) -> Tuple[Optional[float], Optional[float]]:
     """从详细结果里抽 relevance_score、logic_score。失败返回 (None, None)。"""
     
     s = _normalize_json_cell(detail_cell)

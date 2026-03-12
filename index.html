@@ -2260,8 +2260,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models that accept raw audio (e.g., <strong>Qwen-Omni</strong>, <strong>Gemini 3.0 Flash</strong>, <strong>Gemini 3.0 Pro</strong>), we report results with raw audio input as <em>w. sub</em>, and <em>wo sub</em> is shown as &quot;/&quot; since the same modality applies. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Information Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于能接受原始语音的 Omni 模型（如 <strong>Qwen-Omni</strong>、<strong>Gemini 3.0 Flash</strong>、<strong>Gemini 3.0 Pro</strong>），我们以输入原始语音的结果作为 <em>w. sub</em> 报告，<em>wo sub</em> 显示为 &quot;/&quot;（因其模态相同）。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For certain Omni models that are only reported with raw-audio input (e.g., <strong>Gemini 3.0 Flash</strong>, <strong>Gemini 3.0 Pro</strong>), we place the raw-audio result under <em>w. sub</em>, and show <em>wo sub</em> as &quot;/&quot; when no separate subtitle-free result is reported. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Information Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于部分仅报告原始语音输入结果的 Omni 模型（如 <strong>Gemini 3.0 Flash</strong>、<strong>Gemini 3.0 Pro</strong>），我们将该结果记入 <em>w. sub</em>；若没有单独的无字幕结果，则 <em>wo sub</em> 显示为 &quot;/&quot;。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
@@ -4045,10 +4045,10 @@
                     <strong>1. 同一模型内对比：</strong><strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的平均准确率分别为 60.5% 与 58.2%，接近及格水平。但在分组非线性计分下，得分仅为 42.6% 与 39.8%。这表明即使是 SOTA 模型，也难以在同一组内稳定地将多道关联问题全部答对。我们设计的非线性打分能够利用 Group 结构，降低对「零散命中」的敏感性。
                 </p>
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>2. Cross-model comparison:</strong> The ratio <strong>Non-Lin Score / Avg Acc</strong> reflects how much a model 「drops」 from single-question correctness to group-stable correctness, and thus indicates robustness. For example, <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> both have a ratio of about 70%, while <strong>InternVL3-5-241B-A28B-Instruct</strong> is about 53%, and smaller models such as <strong>LLaVA-Video-7B</strong> are only about 40%. A lower ratio means the model more often gets only some questions right within a group—weaker stability and robustness. Non-linear scoring thus better reflects true capability and reveals model robustness.
+                    <strong>2. Cross-model comparison:</strong> The ratio <strong>Non-Lin Score / Avg Acc</strong> reflects how much a model 「drops」 from single-question correctness to group-stable correctness, and thus indicates robustness. For example, <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> both have a ratio of about 70%, while <strong>InternVL3-5-241B-A28B-Instruct</strong> is about 56%, and smaller models such as <strong>LLaVA-Video-7B</strong> are only about 40%. A lower ratio means the model more often gets only some questions right within a group—weaker stability and robustness. Non-linear scoring thus better reflects true capability and reveals model robustness.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>2. 不同模型间对比：</strong>「Non-Lin Score / Avg Acc」的比值可用于衡量模型从「单题正确」到「组内稳定正确」的折损程度，从而反映模型鲁棒性差异。例如，<strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的比值均约为 70%，而 <strong>InternVL3-5-241B-A28B-Instruct</strong> 约为 53%，一些小模型如 <strong>LLaVA-Video-7B</strong> 仅为约 40%。比值越低，说明模型越容易出现「组内只能答对部分题」的现象，稳定性与鲁棒性越弱。由此可见非线性打分在真实刻画能力水平、揭示模型鲁棒性方面的优势。
+                    <strong>2. 不同模型间对比：</strong>「Non-Lin Score / Avg Acc」的比值可用于衡量模型从「单题正确」到「组内稳定正确」的折损程度，从而反映模型鲁棒性差异。例如，<strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的比值均约为 70%，而 <strong>InternVL3-5-241B-A28B-Instruct</strong> 约为 56%，一些小模型如 <strong>LLaVA-Video-7B</strong> 仅为约 40%。比值越低，说明模型越容易出现「组内只能答对部分题」的现象，稳定性与鲁棒性越弱。由此可见非线性打分在真实刻画能力水平、揭示模型鲁棒性方面的优势。
                 </p>
                 <div style="overflow-x: auto; margin-top: 1.25rem;">
                     <table class="comparison-table" style="width: 100%; max-width: 900px; margin: 0 auto;">
@@ -4077,14 +4077,14 @@
                             </tr>
                             <tr>
                                 <td>InternVL3-5-241B-A28B-Instruct</td>
-                                <td>40.7%</td>
-                                <td>21.8%</td>
-                                <td>~53%</td>
+                                <td>41.4%</td>
+                                <td>23.1%</td>
+                                <td>~56%</td>
                             </tr>
                             <tr>
                                 <td>LLaVA-Video-7B</td>
-                                <td>23.9%</td>
-                                <td>9.5%</td>
+                                <td>24.0%</td>
+                                <td>9.7%</td>
                                 <td>~40%</td>
                             </tr>
                         </tbody>
@@ -4211,22 +4211,22 @@
                             </tr>
                             <tr>
                                 <td>Qwen3-VL-235B-A22B-Instruct</td>
-                                <td>26.3</td>
+                                <td>25.0</td>
                                 <td><div class="tag-container"><span class="tag tag-c2">c2</span></div></td>
                             </tr>
                             <tr>
                                 <td>Qwen3-VL-235B-A22B-Think</td>
-                                <td>25.8</td>
+                                <td>26.3</td>
                                 <td><div class="tag-container"><span class="tag tag-c2">c2</span><span class="tag tag-c3">c3</span></div></td>
                             </tr>
                             <tr>
                                 <td>Qwen3-Omni-30B-A3B-Think</td>
-                                <td>19.9</td>
+                                <td>19.5</td>
                                 <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c2">c2</span><span class="tag tag-c3">c3</span></div></td>
                             </tr>
                             <tr>
                                 <td>Qwen3-Omni-30B-A3B-Instruct</td>
-                                <td>17.3</td>
+                                <td>17.1</td>
                                 <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c2">c2</span></div></td>
                             </tr>
                         </tbody>
@@ -4247,10 +4247,10 @@
                     <strong>1. 核心能力协同效应：</strong>从评测结果可以观察到，模型得分与其核心能力的「完整度」存在一定相关性：同时具备 C1+C2+C3 的模型整体上更具优势。例如，<strong>Gemini-3-Pro</strong> 具备较完整的能力矩阵，得分 42.6；同系列的 <strong>Gemini-3-Flash</strong> 紧随其后，得分 39.8。这一现象表明，在复杂视频理解任务中，全模态感知、长时序建模与深度推理的协同可能是提升整体表现的重要因素。
                 </p>
                 <p data-lang-en style="margin-top: 0.75rem;">
-                    <strong>2. Model scale and capability compensation:</strong> Besides capability combination, results show that scale has a significant effect on base performance: larger parameter count can partly compensate for missing capabilities. For example, <strong>Qwen3-VL-235B-A22B-Instruct</strong> mainly has long-context ability (C2) and does not explicitly have C1 or C3, yet still reaches 26.3—clearly higher than the smaller <strong>Qwen3-Omni-30B-A3B-Think</strong> (19.9), which is labeled as having C1+C2+C3. This shows that when scale increases substantially, the model’s overall capability can partly offset the impact of missing individual capabilities on the score.
+                    <strong>2. Model scale and capability compensation:</strong> Besides capability combination, results show that scale has a significant effect on base performance: larger parameter count can partly compensate for missing capabilities. For example, <strong>Qwen3-VL-235B-A22B-Instruct</strong> mainly has long-context ability (C2) and does not explicitly have C1 or C3, yet still reaches 25.0—clearly higher than the smaller <strong>Qwen3-Omni-30B-A3B-Think</strong> (19.5), which is labeled as having C1+C2+C3. This shows that when scale increases substantially, the model’s overall capability can partly offset the impact of missing individual capabilities on the score.
                 </p>
                 <p data-lang-zh style="margin-top: 0.75rem;">
-                    <strong>2. 模型规模与能力代偿：</strong>除能力融合外，结果也显示模型规模对基础性能具有显著影响：更大的参数规模可能部分弥补特定能力的缺失。以 <strong>Qwen3-VL-235B-A22B-Instruct</strong> 为例，其主要具备长上下文能力（C2），但未显式具备 C1 或 C3，仍取得 26.3 分。这一成绩明显高于规模更小、但标注为具备 C1+C2+C3 的 <strong>Qwen3-Omni-30B-A3B-Think</strong>（19.9 分）。该显示出当参数规模显著提升时，模型的综合能力表现可能在一定程度上抵消单项能力缺口对得分带来的影响。
+                    <strong>2. 模型规模与能力代偿：</strong>除能力融合外，结果也显示模型规模对基础性能具有显著影响：更大的参数规模可能部分弥补特定能力的缺失。以 <strong>Qwen3-VL-235B-A22B-Instruct</strong> 为例，其主要具备长上下文能力（C2），但未显式具备 C1 或 C3，仍取得 25.0 分。这一成绩明显高于规模更小、但标注为具备 C1+C2+C3 的 <strong>Qwen3-Omni-30B-A3B-Think</strong>（19.5 分）。该显示出当参数规模显著提升时，模型的综合能力表现可能在一定程度上抵消单项能力缺口对得分带来的影响。
                 </p>
             </div>
         </div>
@@ -4431,35 +4431,37 @@
         { name: "Gemini-3-Pro", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [58.4, null], level2: [41.8, null], level3: [34.0, null], relevance: [43.3, null], logic: [41.2, null], overall: [42.6, null], avg_acc: [60.5, null] },
         { name: "Doubao-Seed-1.6-Vision", logo: "doubao", type: "proprietary", noWsub: true, frames: "1fps", level1: [null, 30.7], level2: [null, 27.5], level3: [null, 20.0], relevance: [null, 27.0], logic: [null, 21.5], overall: [null, 25.1], avg_acc: [null, 43.6] },
         { name: "GPT-5", logo: "openai", type: "proprietary", noWsub: true, frames: "50", level1: [null, 30.2], level2: [null, 25.5], level3: [null, 20.7], relevance: [null, 26.1], logic: [null, 21.8], overall: [null, 24.6], avg_acc: [null, 43.7] },
-        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [32.6, 23.3], level2: [25.4, 17.7], level3: [23.4, 15.8], relevance: [27.13, 20.00], logic: [24.78, 14.91], overall: [26.3, 18.3], avg_acc: [44.4, 36.1] },
+        { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [30.72044335, 20.64860427], level2: [25.19243641, 16.75535475], level3: [21.59722222, 13.88649425], relevance: [25.03612717, 17.71435453], logic: [25.02224199, 14.24377224], overall: [25.0, 16.5], avg_acc: [43.3, 33.8] },
         { name: "Qwen3-VL-235B-A22B-Instruct", logo: "qwen", type: "open", frames: "512", level1: [28.04214, 21.67377], level2: [33.70895, 23.70279], level3: [22.28209, 15.89559], relevance: [null, null], logic: [null, null], overall: [27.5, 20.1], avg_acc: [null, null] },
-        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "64", level1: [30.3, 18.8], level2: [27.0, 16.5], level3: [22.3, 13.3], relevance: [25.64, 17.27], logic: [26.10, 12.67], overall: [25.8, 15.7], avg_acc: [43.8, 33.0] },
+        { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "64", level1: [31.96223317, 19.07840722], level2: [27.48159304, 16.79216867], level3: [22.25574713, 13.40756705], relevance: [25.9995183, 17.23265896], logic: [26.98398577, 13.4386121], overall: [26.3, 15.9], avg_acc: [44.9, 33.3] },
         { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "512", level1: [27.23722, 20.39536], level2: [30.80255, 21.75287], level3: [23.01964, 14.78089], relevance: [null, null], logic: [null, null], overall: [27, 19.1], avg_acc: [null, null] },
-        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", omni: true, frames: "64", level1: [26.9, null], level2: [17.7, null], level3: [17.3, null], relevance: [19.61, null], logic: [20.34, null], overall: [19.9, null], avg_acc: [38.1, null] },
-        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", omni: true, frames: "64", level1: [22.7, null], level2: [15.9, null], level3: [15.2, null], relevance: [16.76, null], logic: [18.45, null], overall: [17.3, null], avg_acc: [34.7, null] },
-        { name: "InternVL3-5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "64", level1: [25.7, 18.3], level2: [22.3, 14.2], level3: [19.2, 14.7], relevance: [21.60, 16.41], logic: [22.26, 13.67], overall: [21.8, 15.5], avg_acc: [40.7, 33.4] },
-        { name: "Qwen3-VL-8B-Think", logo: "qwen", type: "open", frames: "64", level1: [24.1, 14.9], level2: [20.2, 12.5], level3: [18.1, 10.5], relevance: [19.93, 13.68], logic: [20.95, 9.44], overall: [20.3, 12.2], avg_acc: [37.2, 26.8] },
-        { name: "Qwen3-VL-4B-Think", logo: "qwen", type: "open", frames: "64", level1: [24.9, 14.6], level2: [18.9, 11.5], level3: [15.1, 9.1], relevance: [19.39, 13.17], logic: [17.61, 7.38], overall: [18.8, 11.2], avg_acc: [35.6, 25.7] },
-        { name: "Qwen3-VL-8B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.0, 14.9], level2: [16.9, 12.5], level3: [15.7, 10.8], relevance: [18.15, 13.93], logic: [17.45, 9.34], overall: [17.9, 12.4], avg_acc: [35.7, 28.8] },
-        { name: "Qwen3-VL-4B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.1, 15.8], level2: [14.3, 9.8], level3: [14.2, 9.1], relevance: [16.71, 12.11], logic: [16.00, 8.95], overall: [16.5, 11], avg_acc: [33.7, 26.6] },
-        { name: "InternVL3-5-8B-Instruct", logo: "intern", type: "open", frames: "64", level1: [22.5, 15.7], level2: [13.7, 10.0], level3: [14.2, 9.5], relevance: [16.05, 12.05], logic: [16.34, 9.64], overall: [16.1, 11.2], avg_acc: [33.1, 26.7] },
-        { name: "Qwen3-VL-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [20.0, 14.7], level2: [20.9, 12.3], level3: [14.7, 10.9], relevance: [17.26, 13.71], logic: [19.39, 9.58], overall: [18.0, 12.3], avg_acc: [33.8, 28.4] },
-        { name: "InternVL3-5-30B-A3B-Instruct", logo: "intern", type: "open", frames: "64", level1: [21.2, 11.1], level2: [13.9, 7.7], level3: [13.3, 6.5], relevance: [15.61, 9.11], logic: [15.25, 5.95], overall: [15.5, 8.0], avg_acc: [32.8, 21.4] },
-        { name: "Qwen3-VL-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [20.0, 9.4], level2: [17.5, 9.3], level3: [14.2, 5.6], relevance: [15.96, 9.07], logic: [18.13, 5.09], overall: [16.7, 7.7], avg_acc: [32.5, 22.0] },
-        { name: "Qwen2-5-VL-7B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [20.4, 13.6], level2: [14.8, 11.0], level3: [12.7, 8.3], relevance: [14.84, 11.16], logic: [16.18, 9.15], overall: [15.3, 10.5], avg_acc: [32.1, 25.0] },
-        { name: "InternVL-3-5-4B-Instruct", logo: "intern", type: "open", frames: "64", level1: [20.4, 13.9], level2: [12.8, 10.0], level3: [12.5, 7.4], relevance: [14.89, 11.27], logic: [13.95, 7.17], overall: [14.6, 9.9], avg_acc: [31.7, 25.0] },
-        { name: "Qwen2-5-VL-72B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [26.1, 17.3], level2: [20.4, 13.0], level3: [20.3, 12.9], relevance: [21.02, 14.81], logic: [23.29, 12.55], overall: [21.8, 14.0], avg_acc: [39.3, 30.2] },
-        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", frames: "64", level1: [22.8, 20.4], level2: [17.0, 13.0], level3: [18.2, 13.6], relevance: [19.53, 16.50], logic: [17.89, 12.50], overall: [19.0, 15.1], avg_acc: [37.6, 31.9] },
-        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "64", level1: [23.2, 15.2], level2: [18.5, 11.9], level3: [16.1, 9.5], relevance: [18.28, 12.86], logic: [19.30, 9.41], overall: [18.6, 11.7], avg_acc: [35.8, 27.4] },
-        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", frames: "64", level1: [19.0, 14.5], level2: [12.2, 9.7], level3: [11.7, 8.1], relevance: [14.18, 11.60], logic: [12.88, 7.48], overall: [13.7, 10.2], avg_acc: [30.6, 25.1] },
-        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "64", level1: [22.0, 17.7], level2: [15.5, 11.9], level3: [12.6, 8.5], relevance: [16.23, 13.01], logic: [15.21, 9.80], overall: [15.9, 11.9], avg_acc: [32.8, 27.1] },
-        { name: "GLM4.5-V-Think", logo: "glm", type: "open", frames: "64", level1: [25.7, 16.3], level2: [21.7, 13.4], level3: [18.2, 11.2], relevance: [21.71, 14.51], logic: [20.29, 10.64], overall: [21.2, 13.2], avg_acc: [39.5, 28.9] },
-        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", frames: "64", level1: [16.0, 12.8], level2: [6.9, 5.7], level3: [7.2, 5.5], relevance: [10.26, 8.58], logic: [7.57, 5.12], overall: [9.4, 7.4], avg_acc: [23.9, 19.9] },
-        { name: "GLM4.1-V-Think", logo: "glm", type: "open", frames: "64", level1: [19.5, 13.1], level2: [13.6, 8.8], level3: [13.3, 7.4], relevance: [14.77, 10.65], logic: [15.30, 6.58], overall: [15.0, 9.3], avg_acc: [31.5, 23.1] },
-        { name: "Keye-VL-1-5-8B", logo: "keye", type: "open", frames: "64", level1: [21.2, 14.6], level2: [13.6, 9.9], level3: [11.4, 6.8], relevance: [14.67, 11.45], logic: [14.37, 6.47], overall: [14.6, 9.8], avg_acc: [31.7, 25.3] },
-        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", frames: "64", level1: [18.1, 12.5], level2: [12.7, 10.0], level3: [13.1, 8.0], relevance: [13.64, 10.95], logic: [15.45, 7.51], overall: [14.3, 9.8], avg_acc: [30.2, 24.6] },
-        { name: "Qwen3-VL-235B-A22B-Text-Only", logo: "qwen", type: "open", frames: "64", level1: [8.2, 8.2], level2: [8.8, 8.8], level3: [6.7, 6.7], relevance: [9.4, 9.4], logic: [4.4, 4.4], overall: [null, null], avg_acc: [null, null] },
-        { name: "GLM4.6-Flash", logo: "glm", type: "open", frames: "64", level1: [27.1, 15.9], level2: [18.9, 13.0], level3: [17.0, 9.5], relevance: [20.92, 13.67], logic: [18.65, 9.33], overall: [20.1, 12.2], avg_acc: [38.3, 27.5] },
+        { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [24.7229064, 23.55500821], level2: [17.48661312, 15.48527443], level3: [17.94659962, 15.7710728], relevance: [18.59344894, 17.24470135], logic: [21.2396204, 18.41933571], overall: [19.5, 17.7], avg_acc: [36.5, 35.8] },
+        { name: "Qwen3-Omni-30B-A3B-Think-wo-audio", logo: "qwen", type: "open", frames: "64", level1: [23.30254516, 15.79844007], level2: [15.82663989, 12.27409639], level3: [17.11925287, 11.03687739], relevance: [17.12427746, 13.30684008], logic: [20.43149466, 11.38048636], overall: [18.3, 12.6], avg_acc: [36.0, 28.6] },
+        { name: "Qwen3-Omni-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [21.66666667, 23.33128079], level2: [14.96820616, 14.68708166], level3: [15.97820881, 16.33261494], relevance: [16.47398844, 17.08815029], logic: [18.27698695, 18.53499407], overall: [17.1, 17.6], avg_acc: [34.1, 35.1] },
+        { name: "Qwen3-Omni-30B-A3B-Instruct-wo-audio", logo: "qwen", type: "open", frames: "64", level1: [23.57758621, 15.01642036], level2: [16.29518072, 10.22088353], level3: [15.96264368, 8.941570881], relevance: [17.60597303, 11.80154143], logic: [18.72330961, 9.181494662], overall: [18.0, 10.9], avg_acc: [36.1, 27.0] },
+        { name: "InternVL3-5-241B-A28B-Instruct", logo: "intern", type: "open", frames: "64", level1: [28.17939245, 18.11576355], level2: [23.72657296, 16.30689424], level3: [19.62164751, 14.05292146], relevance: [23.37427746, 17.17244701], logic: [22.5103796, 13.22360617], overall: [23.1, 15.8], avg_acc: [41.4, 32.9] },
+        { name: "Qwen3-VL-8B-Think", logo: "qwen", type: "open", frames: "64", level1: [23.87110016, 13.10550082], level2: [19.24364123, 11.8457162], level3: [17.47126437, 10.95186782], relevance: [19.18352601, 12.72880539], logic: [20.50266904, 10.01779359], overall: [19.7, 11.8], avg_acc: [37.2, 27.0] },
+        { name: "Qwen3-VL-4B-Think", logo: "qwen", type: "open", frames: "64", level1: [23.26765189, 14.97947455], level2: [16.57797858, 11.30354752], level3: [16.3230364, 9.755747126], relevance: [17.94315992, 12.58429672], logic: [18.57354686, 9.676749703], overall: [18.2, 11.6], avg_acc: [35.3, 26.2] },
+        { name: "Qwen3-VL-8B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [21.83908046, 15.36535304], level2: [16.97791165, 12.46485944], level3: [16.93247126, 10.71599617], relevance: [17.0761079, 13.15028902], logic: [20.25207592, 11.12841044], overall: [18.2, 12.4], avg_acc: [35.7, 27.9] },
+        { name: "Qwen3-VL-4B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [23.61042693, 16.35057471], level2: [14.62349398, 9.548192771], level3: [16.19252874, 10.26101533], relevance: [16.34152216, 11.5004817], logic: [19.88582444, 11.73932384], overall: [17.6, 11.6], avg_acc: [34.1, 26.2] },
+        { name: "InternVL3-5-8B-Instruct", logo: "intern", type: "open", frames: "64", level1: [21.59277504, 14.78448276], level2: [15.34638554, 10.75803213], level3: [14.1690613, 9.849137931], relevance: [16.05250482, 12.43978805], logic: [17.09667853, 9.435053381], overall: [16.4, 11.4], avg_acc: [32.4, 26.0] },
+        { name: "Qwen3-VL-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [26.97044335, 17.43431856], level2: [21.09939759, 13.71987952], level3: [17.57064176, 11.11230843], relevance: [20.21917148, 14.10163776], logic: [22.59638197, 12.46886121], overall: [21.1, 13.5], avg_acc: [38.6, 29.4] },
+        { name: "InternVL3-5-30B-A3B-Instruct", logo: "intern", type: "open", frames: "64", level1: [21.55377668, 17.477422], level2: [14.51472557, 11.03915663], level3: [15.23108238, 10.93989464], relevance: [15.88391137, 13.70423892], logic: [17.95818505, 10.64501779], overall: [16.6, 12.6], avg_acc: [34.2, 28.7] },
+        { name: "Qwen3-VL-30B-A3B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [18.03571429, 9.250821018], level2: [17.64558233, 7.712516734], level3: [15.56633142, 7.090517241], relevance: [15.69123314, 8.465799615], logic: [18.96204033, 6.662218268], overall: [16.8, 7.8], avg_acc: [33.2, 21.3] },
+        { name: "Qwen2-5-VL-7B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [19.95484401, 14.67980296], level2: [13.01706827, 9.315595716], level3: [12.08812261, 8.394396552], relevance: [13.69219653, 11.07899807], logic: [15.6316726, 8.793001186], overall: [14.4, 10.3], avg_acc: [30.9, 25.3] },
+        { name: "InternVL-3-5-4B-Instruct", logo: "intern", type: "open", frames: "64", level1: [21.58251232, 13.53858785], level2: [10.48862115, 9.21854083], level3: [12.63409962, 8.239942529], relevance: [14.0655106, 10.69364162], logic: [14.55367734, 8.403024911], overall: [14.2, 9.9], avg_acc: [30.5, 24.6] },
+        { name: "Qwen2-5-VL-72B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [25.83538588, 15.32224959], level2: [21.208166, 13.73493976], level3: [20.58668582, 12.61494253], relevance: [20.94171484, 14.05346821], logic: [24.27342823, 12.90628707], overall: [22.1, 13.7], avg_acc: [38.9, 30.3] },
+        { name: "KimiVL-16B-A3B-Instruct", logo: "kimi", type: "open", frames: "64", level1: [23.87110016, 18.73768473], level2: [17.59036145, 13.50903614], level3: [17.12045019, 13.76077586], relevance: [19.41233141, 16.67870906], logic: [18.18060498, 11.74377224], overall: [19.0, 15.0], avg_acc: [37.3, 32.3] },
+        { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "64", level1: [24.92816092, 16.09400657], level2: [18.76506024, 12.47322624], level3: [16.63912835, 8.953544061], relevance: [18.90655106, 12.45183044], logic: [20.3232503, 10.76957295], overall: [19.4, 11.9], avg_acc: [36.0, 27.0] },
+        { name: "VideoLLaMA3-7B", logo: "videollama", type: "open", frames: "64", level1: [19.01888342, 15.79638752], level2: [12.66064257, 9.233601071], level3: [12.38745211, 9.125957854], relevance: [14.2822736, 12.29527938], logic: [13.92052195, 8.18653618], overall: [14.2, 10.9], avg_acc: [30.6, 25.7] },
+        { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "64", level1: [21.8226601, 16.38752053], level2: [14.01104418, 10.61077644], level3: [13.26149425, 9.732998084], relevance: [14.88439306, 12.65655106], logic: [17.11298932, 9.918446026], overall: [15.7, 11.7], avg_acc: [32.4, 27.3] },
+        { name: "GLM4.5-V-Think", logo: "glm", type: "open", frames: "64", level1: [26.17610837, 14.86247947], level2: [21.74531459, 14.67034806], level3: [19.38697318, 11.38409962], relevance: [20.52023121, 14.727842], logic: [24.28825623, 10.6331554], overall: [21.8, 13.3], avg_acc: [39.2, 29.6] },
+        { name: "LLaVA-Video-7B-Qwen2", logo: "llava", type: "open", frames: "64", level1: [15.88875205, 12.67241379], level2: [7.384538153, 5.590696118], level3: [7.497605364, 5.106561303], relevance: [9.91088632, 8.477842004], logic: [9.002075919, 4.774614472], overall: [9.7, 7.2], avg_acc: [24.0, 19.9] },
+        { name: "LLaVA-Video-72B-Qwen2", logo: "llava", type: "open", frames: "64", level1: [21.8000821, 14.77011494], level2: [14.7523427, 11.13286479], level3: [16.27394636, 9.483955939], relevance: [17.06406551, 12.31936416], logic: [17.45848161, 9.526986951], overall: [17.2, 11.3], avg_acc: [34.4, 27.3] },
+        { name: "GLM4.1-V-Think", logo: "glm", type: "open", frames: "64", level1: [18.78899836, 14.07224959], level2: [13.17269076, 7.50502008], level3: [11.77083333, 8.117816092], relevance: [13.76445087, 10.62138728], logic: [14.40094899, 7.252372479], overall: [14.0, 9.4], avg_acc: [30.3, 23.7] },
+        { name: "Keye-VL-1-5-8B", logo: "keye", type: "open", frames: "64", level1: [19.09688013, 12.15517241], level2: [12.35441767, 8.381860776], level3: [12.38984674, 7.297653257], relevance: [13.71628131, 10.44075145], logic: [14.75385528, 5.962336892], overall: [14.1, 8.9], avg_acc: [31.1, 23.8] },
+        { name: "MiMo-VL-7B-SFT-2508", logo: "mimo", type: "open", frames: "64", level1: [19.76395731, 14.32881773], level2: [13.22791165, 9.579986613], level3: [12.78855364, 9.304358238], relevance: [14.08959538, 11.21146435], logic: [15.81405694, 9.65599051], overall: [14.7, 10.7], avg_acc: [31.2, 24.6] },
+        { name: "GLM4.6-Flash", logo: "glm", type: "open", frames: "64", level1: [26.78571429, 17.33990148], level2: [19.3875502, 13.39022758], level3: [15.91355364, 9.474377395], relevance: [19.6411368, 13.98121387], logic: [19.96144721, 10.3024911], overall: [19.8, 12.7], avg_acc: [37.4, 27.7] },
     ];
 
     // Expand data - all values are directly provided, no calculations
