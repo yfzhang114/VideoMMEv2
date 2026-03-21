@@ -139,20 +139,36 @@ def create_custom_legend(fig):
 # Data Preparation
 # ---------------------------------------------------------------------------
 
-# Group names
-GROUPS = ["Qwen3-VL-8B", "Qwen3-VL-235B", "Kimi-VL-16B", "MiMo-VL-7B"]
+# We compare Instruct vs Think with matched 64-frame settings so the figure
+# isolates the effect of enabling Thinking mode rather than changing frames.
+GROUPS = ["Qwen3.5-122B", "Qwen3-VL-235B", "Qwen3-VL-8B", "KimiVL-16B"]
 
 # Raw Data (Pairs of [w_sub, wo_sub])
-# Order in lists: Qwen8B-Inst, Qwen8B-Think, Qwen235B-Inst, Qwen235B-Think...
-# Qwen8B: wo_sub L1/L2 has delta=0 (no stack); w_sub L1=+1.1, L2=+3.3 (blue stack)
-RAW_L1 = [[23.0, 14.9], [24.1, 14.9], [32.6, 23.3], [30.3, 18.8],
-          [22.8, 20.4], [22.0, 17.7], [18.1, 12.5], [23.2, 15.2]]
-RAW_L2 = [[16.9, 12.5], [20.2, 12.5], [25.4, 17.7], [27.0, 16.5],
-          [17.0, 13.0], [15.5, 11.9], [12.7, 10.0], [18.5, 11.9]]
-RAW_L3 = [[15.7, 10.8], [18.1, 10.5], [23.4, 15.8], [22.3, 13.3],
-          [18.2, 13.6], [12.6, 8.5], [13.1, 8.0], [16.1, 9.5]]
-RAW_ALL= [[17.9, 12.4], [20.3, 12.2], [26.3, 18.3], [25.8, 15.7],
-          [19.0, 15.1], [15.9, 11.9], [14.3, 9.8], [18.6, 11.7]]
+# Order in lists: model-instruct, model-think, repeated for each group above.
+RAW_L1 = [
+    [24.86042693, 14.84400657], [30.11288998, 18.95730706],
+    [30.72044335, 20.64860427], [31.96223317, 19.07840722],
+    [21.83908046, 15.36535304], [23.87110016, 13.10550082],
+    [23.87110016, 18.73768473], [21.82266010, 16.38752053],
+]
+RAW_L2 = [
+    [21.79216867, 12.89993307], [27.88152610, 15.99062918],
+    [25.19243641, 16.75535475], [27.48159304, 16.79216867],
+    [16.97791165, 12.46485944], [19.24364123, 11.84571620],
+    [17.59036145, 13.50903614], [14.01104418, 10.61077644],
+]
+RAW_L3 = [
+    [17.94300766, 10.91475096], [23.89607280, 14.88386015],
+    [21.59722222, 13.88649425], [22.25574713, 13.40756705],
+    [16.93247126, 10.71599617], [17.47126437, 10.95186782],
+    [17.12045019, 13.76077586], [13.26149425, 9.73299808],
+]
+RAW_ALL = [
+    [20.9, 12.5], [26.7, 16.3],
+    [25.0, 16.5], [26.3, 15.9],
+    [18.2, 12.4], [19.7, 11.8],
+    [19.0, 15.0], [15.7, 11.7],
+]
 
 def parse_data(raw_list):
     """
@@ -198,8 +214,8 @@ def main():
 
     create_custom_legend(fig)
 
-    # Save
-    out_path = "scientific_think_effect_v2.png"
+    # Save next to the website asset that consumes this figure.
+    out_path = Path(__file__).resolve().parent.parent / "imgs" / "scientific_think_effect_v2.png"
     print(f"Saving scientific figure to {out_path} ...")
     # plt.show()
     plt.savefig(out_path, dpi=300, bbox_inches='tight')
