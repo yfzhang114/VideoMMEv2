@@ -84,16 +84,11 @@ def get_group(cat):
 summary["Group"] = summary["Category"].apply(get_group)
 
 # ═══════════════════════════════════════════════════════════
-# 🎨 配色：给你一套“更统一、更干净”的中等配色（可替换别的方案）
+# 🎨 配色
 # ═══════════════════════════════════════════════════════════
 wc_colors = {
-    # Questions：偏青蓝（更像你下图的 Perception 那种清爽蓝）
     "Questions": ["#55AFCB", "#6ABDD6", "#80CBE0", "#97DAEA"],
-
-    # Answers：杏桃橙（更柔和，不刺眼）
     "Answers":   ["#F0A37A", "#F4B492", "#F7C6AA", "#FAD8C3"],
-
-    # Choices：冷灰（更偏“论文灰”）
     "Choices":   ["#B8C0C8", "#C3CAD1", "#CED4DA", "#D9DEE3",
                   "#AEB7C0", "#A4AEB7", "#9AA4AE", "#909AA5"]
 }
@@ -110,7 +105,7 @@ def get_wc_color(cat):
         idx = ord(letter) - ord('A')
         return wc_colors["Choices"][idx % len(wc_colors["Choices"])]
 
-# Video Length 配色（保持你认可的风格：黄->粉->蓝）
+# Video Length 配色
 video_palettes = {
     "short":  ["#fae588", "#f9dc76", "#f8d364", "#f7ca52", "#f6c140"],
     "medium": ["#eeb4c3", "#ea9eb1", "#e6889f", "#e2728d", "#de5c7b"],
@@ -128,62 +123,7 @@ sns.set_theme(style="whitegrid", font_scale=1.0)
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(FIG_W, FIG_H))
 
 # ═══════════════════════════════════════════════════════════
-# 📊 子图 1：Word Count Statistics（补回“均值±标准差”标注）
-# ═══════════════════════════════════════════════════════════
-bar_colors_wc = [get_wc_color(cat) for cat in summary["Category"]]
-x_pos = np.arange(len(summary))
-
-ax1.bar(
-    x_pos,
-    summary["mean"],
-    yerr=summary["std"],                      # ✅ 误差线仍然是 std
-    color=bar_colors_wc,
-    edgecolor="#666666",
-    linewidth=0.7,
-    capsize=4,
-    error_kw=dict(elinewidth=1.2, capthick=1.2, color="#666666"),
-    width=0.75,
-    zorder=3,
-)
-
-# ✅ 数值标注：显示 mean ± std
-for i, (m, s) in enumerate(zip(summary["mean"], summary["std"])):
-    ax1.text(
-        i,
-        m + s + 0.6,
-        f"{m:.1f}±{s:.1f}",
-        ha="center",
-        va="bottom",
-        fontsize=8.5,
-        color=ANNOTATION_COLOR,
-        family="serif",
-        fontweight="bold",
-    )
-
-ax1.set_xticks(x_pos)
-ax1.set_xticklabels(summary["Category"], rotation=45, ha="right",
-                    fontsize=TICK_FONTSIZE, family='serif')
-ax1.set_ylabel("Word Count", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
-ax1.set_title(
-    "Word Count Statistics: Questions / Answers / Choices  (Mean ± Std)",
-    fontsize=TITLE_FONTSIZE, fontweight="bold", pad=12, family='serif',
-)
-
-legend_patches = [
-    Patch(facecolor=wc_colors["Questions"][1], edgecolor="gray", label="Questions"),
-    Patch(facecolor=wc_colors["Answers"][1], edgecolor="gray", label="Answers"),
-    Patch(facecolor=wc_colors["Choices"][1], edgecolor="gray", label="Choices"),
-]
-ax1.legend(handles=legend_patches, loc="upper right",
-           fontsize=TICK_FONTSIZE, frameon=True, fancybox=True)
-
-ax1.set_xlim(-0.8, len(summary) - 0.2)
-ax1.grid(axis="y", alpha=0.3, linestyle="--")
-ax1.spines['top'].set_visible(False)
-ax1.spines['right'].set_visible(False)
-
-# ═══════════════════════════════════════════════════════════
-# 📊 子图 2：Video Length Distribution（整数分桶 + 你认可的配色）
+# 📊（现在在上面）子图 1：Video Length Distribution
 # ═══════════════════════════════════════════════════════════
 durations = np.array(video_durations)
 if len(durations) > 0:
@@ -222,7 +162,7 @@ if len(durations) > 0:
             final_bar_colors.append(video_palettes["long"][k % len(video_palettes["long"])])
 
     x_positions = np.arange(n_bars)
-    ax2.bar(
+    ax1.bar(
         x_positions,
         counts,
         width=0.65,
@@ -235,7 +175,7 @@ if len(durations) > 0:
 
     for i, cnt in enumerate(counts):
         if cnt > 0:
-            ax2.text(
+            ax1.text(
                 i, cnt + max(counts) * 0.01, str(int(cnt)),
                 ha="center", va="bottom", fontsize=9,
                 color=ANNOTATION_COLOR, family='serif', fontweight="bold"
@@ -248,30 +188,77 @@ if len(durations) > 0:
         x_labels.append(f"({s}, {e}]")
     x_labels.append(f">{end_merge} min")
 
-    ax2.set_xticks(x_positions)
-    ax2.set_xticklabels(x_labels, rotation=45, ha="right",
+    ax1.set_xticks(x_positions)
+    ax1.set_xticklabels(x_labels, rotation=45, ha="right",
                         fontsize=TICK_FONTSIZE, family='serif')
 
-    ax2.set_xlabel("Video Length (min)", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
-    ax2.set_ylabel("Number of Videos", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
-    ax2.set_title("Video Length Distribution", fontsize=TITLE_FONTSIZE, fontweight="bold", pad=12, family='serif')
+    ax1.set_xlabel("Video Length (min)", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
+    ax1.set_ylabel("Number of Videos", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
+    ax1.set_title("Video Length Distribution", fontsize=TITLE_FONTSIZE, fontweight="bold", pad=12, family='serif')
 
-    # legend_patches_v = [
-    #     Patch(facecolor=video_palettes["short"][2], label="Short Videos"),
-    #     Patch(facecolor=video_palettes["medium"][2], label="Medium Videos"),
-    #     Patch(facecolor=video_palettes["long"][2], label="Long Videos"),
-    # ]
-    # ax2.legend(handles=legend_patches_v, loc="upper right", fontsize=TICK_FONTSIZE)
-
-    ax2.grid(axis="y", alpha=0.3, linestyle='--')
-    ax2.spines['top'].set_visible(False)
-    ax2.spines['right'].set_visible(False)
+    ax1.grid(axis="y", alpha=0.3, linestyle='--')
+    ax1.spines['top'].set_visible(False)
+    ax1.spines['right'].set_visible(False)
 
 # ═══════════════════════════════════════════════════════════
-# 💾 保存
+# 📊（现在在下面）子图 2：Word Count Statistics（均值±标准差）
+# ═══════════════════════════════════════════════════════════
+bar_colors_wc = [get_wc_color(cat) for cat in summary["Category"]]
+x_pos = np.arange(len(summary))
+
+ax2.bar(
+    x_pos,
+    summary["mean"],
+    yerr=summary["std"],
+    color=bar_colors_wc,
+    edgecolor="#666666",
+    linewidth=0.7,
+    capsize=4,
+    error_kw=dict(elinewidth=1.2, capthick=1.2, color="#666666"),
+    width=0.75,
+    zorder=3,
+)
+
+for i, (m, s) in enumerate(zip(summary["mean"], summary["std"])):
+    ax2.text(
+        i,
+        m + s + 0.6,
+        f"{m:.1f}±{s:.1f}",
+        ha="center",
+        va="bottom",
+        fontsize=8.5,
+        color=ANNOTATION_COLOR,
+        family="serif",
+        fontweight="bold",
+    )
+
+ax2.set_xticks(x_pos)
+ax2.set_xticklabels(summary["Category"], rotation=45, ha="right",
+                    fontsize=TICK_FONTSIZE, family='serif')
+ax2.set_ylabel("Word Count", fontsize=AXIS_FONTSIZE, fontweight="bold", family='serif')
+ax2.set_title(
+    "Word Count Statistics: Questions / Answers / Choices  (Mean ± Std)",
+    fontsize=TITLE_FONTSIZE, fontweight="bold", pad=12, family='serif',
+)
+
+legend_patches = [
+    Patch(facecolor=wc_colors["Questions"][1], edgecolor="gray", label="Questions"),
+    Patch(facecolor=wc_colors["Answers"][1], edgecolor="gray", label="Answers"),
+    Patch(facecolor=wc_colors["Choices"][1], edgecolor="gray", label="Choices"),
+]
+ax2.legend(handles=legend_patches, loc="upper right",
+           fontsize=TICK_FONTSIZE, frameon=True, fancybox=True)
+
+ax2.set_xlim(-0.8, len(summary) - 0.2)
+ax2.grid(axis="y", alpha=0.3, linestyle="--")
+ax2.spines['top'].set_visible(False)
+ax2.spines['right'].set_visible(False)
+
+# ═══════════════════════════════════════════════════════════
+# 💾 保存 / 显示
 # ═══════════════════════════════════════════════════════════
 plt.tight_layout()
-# fig.savefig("combined_statistics_fixed_std.png", dpi=200, bbox_inches="tight")
-plt.show()
+fig.savefig("figs/exps/data_sta.png", dpi=200, bbox_inches="tight")
+# plt.show()
 
-print("✅ 已输出：Word Count 标注恢复 Mean ± Std，并保存 combined_statistics_fixed_std.png")
+print("✅ 已输出：上-Video Length，下-Word Count，均值±标准差标注已保留")
