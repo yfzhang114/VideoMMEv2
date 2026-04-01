@@ -4264,11 +4264,6 @@
                                 <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c2">c2</span><span class="tag tag-c3">c3</span></div></td>
                             </tr>
                             <tr>
-                                <td>Doubao-Seed-2.0-Pro-260215</td>
-                                <td>43.3</td>
-                                <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c2">c2</span><span class="tag tag-c3">c3</span></div></td>
-                            </tr>
-                            <tr>
                                 <td>Gemini-3-Flash</td>
                                 <td>42.5</td>
                                 <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c2">c2</span><span class="tag tag-c3">c3</span></div></td>
@@ -4281,7 +4276,7 @@
                             <tr>
                                 <td>MiMo-v2-Omni</td>
                                 <td>38.6</td>
-                                <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c3">c3</span></div></td>
+                                <td><div class="tag-container"><span class="tag tag-c1">c1</span><span class="tag tag-c2">c2</span><span class="tag tag-c3">c3</span></div></td>
                             </tr>
                             <tr>
                                 <td>Qwen3.5-397B-A17B-Think (64)</td>
@@ -4315,10 +4310,10 @@
                     </div>
                 </div>
                 <p data-lang-en style="margin-top: 1rem;">
-                    <strong>1. Synergy of core capabilities:</strong> Scores tend to correlate with how complete the capability profile is: models with C1+C2+C3 together generally perform better. For example, <strong>Gemini-3-Pro</strong> has a relatively complete profile and scores 49.4; <strong>Doubao-Seed-2.0-Pro-260215</strong> and <strong>Gemini-3-Flash</strong> follow with 43.3 and 42.5 respectively. This suggests that in complex video understanding, the synergy of omni-modal perception, long-horizon temporal modeling, and deep reasoning is an important factor for overall performance.
+                    <strong>1. Synergy of core capabilities:</strong> Scores tend to correlate with how complete the capability profile is: models with C1+C2+C3 together generally perform better. For example, <strong>Gemini-3-Pro</strong> has a relatively complete profile and scores 49.4; <strong>Gemini-3-Flash</strong> follows with 42.5. This suggests that in complex video understanding, the synergy of omni-modal perception, long-horizon temporal modeling, and deep reasoning is an important factor for overall performance.
                 </p>
                 <p data-lang-zh style="margin-top: 1rem;">
-                    <strong>1. 核心能力协同效应：</strong>从评测结果可以观察到，模型得分与其核心能力的「完整度」存在一定相关性：同时具备 C1+C2+C3 的模型整体上更具优势。例如，<strong>Gemini-3-Pro</strong> 具备较完整的能力矩阵，得分 49.4；<strong>Doubao-Seed-2.0-Pro-260215</strong> 和 <strong>Gemini-3-Flash</strong> 紧随其后，分别得分 43.3 和 42.5。这一现象表明，在复杂视频理解任务中，全模态感知、长时序建模与深度推理的协同可能是提升整体表现的重要因素。
+                    <strong>1. 核心能力协同效应：</strong>从评测结果可以观察到，模型得分与其核心能力的「完整度」存在一定相关性：同时具备 C1+C2+C3 的模型整体上更具优势。例如，<strong>Gemini-3-Pro</strong> 具备较完整的能力矩阵，得分 49.4；<strong>Gemini-3-Flash</strong> 紧随其后，得分 42.5。这一现象表明，在复杂视频理解任务中，全模态感知、长时序建模与深度推理的协同可能是提升整体表现的重要因素。
                 </p>
                 <p data-lang-en style="margin-top: 0.75rem;">
                     <strong>2. Model scale and capability compensation:</strong> Besides capability combination, results show that scale has a significant effect on base performance: larger parameter count can partly compensate for missing capabilities. For example, <strong>Qwen3.5-397B-A17B-Think</strong> mainly has long-context ability (C2) and complex reasoning (C3), yet reaches 39.1—higher than <strong>MiMo-v2-Omni</strong> (38.6), which has omni-modal capability (C1) and complex reasoning (C3). This shows that when scale increases substantially, the model’s overall capability can partly offset the impact of missing individual capabilities on the score.
@@ -4535,9 +4530,9 @@
         { name: "Qwen3.5-35B-A3B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [24.21387521, 13.66584565], level2: [18.64290495, 11.32697456], level3: [18.37523946, 9.94372605], relevance: [18.43689788, 12.35549133], logic: [22.71648873, 9.40391459], overall: [19.9, 11.3], avg_acc: [36.9, 28.6] },
         { name: "Qwen3.5-122B-A10B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [24.86042693, 14.84400657], level2: [21.79216867, 12.89993307], level3: [17.94300766, 10.91475096], relevance: [20.0867052, 13.29479769], logic: [22.39175563, 11.11654804], overall: [20.9, 12.5], avg_acc: [39.2, 29.5] },
         { name: "Qwen3.5-397B-A17B-Instruct", logo: "qwen", type: "open", frames: "64", level1: [27.29269294, 16.82471264], level2: [25.93373494, 18.06726908], level3: [21.88577586, 16.14703065], relevance: [23.89210019, 18.17196532], logic: [25.67319098, 14.59816133], overall: [24.5, 16.9], avg_acc: [42.1, 35.0] },
-        { name: "Qwen3-VL-4B-think", logo: "qwen", type: "open", frames: "64", level1: [23.26765189, 14.97947455], level2: [16.57797858, 11.30354752], level3: [16.3230364, 9.75574713], relevance: [17.94315992, 12.58429672], logic: [18.57354686, 9.6767497], overall: [18.2, 11.6], avg_acc: [35.3, 26.2] },
-        { name: "Qwen3-VL-8B-think", logo: "qwen", type: "open", frames: "512", level1: [23.46264368, 16.97249589], level2: [21.35709505, 16.74196787], level3: [17.38266284, 11.11111111], relevance: [20.11078998, 15.07707129], logic: [20.25800712, 13.01008304], overall: [20.2, 14.4], avg_acc: [37.3, 29.7] },
-        { name: "Qwen3-VL-8B-think", logo: "qwen", type: "open", frames: "64", level1: [23.87110016, 13.10550082], level2: [19.24364123, 11.8457162], level3: [17.47126437, 10.95186782], relevance: [19.18352601, 12.72880539], logic: [20.50266904, 10.01779359], overall: [19.7, 11.8], avg_acc: [37.2, 27.0] },
+        { name: "Qwen3-VL-4B-Think", logo: "qwen", type: "open", frames: "64", level1: [23.26765189, 14.97947455], level2: [16.57797858, 11.30354752], level3: [16.3230364, 9.75574713], relevance: [17.94315992, 12.58429672], logic: [18.57354686, 9.6767497], overall: [18.2, 11.6], avg_acc: [35.3, 26.2] },
+        { name: "Qwen3-VL-8B-Think", logo: "qwen", type: "open", frames: "512", level1: [23.46264368, 16.97249589], level2: [21.35709505, 16.74196787], level3: [17.38266284, 11.11111111], relevance: [20.11078998, 15.07707129], logic: [20.25800712, 13.01008304], overall: [20.2, 14.4], avg_acc: [37.3, 29.7] },
+        { name: "Qwen3-VL-8B-Think", logo: "qwen", type: "open", frames: "64", level1: [23.87110016, 13.10550082], level2: [19.24364123, 11.8457162], level3: [17.47126437, 10.95186782], relevance: [19.18352601, 12.72880539], logic: [20.50266904, 10.01779359], overall: [19.7, 11.8], avg_acc: [37.2, 27.0] },
         { name: "Qwen3-VL-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [26.97044335, 17.43431856], level2: [21.09939759, 13.71987952], level3: [17.57064176, 11.11230843], relevance: [20.21917148, 14.10163776], logic: [22.59638197, 12.46886121], overall: [21.1, 13.5], avg_acc: [38.6, 29.4] },
         { name: "Qwen3-VL-30B-A3B-Think", logo: "qwen", type: "open", frames: "512", level1: [27.61904762, 16.93965517], level2: [22.38453815, 14.66532798], level3: [18.64942529, 10.02274904], relevance: [21.70038536, 14.76396917], logic: [22.8039739, 10.37663108], overall: [22.1, 13.2], avg_acc: [39.8, 29.5] },
         { name: "Qwen3-Omni-30B-A3B-Think", logo: "qwen", type: "open", frames: "64", level1: [24.7229064, 15.79844007], level2: [17.48661312, 12.27409639], level3: [17.94659962, 11.03687739], relevance: [18.59344894, 13.30684008], logic: [21.2396204, 11.38048636], overall: [19.5, 12.6], avg_acc: [36.5, 28.6] },
@@ -4545,9 +4540,9 @@
         { name: "Qwen3-VL-235B-A22B-Think", logo: "qwen", type: "open", frames: "512", level1: [32.59646962, 21.36083744], level2: [30.3229585, 23.38855422], level3: [23.87931034, 14.48994253], relevance: [28.27552987, 20.37572254], logic: [27.76690391, 16.46797153], overall: [28.1, 19.0], avg_acc: [47.2, 36.8] },
         { name: "KimiVL-16B-A3B-Think", logo: "kimi", type: "open", frames: "64", level1: [21.8226601, 16.38752053], level2: [14.01104418, 10.61077644], level3: [13.26149425, 9.73299808], relevance: [14.88439306, 12.65655106], logic: [17.11298932, 9.91844603], overall: [15.7, 11.7], avg_acc: [32.4, 27.3] },
         { name: "MiMo-VL-7B-RL-2508", logo: "mimo", type: "open", frames: "64", level1: [24.92816092, 16.09400657], level2: [18.76506024, 12.47322624], level3: [16.63912835, 8.95354406], relevance: [18.90655106, 12.45183044], logic: [20.3232503, 10.76957295], overall: [19.4, 11.9], avg_acc: [36.0, 27.0] },
-        { name: "GLM4.1v-think", logo: "glm", type: "open", frames: "64", level1: [18.78899836, 14.07224959], level2: [13.17269076, 7.50502008], level3: [11.77083333, 8.11781609], relevance: [13.76445087, 10.62138728], logic: [14.40094899, 7.25237248], overall: [14.0, 9.4], avg_acc: [30.3, 23.7] },
-        { name: "GLM4.5v-think", logo: "glm", type: "open", frames: "64", level1: [26.17610837, 14.86247947], level2: [21.74531459, 14.67034806], level3: [19.38697318, 11.38409962], relevance: [20.52023121, 14.727842], logic: [24.28825623, 10.6331554], overall: [21.8, 13.3], avg_acc: [39.2, 29.6] },
-        { name: "GLM4.6-flash", logo: "glm", type: "open", frames: "64", level1: [26.78571429, 17.33990148], level2: [19.3875502, 13.39022758], level3: [15.91355364, 9.47437739], relevance: [19.6411368, 13.98121387], logic: [19.96144721, 10.3024911], overall: [19.8, 12.7], avg_acc: [37.4, 27.7] },
+        { name: "GLM4.1V-Think", logo: "glm", type: "open", frames: "64", level1: [18.78899836, 14.07224959], level2: [13.17269076, 7.50502008], level3: [11.77083333, 8.11781609], relevance: [13.76445087, 10.62138728], logic: [14.40094899, 7.25237248], overall: [14.0, 9.4], avg_acc: [30.3, 23.7] },
+        { name: "GLM4.5V-Think", logo: "glm", type: "open", frames: "64", level1: [26.17610837, 14.86247947], level2: [21.74531459, 14.67034806], level3: [19.38697318, 11.38409962], relevance: [20.52023121, 14.727842], logic: [24.28825623, 10.6331554], overall: [21.8, 13.3], avg_acc: [39.2, 29.6] },
+        { name: "GLM4.6-Flash", logo: "glm", type: "open", frames: "64", level1: [26.78571429, 17.33990148], level2: [19.3875502, 13.39022758], level3: [15.91355364, 9.47437739], relevance: [19.6411368, 13.98121387], logic: [19.96144721, 10.3024911], overall: [19.8, 12.7], avg_acc: [37.4, 27.7] },
         { name: "Qwen3.5-4B-Think", logo: "qwen", type: "open", frames: "64", level1: [26.23357964, 14.90353038], level2: [21.02409639, 11.10107095], level3: [17.28328544, 9.92456897], relevance: [20.35163776, 12.37957611], logic: [21.39679715, 10.02965599], overall: [20.7, 11.6], avg_acc: [38.8, 26.5] },
         { name: "Qwen3.5-9B-Think", logo: "qwen", type: "open", frames: "64", level1: [28.2635468, 16.69745484], level2: [24.73226238, 12.63052209], level3: [19.036159, 12.61733716], relevance: [23.63921002, 13.94508671], logic: [22.24792408, 13.1242586], overall: [23.2, 13.7], avg_acc: [40.3, 28.9] },
         { name: "Qwen3.5-27B-Think", logo: "qwen", type: "open", frames: "64", level1: [34.99794745, 19.98152709], level2: [30.58567604, 18.50568942], level3: [25.83812261, 15.48491379], relevance: [28.54046243, 18.18400771], logic: [31.67111507, 16.42497034], overall: [29.6, 17.6], avg_acc: [47.6, 34.5] },
