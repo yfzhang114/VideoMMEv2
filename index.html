@@ -4207,10 +4207,10 @@
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    We compare the impact of enabling reasoning mode (Thinking Mode) on Video-MME v2 under with- and without-subtitle settings. The figure shows the instruction-tuned baseline (Instruct Baseline), and the gain or regression when Thinking is enabled.
+                    We compare the impact of stronger reasoning settings on Video-MME v2 under with- and without-subtitle conditions. The figure reports a matched baseline for each model, together with the gain or regression after switching to a stronger reasoning mode. For most open-source models, the comparison is between Instruct and Think under matched 64-frame settings; for <strong>Gemini-3-Flash</strong>, the comparison is between <strong>minimal_thinking</strong> and the standard reasoning configuration, both at 1fps.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    我们在 Video-MME v2 上对比了无/有字幕两种设置下，开启推理模式（Thinking Mode）对模型性能的影响。图中展示了指令微调基线（Instruct Baseline）、以及开启 Thinking 后带来的增益（Gain）与倒退（Regression）。
+                    我们在 Video-MME v2 上对比了无/有字幕两种设置下，更强推理配置对模型性能的影响。图中展示了每个模型对应的匹配基线，以及切换到更强 reasoning mode 后带来的增益（Gain）与倒退（Regression）。其中，对大多数开源模型而言，对比的是相同 64-frame 设置下的 Instruct 与 Think；而对于 <strong>Gemini-3-Flash</strong>，对比的是同为 1fps 条件下的 <strong>minimal_thinking</strong> 与标准 reasoning 配置。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.75rem;">
                     <strong>1. Text modality helps unlock reasoning:</strong> Overall, enabling Thinking with subtitles tends to yield more stable gains, while without subtitles the benefit is often smaller or can even turn negative. For example, <strong>Qwen3.5-122B-A10B</strong> gains +3.8 with no subtitle and +5.8 with subtitle on overall score. This suggests that explicit semantic cues from text make it easier for the model’s Thinking ability to be fully utilized.
