@@ -92,7 +92,7 @@ style_bars(rects_acc, pattern='///')
 ax.set_yticks(y)
 ax.set_yticklabels(models, fontsize=13, fontweight='bold', color='#2D3436')
 
-# ** REDUCED PAD: Now leaves a more reasonable space for a standard logo size **
+# Reduced pad for logo space
 ax.tick_params(axis='y', length=0, pad=35)
 
 # X-axis styling
@@ -110,7 +110,6 @@ def add_labels(rects, is_striped=False):
     for bar in rects:
         width = bar.get_width()
         
-        # Since we use identical solid colors, white text is best for both.
         text_color = 'white'
         x_pos = width - 1.5
         ha = 'right'
@@ -121,16 +120,25 @@ def add_labels(rects, is_striped=False):
             ha = 'left'
             text_color = '#2D3436'
             
-        txt = ax.text(x_pos, bar.get_y() + bar.get_height() / 2,
-                f'{width:.1f}',
-                ha=ha, va='center', zorder=10,
-                fontsize=12, fontweight='bold', color=text_color)
+        # Instead of just a path effect stroke, we use a `bbox` (background box)
+        # for absolute clarity over stripes. This paints a solid block of the bar's color
+        # precisely behind the text, wiping out the white diagonal lines entirely beneath the numbers.
+        base_color = bar.get_facecolor()[:3]  # Extract pure RGB without alpha
         
-        # ** FIX READABILITY **: If it's a striped bar, the white hatch lines cross the white text.
-        # We apply a stroke (outline) using the bar's base solid color to cleanly mask the hatch behind the text.
-        if text_color == 'white' and is_striped:
-            base_color = bar.get_facecolor()[:3]  # Extract RGB components
-            txt.set_path_effects([path_effects.withStroke(linewidth=3.5, foreground=base_color)])
+        if is_striped and text_color == 'white':
+            bbox_props = dict(boxstyle="round,pad=0.15", facecolor=base_color, edgecolor='none', alpha=1.0)
+            # Add text with solid background box to ensure 100% clarity
+            ax.text(x_pos, bar.get_y() + bar.get_height() / 2,
+                    f'{width:.1f}',
+                    ha=ha, va='center', zorder=10,
+                    fontsize=12, fontweight='bold', color=text_color,
+                    bbox=bbox_props)
+        else:
+            # Solid bars don't need a background box, text is naturally clear
+            ax.text(x_pos, bar.get_y() + bar.get_height() / 2,
+                    f'{width:.1f}',
+                    ha=ha, va='center', zorder=10,
+                    fontsize=12, fontweight='bold', color=text_color)
 
 add_labels(rects_nonlin, is_striped=False)
 add_labels(rects_acc, is_striped=True)
@@ -144,7 +152,6 @@ ax.legend(handles=legend_elements, loc='lower center', bbox_to_anchor=(0.5, 1.02
           ncol=2, frameon=False, fontsize=13, labelcolor='#2D3436')
 
 # Adjust layout margins 
-# We reduced 'left' from 0.35 to 0.30 to match the smaller, tighter logo padding
 plt.subplots_adjust(left=0.30, right=0.96, top=0.90, bottom=0.05)
 
 # Save and show the plot
