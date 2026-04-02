@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as mcolors
 import matplotlib.patches as mpatches
+import matplotlib.patheffects as path_effects
 
 # Use a clean sans-serif font to match modern UI
 plt.rcParams['font.family'] = 'sans-serif'
@@ -90,7 +91,9 @@ style_bars(rects_acc, pattern='///')
 # Y-axis styling
 ax.set_yticks(y)
 ax.set_yticklabels(models, fontsize=13, fontweight='bold', color='#2D3436')
-ax.tick_params(axis='y', length=0, pad=15)
+
+# ** REDUCED PAD: Now leaves a more reasonable space for a standard logo size **
+ax.tick_params(axis='y', length=0, pad=35)
 
 # X-axis styling
 ax.set_xticks([])  # Remove x-axis completely
@@ -103,7 +106,7 @@ ax.spines['left'].set_color('#DFE6E9')
 ax.spines['left'].set_linewidth(2)
 
 # Add labels inside the bars
-def add_labels(rects):
+def add_labels(rects, is_striped=False):
     for bar in rects:
         width = bar.get_width()
         
@@ -118,24 +121,31 @@ def add_labels(rects):
             ha = 'left'
             text_color = '#2D3436'
             
-        ax.text(x_pos, bar.get_y() + bar.get_height() / 2,
+        txt = ax.text(x_pos, bar.get_y() + bar.get_height() / 2,
                 f'{width:.1f}',
                 ha=ha, va='center', zorder=10,
                 fontsize=12, fontweight='bold', color=text_color)
+        
+        # ** FIX READABILITY **: If it's a striped bar, the white hatch lines cross the white text.
+        # We apply a stroke (outline) using the bar's base solid color to cleanly mask the hatch behind the text.
+        if text_color == 'white' and is_striped:
+            base_color = bar.get_facecolor()[:3]  # Extract RGB components
+            txt.set_path_effects([path_effects.withStroke(linewidth=3.5, foreground=base_color)])
 
-add_labels(rects_nonlin)
-add_labels(rects_acc)
+add_labels(rects_nonlin, is_striped=False)
+add_labels(rects_acc, is_striped=True)
 
-# Elegant Legend at the top center
+# Elegant Legend perfectly centered
 legend_elements = [
     mpatches.Patch(facecolor='#868E96', edgecolor='white', hatch='///', linewidth=1, label='Avg Acc (Striped)'),
     mpatches.Patch(facecolor='#868E96', edgecolor='none', label='Non-Lin (Solid)')
 ]
-ax.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.08),
+ax.legend(handles=legend_elements, loc='lower center', bbox_to_anchor=(0.5, 1.02),
           ncol=2, frameon=False, fontsize=13, labelcolor='#2D3436')
 
-# Adjust layout margins (removed titles, so top margin can be tighter)
-plt.subplots_adjust(left=0.28, right=0.96, top=0.92, bottom=0.05)
+# Adjust layout margins 
+# We reduced 'left' from 0.35 to 0.30 to match the smaller, tighter logo padding
+plt.subplots_adjust(left=0.30, right=0.96, top=0.90, bottom=0.05)
 
 # Save and show the plot
 plt.savefig('leaderboard.png', dpi=300, bbox_inches='tight', facecolor='white')
