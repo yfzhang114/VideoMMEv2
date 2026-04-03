@@ -2039,10 +2039,15 @@
 
 <header>
     <div class="nav-container">
-        <a href="#" class="logo">
-            <span class="logo-badge">Video-MME</span>
-            <span class="logo-version">v2</span>
-        </a>
+        <!-- Language Switcher -->
+        <div class="lang-switcher" style="margin-left: 0;">
+            <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">
+                <span class="flag">🇺🇸</span>EN
+            </button>
+            <button class="lang-btn" onclick="switchLanguage('zh')" id="lang-zh">
+                <span class="flag">🇨🇳</span>中文
+            </button>
+        </div>
         <div class="nav-right">
             <nav class="nav-links">
                 <!-- English Navigation -->
@@ -2060,15 +2065,10 @@
                 <a href="#dataset" data-lang-zh>数据集</a>
                 <a href="#analysis" data-lang-zh>分析</a>
             </nav>
-            <!-- Language Switcher -->
-            <div class="lang-switcher">
-                <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">
-                    <span class="flag">🇺🇸</span>EN
-                </button>
-                <button class="lang-btn" onclick="switchLanguage('zh')" id="lang-zh">
-                    <span class="flag">🇨🇳</span>中文
-                </button>
-            </div>
+            <a href="#" class="logo" style="margin-left: 16px;">
+                <span class="logo-badge">Video-MME</span>
+                <span class="logo-version">v2</span>
+            </a>
         </div>
     </div>
 </header>
