@@ -1236,16 +1236,22 @@
             max-width: 100%;
             box-sizing: border-box;
         }
-        /* 两图占比：改 first-child / last-child 的 flex 第一个数即可，如 1.2 与 1 约为 55% : 45%，1.5 与 1 约为 60% : 40%，2 与 1 约为 67% : 33% */
+        /* 两图占比：根据长宽比调整 flex 以实现高度一致 */
         .figures-row figure {
             flex: 1 1 0;
             min-width: 0;
             margin: 0;
         }
-        .figures-row figure:first-child {
-            flex: 1.0 1 0;
+        .figures-row.row-1 figure:first-child {
+            flex: 1.27 1 0;
         }
-        .figures-row figure:last-child {
+        .figures-row.row-1 figure:last-child {
+            flex: 1 1 0;
+        }
+        .figures-row.row-2 figure:first-child {
+            flex: 1 1 0;
+        }
+        .figures-row.row-2 figure:last-child {
             flex: 1 1 0;
         }
         .figures-row figure img {
@@ -4013,7 +4019,7 @@
                     </div>
                 </div>
 
-                <div class="figures-row">
+                <div class="figures-row row-1">
                     <figure>
                         <img src="figs/exps/data_sta.png" 
                             alt="Video-MME V2 数据统计" 
@@ -4021,13 +4027,13 @@
                         <figcaption>Figure 2：视频长度、以及问题与选项长度分布</figcaption>
                     </figure>
                     <figure>
-                        <img src="figs/imgs/video_category.png" 
+                        <img src="figs/imgs/video_category_cropped.png" 
                             alt="Video-MME V2 视频类别分布（旭日图）" 
-                            style="width:100%; height:auto; display:block; margin:0 auto;">
+                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 3：视频类别分布，含4个一级类别、32个二级类别</figcaption>
                     </figure>
                 </div>
-                <div class="figures-row">
+                <div class="figures-row row-2">
                     <figure>
                         <img src="figs/exps/video_publish_month.png" 
                             alt="Video-MME V2 视频发布时间分布" 
@@ -4037,7 +4043,7 @@
                     <figure>
                         <img src="figs/exps/video_viewcount.png" 
                             alt="Video-MME V2 视频观看量分布" 
-                            style="width:100%; height:auto; display:block; margin:0 auto;">
+                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 5：视频观看量分布</figcaption>
                     </figure>
                 </div>
