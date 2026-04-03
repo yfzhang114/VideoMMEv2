@@ -2065,9 +2065,6 @@
                 <a href="#dataset" data-lang-zh>数据集</a>
                 <a href="#analysis" data-lang-zh>分析</a>
             </nav>
-            <a href="#" class="logo" style="margin-left: 16px;">
-                <span class="logo-badge">Video-MME</span>
-            </a>
         </div>
     </div>
 </header>
@@ -2294,8 +2291,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models, <em>wo sub</em> represents the model's performance without audio (muted). For certain Omni models that are only reported with raw-audio input (e.g., <strong>Gemini 3.0 Flash</strong>, <strong>Gemini 3.0 Pro</strong>), we place the raw-audio result under <em>w. sub</em>, and show <em>wo sub</em> as &quot;/&quot; when no separate subtitle-free result is reported. <em>Sorting:</em> models with <em>w. sub</em> results are ranked by <em>w. sub</em>; otherwise by <em>wo sub</em>. <em>Frames</em> = video sampling rate (e.g., 1fps). <em>Level 1/2/3</em> = three cognitive levels (Information Retrieval &amp; Aggregation, Temporal Understanding, Complex Reasoning). <em>Capability Consistency</em> = consistency across dimensions. <em>Reasoning Coherence</em> = coherence along logic chains. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation).</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于 Omni 模型，<em>wo sub</em> 表示模型在无音频（静音）条件下的性能。对于部分仅报告原始语音输入结果的 Omni 模型（如 <strong>Gemini 3.0 Flash</strong>、<strong>Gemini 3.0 Pro</strong>），我们将该结果记入 <em>w. sub</em>；若没有单独的无字幕结果，则 <em>wo sub</em> 显示为 &quot;/&quot;。<em>排序：</em>有 <em>w. sub</em> 结果的模型按 <em>w. sub</em> 排序，否则按 <em>wo sub</em> 排序。<em>Frames</em> = 视频采样帧率（如 1fps）。<em>Level 1/2/3</em> = 三个认知层级（信息检索与聚合、时序理解、复杂推理）。<em>能力一致性</em> = 跨维度一致性。<em>推理连贯性</em> = 沿逻辑链的连贯性。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models, <em>wo sub</em> represents the model's performance without audio (muted), and <em>w. sub</em> represents the results with audio input (non-text subtitles). <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation). Due to API limitations, Gemini was tested by sampling and compressing videos to 60M, and GPT-5 was tested using 50-frame inputs.</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于 Omni 模型，<em>wo sub</em> 表示模型在无音频（静音）条件下的性能，<em>w. sub</em> 表示语音输入（非文本字幕）下的结果。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。由于 API 限制，Gemini 是将视频抽帧压缩到 60M 后进行测试，GPT-5 采用 50 帧输入测试。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
