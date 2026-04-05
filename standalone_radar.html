@@ -1,16 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standalone Capability Radar</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            background-color: #f8fafc;
+            padding: 2rem;
+            margin: 0;
+        }
+        .capability-radar-shell {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.65rem 1.25rem 0.05rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+        }
+        .capability-radar-levels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 0.2rem;
+            margin-top: 1rem;
+        }
+        .capability-level-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid #d1d5db;
+            background: rgba(255,255,255,0.92);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #475569;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+        }
+        .capability-level-pill .swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            flex: 0 0 auto;
+        }
+        .capability-level-pill.level-1 .swatch { background: #E4F3DD; }
+        .capability-level-pill.level-2 .swatch { background: #E0EDF5; }
+        .capability-level-pill.level-3 .swatch { background: #FCE2D1; }
+        .capability-radar-chart {
+            width: 100%;
+            height: 550px;
+        }
+        @media (max-width: 768px) {
+            .capability-radar-shell {
+                padding: 1rem 0.65rem 0.5rem;
+                border-radius: 16px;
+            }
+            .capability-radar-chart {
+                height: 550px;
+            }
+            .capability-level-pill {
+                font-size: 0.8rem;
+                padding: 7px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="capability-radar-shell">
+    <div class="capability-radar-levels">
+        <div class="capability-level-pill level-1">
+            <span class="swatch"></span>
+            <span>Level 1: Retrieval & Aggregation</span>
+        </div>
+        <div class="capability-level-pill level-2">
+            <span class="swatch"></span>
+            <span>Level 2: Temporal Understanding</span>
+        </div>
+        <div class="capability-level-pill level-3">
+            <span class="swatch"></span>
+            <span>Level 3: Complex Reasoning</span>
+        </div>
+    </div>
+    <div id="radar-chart" class="capability-radar-chart" aria-label="Capability radar chart"></div>
+</div>
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
   const chartDom = document.getElementById("radar-chart");
   if (!chartDom) return;
 
-  if (typeof echarts === "undefined") {
-    chartDom.innerHTML = "Radar chart failed to load because ECharts is unavailable.";
-    chartDom.style.display = "grid";
-    chartDom.style.placeItems = "center";
-    chartDom.style.color = "#6b7280";
-    return;
-  }
+  // Add html2canvas library for PNG export
+  const script = document.createElement('script');
+  script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+  document.head.appendChild(script);
 
   const myChart = echarts.init(chartDom, null, { renderer: "svg", devicePixelRatio: 2 });
+  
   const categories = [
     { display: "Frame-Only", tooltip: "Frame-Only" },
     { display: "Frames & Audio", tooltip: "Frames & Audio" },
@@ -18,88 +109,52 @@ document.addEventListener("DOMContentLoaded", function () {
     { display: "Order", tooltip: "Order" },
     { display: "Change", tooltip: "Change" },
     { display: "Temporal\nReasoning", tooltip: "Temporal Reasoning" },
-    {
-      display: "Complex Plot\nComprehension",
-      tooltip: "Complex Plot Comprehension",
-    },
-    {
-      display: "Video-Based\nKnowledge Acquisition",
-      tooltip: "Video-Based Knowledge Acquisition",
-    },
-    {
-      display: "Social Behavior\nAnalysis",
-      tooltip: "Social Behavior Analysis",
-    },
-    {
-      display: "Physical World\nReasoning",
-      tooltip: "Physical World Reasoning",
-    },
+    { display: "Complex Plot\nComprehension", tooltip: "Complex Plot Comprehension" },
+    { display: "Video-Based\nKnowledge Acquisition", tooltip: "Video-Based Knowledge Acquisition" },
+    { display: "Social Behavior\nAnalysis", tooltip: "Social Behavior Analysis" },
+    { display: "Physical World\nReasoning", tooltip: "Physical World Reasoning" },
   ];
 
   const cwIndices = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1];
   const indicatorNames = cwIndices.map((i) => categories[i].display);
-  const tooltipNames = cwIndices.map((i) => categories[i].tooltip);
   const numAxes = categories.length;
 
-  // Ordered by Non-Lin score descending:
-  // Human Expert (90.6) > Gemini-3-Pro (49.4) > Doubao-Seed (43.2) > Qwen3.5-397B (39.1) > GPT-5 (36.9) > Qwen3-VL-235B (25.0) > InternVL3-5-241B (23.1) > Qwen3-Omni-30B (17.1)
   const orderedModels = [
     "Human Expert",
     "Gemini-3-Pro",
-    "Doubao-Seed-2.0-Pro-260215",
     "Qwen3.5-397B-A17B-Think",
     "GPT-5",
-    "Qwen3-VL-235B-A22B-Instruct",
-    "InternVL3-5-241B-A28B-Instruct",
     "Qwen3-Omni-30B-A3B-Instruct"
   ];
 
   const colors = {
     "Human Expert": "#8E9EAB",
     "Gemini-3-Pro": "#7C9885",
-    "Doubao-Seed-2.0-Pro-260215": "#D07C74",
     "Qwen3.5-397B-A17B-Think": "#B59E75",
     "GPT-5": "#D9A05B",
-    "Qwen3-VL-235B-A22B-Instruct": "#C48E97",
-    "InternVL3-5-241B-A28B-Instruct": "#6CA1A2",
     "Qwen3-Omni-30B-A3B-Instruct": "#798A9F",
   };
 
   const legendLabels = {
     "Human Expert": "Human Expert",
     "Gemini-3-Pro": "Gemini-3-Pro",
-    "Doubao-Seed-2.0-Pro-260215": "Doubao-Seed-2.0-Pro\n260215",
     "Qwen3.5-397B-A17B-Think": "Qwen3.5-397B-A17B\nThink",
     "GPT-5": "GPT-5",
-    "Qwen3-VL-235B-A22B-Instruct": "Qwen3-VL-235B-A22B\nInstruct",
-    "InternVL3-5-241B-A28B-Instruct": "InternVL3-5-241B-A28B\nInstruct",
     "Qwen3-Omni-30B-A3B-Instruct": "Qwen3-Omni-30B-A3B\nInstruct",
   };
 
   let userLegendState = {
     "Human Expert": true,
     "Gemini-3-Pro": true,
-    "Doubao-Seed-2.0-Pro-260215": false,
     "Qwen3.5-397B-A17B-Think": true,
     "GPT-5": true,
-    "Qwen3-VL-235B-A22B-Instruct": false,
-    "InternVL3-5-241B-A28B-Instruct": false,
     "Qwen3-Omni-30B-A3B-Instruct": true,
   };
 
   const rawData = [
     {
       name: "Human Expert",
-      value: [96.1589, 93.6332, 89.0858, 92.9444, 95.1923, 87.2727, 87.0929, 89.9665, 91.6111, 84.1246],
-      meta: {
-        overallAcc: 0.9494,
-        nonLinScore: 90.6786,
-        consistencyScore: 91.6667,
-        coherenceScore: 88.8538,
-        level1Score: 94.8276,
-        level2Score: 91.1228,
-        level3Score: 87.9406,
-      },
+      value: [96.1589, 93.6332, 89.0858, 92.9444, 95.1923, 87.2727, 87.0929, 89.9665, 91.6111, 84.1246]
     },
     {
       name: "Gemini-3-Pro",
@@ -110,20 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
       value: [27.34, 32.65, 15.22, 29.78, 31.73, 26.66, 22.24, 26.44, 19.83, 15.05],
     },
     {
-      name: "Doubao-Seed-2.0-Pro-260215",
-      value: [53.48, 55.31, 27.24, 65.83, 45.43, 46.79, 37.19, 43.07, 36.52, 21.63],
-    },
-    {
       name: "Qwen3-Omni-30B-A3B-Instruct",
       value: [19.28, 23.8, 11.38, 19.16, 11.18, 17.2, 17.65, 18.3, 18.02, 10.92],
-    },
-    {
-      name: "Qwen3-VL-235B-A22B-Instruct",
-      value: [24.37, 36.42, 13.99, 31.13, 24.64, 31.26, 22.88, 27.19, 24.51, 13.35],
-    },
-    {
-      name: "InternVL3-5-241B-A28B-Instruct",
-      value: [22.65, 33.14, 15.39, 28.17, 21.03, 30.37, 19.81, 21.52, 22.02, 15.97],
     },
     {
       name: "Qwen3.5-397B-A17B-Think",
@@ -230,9 +273,41 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function buildOption() {
-      const layout = getLayout();
-  
-      return {
+    const layout = getLayout();
+
+    return {
+      toolbox: {
+        feature: {
+          myDownload: {
+            show: true,
+            title: 'Download Image',
+            icon: 'path://M4.7,22.9L29.3,45.5L54.7,23.4M4.6,43.6L4.6,58L53.8,58L53.8,43.6M29.2,45.1L29.2,0',
+            onclick: function() {
+                myChart.setOption(buildOption());
+                
+                // Temporarily hide the download button
+                const option = myChart.getOption();
+                option.toolbox[0].feature.myDownload.show = false;
+                myChart.setOption(option);
+                
+                // Use html2canvas to capture the entire shell as PNG
+                const element = document.querySelector('.capability-radar-shell');
+                html2canvas(element, { scale: 3, backgroundColor: '#ffffff', useCORS: true }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'Video-MME-v2-Capability-Radar.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    
+                    // Restore the download button
+                    option.toolbox[0].feature.myDownload.show = true;
+                    myChart.setOption(option);
+                });
+            }
+          }
+        },
+        right: 20,
+        top: 10
+      },
       animationDuration: 500,
       color: modelNames.map((name) => colors[name]),
       tooltip: {
@@ -255,7 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return [
             "<div style=\"min-width:180px;\">",
             `<div style="font-weight:700; margin-bottom:4px;">${params.name}</div>`,
-            `<div style="color:#4b5563;">${tooltipNames[idx]}</div>`,
+            `<div style="color:#4b5563;">${indicatorNames[idx]}</div>`,
             `<div style="margin-top:4px; color:${colors[params.name]}; font-weight:700;">${value}</div>`,
             overall,
             "</div>",
@@ -363,6 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ],
         },
         {
+          name: "Model Performance",
           type: "radar",
           z: 5,
           data: buildSeriesData(currentHighlight),
@@ -425,3 +501,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderChart();
 });
+</script>
+</body>
+</html>

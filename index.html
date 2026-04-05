@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video-MME v2: Evaluating True Understanding and Reasoning in Video MLLMs</title>
+    <title>Video-MME-v2</title>
+    <link rel="icon" href="figs/logos/web_logo.png" type="image/png">
     <style>
         :root {
             --primary-color: #1a1a2e;
@@ -100,6 +101,57 @@
         .chart-container{
             width: 100%;
             height: 520px;
+        }
+
+        .capability-radar-shell {
+            margin: 1.5rem auto 0;
+            padding: 0.65rem 1.25rem 0.05rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        .capability-radar-levels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 0.2rem;
+        }
+
+        .capability-level-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid #d1d5db;
+            background: rgba(255,255,255,0.92);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #475569;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+        }
+
+        .capability-level-pill .swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            flex: 0 0 auto;
+        }
+
+        .capability-level-pill.level-1 .swatch { background: #E4F3DD; }
+        .capability-level-pill.level-2 .swatch { background: #E0EDF5; }
+        .capability-level-pill.level-3 .swatch { background: #FCE2D1; }
+
+        .capability-radar-chart {
+            width: 100%;
+            height: 480px;
+        }
+
+        .capability-radar-fallback {
+            margin-top: 1rem;
         }
 
         /* Header */
@@ -1094,6 +1146,20 @@
         }
 
         @media (max-width: 768px) {
+            .capability-radar-shell {
+                padding: 1rem 0.65rem 0.5rem;
+                border-radius: 16px;
+            }
+
+            .capability-radar-chart {
+                height: 550px;
+            }
+
+            .capability-level-pill {
+                font-size: 0.8rem;
+                padding: 7px 12px;
+            }
+
             .qa-options {
                 grid-template-columns: 1fr; /* 手机屏幕窄，强制变回单列 */
             }
@@ -1238,21 +1304,26 @@
         }
         /* 两图占比：根据长宽比调整 flex 以实现高度一致 */
         .figures-row figure {
-            flex: 1 1 0;
+            flex: 1;
+            width: 50%;
             min-width: 0;
             margin: 0;
         }
         .figures-row.row-1 figure:first-child {
             flex: 1.27 1 0;
+            width: auto;
         }
         .figures-row.row-1 figure:last-child {
             flex: 1 1 0;
+            width: auto;
         }
         .figures-row.row-2 figure:first-child {
             flex: 1 1 0;
+            width: auto;
         }
         .figures-row.row-2 figure:last-child {
             flex: 1 1 0;
+            width: auto;
         }
         .figures-row figure img {
             width: 100%;
@@ -2297,8 +2368,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models, <em>wo sub</em> represents the model's performance without audio (muted), and <em>w. sub</em> represents the results with audio input (non-text subtitles). <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation). Due to API limitations, Gemini was tested by sampling and compressing videos to 60M, and GPT-5 was tested using 50-frame inputs.</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于 Omni 模型，<em>wo sub</em> 表示模型在无音频（静音）条件下的性能，<em>w. sub</em> 表示语音输入（非文本字幕）下的结果。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。由于 API 限制，Gemini 是将视频抽帧压缩到 60M 后进行测试，GPT-5 采用 50 帧输入测试。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models, <em>wo sub</em> represents the model's performance without audio (muted), and <em>w. sub</em> represents the results with audio input (non-text subtitles). Similarly, for the Human Expert baseline, <em>w. sub</em> indicates that human evaluators had access to the audio. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation). Due to API limitations, Gemini was tested by sampling and compressing videos to 60M, and GPT-5 was tested using 50-frame inputs.</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于 Omni 模型，<em>wo sub</em> 表示模型在无音频（静音）条件下的性能，<em>w. sub</em> 表示语音输入（非文本字幕）下的结果。同样地，对于 Human Expert 基线，<em>w. sub</em> 表示人类评估者在测试时可以听到音频。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。由于 API 限制，Gemini 是将视频抽帧压缩到 60M 后进行测试，GPT-5 采用 50 帧输入测试。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
@@ -3764,7 +3835,7 @@
                         </div>
                         <div class="ann-criterion-body">
                             <div class="ann-subitem">Video source: Over 80% of the videos are YouTube uploads from 2025 onward, ensuring temporal freshness and reducing contamination risk.</div>
-                            <div class="ann-subitem">Diversity coverage: A taxonomy with 4 top-level categories and 31 subcategories guarantees broad coverage of topics and visual styles.</div>
+                            <div class="ann-subitem">Diversity coverage: A taxonomy with 4 top-level categories and 32 subcategories guarantees broad coverage of topics and visual styles.</div>
                             <div class="ann-subitem">Content quality control: View-count thresholds (about 85% of videos exceed 10,000 views) filter out low-quality, noisy samples at the source.</div>
                             <div class="ann-subitem">Manual decontamination: Classic films and flagship videos from top creators are manually removed to minimize evaluation bias from model 「memorization effects」.</div>
                         </div>
@@ -3829,7 +3900,7 @@
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">2</span>
-                        <div class="stats-content"><strong>Video category:</strong> As shown in Fig. 3, video types cover 4 major categories and 31 subcategories, including Sports &amp; Competition (e.g. basketball, soccer), Lifestyle &amp; Entertainment (e.g. variety shows, digital), Art &amp; Literature (e.g. film, comics), and Knowledge &amp; Education (e.g. AI, humanities &amp; history).</div>
+                        <div class="stats-content"><strong>Video category:</strong> As shown in Fig. 3, video types cover 4 major categories and 32 subcategories, including Sports &amp; Competition (e.g. basketball, soccer), Lifestyle &amp; Entertainment (e.g. variety shows, digital), Art &amp; Literature (e.g. film, comics), and Knowledge &amp; Education (e.g. AI, humanities &amp; history).</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">3</span>
@@ -3853,27 +3924,27 @@
                     <figure>
                         <img src="figs/exps/data_sta.png" 
                             alt="Video-MME V2 Data Statistics" 
-                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                            style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 2: Video length, and question and option length distribution</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/imgs/video_category.png" 
                             alt="Video-MME V2 video category distribution (sunburst)" 
-                            style="width:100%; height:auto; display:block; margin:0 auto;">
-                        <figcaption>Figure 3: Video category distribution — four top-level categories and 31 subcategories</figcaption>
+                            style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                        <figcaption>Figure 3: Video category distribution</figcaption>
                     </figure>
                 </div>
                 <div class="figures-row">
                     <figure>
                         <img src="figs/exps/video_publish_month.png" 
                             alt="Video-MME V2 Video Publication Time Distribution" 
-                            style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                            style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 4: Video publication time distribution</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/exps/video_viewcount.png" 
                             alt="Video-MME V2 Video View Count Distribution" 
-                            style="width:100%; height:auto; display:block; margin:0 auto;">
+                            style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 5: Video view count distribution</figcaption>
                     </figure>
                 </div>
@@ -3934,7 +4005,7 @@
                         </div>
                         <div class="ann-criterion-body">
                             <div class="ann-subitem">视频来源：数据集中80%+为2025年及以后发布的YouTube视频，以确保评估基准的时效性并降低数据污染风险。</div>
-                            <div class="ann-subitem">多样性覆盖：构建包含4个一级类别、31个二级类别的分类体系，确保题材与风格广泛分布。</div>
+                            <div class="ann-subitem">多样性覆盖：构建包含4个一级类别、32个二级类别的分类体系，确保题材与风格广泛分布。</div>
                             <div class="ann-subitem">内容质量控制：引入播放量作为内容质量的近似指标，近85%的视频观看量超过10,000次，从源头减少低质噪声样本。</div>
                             <div class="ann-subitem">人工防污染：人工剔除经典影视作品及头部博主内容，最大限度规避模型「记忆效应」带来的评估偏差。</div>
                         </div>
@@ -3999,7 +4070,7 @@
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">2</span>
-                        <div class="stats-content"><strong>视频类别：</strong>如 Fig. 3 所示，视频类型覆盖 4 大类、31 小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。</div>
+                        <div class="stats-content"><strong>视频类别：</strong>如 Fig. 3 所示，视频类型覆盖 4 大类、32 小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">3</span>
@@ -4030,7 +4101,7 @@
                         <img src="figs/imgs/video_category_cropped.png" 
                             alt="Video-MME V2 视频类别分布（旭日图）" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                        <figcaption>Figure 3：视频类别分布，含4个一级类别、31个二级类别</figcaption>
+                        <figcaption>Figure 3：视频类别分布，含4个一级类别、32个二级类别</figcaption>
                     </figure>
                 </div>
                 <div class="figures-row row-2">
@@ -4363,11 +4434,35 @@
                     <strong>3. 提升空间明显：</strong>整体来看，即便作为 SOTA 模型，<strong>Gemini-3-Pro</strong> 在各项能力上仍有显著提升空间。尤其是在 Action&amp;Motion 与 Physical World Reasoning 等维度上得分仍不足 30，反映出当前模型在细粒度动作语义建模与物理规律理解等方面仍需进一步加强。
                 </p>
                 <figure class="figure-full-width">
-                    <img src="figs/exps/radar_second_head.png" 
-                        alt="Capability radar: model performance across Video-MME v2 dimensions" 
-                        style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 8: Capability radar</figcaption>
-                    <figcaption data-lang-zh>Figure 8: 能力雷达图</figcaption>
+                    <div class="capability-radar-shell">
+                        <div class="capability-radar-levels">
+                            <div class="capability-level-pill level-1">
+                                <span class="swatch"></span>
+                                <span data-lang-en>Level 1: Retrieval &amp; Aggregation</span>
+                                <span data-lang-zh>Level 1：检索与聚合</span>
+                            </div>
+                            <div class="capability-level-pill level-2">
+                                <span class="swatch"></span>
+                                <span data-lang-en>Level 2: Temporal Understanding</span>
+                                <span data-lang-zh>Level 2：时序理解</span>
+                            </div>
+                            <div class="capability-level-pill level-3">
+                                <span class="swatch"></span>
+                                <span data-lang-en>Level 3: Complex Reasoning</span>
+                                <span data-lang-zh>Level 3：复杂推理</span>
+                            </div>
+                        </div>
+                        <div id="radar-chart" class="capability-radar-chart" aria-label="Capability radar chart"></div>
+                        <noscript>
+                            <div class="capability-radar-fallback">
+                                <img src="figs/exps/radar_second_head.png"
+                                    alt="Capability radar: model performance across Video-MME v2 dimensions"
+                                    style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
+                            </div>
+                        </noscript>
+                    </div>
+                    <figcaption data-lang-en>Figure 8: Capability radar. <em>(Click on the model names in the legend to show/hide specific models)</em></figcaption>
+                    <figcaption data-lang-zh>Figure 8: 能力雷达图。<em>（点击图例中的模型名称即可显示/隐藏对应的模型结果）</em></figcaption>
                 </figure>
             </div>
         </div>
@@ -4405,6 +4500,8 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script src="figs/imgs/radar-chart.js"></script>
 <script>
     // Language Switcher Function
     function switchLanguage(lang) {
@@ -4504,6 +4601,7 @@
 
     // Leaderboard Data - each metric has [w_sub, wo_sub]; updated from benchmark final_rating (level_1, level_2, level_3, relevance_linear_score, logic_score)
     const leaderboardDataRaw = [
+        { name: "Human Expert", logo: "human", type: "human", frames: "-", level1: [94.8276, null], level2: [91.1228, null], level3: [87.9406, null], relevance: [91.6667, null], logic: [88.8538, null], overall: [90.6786, null], avg_acc: [94.94, null] },
         { name: "Gemini-3-Flash", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [58.33743842, 41.47905759], level2: [44.82962213, 37.37139918], level3: [31.66426513, 24.95183044], relevance: [44.91054159, 35.57021912], logic: [38.1577381, 27.98860911], overall: [42.53816395, 32.86805556], avg_acc: [61.09, 52.36] },
         { name: "Gemini-3-Pro", logo: "gemini", type: "proprietary", omni: true, frames: "1fps", level1: [63.95320197, 43.23275862], level2: [50.00669344, 45.3564257], level3: [40.55316092, 30.1532567], relevance: [50.75867052, 39.727842], logic: [46.98546856, 35.38997628], overall: [49.43333333, 38.20416667], avg_acc: [66.06, 56.84] },
         { name: "GPT-5", logo: "openai", type: "proprietary", frames: "50", level1: [44.54301075, 32.15457686], level2: [39.11504425, 28.63319386], level3: [31.05152471, 21.3255287], relevance: [37.4046841, 28.13139059], logic: [36.29475309, 23.18126521], overall: [36.99359854, 26.3537571], avg_acc: [55.62, 44.69] },
@@ -4557,6 +4655,8 @@
         { name: "Qwen3.5-122B-A10B-Think", logo: "qwen", type: "open", frames: "512", level1: [27.44663383, 15.77175698], level2: [25.56392236, 13.95749665], level3: [23.37643678, 12.92145594], relevance: [24.33766859, 14.54720617], logic: [26.47983393, 12.89590747], overall: [25.1, 14.0], avg_acc: [43.4, 30.6] },
         { name: "Qwen3.5-397B-A17B-Think", logo: "qwen", type: "open", frames: "512", level1: [50.30993432, 35.43308703], level2: [41.75535475, 36.50267738], level3: [30.6585249, 22.92983716], relevance: [38.95712909, 32.17726397], logic: [39.3609134, 26.90984579], overall: [39.1, 30.3], avg_acc: [55.9, 48.8] },
         { name: "MiMo-v2-Omni", logo: "mimo", type: "open", frames: "1fps", level1: [52.61428571, 38.66996234], level2: [43.13293651, 35.97953216], level3: [27.37264673, 20.37037037], relevance: [39.72222222, 32.35452586], logic: [36.56603107, 25.37955466], overall: [38.63641885, 29.9314346], avg_acc: [56.11, 47.06] },
+        { name: "Qwen3.5-Omni-Plus", logo: "qwen", type: "open", omni: true, frames: "64", level1: [31.17610837, 19.62643678], level2: [26.61311914, 18.21954485], level3: [21.55890805, 15.24904215], relevance: [25.34922929, 17.31695568], logic: [25.98457888, 17.22419929], overall: [25.6, 17.3], avg_acc: [44.3, 35] },
+        { name: "VITA-1.5", logo: "vita", type: "open", frames: "16", level1: [14.12972085, 11.60098522], level2: [9.421017403, 7.930053548], level3: [10.96503831, 6.491858238], relevance: [10.34441233, 8.875240848], logic: [13.02935943, 7.055160142], overall: [11.3, 8.2], avg_acc: [25.8, 21.8] },
     ];
 
     // Expand data - all values are directly provided, no calculations
@@ -4606,6 +4706,7 @@
 
     // Logo SVGs - 添加新的logo
     const logos = {
+        human: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;padding:2px;background:#e2e8f0;border-radius:6px;color:#475569;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`,
         openai: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.0462 6.0462 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.4848 4.4848 0 0 1 2.3655-1.9723V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.453l-.142.0805L8.704 5.4599a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l3.1028-1.7999 3.1028 1.7999v3.5916l-3.1028 1.7999-3.1028-1.7999z" fill="#000"/></svg>`,
         qwen: `<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Qwen_logo.svg" alt="Qwen" style="width:100%;height:100%;">`,
         gemini: `<img src="figs/logos/gemini_logo.jpg" alt="Gemini" style="width:100%;height:100%;">`,
@@ -4618,6 +4719,7 @@
         videollama: `<img src="figs/logos/videollama_logo.jpg" alt="VideoLLaMA" style="width:100%;height:100%;">`,
         llava: `<img src="figs/logos/llava_logo.jpg" alt="LLaVA" style="width:100%;height:100%;">`,
         keye: `<img src="figs/logos/keye_logo.jpg" alt="Keye" style="width:100%;height:100%;">`,
+        vita: `<img src="figs/logos/youtu.png" alt="VITA" style="width:100%;height:100%;">`,
     };
 
     // Current sort state
