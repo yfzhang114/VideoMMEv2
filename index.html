@@ -4161,25 +4161,25 @@
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>1. Overall Q1→Q4 accuracy trend:</strong> We report overall accuracy from Q1 to Q4 for five models (four proprietary and one open-source) on both 「capability consistency」 and 「reasoning coherence」 question groups, and analyze from both data and model perspectives.
+                    <strong>1. Overall Q1→Q4 accuracy trend:</strong> We report overall accuracy from Q1 to Q4 for five models (four proprietary and one open-source) in both 「capability consistency」 and 「reasoning coherence」 question groups, and analyze from both data and model perspectives.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     <strong>1. Q1→Q4 的整体准确率趋势：</strong>我们统计了 5 个模型（4 个闭源和 1 个开源）在「能力一致性」与「推理连贯性」两类问题组中 Q1→Q4 的整体准确率，并从数据和模型两个视角进行分析。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>（1）Data perspective:</strong> In the 「capability consistency」 group, accuracy across Q1–Q4 is similar for all models, indicating that difficulty is well balanced across question indices. In the 「reasoning coherence」 group, accuracy consistently decreases from Q1 to Q4 for all models, indicating that difficulty increases along the sequence—consistent with our design.
+                    <strong>（1）Data perspective:</strong> In 「capability consistency」 groups, accuracy across Q1–Q4 is similar for all models, indicating that difficulty is well balanced across question indices. In 「reasoning coherence」 groups, accuracy consistently decreases from Q1 to Q4 for all models, indicating that difficulty increases along the sequence—consistent with our design.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
                     <strong>（1）数据角度：</strong>在「能力一致性」组中，各模型在 Q1→Q4 上的准确率整体接近，说明不同编号题目的总体难度分布较为均衡。而在「推理连贯性」组中，所有模型的准确率均呈现 Q1→Q4 逐步下降的趋势，表明组内题目难度按序递增。这符合我们的原始设定。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>（2）Model perspective:</strong> In the 「capability consistency」 group, <strong>Gemini-3-Pro</strong> and <strong>GPT-5</strong> exhibit only marginal fluctuations in accuracy from Q1 to Q4, indicating stronger stability. In the 「reasoning coherence」 group, models differ substantially in the smoothness of their performance decay from Q1 to Q4. We hypothesize that this variation reflects differences in the evidence sources underlying model predictions. For models operating with fewer sampled frames (e.g., <strong>GPT-5</strong>) or with weaker video understanding ability, responses may rely more heavily on textual cues or superficial patterns, resulting in more pronounced fluctuations as reasoning depth increases. In contrast, models with stronger video understanding are more likely to ground their reasoning in the video content itself, and therefore exhibit a smoother degradation trend as reasoning depth increases.
+                    <strong>（2）Model perspective:</strong> In 「capability consistency」 groups, <strong>Gemini-3-Pro</strong> and <strong>GPT-5</strong> exhibit only marginal fluctuations in accuracy from Q1 to Q4, indicating stronger stability. In 「reasoning coherence」 groups, models exhibit different decline patterns from Q1 to Q4: models with stronger video understanding show a smoother, lower-curvature decline, while weaker models show more pronounced inflection points. This suggests that models differ in their ability to maintain consistent intermediate reasoning states along a progressively deeper reasoning chain. We hypothesize that stronger models can rely more stably on the spatiotemporal evidence grounded in the video itself, leading to a more linear decline in accuracy as reasoning depth increases.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>Gemini-3-Pro</strong> 与 <strong>GPT-5</strong>的 Q1→Q4 准确率波动很小，体现更强的稳定性。在「推理连贯性」组中，不同模型在 Q1→Q4 的下降平滑程度存在明显差异。我们推测，这种差异可能反映了模型推理依据的不同：对于帧数较低（GPT-5）或视频理解较弱的模型，其回答更可能依赖文本线索或表面模式进行猜测，因此随着推理深度的增加，性能下降的波动更为明显；相比之下，视频理解较强的模型更倾向基于视频信息本身进行推理，因此随着推理深度增加，下降的趋势更加平滑。
+                    <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>Gemini-3-Pro</strong> 与 <strong>GPT-5</strong> 的 Q1→Q4 准确率波动很小，体现更强的稳定性。在「推理连贯性」组中，不同模型在 Q1→Q4 上呈现不同的下降形态：视频理解较强的模型表现出更平滑、更低曲率的下降趋势，而较弱的模型则表现出更明显的拐点。这表明，在逐步加深的推理链中，不同模型维持中间推理状态一致性的能力并不相同。我们推测，较强模型在回答问题时能够更稳定地依赖视频本身的时空证据，因此其准确率会随着推理深度的增加呈现出更平稳线性的下降。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>2. Mean and variance in the 「capability consistency」 group:</strong> We further report mean and variance of overall Q1–Q4 accuracy for eight models (six proprietary and two open-source) on the 「capability consistency」 group. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
+                    <strong>2. Mean and variance in 「capability consistency」 groups:</strong> We further report mean and variance of overall Q1–Q4 accuracy for eight models (six proprietary and two open-source) in 「capability consistency」 groups. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.5rem;">
                     <strong>2. 「能力一致性」组的均值与方差：</strong>我们进一步统计了 8 个模型（6 个闭源 2 个开源）在「能力一致性」组上 Q1→Q4 整体准确率的均值与方差。如最右侧图所示，横轴与纵轴分别对应模型的平均表现与结果稳定性，从而同时刻画视频理解能力的性能与鲁棒性。主要观察到两点结论：
@@ -4193,7 +4193,7 @@
                     （2）整体而言，闭源模型不仅在性能上优于开源模型，在稳定性方面也呈现优势。
                 </p>
                 <figure class="figure-full-width">
-                    <img src="figs/exps/q1-q4_models_acc_0402.png"
+                    <img src="figs/exps/q1-q4_models_acc_0405.png"
                         alt="Q1-Q4 accuracy and mean/variance in capability consistency"
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption data-lang-en>Figure 6: Overall Q1→Q4 accuracy in 「capability consistency」 and 「reasoning coherence」 groups, and mean &amp; variance in the 「capability consistency」 group.</figcaption>
