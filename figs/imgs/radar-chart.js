@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const myChart = echarts.init(chartDom, null, { renderer: "canvas" });
+  const myChart = echarts.init(chartDom, null, { renderer: "svg", devicePixelRatio: 2 });
   const categories = [
     { display: "Frame-Only", tooltip: "Frame-Only" },
     { display: "Frames & Audio", tooltip: "Frames & Audio" },
@@ -233,18 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const layout = getLayout();
   
       return {
-        toolbox: {
-          feature: {
-            saveAsImage: {
-              show: true,
-              title: 'Save Image',
-              pixelRatio: 2,
-              name: 'Video-MME-v2-Capability-Radar',
-            }
-          },
-          right: 20,
-          top: 10
-        },
       animationDuration: 500,
       color: modelNames.map((name) => colors[name]),
       tooltip: {
