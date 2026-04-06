@@ -128,7 +128,7 @@ def create_custom_legend(fig):
     """Create a global aesthetic legend."""
     handles = [
         mpatches.Patch(facecolor='white', edgecolor='gray', hatch=STYLE_CONFIG["no_sub_hatch"], label='Instruct Baseline (wo. subtitle)'),
-        mpatches.Patch(facecolor=STYLE_CONFIG["base_color"], label='w. subtitle'),
+        mpatches.Patch(facecolor=STYLE_CONFIG["base_color"], label='Instruct Baseline (w. subtitle)'),
         mpatches.Patch(facecolor=STYLE_CONFIG["gain_color"], label='Thinking Gain'),
         mpatches.Patch(facecolor=STYLE_CONFIG["loss_color"], label='Thinking Regression'),
     ]
