@@ -381,6 +381,14 @@ document.addEventListener("DOMContentLoaded", function () {
           padding: layout.mobile ? [4, 7] : [3, 6],
           lineHeight: layout.mobile ? 14 : 16,
         },
+        axisLabel: {
+          show: true,
+          fontSize: 10,
+          color: '#6b7280',
+          showMaxLabel: false,
+          showMinLabel: false,
+          margin: 4
+        },
         splitArea: {
           areaStyle: {
             color: ["rgba(255,255,255,0.00)"],
@@ -403,6 +411,9 @@ document.addEventListener("DOMContentLoaded", function () {
         indicator: indicatorNames.map((name) => ({
           name: name,
           max: 90,
+          axisLabel: {
+            show: name === "Action & Motion"
+          }
         })),
       },
       series: [
