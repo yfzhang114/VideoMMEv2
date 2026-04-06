@@ -1340,6 +1340,7 @@
             font-family: 'Monaco', 'Menlo', monospace;
             font-size: 0.85rem;
             line-height: 1.6;
+            white-space: pre; /* Add this to prevent wrapping and preserve line breaks */
         }
 
         .citation-block code {
@@ -2162,16 +2163,16 @@
 
         <div class="button-group">
             <a href="#" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Paper
+            </a>
+            <a href="https://github.com/MME-Benchmarks/Video-MME-v2" target="_blank" rel="noopener" class="btn btn-secondary">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 GitHub
             </a>
-            <a href="#" class="btn btn-secondary">
+            <a href="https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2" target="_blank" rel="noopener" class="btn btn-secondary">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 HuggingFace
-            </a>
-            <a href="#" class="btn btn-secondary">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                Paper
             </a>
             <a href="#leaderboard" class="btn btn-secondary">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
@@ -2193,27 +2194,27 @@
             <!-- English Content -->
             <div class="intro-container" data-lang-en>
                 <p class="intro-lead">
-                    In 2024, we released the <a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a> benchmark, which focuses on cross-modal video understanding under different video lengths and has become a standard evaluation set for many frontier models, including <strong>Gemini</strong> and <strong>GPT</strong>. However, as model capabilities have rapidly improved, we observe that scores on Video-MME and similar benchmarks are gradually saturating, while there remains a clear gap between <strong>user experience and leaderboard performance</strong>. This suggests that current evaluation paradigms still fall short of fully capturing models' true video understanding abilities, and that the community urgently needs a new, more comprehensive benchmark to measure capability more reliably. After nearly a year of continuous refinement, we now introduce <strong>Video-MME v2</strong>. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
+                    In 2024, we released the <a href="https://video-mme.github.io/" target="_blank" rel="noopener" class="intro-link">Video-MME</a> benchmark, which focuses on cross-modal video understanding under different video lengths and has become a standard evaluation set for many frontier models, including <strong>Gemini</strong> and <strong>GPT</strong>. However, as model capabilities have rapidly improved, we observe that scores on Video-MME and similar benchmarks are gradually saturating, while there remains a clear gap between <strong>user experience and leaderboard performance</strong>. This suggests that current evaluation paradigms still fall short of fully capturing models' true video understanding abilities, and that the community urgently needs a new, more comprehensive benchmark to measure capability more reliably. After nearly a year of continuous refinement, we now introduce <strong>Video-MME-v2</strong>. At this key moment in the evolution of video understanding, we aim to share our thinking on the next generation of evaluation paradigms and to help drive higher-quality technical iteration for video understanding models.
                 </p>
 
                 <div class="philosophy-box">
                     <div class="philosophy-title">🚀 First Principles</div>
-                    <p>Video-MME v2 redesigns its evaluation system starting from two fundamental questions:</p>
+                    <p>Video-MME-v2 redesigns its evaluation system starting from two fundamental questions:</p>
                     <ul class="philosophy-questions">
                         <li>What exactly should video understanding evaluate?</li>
                         <li>How can we evaluate it sufficiently and reliably?</li>
                     </ul>
                     <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Our answer is reflected in two core designs:</p>
-                    <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level evaluation dimensions</strong><br>From multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from 「finding information」 to 「modeling time」 to 「cross-temporal reasoning」.</p>
-                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear evaluation mechanism</strong><br>Questions are organized into groups along 「capability consistency」 and 「reasoning coherence」. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.</p>
+                    <p style="margin-bottom: 0.75rem;"><strong>1. Progressive Multi-Level evaluation dimensions</strong><br>From multi-point information aggregation → temporal understanding → temporal complex reasoning, forming a three-level progression from Finding Information to Modeling Time to Cross-Temporal Reasoning.</p>
+                    <p style="margin-bottom: 0;"><strong>2. Grouped Non-Linear evaluation mechanism</strong><br>Questions are organized into groups along Capability Consistency and Reasoning Coherence. Each group contains 4 interrelated questions, and we adopt a non-linear scoring scheme where scores depend not only on individual accuracy but also on overall consistency and the completeness of the reasoning loop within each group.</p>
                 </div>
 
                 <h3 class="intro-h3">1. Progressive Multi-Level Evaluation Dimensions</h3>
-                <p>Traditional video benchmarks often focus on specific tasks, making it difficult to form a complete, systematic picture of model capabilities. In Video-MME v2, we combine prior research with real-world deployment experience and design three progressive evaluation dimensions to systematically decompose models' video understanding capabilities:</p>
+                <p>Traditional video benchmarks often focus on specific tasks, making it difficult to form a complete, systematic picture of model capabilities. In Video-MME-v2, we combine prior research with real-world deployment experience and design three progressive evaluation dimensions to systematically decompose models' video understanding capabilities:</p>
                 <div class="capability-grid">
                     <div class="capability-card">
                         <span class="level-badge lvl-1">Level 1</span>
-                        <h4>Multi-point Information Aggregation</h4>
+                        <h4>Multi-Point Information Aggregation</h4>
                         <p>Examines how well models <strong>retrieve, extract, and integrate</strong> multimodal cues (frames, audio, subtitles) that are scattered throughout a video. This forms the foundational perception layer of video understanding.</p>
                     </div>
                     <div class="capability-card">
@@ -2228,13 +2229,13 @@
                     </div>
                 </div>
                 <h3 class="intro-h3">2. Grouped Non-Linear Evaluation Mechanism</h3>
-                <p>Many prior benchmarks adopt a 「scatter-shot」 evaluation paradigm where each question is scored independently, often ignoring dependencies between questions and weakening evaluation efficiency and robustness. To address this, we introduce a group-based evaluation mechanism with two key task group types:</p>
+                <p>Many prior benchmarks adopt a Scatter-Shot evaluation paradigm where each question is scored independently, often ignoring dependencies between questions and weakening evaluation efficiency and robustness. To address this, we introduce a group-based evaluation mechanism with two key task group types:</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>Capability Consistency</h4>
                         <p><strong>Grouping strategy</strong><br>
-                            This group type probes the <strong>true mastery</strong> of a specific capability. For a single capability, we construct <strong>4 questions at different levels</strong> within a group around different facets of that capability. For example, in a counting scenario, we may evaluate: the number of players in a single frame, the number of action types within a short clip, the number of times a given action appears across clips, and the total number of segments in the full video. By moving from local to global and from static to cross-temporal, we more effectively distinguish between 「lucky guesses」 and genuinely robust capability.
+                            This group type probes the <strong>true mastery</strong> of a specific capability. For a single capability, we construct <strong>4 questions at different levels</strong> within a group around different facets of that capability. For example, in a counting scenario, we may evaluate: the number of players in a single frame, the number of action types within a short clip, the number of times a given action appears across clips, and the total number of segments in the full video. By moving from local to global and from static to cross-temporal, we more effectively distinguish between Lucky Guesses and genuinely robust capability.
                         </p>
                         <p><strong>Scoring method</strong><br>
                             We count the number of correctly answered questions <var>N</var> within each group and define the group score as <var>(N/4)²</var>. This non-linear gain suppresses random benefits from isolated correct answers while rewarding stable, group-wide consistency.
@@ -2244,26 +2245,26 @@
                         <div class="icon">🔗</div>
                         <h4>Reasoning Coherence</h4>
                         <p><strong>Grouping strategy</strong><br>
-                            This group type emphasizes the <strong>tightness of the reasoning chain</strong>. Instead of only checking the final answer, we introduce intermediate supervision by constructing <strong>4 progressive questions</strong> around key logical nodes in the same reasoning chain. For example, when a character in a video 「fakes death」 to deceive others, we evaluate whether the model can: identify direct visual cues of apparent death, detect anomalous details that deviate from normal patterns, infer the purpose behind the fake death, and, under these constraints, arrive at the final conclusion. This layered 「clue localization → anomaly verification → goal inference → conclusion closure」 process helps distinguish whether a model truly relies on video evidence for coherent reasoning.
+                            This group type emphasizes the <strong>tightness of the reasoning chain</strong>. Instead of only checking the final answer, we introduce intermediate supervision by constructing <strong>4 progressive questions</strong> around key logical nodes in the same reasoning chain. For example, when a character in a video Fakes Death to deceive others, we evaluate whether the model can: identify direct visual cues of apparent death, detect anomalous details that deviate from normal patterns, infer the purpose behind the fake death, and, under these constraints, arrive at the final conclusion. This layered Clue Localization → Anomaly Verification → Goal Inference → Conclusion Closure process helps distinguish whether a model truly relies on video evidence for coherent reasoning.
                         </p>
                         <p><strong>Scoring method</strong><br>
-                            On top of non-linear scoring, we introduce a <strong>「first-error truncation」 mechanism</strong>: during evaluation, we treat the first error within a group as the boundary of effective reasoning and only count the number of consecutive correct answers before that point. This suppresses 「pseudo-correct」 answers derived from incorrect premises and enforces stricter validity of the reasoning chain.
+                            On top of non-linear scoring, we introduce a <strong>First-Error Truncation mechanism</strong>: during evaluation, we treat the first error within a group as the boundary of effective reasoning and only count the number of consecutive correct answers before that point. This suppresses Pseudo-Correct answers derived from incorrect premises and enforces stricter validity of the reasoning chain.
                         </p>
                     </div>
                 </div>
 
                 <h3 class="intro-h3">3. Data Annotation and Quality Control</h3>
-                <p>The evaluation system of Video-MME v2 places extremely high demands on annotation quality. To this end, we established a comprehensive and rigorous data annotation and quality control process. After investing <strong>3,300 person-hours</strong>, we ultimately collected <strong>800 videos</strong>, each paired with 4 questions and 8 answer options per question.</p>
+                <p>The evaluation system of Video-MME-v2 places extremely high demands on annotation quality. To this end, we established a comprehensive and rigorous data annotation and quality control process. After investing <strong>3,300 human-hours</strong>, we ultimately collected <strong>800 videos</strong>, each paired with 4 questions and 8 answer options per question.</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>Data Annotation</h4>
-                        <p>We assembled an annotation team of <strong>10 human experts</strong> responsible for video data collection and full-pipeline annotation, with strict quality control through 「standardized procedures + cross-validation」: from video selection and question design to option construction, each stage strictly adheres to unified standards. Three rounds of cross-review and revision were conducted, with each sample carefully refined—especially with regard to capability consistency and logical coherence constraints. Including time spent incorporating two rounds of quality-control feedback, approximately <strong>2,200 person-hours</strong> were invested.</p>
+                        <p>We assembled an annotation team of <strong>12 human experts</strong> responsible for video data collection and full-pipeline annotation, with strict quality control through standardized procedures + cross-validation: from video selection and question design to option construction, each stage strictly adheres to unified standards. Three rounds of cross-review and revision were conducted, with each sample carefully refined—especially with regard to capability consistency and logical coherence constraints. Including time spent incorporating two rounds of quality-control feedback, approximately <strong>2,200 human-hours</strong> were invested.</p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
                         <h4>Data Quality Control</h4>
-                        <p>We assembled an independent quality-control team of <strong>50 experts</strong> to minimize subjective bias from human annotators and the influence of large model priors on data quality. Each video sample was independently reviewed by at least 2 quality-control personnel, who conducted two comprehensive rounds of review covering video content, question wording, option design, and results from <strong>Gemini-3-Pro text-only testing</strong>. The team then collaborated with the annotation team to review and confirm all revisions. In addition, the quality-control team completed all dataset questions themselves to calculate human accuracy rates. This process consumed approximately <strong>1,100 person-hours</strong>.</p>
+                        <p>We assembled an independent quality-control team of <strong>50 experts</strong> to minimize subjective bias from human annotators and the influence of large model priors on data quality. Each video sample was independently reviewed by at least 2 quality-control personnel, who conducted two comprehensive rounds of review covering video content, question wording, option design, and results from <strong>Gemini-3-Pro text-only testing</strong>. The team then collaborated with the annotation team to review and confirm all revisions. In addition, the quality-control team completed all dataset questions themselves to calculate human accuracy rates. This process consumed approximately <strong>1,100 human-hours</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -2309,7 +2310,7 @@
                     </div>
                 </div>
                 <h3 class="intro-h3">2. Grouped Non-Linear评估机制</h3>
-                <p>以往的Benchmark多采用「散点评测」范式，即对每个问题独立计分。这种方式往往忽略问题之间的关联关系，进而影响评测的效率与鲁棒性。为此，我们引入分组式评估机制，并设计了两类关键任务组：</p>
+                <p>以往的Benchmark多采用「散点评测」范式，即对每个问题独立计分。这种方式往往忽略问题之间的关联关系，进而影响评测的效率与鲁棒性。为此，我们引入分组式评估机制，并设计了2类关键任务组：</p>
                 <div class="framework-grid">
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
@@ -2331,7 +2332,7 @@
                     <div class="framework-card consistency">
                         <div class="icon">🎯</div>
                         <h4>数据标注</h4>
-                        <p>我们组建了由<strong>10名人类专家</strong>组成的标注团队，负责视频数据的采集与全流程标注，并通过「流程化规范+交叉校验」进行严格质控：从视频筛选、问题设计到选项构造，各环节均严格对齐统一标准。同时设置<strong>3轮</strong>交叉复核与修改，对每条样本进行反复打磨，尤其注重能力一致性与逻辑连贯性约束。包括修改2轮数据质检意见的时间在内，共花费约<strong>2200人工时</strong>。</p>
+                        <p>我们组建了由<strong>12名人类专家</strong>组成的标注团队，负责视频数据的采集与全流程标注，并通过「流程化规范+交叉校验」进行严格质控：从视频筛选、问题设计到选项构造，各环节均严格对齐统一标准。同时设置<strong>3轮</strong>交叉复核与修改，对每条样本进行反复打磨，尤其注重能力一致性与逻辑连贯性约束。包括修改2轮数据质检意见的时间在内，共花费约<strong>2200人工时</strong>。</p>
                     </div>
                     <div class="framework-card coherence">
                         <div class="icon">🔗</div>
@@ -2368,8 +2369,8 @@
         <div class="leaderboard-table-wrapper">
             <table class="leaderboard-table" id="leaderboardTable">
                 <caption class="leaderboard-caption">
-                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models, <em>wo sub</em> represents the model's performance without audio (muted), and <em>w. sub</em> represents the results with audio input (non-text subtitles). Similarly, for the Human Expert baseline, <em>w. sub</em> indicates that human evaluators had access to the audio. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation). Due to API limitations, Gemini was tested by sampling and compressing videos to 60M, and GPT-5 was tested using 50-frame inputs.</span>
-                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于 Omni 模型，<em>wo sub</em> 表示模型在无音频（静音）条件下的性能，<em>w. sub</em> 表示语音输入（非文本字幕）下的结果。同样地，对于 Human Expert 基线，<em>w. sub</em> 表示人类评估者在测试时可以听到音频。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear 评估）。由于 API 限制，Gemini 是将视频抽帧压缩到 60M 后进行测试，GPT-5 采用 50 帧输入测试。</span>
+                    <span data-lang-en><strong>Table definitions:</strong> <em>w. sub</em> = with subtitle; <em>wo sub</em> = without subtitle. For Omni models, <em>wo sub</em> represents the model's performance without audio (muted), and <em>w. sub</em> represents the results with audio input (non-text subtitles). Similarly, for the Human Expert baseline, <em>w. sub</em> indicates that human evaluators had access to the audio. <em>Avg Acc</em> = average accuracy across the five dimensions. <em>Non-Lin Score</em> = group-level metric (Grouped Non-Linear evaluation). Due to API limitations, Gemini models are tested by extracting and compressing video frames to 60M, while GPT-5 is tested with an input of 50 frames. We argue that the proposed group-based nonlinear scoring (Non-Lin Score) more faithfully reflects true model performance than the traditional per-question average accuracy (Avg Acc).</span>
+                    <span data-lang-zh><strong>表头说明：</strong><em>w. sub</em> = 使用字幕；<em>wo sub</em> = 不使用字幕。对于Omni模型，<em>wo sub</em>表示模型在无音频（静音）条件下的性能，<em>w. sub</em>表示语音输入（非文本字幕）下的结果。同样地，对于Human Expert基线，<em>w. sub</em> 表示人类评估者在测试时可以听到音频。<em>Avg Acc</em> = 五维度平均准确率。<em>Non-Lin Score</em> = 组级别指标（Grouped Non-Linear评估）。由于API限制，Gemini是将视频抽帧压缩到60M后进行测试，GPT-5采用50帧输入测试。我们认为所提出的基于Group的Non-Lin Score比传统基于每道题的Avg Acc能够更真实地反映模型性能。</span>
                 </caption>
                 <thead>
                     <tr class="leaderboard-header-row-main">
@@ -3783,13 +3784,13 @@
             <!-- English Content -->
             <div data-lang-en>
                 <p>
-                    To comprehensively evaluate the video understanding capabilities of multimodal large models, Video-MME V2 has constructed a progressive hierarchical classification system. We have abandoned flat task stacking and instead divided capability dimensions into three cognitive stages: from basic information retrieval and aggregation, advancing to dynamic capture of temporal sequences, actions, and changes, and ultimately rising to complex reasoning about plots, the physical world, and social behaviors.
+                    To comprehensively evaluate the video understanding capabilities of multimodal large models, Video-MME-v2 has constructed a progressive hierarchical classification system. We have abandoned flat task stacking and instead divided capability dimensions into three cognitive stages: from basic information retrieval and aggregation, advancing to dynamic capture of temporal sequences, actions, and changes, and ultimately rising to complex reasoning about plots, the physical world, and social behaviors.
                 </p>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">📊 Three-Level Capability Hierarchy</h3>
                 
                 <p style="margin-bottom: 0.5rem;">
-                    Figure 1 below shows the three levels and their capability dimensions. Each level contains several categories; each category groups related sub-dimensions as follows.
+                    Fig. 1 below shows the three levels and their capability dimensions. Each level contains several categories; each category groups related sub-dimensions as follows.
                 </p>
 
                 <div class="hierarchy-detail">
@@ -3816,9 +3817,9 @@
 
                 <figure>
                     <img src="figs/imgs/area-basic.svg" 
-                        alt="Video-MME V2 Three-Level Capability Hierarchy" 
+                        alt="Video-MME-v2 Three-Level Capability Hierarchy" 
                         style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 1: Video-MME V2 three-level capability hierarchy — capability dimensions and their distribution across Level 1 (Retrieval &amp; Aggregation), Level 2 (Temporal Understanding), and Level 3 (Complex Reasoning).</figcaption>
+                    <figcaption>Figure 1: Video-MME-v2 three-level capability hierarchy — capability dimensions and their distribution across Level 1 (Retrieval &amp; Aggregation), Level 2 (Temporal Understanding), and Level 3 (Complex Reasoning).</figcaption>
                 </figure>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 Annotation Pipeline</h3>
@@ -3837,7 +3838,7 @@
                             <div class="ann-subitem">Video source: Over 80% of the videos are YouTube uploads from 2025 onward, ensuring temporal freshness and reducing contamination risk.</div>
                             <div class="ann-subitem">Diversity coverage: A taxonomy with 4 top-level categories and 31 subcategories guarantees broad coverage of topics and visual styles.</div>
                             <div class="ann-subitem">Content quality control: View-count thresholds (about 85% of videos exceed 10,000 views) filter out low-quality, noisy samples at the source.</div>
-                            <div class="ann-subitem">Manual decontamination: Classic films and flagship videos from top creators are manually removed to minimize evaluation bias from model 「memorization effects」.</div>
+                            <div class="ann-subitem">Manual decontamination: Classic films and flagship videos from top creators are manually removed to minimize evaluation bias from model memorization effects.</div>
                         </div>
                     </div>
 
@@ -3880,11 +3881,11 @@
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>c. External Validation</strong>
-                                    <p>Introduce 35 independent reviewers who did not participate in the original annotation; each video question is checked in at least two fine-grained passes to reduce subjective bias.</p>
+                                    <p>Introduce 50 independent reviewers who did not participate in the original annotation; each video question is checked in at least two fine-grained passes to reduce subjective bias.</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>d. Re-Validation</strong>
-                                    <p>Establish a 「revision–retest」 loop: any modified question is re-run under the text-only baseline and independently re-validated to ensure each round of changes yields controlled quality improvements.</p>
+                                    <p>Establish a revision–retest loop: any modified question is re-run under the text-only baseline and independently re-validated to ensure each round of changes yields controlled quality improvements.</p>
                                 </div>
                             </div>
                         </div>
@@ -3923,13 +3924,13 @@
                 <div class="figures-row">
                     <figure>
                         <img src="figs/exps/data_sta.png" 
-                            alt="Video-MME V2 Data Statistics" 
+                            alt="Video-MME-v2 Data Statistics" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 2: Video length, and question and option length distribution</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/imgs/video_category.png" 
-                            alt="Video-MME V2 video category distribution (sunburst)" 
+                            alt="Video-MME-v2 video category distribution (sunburst)" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 3: Video category distribution</figcaption>
                     </figure>
@@ -3937,13 +3938,13 @@
                 <div class="figures-row">
                     <figure>
                         <img src="figs/exps/video_publish_month.png" 
-                            alt="Video-MME V2 Video Publication Time Distribution" 
+                            alt="Video-MME-v2 Video Publication Time Distribution" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 4: Video publication time distribution</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/exps/video_viewcount.png" 
-                            alt="Video-MME V2 Video View Count Distribution" 
+                            alt="Video-MME-v2 Video View Count Distribution" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 5: Video view count distribution</figcaption>
                     </figure>
@@ -3986,9 +3987,9 @@
 
                 <figure>
                     <img src="figs/imgs/area-basic.svg" 
-                        alt="Video-MME V2 的三级能力层级分类体系" 
+                        alt="Video-MME-v2 的三级能力层级分类体系" 
                         style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
-                    <figcaption>Figure 1: Video-MME-v2三级能力层级：各能力维度及其在Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布。</figcaption>
+                    <figcaption>Figure 1: Video-MME-v2三级能力层级：各能力维度及其在Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布</figcaption>
                 </figure>
 
                 <h3 style="font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--primary-color);">🔧 标注流程</h3>
@@ -4050,7 +4051,7 @@
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>c. 独立盲测</strong>
-                                    <p>引入35名未参与该标注任务的独立评估人员，对每个视频问题进行至少2轮细粒度核查，以更客观视角降低标注人员的主观偏差。</p>
+                                    <p>引入50名未参与该标注任务的独立评估人员，对每个视频问题进行至少2轮细粒度核查，以更客观视角降低标注人员的主观偏差。</p>
                                 </div>
                                 <div class="ann-qa-item">
                                     <strong>d. 闭环迭代验证</strong>
@@ -4066,40 +4067,40 @@
                 <div class="stats-criteria">
                     <div class="stats-criterion">
                         <span class="stats-num">1</span>
-                        <div class="stats-content"><strong>视频时长：</strong>如 Fig. 2 所示，平均长度约 10.4 分钟。其中 99% 在 20 分钟以内，53% 在 10 分钟以内，整体时长分布较为均匀且多样。</div>
+                        <div class="stats-content"><strong>视频时长：</strong>如Fig. 2所示，平均长度约10.4分钟。其中99%在20分钟以内，53%在10分钟以内，整体时长分布较为均匀且多样。</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">2</span>
-                        <div class="stats-content"><strong>视频类别：</strong>如 Fig. 3 所示，视频类型覆盖 4 大类、31 小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。</div>
+                        <div class="stats-content"><strong>视频类别：</strong>如Fig. 3所示，视频类型覆盖4大类、31小类，包括体育与竞技（如篮球、足球等）、生活与娱乐（如综艺、数码等）、艺术与文艺（如电影、漫画等），知识与教育（如人工智能、人文历史等）。</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">3</span>
-                        <div class="stats-content"><strong>视频发布时间：</strong>如 Fig. 4 所示，80%+ 的视频发布于 2025 年之后，其中近 40% 发布于 2025 年 10 月之后。</div>
+                        <div class="stats-content"><strong>视频发布时间：</strong>如Fig. 4所示，80%+的视频发布于2025年之后，其中近40%发布于2025年10月之后。</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">4</span>
-                        <div class="stats-content"><strong>视频观看量：</strong>如 Fig. 5 所示，视频观看量的均值和中位数分别为 483 万次和 35.5 万次，其中 84.3% 的视频观看量超过 10,000 次，94.4% 超过 1,000 次。</div>
+                        <div class="stats-content"><strong>视频观看量：</strong>如Fig. 5所示，视频观看量的均值和中位数分别为483万次和35.5万次，其中84.3%的视频观看量超过10,000 次，94.4%超过 1,000次。</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">5</span>
-                        <div class="stats-content"><strong>问题与答案：</strong>如 Fig. 2 所示，问题与答案的平均长度从 Q1 到 Q4 呈递增趋势。这与「推理连贯性」设计一致：序列后段问题难度更高，通常需要更充分的上下文描述与更细致的作答。</div>
+                        <div class="stats-content"><strong>问题与答案：</strong>如Fig. 2所示，问题与答案的平均长度从Q1到Q4呈递增趋势。这与「推理连贯性」设计一致：序列后段问题难度更高，通常需要更充分的上下文描述与更细致的作答。</div>
                     </div>
                     <div class="stats-criterion">
                         <span class="stats-num">6</span>
-                        <div class="stats-content"><strong>选项分布：</strong>如 Fig. 2 所示，8 个选项的平均词数高度一致。</div>
+                        <div class="stats-content"><strong>选项分布：</strong>如Fig. 2所示，8个选项的平均词数高度一致。</div>
                     </div>
                 </div>
 
                 <div class="figures-row row-1">
                     <figure>
                         <img src="figs/exps/data_sta.png" 
-                            alt="Video-MME V2 数据统计" 
+                            alt="Video-MME-v2 数据统计" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 2：视频长度、以及问题与选项长度分布</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/imgs/video_category_cropped.png" 
-                            alt="Video-MME V2 视频类别分布（旭日图）" 
+                            alt="Video-MME-v2 视频类别分布（旭日图）" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 3：视频类别分布，含4个一级类别、31个二级类别</figcaption>
                     </figure>
@@ -4107,13 +4108,13 @@
                 <div class="figures-row row-2">
                     <figure>
                         <img src="figs/exps/video_publish_month.png" 
-                            alt="Video-MME V2 视频发布时间分布" 
+                            alt="Video-MME-v2 视频发布时间分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 4：视频发布时间分布</figcaption>
                     </figure>
                     <figure>
                         <img src="figs/exps/video_viewcount.png" 
-                            alt="Video-MME V2 视频观看量分布" 
+                            alt="Video-MME-v2 视频观看量分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 5：视频观看量分布</figcaption>
                     </figure>
@@ -4141,27 +4142,27 @@
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    We compare two metrics: <strong>group-based non-linear score (Non-Lin Score)</strong> and <strong>average accuracy over individual questions (Avg Acc)</strong>.
+                    We compare two metrics: <strong>group-based non-linear score (Non-Lin Score)</strong> and <strong>per-question average accuracy (Avg Acc)</strong>.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     我们对比了两种指标：<strong>基于分组的非线性得分（Non-Lin Score）</strong>与<strong>逐题统计的平均准确率（Avg Acc）</strong>。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.75rem;">
-                    <strong>1. Within-model comparison:</strong> <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> reach average accuracy of 66.1% and 61.1% respectively—well above passing level. Under our group-based non-linear scoring, however, their scores are 49.4% and 42.5%. This shows that even SOTA models rarely answer all related questions in a group correctly. Our non-linear design exploits the group structure and reduces sensitivity to 「scattered hits.」
+                    <strong>1. Within-model comparison:</strong> <strong>Gemini-3-Pro</strong> and <strong>Gemini-3-Flash</strong> reach average accuracy of 66.1% and 61.1% respectively—well above passing level. Under our group-based non-linear scoring, however, their scores are 49.4% and 42.5%. This shows that even SOTA models rarely answer all related questions in a group correctly. By explicitly leveraging the group structure, our nonlinear scoring is less sensitive to isolated correct predictions and instead emphasizes consistency across related queries, thereby providing a more faithful assessment of true model capability.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
-                    <strong>1. 同一模型内对比：</strong><strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的平均准确率分别为 66.1% 与 61.1%，远高于及格水平。但在分组非线性计分下，得分仅为 49.4% 与 42.5%。这表明即使是 SOTA 模型，也难以在同一组内稳定地将多道关联问题全部答对。我们设计的非线性打分能够利用 Group 结构，降低对「零散命中」的敏感性。
+                    <strong>1. 同一模型内对比：</strong><strong>Gemini-3-Pro</strong>与<strong>Gemini-3-Flash</strong>的平均准确率分别为66.1%与61.1%，高于及格水平。但在分组非线性计分下，得分仅为49.4%与42.5%。这表明即使是SOTA模型，也难以在同一组内稳定地将多道关联问题全部答对。我们设计的非线性打分能够利用Group结构，降低对「零散命中」的敏感性。
                 </p>
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>2. Cross-model comparison:</strong> The ratio <strong>Non-Lin Score / Avg Acc</strong> reflects how much a model 「drops」 from single-question correctness to group-stable correctness, and thus indicates robustness. For example, <strong>Gemini-3-Pro</strong> has a ratio of about 75%, <strong>Doubao-Seed-2.0-Pro-260215</strong> about 72%, while <strong>InternVL3-5-241B-A28B-Instruct</strong> is about 56%, and smaller models such as <strong>LLaVA-Video-7B</strong> are only about 40%. A lower ratio means the model more often gets only some questions right within a group—weaker stability and robustness. Non-linear scoring thus better reflects true capability and reveals model robustness.
+                    <strong>2. Cross-model comparison:</strong> The ratio <strong>Non-Lin Score/Avg Acc</strong> reflects how much a model drops from single-question correctness to group-stable correctness, and thus indicates robustness. For example, <strong>Gemini-3-Pro</strong> achieves a ratio of approximately 75%, followed by <strong>Doubao-Seed-2.0-Pro-260215</strong> at around 72%, and <strong>InternVL3-5-241B-A28B-Instruct</strong> at about 56%, while the smaller model <strong>LLaVA-Video-7B</strong> achieves only around 40%. A lower ratio means the model more often gets only some questions right within a group—weaker stability and robustness. Non-linear scoring thus better reflects true capability and reveals model robustness.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>2. 不同模型间对比：</strong>「Non-Lin Score / Avg Acc」的比值可用于衡量模型从「单题正确」到「组内稳定正确」的折损程度，从而反映模型鲁棒性差异。例如，<strong>Gemini-3-Pro</strong>的比值约为 75%，<strong>Doubao-Seed-2.0-Pro-260215</strong>约为 72%，而 <strong>InternVL3-5-241B-A28B-Instruct</strong> 约为 56%，一些小模型如 <strong>LLaVA-Video-7B</strong> 仅为约 40%。比值越低，说明模型越容易出现「组内只能答对部分题」的现象，稳定性与鲁棒性越弱。由此可见非线性打分在真实刻画能力水平、揭示模型鲁棒性方面的优势。
+                    <strong>2. 不同模型间对比：</strong>「Non-Lin Score / Avg Acc」的比值可用于衡量模型从「单题正确」到「组内稳定正确」的折损程度，从而反映模型鲁棒性差异。例如，<strong>Gemini-3-Pro</strong>的比值约为75%，<strong>Doubao-Seed-2.0-Pro-260215</strong>约为72%，而 <strong>InternVL3-5-241B-A28B-Instruct</strong> 约为56%，一些小模型如 <strong>LLaVA-Video-7B</strong> 仅为约40%。比值越低，说明模型越容易出现「组内只能答对部分题」的现象，稳定性与鲁棒性越弱。由此可见非线性打分在真实刻画能力水平、揭示模型鲁棒性方面的优势。
                 </p>
                 <div style="overflow-x: auto; margin-top: 1.25rem;">
                     <table class="comparison-table" style="width: 100%; max-width: 900px; margin: 0 auto;">
-                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-en>Avg Acc vs Non-Lin Score — selected models</caption>
-                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-zh>Avg Acc 与 Non-Lin Score 对比 — 部分模型</caption>
+                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-en>Avg Acc vs. Non-Lin Score — selected models</caption>
+                        <caption style="caption-side: top; text-align: left; font-weight: 600; margin-bottom: 8px; color: var(--primary-color);" data-lang-zh>Avg Acc与Non-Lin Score对比</caption>
                         <thead>
                             <tr>
                                 <th><span data-lang-en>Model</span><span data-lang-zh>模型</span></th>
@@ -4232,42 +4233,42 @@
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>1. Overall Q1→Q4 accuracy trend:</strong> We report overall accuracy from Q1 to Q4 for five models (four proprietary and one open-source) in both 「capability consistency」 and 「reasoning coherence」 question groups, and analyze from both data and model perspectives.
+                    <strong>1. Overall Q1→Q4 accuracy trend:</strong> We report overall accuracy from Q1 to Q4 for five models in both Capability Consistency and Reasoning Coherence question groups, and analyze from both data and model perspectives.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>1. Q1→Q4 的整体准确率趋势：</strong>我们统计了 5 个模型（4 个闭源和 1 个开源）在「能力一致性」与「推理连贯性」两类问题组中 Q1→Q4 的整体准确率，并从数据和模型两个视角进行分析。
+                    <strong>1. Q1→Q4的整体准确率趋势：</strong>我们统计了5个模型在「能力一致性」与「推理连贯性」两类问题组中 Q1→Q4 的整体准确率，并从数据和模型两个视角进行分析。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>（1）Data perspective:</strong> In 「capability consistency」 groups, accuracy across Q1–Q4 is similar for all models, indicating that difficulty is well balanced across question indices. In 「reasoning coherence」 groups, accuracy consistently decreases from Q1 to Q4 for all models, indicating that difficulty increases along the sequence—consistent with our design.
+                    <strong>（1）Data perspective:</strong> In Capability Consistency groups, accuracy across Q1–Q4 is similar for all models, indicating that difficulty is well balanced across question indices. In Reasoning Coherence groups, accuracy consistently decreases from Q1 to Q4 for all models, indicating that difficulty increases along the sequence—consistent with our design.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
-                    <strong>（1）数据角度：</strong>在「能力一致性」组中，各模型在 Q1→Q4 上的准确率整体接近，说明不同编号题目的总体难度分布较为均衡。而在「推理连贯性」组中，所有模型的准确率均呈现 Q1→Q4 逐步下降的趋势，表明组内题目难度按序递增。这符合我们的原始设定。
+                    <strong>（1）数据角度：</strong>在「能力一致性」组中，各模型在Q1→Q4上的准确率整体接近，说明不同编号题目的总体难度分布较为均衡。而在「推理连贯性」组中，所有模型的准确率均呈现 Q1→Q4 逐步下降的趋势，表明组内题目难度按序递增。这符合我们的原始设定。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>（2）Model perspective:</strong> In 「capability consistency」 groups, <strong>Gemini-3-Pro</strong> and <strong>GPT-5</strong> exhibit only marginal fluctuations in accuracy from Q1 to Q4, indicating stronger stability. In 「reasoning coherence」 groups, models exhibit different decline patterns from Q1 to Q4: models with stronger video understanding show a smoother, lower-curvature decline, while weaker models show more pronounced inflection points. This suggests that models differ in their ability to maintain consistent intermediate reasoning states along a progressively deeper reasoning chain. We hypothesize that stronger models can rely more stably on the spatiotemporal evidence grounded in the video itself, leading to a more linear decline in accuracy as reasoning depth increases.
+                    <strong>（2）Model perspective:</strong> In Capability Consistency groups, <strong>Gemini-3-Pro</strong> and <strong>GPT-5</strong> exhibit only marginal fluctuations in accuracy from Q1 to Q4, indicating stronger stability. In Reasoning Coherence groups, stronger models exhibit a smooth decline in accuracy from Q1 to Q4 as question difficulty increases, whereas weaker models show more irregular patterns. One possible explanation is that stronger models are more sensitive to incremental changes in question difficulty, resulting in a more uniform degradation as reasoning depth increases. In contrast, weaker models tend to exhibit higher stochasticity, leading to unstable performance across progressively harder questions..
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>Gemini-3-Pro</strong> 与 <strong>GPT-5</strong> 的 Q1→Q4 准确率波动很小，体现更强的稳定性。在「推理连贯性」组中，不同模型在 Q1→Q4 上呈现不同的下降形态：视频理解较强的模型表现出更平滑、更低曲率的下降趋势，而较弱的模型则表现出更明显的拐点。这表明，在逐步加深的推理链中，不同模型维持中间推理状态一致性的能力并不相同。我们推测，较强模型在回答问题时能够更稳定地依赖视频本身的时空证据，因此其准确率会随着推理深度的增加呈现出更平稳线性的下降。
+                    <strong>（2）模型角度：</strong>在「能力一致性」组中，<strong>Gemini-3-Pro</strong> 与 <strong>GPT-5</strong> 的 Q1→Q4 准确率波动很小，体现更强的稳定性。在「推理连贯性」组中，随着问题难度的增加，较强的模型从Q1到Q4的准确性平稳下降，而较弱的模型则显示出不规则的变化。一种可能的解释是，更强的模型对问题难度的增量变化更敏感，从而导致推理深度增加时更均匀的退化。相反，较弱的模型往往表现出更高的随机性，导致在越来越难的问题上表现不稳定。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
-                    <strong>2. Mean and variance in 「capability consistency」 groups:</strong> We further report mean and variance of overall Q1–Q4 accuracy for eight models (six proprietary and two open-source) in 「capability consistency」 groups. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
+                    <strong>2. Mean and variance in Capability Consistency groups:</strong> We further report mean and variance of overall Q1–Q4 accuracy for eight models in Capability Consistency groups. As shown in the rightmost plot, the horizontal and vertical axes represent average performance and result stability respectively, jointly characterizing both performance and robustness of video understanding. We have the following observations:
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.5rem;">
-                    <strong>2. 「能力一致性」组的均值与方差：</strong>我们进一步统计了 8 个模型（6 个闭源 2 个开源）在「能力一致性」组上 Q1→Q4 整体准确率的均值与方差。如最右侧图所示，横轴与纵轴分别对应模型的平均表现与结果稳定性，从而同时刻画视频理解能力的性能与鲁棒性。主要观察到两点结论：
+                    <strong>2. 「能力一致性」组的均值与方差：</strong>我们进一步统计了8个模型在「能力一致性」组上 Q1→Q4 整体准确率的均值与方差。如最右侧图所示，横轴与纵轴分别对应模型的平均表现与结果稳定性，从而同时刻画视频理解能力的性能与鲁棒性。主要观察到两点结论：
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
                     （1）<strong>Gemini-3-Pro</strong> achieves the highest mean accuracy, indicating the strongest overall performance. At the same time, it exhibits the smallest variance, demonstrating the best stability. <strong>GPT-5</strong> and <strong>Kimi-K2.5</strong> follow closely in terms of stability, also showing strong robustness.<br>
-                    （2）Overall, proprietary models outperform open-source models both in performance and in stability.
+                    （2）Overall, commercialization models generally outperform open-source models, yet all models still remain substantially below human performance, indicating a significant gap to close.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
                     （1）<strong>Gemini-3-Pro</strong> 取得了最高的平均准确率，整体性能最强；同时，其方差最小，表现出最佳稳定性。<strong>GPT-5</strong> 与 <strong>Kimi-K2.5</strong> 在稳定性方面紧随其后，同样展现出较强鲁棒性。<br>
-                    （2）整体而言，闭源模型不仅在性能上优于开源模型，在稳定性方面也呈现优势。
+                    （2）商业化模型通常优于开源模型，但所有模型仍然远远低于人类的表现，这表明当前模型仍然有很大的提升空间。
                 </p>
                 <figure class="figure-full-width">
                     <img src="figs/exps/q1-q4_models_acc_0406.png"
                         alt="Q1-Q4 accuracy and mean/variance in capability consistency"
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 6: Overall Q1→Q4 accuracy in 「capability consistency」 and 「reasoning coherence」 groups, and mean &amp; variance in the 「capability consistency」 group.</figcaption>
+                    <figcaption data-lang-en>Figure 6: Overall Q1→Q4 accuracy in Capability Consistency and Reasoning Coherence groups, and mean &amp; variance in the Capability Consistency group.</figcaption>
                     <figcaption data-lang-zh>Figure 6：「能力一致性」组与「推理连贯性」组 Q1→Q4 的整体准确率变化，以及「能力一致性」组的均值与方差统计</figcaption>
                 </figure>
             </div>
@@ -4276,33 +4277,33 @@
         <!-- 3. Thinking 模式在 Video-MME-v2 上的作用 -->
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
-                <h4>🧠 <span data-lang-en>Effect of Thinking Mode on Video-MME v2</span><span data-lang-zh>Thinking 模式在 Video-MME v2 上的作用</span></h4>
+                <h4>🧠 <span data-lang-en>Effect of Thinking Mode on Video-MME-v2</span><span data-lang-zh>Thinking模式在Video-MME-v2上的作用</span></h4>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    We compare the impact of stronger reasoning settings on Video-MME v2 under with- and without-subtitle conditions. The figure reports a matched baseline for each model, together with the gain or regression after switching to a stronger reasoning mode. For most open-source models, the comparison is between Instruct and Think under matched 64-frame settings; for <strong>Gemini-3-Flash</strong>, the comparison is between <strong>minimal_thinking</strong> and the standard reasoning configuration, both at 1fps.
+                    We compare the performance changes of instruction-tuned baseline models after enabling the Thinking mode, under both under with- and without-subtitle conditions. For <strong>Gemini-3-Flash</strong>, the comparison is between <strong>Minimal_Thinking</strong> and the standard Thinking configuration, both at 1fps.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    我们在 Video-MME v2 上对比了无/有字幕两种设置下，更强推理配置对模型性能的影响。图中展示了每个模型对应的匹配基线，以及切换到更强 reasoning mode 后带来的增益（Gain）与倒退（Regression）。其中，对大多数开源模型而言，对比的是相同 64-frame 设置下的 Instruct 与 Think；而对于 <strong>Gemini-3-Flash</strong>，对比的是同为 1fps 条件下的 <strong>minimal_thinking</strong> 与标准 reasoning 配置。
+                    我们在Video-MME-v2上对比了无/有字幕两种设置下，更强推理配置对模型性能的影响。图中展示了每个模型的Instruct基线，以及切换到更强Reasoning Mode 后带来的增益（Gain）与倒退（Regression）。对于<strong>Gemini-3-Flash</strong>，由于模型限制，对比的是同为1fps条件下的<strong>Minimal_Thinking</strong>与标准Thinking配置。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.75rem;">
                     <strong>1. Text modality helps unlock reasoning:</strong> Overall, enabling Thinking with subtitles tends to yield more stable gains, while without subtitles the benefit is often smaller or can even turn negative. For example, <strong>Qwen3.5-122B-A10B</strong> gains +3.8 with no subtitle and +5.8 with subtitle on overall score. This suggests that explicit semantic cues from text make it easier for the model’s Thinking ability to be fully utilized.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.75rem;">
-                    <strong>1. 文本模态有助于激发推理能力：</strong>从整体趋势来看，同一模型在「有字幕」条件下开启 Thinking 往往获得更稳定的增益，而在「无字幕」时收益通常更弱，甚至可能转为负增益。以 <strong>Qwen3.5-122B-A10B</strong> 为例，在无/有字幕设定下，Thinking 带来的整体提升为 +3.8 / +5.8。这一现象表明，文本模态提供的显式语义线索更容易促使模型的 Thinking 能力得到充分发挥。
+                    <strong>1. 文本模态有助于激发推理能力：</strong>从整体趋势来看，同一模型在「有字幕」条件下开启Thinking往往获得更稳定的增益，而在「无字幕」时收益通常更弱，甚至可能转为负增益。以<strong>Qwen3.5-122B-A10B</strong>为例，在无/有字幕设定下，Thinking带来的整体提升为+3.8/+5.8。这一现象表明，文本模态提供的显式语义线索更容易促使模型的Thinking能力得到充分发挥。
                 </p>
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    <strong>2. Current Thinking mode can still cause regression:</strong> Besides the general pattern that subtitles help Thinking, we still observe clear regressions for some settings, especially without subtitles. For example, <strong>Qwen3-VL-8B</strong> shows -0.6 without subtitle on overall score, while <strong>KimiVL-16B</strong> drops by -3.3 / -3.3 (no / with subtitle), and on Level 3, where Thinking matters most, it further drops by -4.0 / -3.9. This shows that the current Thinking mechanism in video MLLMs does not always bring positive benefit on video understanding tasks and still has substantial room for improvement.
+                    <strong>2. Current Thinking mode can also cause regression:</strong> Besides the general pattern that subtitles help Thinking, we still observe clear regressions for some settings, especially without subtitles. For example, <strong>Qwen3-VL-8B</strong> shows -0.6 without subtitle on overall score, while <strong>KimiVL-16B</strong> drops by -3.3/-3.3 (without/with subtitle), and on Level 3, where Thinking matters most, it further drops by -4.0/-3.9. This shows that the current Thinking mechanism in video MLLMs does not always bring positive benefit on video understanding tasks and still has substantial room for improvement.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>2. 当前 Thinking 模式仍可能导致性能倒退：</strong>除了「字幕更利于 Thinking」的总体规律外，我们仍然观察到部分设定在开启 Thinking 后出现明显回退，且在「无字幕」条件下更常见。例如 <strong>Qwen3-VL-8B</strong> 在无字幕设定下整体分数为 -0.6，<strong>KimiVL-16B</strong> 在无/有字幕设定下整体分别下降 -3.3 / -3.3；在最需要 Thinking 能力的 Level 3 上，甚至进一步下降到 -4.0 / -3.9。这说明当前多模态大模型的 Thinking 机制在视频理解任务中并非总能带来正向收益，仍有较大提升空间。
+                    <strong>2. 当前Thinking模式可能导致性能倒退：</strong>除了「字幕更利于 Thinking」的总体规律外，我们仍然观察到部分设定在开启Thinking 后出现明显回退，且在「无字幕」条件下更常见。例如<strong>Qwen3-VL-8B</strong>在无字幕设定下整体分数为-0.6，<strong>KimiVL-16B</strong>在无/有字幕设定下整体分别下降-3.3/-3.3；在最需要Thinking能力的Level 3上，甚至进一步下降到-4.0/-3.9。这说明当前多模态大模型的Thinking机制在视频理解任务中并非总能带来正向收益，仍有较大提升空间。
                 </p>
                 <figure class="figure-full-width">
                     <img src="figs/imgs/scientific_think_effect_v2.png" 
                         alt="Effect of Thinking with and without subtitle by level and overall" 
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
-                    <figcaption data-lang-en>Figure 7: Score by level and overall under Thinking mode (with / without subtitle)</figcaption>
-                    <figcaption data-lang-zh>Figure 7: Thinking 模式下各层级与整体得分（无/有字幕）</figcaption>
+                    <figcaption data-lang-en>Figure 7: Score by level and overall under Thinking mode (with/without subtitle)</figcaption>
+                    <figcaption data-lang-zh>Figure 7: Thinking模式下各层级与整体得分（无/有字幕）</figcaption>
                 </figure>
             </div>
         </div>
@@ -4310,14 +4311,14 @@
         <!-- 4. Video-MME-v2 上对整体模型性能分析 -->
         <div class="analysis-card full-width" style="margin-bottom: 2rem;">
             <div class="analysis-card-header">
-                <h4>🧠 <span data-lang-en>Overall Model Performance Analysis on Video-MME v2</span><span data-lang-zh>Video-MME v2 上对整体模型性能分析</span></h4>
+                <h4>🧠 <span data-lang-en>Overall Model Performance Analysis on Video-MME-v2</span><span data-lang-zh>Video-MME-v2 上对整体模型性能分析</span></h4>
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    Around the three-level task framework of Video-MME v2, we abstract three key underlying capabilities: <strong>omni-modal information aggregation (C1)</strong>, <strong>long-range temporal / long-context understanding (C2)</strong>, and <strong>complex reasoning (C3)</strong>. Based on these, we profile and group existing models and compare their scores on Video-MME v2.
+                    Around the three-level task framework of Video-MME-v2, we abstract three key underlying capabilities: <strong>omni-modal information aggregation (C1)</strong>, <strong>long-range temporal / long-context understanding (C2)</strong>, and <strong>complex reasoning (C3)</strong>. Based on these, we profile and group existing models and compare their scores.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    围绕 Video-MME v2 提出的三层任务体系，我们进一步抽象出支撑各层任务的三类关键基础能力：<strong>全模态信息聚合（C1）</strong>、<strong>长程时序/长上下文理解（C2）</strong>与<strong>复杂推理能力（C3）</strong>。基于这三项能力，我们对现有模型进行能力画像与分组，并对比其在 Video-MME v2 上的得分表现。
+                    围绕Video-MME-v2提出的三层任务体系，我们进一步抽象出支撑各层任务的三类关键基础能力：<strong>全模态信息聚合（C1）</strong>、<strong>长程时序/长上下文理解（C2）</strong>与<strong>复杂推理能力（C3）</strong>。基于这三项能力，我们对现有模型进行能力画像与分组，并对比其得分表现。
                 </p>
                 <div class="mme-chart-wrapper">
                     <h2 data-lang-en>Model Capability Profiles and Scores</h2>
@@ -4386,19 +4387,19 @@
                     <strong>1. Synergy of core capabilities:</strong> Scores tend to correlate with how complete the capability profile is: models with C1+C2+C3 together generally perform better. For example, <strong>Gemini-3-Pro</strong> has a relatively complete profile and scores 49.4; <strong>Gemini-3-Flash</strong> follows with 42.5. This suggests that in complex video understanding, the synergy of omni-modal perception, long-horizon temporal modeling, and deep reasoning is an important factor for overall performance.
                 </p>
                 <p data-lang-zh style="margin-top: 1rem;">
-                    <strong>1. 核心能力协同效应：</strong>从评测结果可以观察到，模型得分与其核心能力的「完整度」存在一定相关性：同时具备 C1+C2+C3 的模型整体上更具优势。例如，<strong>Gemini-3-Pro</strong> 具备较完整的能力矩阵，得分 49.4；<strong>Gemini-3-Flash</strong> 紧随其后，得分 42.5。这一现象表明，在复杂视频理解任务中，全模态感知、长时序建模与深度推理的协同可能是提升整体表现的重要因素。
+                    <strong>1. 核心能力协同效应：</strong>从评测结果可以观察到，模型得分与其核心能力的「完整度」存在一定相关性：同时具备C1+C2+C3的模型整体上更具优势。例如，<strong>Gemini-3-Pro</strong>具备较完整的能力矩阵，得分49.4；<strong>Gemini-3-Flash</strong>紧随其后，得分42.5。这一现象表明，在复杂视频理解任务中，全模态感知、长时序建模与深度推理的协同可能是提升整体表现的重要因素。
                 </p>
                 <p data-lang-en style="margin-top: 0.75rem;">
                     <strong>2. Model scale and capability compensation:</strong> Besides capability combination, results show that scale has a significant effect on base performance: larger parameter count can partly compensate for missing capabilities. For example, <strong>Qwen3.5-397B-A17B-Think</strong> mainly has long-context ability (C2) and complex reasoning (C3), yet reaches 39.1—higher than <strong>MiMo-v2-Omni</strong> (38.6), which has omni-modal capability (C1) and complex reasoning (C3). This shows that when scale increases substantially, the model’s overall capability can partly offset the impact of missing individual capabilities on the score.
                 </p>
                 <p data-lang-zh style="margin-top: 0.75rem;">
-                    <strong>2. 模型规模与能力代偿：</strong>除能力融合外，结果也显示模型规模对基础性能具有显著影响：更大的参数规模可能部分弥补特定能力的缺失。以 <strong>Qwen3.5-397B-A17B-Think</strong> 为例，其主要具备长上下文能力（C2）和复杂推理（C3），但未显式具备全模态能力（C1），仍取得 39.1 分。这一成绩高于具备全模态能力（C1）和复杂推理（C3）的 <strong>MiMo-v2-Omni</strong>（38.6 分）。该显示出当参数规模显著提升时，模型的综合能力表现可能在一定程度上抵消单项能力缺口对得分带来的影响。
+                    <strong>2. 模型规模与能力代偿：</strong>除能力融合外，结果也显示模型规模对基础性能具有显著影响：更大的参数规模可能部分弥补特定能力的缺失。以<strong>Qwen3.5-397B-A17B-Think</strong>为例，其主要具备长上下文能力（C2）和复杂推理（C3），但未显式具备全模态能力（C1），仍取得 39.1 分。这一成绩高于具备全模态能力（C1）和复杂推理（C3）的<strong>MiMo-v2-Omni</strong>（38.6 分）。该显示出当参数规模显著提升时，模型的综合能力表现可能在一定程度上抵消单项能力缺口对得分带来的影响。
                 </p>
                 <p data-lang-en style="margin-top: 0.75rem;">
                     <strong>3. Impact of frame count on performance:</strong> For the same model, increasing frame count can significantly improve performance. For example, <strong>Qwen3.5-397B-A17B-Think</strong> with 512 frames scores 39.1, while with 64 frames it scores only 30.6—an 8.5-point improvement. This highlights the importance of long-context processing capability (C2) for complex video understanding tasks.
                 </p>
                 <p data-lang-zh style="margin-top: 0.75rem;">
-                    <strong>3. 帧数对性能的影响：</strong>对于同一模型，增加处理的帧数可以显著提升性能。例如，<strong>Qwen3.5-397B-A17B-Think</strong> 在 512 帧设置下得分 39.1，而在 64 帧设置下仅得分 30.6，提升了 8.5 分。这突显了长上下文处理能力（C2）对复杂视频理解任务的重要性。
+                    <strong>3. 帧数对性能的影响：</strong>对于同一模型，增加处理的帧数可以显著提升性能。例如，<strong>Qwen3.5-397B-A17B-Think</strong>在512帧设置下得分39.1，而在64帧设置下仅得分30.6，提升了8.5分。这突显了长上下文处理能力（C2）对复杂视频理解任务的重要性。
                 </p>
             </div>
         </div>
@@ -4410,28 +4411,28 @@
             </div>
             <div class="analysis-card-body" style="padding: 20px;">
                 <p data-lang-en style="margin-bottom: 1rem;">
-                    We compare selected models on the capability dimensions defined by Video-MME v2. From the radar chart, three main observations can be drawn:
+                    We compare selected models on the capability dimensions defined by Video-MME-v2. From the radar chart, three main observations can be drawn:
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    基于 Video-MME v2 定义的能力项，我们对部分模型的表现进行了对比。如雷达图所示，可以归纳出三点主要观察：
+                    基于Video-MME-v2定义的能力项，我们对部分模型的表现进行了对比。如雷达图所示，可以归纳出三点主要观察：
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
                     <strong>1. Significant gain from audio:</strong> On the <strong>Frames &amp; Audio</strong> dimension, <strong>Gemini-3-Pro</strong> shows a relatively high peak, indicating stronger cross-modal alignment and integration when processing synchronized visual and audio information. In contrast, models that rely more on visual frames (e.g. <strong>GPT-5</strong> and the <strong>Qwen</strong> family) are relatively weaker, reflecting differences in deep multimodal fusion.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.5rem;">
-                    <strong>1. 音频带来的显著增益：</strong>在 Frames&amp;Audio 维度上，<strong>Gemini-3-Pro</strong> 呈现出相对高峰，表明其在处理视觉与音频的同步信息时具备更强的跨模态对齐与整合能力。相比之下，更依赖视觉帧的模型（如 <strong>GPT-5</strong> 和 <strong>Qwen</strong> 系列）表现相对较弱，反映出不同模型在多模态深度融合上的差异。
+                    <strong>1. 音频带来的显著增益：</strong>在Frames&amp;Audio维度上，<strong>Gemini-3-Pro</strong>呈现出相对高峰，表明其在处理视觉与音频的同步信息时具备更强的跨模态对齐与整合能力。相比之下，更依赖视觉帧的模型（如<strong>GPT-5</strong>和<strong>Qwen</strong>系列）表现相对较弱，反映出不同模型在多模态深度融合上的差异。
                 </p>
                 <p data-lang-en style="margin-bottom: 0.5rem;">
                     <strong>2. Long-horizon temporal reasoning advantage:</strong> On capabilities such as <strong>Order</strong> and <strong>Video-Based Knowledge Acquisition</strong>, which rely on long-horizon temporal modeling and cross-segment reasoning over long video frames, <strong>Gemini-3-Pro</strong> also maintains a large lead, indicating more robust long-context and temporal modeling, and better ability to integrate and reason over information across segments in long videos.
                 </p>
                 <p data-lang-zh style="margin-bottom: 0.5rem;">
-                    <strong>2. 长程时序推理优势：</strong>在 Order 与 Video-Based Knowledge Acquisition 等基于长视频帧进行时序建模与跨片段推理的能力项上，<strong>Gemini-3-Pro</strong> 同样保持较大领先幅度，表明其在长上下文处理和时序建模机制上更具鲁棒性，更能应对长视频帧中的跨片段信息整合与推理需求。
+                    <strong>2. 长程时序推理优势：</strong>在Order与Video-Based Knowledge Acquisition等需要基于长视频帧进行时序建模与跨片段推理的能力项上，<strong>Gemini-3-Pro</strong>同样保持较大领先幅度，表明其在长上下文处理和时序建模机制上更具鲁棒性，更能应对长视频帧中的跨片段信息整合与推理需求。
                 </p>
                 <p data-lang-en style="margin-bottom: 1rem;">
                     <strong>3. Clear room for improvement:</strong> Overall, even as a SOTA model, <strong>Gemini-3-Pro</strong> still has significant room for improvement on each dimension. In particular, on <strong>Action &amp; Motion</strong> and <strong>Physical World Reasoning</strong>, scores remain below 30, reflecting that current models still need to strengthen fine-grained action semantics and physical-world reasoning.
                 </p>
                 <p data-lang-zh style="margin-bottom: 1rem;">
-                    <strong>3. 提升空间明显：</strong>整体来看，即便作为 SOTA 模型，<strong>Gemini-3-Pro</strong> 在各项能力上仍有显著提升空间。尤其是在 Action&amp;Motion 与 Physical World Reasoning 等维度上得分仍不足 30，反映出当前模型在细粒度动作语义建模与物理规律理解等方面仍需进一步加强。
+                    <strong>3. 提升空间明显：</strong>整体来看，即便作为SOTA模型，<strong>Gemini-3-Pro</strong>在各项能力上仍有显著提升空间。尤其是在Action&amp;Motion与Physical World Reasoning等维度上得分仍不足30，反映出当前模型在细粒度动作语义建模与物理规律理解等方面仍需进一步加强。
                 </p>
                 <figure class="figure-full-width">
                     <div class="capability-radar-shell">
@@ -4456,13 +4457,13 @@
                         <noscript>
                             <div class="capability-radar-fallback">
                                 <img src="figs/exps/radar_second_head.png"
-                                    alt="Capability radar: model performance across Video-MME v2 dimensions"
+                                    alt="Capability radar: model performance across Video-MME-v2 dimensions"
                                     style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                             </div>
                         </noscript>
                     </div>
-                    <figcaption data-lang-en>Figure 8: Capability radar. <em>(Click on the model names in the legend to show/hide specific models)</em></figcaption>
-                    <figcaption data-lang-zh>Figure 8: 能力雷达图。<em>（点击图例中的模型名称即可显示/隐藏对应的模型结果）</em></figcaption>
+                    <figcaption data-lang-en>Figure 8: Capability radar <em>(Click on the model names in the legend to show/hide specific models)</em></figcaption>
+                    <figcaption data-lang-zh>Figure 8: 能力雷达图<em>（点击图例中的模型名称即可显示/隐藏对应的模型结果）</em></figcaption>
                 </figure>
             </div>
         </div>
@@ -4474,11 +4475,11 @@
         <h2 class="section-title" data-lang-en>Citation</h2>
         <h2 class="section-title" data-lang-zh>六、引用</h2>
         <div class="citation-block">
-<code>@article{videommev2_2025,
-  title={Video-MME v2: Evaluating True Understanding and Reasoning in Video MLLMs},
+<code>@article{videommev2_2026,
+  title={Video-MME-v2: Evaluating True Understanding and Reasoning in Video MLLMs},
   author={Video-MME Team},
   journal={arXiv preprint},
-  year={2025},
+  year={2026},
   url={https://github.com/Video-MME/Video-MME-v2}
 }</code>
         </div>
@@ -4488,15 +4489,15 @@
 <footer>
     <div class="footer-content">
         <div class="footer-links">
-            <a href="#">GitHub</a>
-            <a href="#">HuggingFace</a>
             <a href="#">Paper</a>
+            <a href="https://github.com/MME-Benchmarks/Video-MME-v2" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2" target="_blank" rel="noopener">HuggingFace</a>
             <a href="#leaderboard">Leaderboard</a>
-            <a href="#" data-lang-en>Contact</a>
-            <a href="#" data-lang-zh>联系我们</a>
+            <a href="mailto:bradyfu24@gmail.com" data-lang-en>Contact</a>
+            <a href="mailto:bradyfu24@gmail.com" data-lang-zh>联系我们</a>
         </div>
-        <p class="copyright" data-lang-en>© 2025 Video-MME Team. All rights reserved.</p>
-        <p class="copyright" data-lang-zh>© 2025 Video-MME 团队。保留所有权利。</p>
+        <p class="copyright" data-lang-en>© 2026 Video-MME Team. All rights reserved.</p>
+        <p class="copyright" data-lang-zh>© 2026 Video-MME团队。保留所有权利。</p>
     </div>
 </footer>
 
@@ -4656,7 +4657,7 @@
         { name: "Qwen3.5-397B-A17B-Think", logo: "qwen", type: "open", frames: "512", level1: [50.30993432, 35.43308703], level2: [41.75535475, 36.50267738], level3: [30.6585249, 22.92983716], relevance: [38.95712909, 32.17726397], logic: [39.3609134, 26.90984579], overall: [39.1, 30.3], avg_acc: [55.9, 48.8] },
         { name: "MiMo-v2-Omni", logo: "mimo", type: "open", frames: "1fps", level1: [52.61428571, 38.66996234], level2: [43.13293651, 35.97953216], level3: [27.37264673, 20.37037037], relevance: [39.72222222, 32.35452586], logic: [36.56603107, 25.37955466], overall: [38.63641885, 29.9314346], avg_acc: [56.11, 47.06] },
         { name: "Qwen3.5-Omni-Plus", logo: "qwen", type: "open", omni: true, frames: "64", level1: [31.17610837, 19.62643678], level2: [26.61311914, 18.21954485], level3: [21.55890805, 15.24904215], relevance: [25.34922929, 17.31695568], logic: [25.98457888, 17.22419929], overall: [25.6, 17.3], avg_acc: [44.3, 35] },
-        { name: "VITA-1.5", logo: "vita", type: "open", frames: "16", level1: [14.12972085, 11.60098522], level2: [9.421017403, 7.930053548], level3: [10.96503831, 6.491858238], relevance: [10.34441233, 8.875240848], logic: [13.02935943, 7.055160142], overall: [11.3, 8.2], avg_acc: [25.8, 21.8] },
+        { name: "VITA-1.5-7B", logo: "vita", type: "open", frames: "16", level1: [14.12972085, 11.60098522], level2: [9.421017403, 7.930053548], level3: [10.96503831, 6.491858238], relevance: [10.34441233, 8.875240848], logic: [13.02935943, 7.055160142], overall: [11.3, 8.2], avg_acc: [25.8, 21.8] },
     ];
 
     // Expand data - all values are directly provided, no calculations
