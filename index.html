@@ -1331,6 +1331,136 @@
         }
 
         /* Citation */
+        /* Responsive Video/YouTube Wrapper */
+        .youtube-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            background: #000;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .youtube-wrapper img.poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        .youtube-wrapper .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background-color: rgba(33, 33, 33, 0.8);
+            border-radius: 12px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+        .youtube-wrapper:hover .play-btn {
+            background-color: #ff0000;
+        }
+        .youtube-wrapper .play-btn::before {
+            content: '';
+            border-style: solid;
+            border-width: 10px 0 10px 20px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 5px;
+        }
+        .youtube-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            z-index: 0;
+        }
+        .youtube-wrapper.is-loading {
+            cursor: wait;
+        }
+        .youtube-wrapper.is-fallback {
+            height: auto;
+            min-height: 220px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .youtube-fallback {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.92));
+        }
+        .youtube-fallback p {
+            margin: 0;
+            max-width: 420px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.92);
+        }
+        .youtube-fallback-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .youtube-fallback a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 152px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .youtube-fallback a:hover {
+            transform: translateY(-1px);
+        }
+        .youtube-fallback .youtube-watch-link {
+            background: #ff0000;
+            color: #fff;
+        }
+        .youtube-fallback .youtube-watch-link:hover {
+            background: #e00000;
+        }
+        .youtube-fallback .youtube-serve-hint {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 152px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         .citation-block {
             background: #1a1a2e;
             color: #e5e7eb;
@@ -2456,9 +2586,10 @@
                             <!-- L1 - Consistency Example -->
                             <div class="video-card">
                         <div class="video-card-top">
-                            <video controls width="100%" preload="metadata" poster="videos/coffee.png">
-                                <source src="videos/1-1.mp4" type="video/mp4">
-                            </video>
+                            <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="_wGhzqc6zC0" data-youtube-url="https://www.youtube.com/watch?v=_wGhzqc6zC0">
+                                <img class="poster" src="videos/coffee.png" alt="Video Thumbnail">
+                                <div class="play-btn"></div>
+                            </div>
                             <span class="eval-badge eval-consistency card-badge">Consistency</span>
                         </div>
                         <div class="video-info">
@@ -2543,7 +2674,7 @@
                     <div class="video-card">
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="metadata" poster="videos/level1-2.png">
+                            <video controls width="100%" preload="none" poster="videos/level1-2.png">
                                 <source src="videos/level1-2.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -2651,7 +2782,7 @@
                     <div class="video-card">
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="metadata" poster="videos/level1-3.png">
+                            <video controls width="100%" preload="none" poster="videos/level1-3.png">
                                 <source src="videos/level1-3.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -2739,7 +2870,7 @@
         <!-- 紫色渐变代表情感/语义 -->
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="metadata" poster="videos/level1-4.png">
+                            <video controls width="100%" preload="none" poster="videos/level1-4.png">
                                 <source src="videos/level1-4.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -2849,7 +2980,7 @@
                             <div class="video-card">
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="metadata" poster="videos/level2-1.png">
+                            <video controls width="100%" preload="none" poster="videos/level2-1.png">
                                 <source src="videos/level2-1.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -2945,7 +3076,7 @@
 <div class="video-card">
     <div class="video-card-top">
         <div class="video-card-top">
-            <video controls width="100%" preload="metadata" poster="videos/2-2.png">
+            <video controls width="100%" preload="none" poster="videos/2-2.png">
                 <source src="videos/new2-2.mp4" type="video/mp4">
             </video>
             <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3053,7 +3184,7 @@
         <!-- Physics/Engineering Theme Gradient (Blueprint Blue) -->
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="metadata" poster="videos/2-3.png">
+                            <video controls width="100%" preload="none" poster="videos/2-3.png">
                                 <source src="videos/2-3.mp4" type="video/mp4">
                             </video>
                             <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3151,7 +3282,7 @@
 <div class="video-card">
     <div class="video-card-top">
         <!-- 实际视频标签 -->
-        <video controls width="100%" preload="metadata" poster="videos/2-4.png">
+        <video controls width="100%" preload="none" poster="videos/2-4.png">
             <source src="videos/2-4.mp4" type="video/mp4">
         </video>
         <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3276,7 +3407,7 @@
                             <!-- L3 - Coherence Example (Shell Game) -->
                             <div class="video-card">
                                 <div class="video-card-top">
-                                    <video controls width="100%" preload="metadata" poster="videos/3-1.png">
+                                    <video controls width="100%" preload="none" poster="videos/3-1.png">
                                         <source src="videos/3-1.mp4" type="video/mp4">
                                     </video>
                                     <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -3371,7 +3502,7 @@
                             <!-- L3 - Coherence Example (Math Logic Chain) -->
                             <div class="video-card">
                                 <div class="video-card-top">
-                                    <video controls width="100%" preload="metadata" poster="videos/3-2.png">
+                                    <video controls width="100%" preload="none" poster="videos/3-2.png">
                                         <source src="videos/3-2.mp4" type="video/mp4">
                                     </video>
                                     <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3474,7 +3605,7 @@
 <div class="video-card">
     <div class="video-card-top">
         <!-- 实际视频标签 -->
-        <video controls width="100%" preload="metadata" poster="videos/3-3.png">
+        <video controls width="100%" preload="none" poster="videos/3-3.png">
             <source src="videos/3-3.mp4" type="video/mp4">
         </video>
         <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -3569,7 +3700,7 @@
 <div class="video-card">
     <div class="video-card-top">
         <!-- 实际视频标签 -->
-        <video controls width="100%" preload="metadata" poster="videos/3-4.png">
+        <video controls width="100%" preload="none" poster="videos/3-4.png">
             <source src="videos/3-4.mp4" type="video/mp4">
         </video>
         <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -3665,7 +3796,7 @@
 <div class="video-card">
     <div class="video-card-top">
         <!-- 实际视频标签 -->
-        <video controls width="100%" preload="metadata" poster="videos/3-5.png">
+        <video controls width="100%" preload="none" poster="videos/3-5.png">
             <source src="videos/3-5.mp4" type="video/mp4">
         </video>
         <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -4529,8 +4660,69 @@
         if (savedLang) {
             switchLanguage(savedLang);
         }
+        initYouTubeEmbeds();
         initCarousels();
     });
+
+    function initYouTubeEmbeds() {
+        document.querySelectorAll('.youtube-wrapper[data-video-id]').forEach(function(wrapper) {
+            wrapper.addEventListener('click', function() {
+                activateYouTubeEmbed(wrapper);
+            });
+
+            wrapper.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    activateYouTubeEmbed(wrapper);
+                }
+            });
+        });
+    }
+
+    function activateYouTubeEmbed(wrapper) {
+        if (!wrapper || wrapper.dataset.loaded === 'true') return;
+
+        const videoId = wrapper.dataset.videoId;
+        const watchUrl = wrapper.dataset.youtubeUrl || ('https://www.youtube.com/watch?v=' + videoId);
+        if (!videoId) return;
+
+        if (window.location.protocol === 'file:') {
+            renderYouTubeFallback(wrapper, watchUrl);
+            return;
+        }
+
+        wrapper.dataset.loaded = 'true';
+        wrapper.classList.add('is-loading');
+
+        const iframe = document.createElement('iframe');
+        const origin = window.location.origin && window.location.origin !== 'null'
+            ? '&origin=' + encodeURIComponent(window.location.origin)
+            : '';
+        iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1&playsinline=1' + origin;
+        iframe.title = 'YouTube video player';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+
+        wrapper.replaceChildren(iframe);
+    }
+
+    function renderYouTubeFallback(wrapper, watchUrl) {
+        wrapper.dataset.loaded = 'fallback';
+        wrapper.classList.remove('is-loading');
+        wrapper.classList.add('is-fallback');
+
+        const fallback = document.createElement('div');
+        fallback.className = 'youtube-fallback';
+        fallback.innerHTML =
+            '<p>本地直接打开 HTML（file://）时，YouTube 嵌入播放器通常拿不到合法 Referer，会触发错误 153。</p>' +
+            '<div class="youtube-fallback-links">' +
+                '<a class="youtube-watch-link" href="' + watchUrl + '" target="_blank" rel="noopener">在 YouTube 打开</a>' +
+                '<span class="youtube-serve-hint">使用 python3 -m http.server 8000</span>' +
+            '</div>';
+
+        wrapper.replaceChildren(fallback);
+    }
 
     // Video Carousel: prev/next navigation and indicator
     const CAROUSEL_GAP = 24;
