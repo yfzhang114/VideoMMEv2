@@ -1378,7 +1378,8 @@
             border-color: transparent transparent transparent #fff;
             margin-left: 5px;
         }
-        .youtube-wrapper iframe {
+        .youtube-wrapper iframe,
+        .youtube-wrapper video {
             position: absolute;
             top: 0;
             left: 0;
@@ -2587,7 +2588,7 @@
                             <div class="video-card">
                         <div class="video-card-top">
                             <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="n0-g6Nx1lvQ" data-youtube-url="https://www.youtube.com/watch?v=n0-g6Nx1lvQ">
-                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/coffee.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/coffee.png';">
+                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/coffee.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/coffee.png';">
                                 <div class="play-btn"></div>
                             </div>
                             <span class="eval-badge eval-consistency card-badge">Consistency</span>
@@ -2675,7 +2676,7 @@
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
                             <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="m-kEwQCWuEs" data-youtube-url="https://www.youtube.com/watch?v=m-kEwQCWuEs">
-                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level1-2.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/level1-2.png';">
+                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level1-2.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/level1-2.png';">
                                 <div class="play-btn"></div>
                             </div>
                             <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -2784,7 +2785,7 @@
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
                             <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="Uk7Y8qO9LNM" data-youtube-url="https://www.youtube.com/watch?v=Uk7Y8qO9LNM">
-                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level1-3.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/level1-3.png';">
+                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level1-3.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/level1-3.png';">
                                 <div class="play-btn"></div>
                             </div>
                             <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -2873,7 +2874,7 @@
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
                             <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="0TmQiChJw_g" data-youtube-url="https://www.youtube.com/watch?v=0TmQiChJw_g">
-                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level1-4.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/level1-4.png';">
+                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level1-4.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/level1-4.png';">
                                 <div class="play-btn"></div>
                             </div>
                             <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -2983,8 +2984,10 @@
                             <div class="video-card">
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
-                            <video controls width="100%" preload="none" poster="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level2-1.png" data-poster-fallback="videos/level2-1.png" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level2-1.mp4" onerror="if(!this.dataset.fallback){this.dataset.fallback='true';this.src='videos/level2-1.mp4';this.load();}">
-                            </video>
+                            <div class="youtube-wrapper deferred-video" role="button" tabindex="0" aria-label="Play video" data-video-src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level2-1.mp4" data-video-alt-src="https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/level2-1.mp4" data-poster-src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level2-1.png" data-poster-alt-src="https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/level2-1.png">
+                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/level2-1.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/level2-1.png';">
+                                <div class="play-btn"></div>
+                            </div>
                             <span class="eval-badge eval-coherence card-badge">Consistency</span>
                         </div>
                         <div class="video-info">
@@ -3078,8 +3081,10 @@
 <div class="video-card">
     <div class="video-card-top">
         <div class="video-card-top">
-            <video controls width="100%" preload="none" poster="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-2.png" data-poster-fallback="videos/2-2.png" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/new2-2.mp4" onerror="if(!this.dataset.fallback){this.dataset.fallback='true';this.src='videos/new2-2.mp4';this.load();}">
-            </video>
+            <div class="youtube-wrapper deferred-video" role="button" tabindex="0" aria-label="Play video" data-video-src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/new2-2.mp4" data-video-alt-src="https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/new2-2.mp4" data-poster-src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-2.png" data-poster-alt-src="https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/2-2.png">
+                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-2.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/2-2.png';">
+                <div class="play-btn"></div>
+            </div>
             <span class="eval-badge eval-coherence card-badge">Coherence</span>
         </div>
     </div>
@@ -3186,7 +3191,7 @@
                         <div class="video-card-top">
                             <!-- 使用占位符或替换为实际 video 标签 -->
                             <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="Wb4Xhj-4I38" data-youtube-url="https://www.youtube.com/watch?v=Wb4Xhj-4I38">
-                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-3.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/2-3.png';">
+                                <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-3.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/2-3.png';">
                                 <div class="play-btn"></div>
                             </div>
                             <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3285,7 +3290,7 @@
     <div class="video-card-top">
         <!-- 实际视频标签 -->
         <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="2amauvHCsX0" data-youtube-url="https://www.youtube.com/watch?v=2amauvHCsX0">
-            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-4.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/2-4.png';">
+            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/2-4.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/2-4.png';">
             <div class="play-btn"></div>
         </div>
         <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3411,7 +3416,7 @@
                             <div class="video-card">
                                 <div class="video-card-top">
                                     <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="v-tnOx6y7Is" data-youtube-url="https://www.youtube.com/watch?v=v-tnOx6y7Is">
-                                        <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-1.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/3-1.png';">
+                                        <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-1.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/3-1.png';">
                                         <div class="play-btn"></div>
                                     </div>
                                     <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -3507,7 +3512,7 @@
                             <div class="video-card">
                                 <div class="video-card-top">
                                     <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="I-abuS0lfS4" data-youtube-url="https://www.youtube.com/watch?v=I-abuS0lfS4">
-                                        <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-2.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/3-2.png';">
+                                        <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-2.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/3-2.png';">
                                         <div class="play-btn"></div>
                                     </div>
                                     <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3611,7 +3616,7 @@
     <div class="video-card-top">
         <!-- 实际视频标签 -->
         <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="qAeQv9nvSJM" data-youtube-url="https://www.youtube.com/watch?v=qAeQv9nvSJM">
-            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-3.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/3-3.png';">
+            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-3.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/3-3.png';">
             <div class="play-btn"></div>
         </div>
         <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -3707,7 +3712,7 @@
     <div class="video-card-top">
         <!-- 实际视频标签 -->
         <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="f3ZQfnA6YRA" data-youtube-url="https://www.youtube.com/watch?v=f3ZQfnA6YRA">
-            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-4.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/3-4.png';">
+            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-4.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/3-4.png';">
             <div class="play-btn"></div>
         </div>
         <span class="eval-badge eval-coherence card-badge">Consistency</span>
@@ -3804,7 +3809,7 @@
     <div class="video-card-top">
         <!-- 实际视频标签 -->
         <div class="youtube-wrapper" role="button" tabindex="0" aria-label="Play YouTube video" data-video-id="W--rR8w-gSE" data-youtube-url="https://www.youtube.com/watch?v=W--rR8w-gSE">
-            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-5.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='videos/3-5.png';">
+            <img class="poster" src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/videos/3-5.png" alt="Video Thumbnail" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/videos/3-5.png';">
             <div class="play-btn"></div>
         </div>
         <span class="eval-badge eval-coherence card-badge">Coherence</span>
@@ -3955,7 +3960,7 @@
                 </div>
 
                 <figure>
-                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/area-basic.svg" onerror="this.onerror=null;this.src='figs/imgs/area-basic.svg';"
+                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/area-basic.svg" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/imgs/area-basic.svg';"
                         alt="Video-MME-v2 Three-Level Capability Hierarchy" 
                         style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
                     <figcaption>Figure 1: Video-MME-v2 three-level capability hierarchy — capability dimensions and their distribution across Level 1 (Retrieval &amp; Aggregation), Level 2 (Temporal Understanding), and Level 3 (Complex Reasoning).</figcaption>
@@ -4062,13 +4067,13 @@
 
                 <div class="figures-row">
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/data_sta.png" onerror="this.onerror=null;this.src='figs/exps/data_sta.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/data_sta.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/data_sta.png';"
                             alt="Video-MME-v2 Data Statistics" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 2: Video length, and question and option length distribution</figcaption>
                     </figure>
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/video_category.png" onerror="this.onerror=null;this.src='figs/imgs/video_category.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/video_category.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/imgs/video_category.png';"
                             alt="Video-MME-v2 video category distribution (sunburst)" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 3: Video category distribution</figcaption>
@@ -4076,13 +4081,13 @@
                 </div>
                 <div class="figures-row">
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_publish_month.png" onerror="this.onerror=null;this.src='figs/exps/video_publish_month.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_publish_month.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/video_publish_month.png';"
                             alt="Video-MME-v2 Video Publication Time Distribution" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 4: Video publication time distribution</figcaption>
                     </figure>
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_viewcount.png" onerror="this.onerror=null;this.src='figs/exps/video_viewcount.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_viewcount.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/video_viewcount.png';"
                             alt="Video-MME-v2 Video View Count Distribution" 
                             style="box-sizing: border-box; width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 5: Video view count distribution</figcaption>
@@ -4125,7 +4130,7 @@
                 </div>
 
                 <figure>
-                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/area-basic.svg" onerror="this.onerror=null;this.src='figs/imgs/area-basic.svg';"
+                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/area-basic.svg" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/imgs/area-basic.svg';"
                         alt="Video-MME-v2 的三级能力层级分类体系" 
                         style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto;">
                     <figcaption>Figure 1: Video-MME-v2三级能力层级：各能力维度及其在Level 1（信息检索与聚合）、Level 2（时序理解）、Level 3（复杂推理）中的分布</figcaption>
@@ -4232,13 +4237,13 @@
 
                 <div class="figures-row row-1">
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/data_sta.png" onerror="this.onerror=null;this.src='figs/exps/data_sta.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/data_sta.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/data_sta.png';"
                             alt="Video-MME-v2 数据统计" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 2：视频长度、以及问题与选项长度分布</figcaption>
                     </figure>
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/video_category_cropped.png" onerror="this.onerror=null;this.src='figs/imgs/video_category_cropped.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/video_category_cropped.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/imgs/video_category_cropped.png';"
                             alt="Video-MME-v2 视频类别分布（旭日图）" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 3：视频类别分布，含4个一级类别、31个二级类别</figcaption>
@@ -4246,13 +4251,13 @@
                 </div>
                 <div class="figures-row row-2">
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_publish_month.png" onerror="this.onerror=null;this.src='figs/exps/video_publish_month.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_publish_month.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/video_publish_month.png';"
                             alt="Video-MME-v2 视频发布时间分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 4：视频发布时间分布</figcaption>
                     </figure>
                     <figure>
-                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_viewcount.png" onerror="this.onerror=null;this.src='figs/exps/video_viewcount.png';"
+                        <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/video_viewcount.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/video_viewcount.png';"
                             alt="Video-MME-v2 视频观看量分布" 
                             style="width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                         <figcaption>Figure 5：视频观看量分布</figcaption>
@@ -4404,7 +4409,7 @@
                     （2）商业化模型通常优于开源模型，但所有模型仍然远远低于人类的表现，这表明当前模型仍然有很大的提升空间。
                 </p>
                 <figure class="figure-full-width">
-                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/q1-q4_models_acc_0406.png" onerror="this.onerror=null;this.src='figs/exps/q1-q4_models_acc_0406.png';"
+                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/q1-q4_models_acc_0406.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/q1-q4_models_acc_0406.png';"
                         alt="Q1-Q4 accuracy and mean/variance in capability consistency"
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption data-lang-en>Figure 6: Overall Q1→Q4 accuracy in Capability Consistency and Reasoning Coherence groups, and mean &amp; variance in the Capability Consistency group.</figcaption>
@@ -4438,7 +4443,7 @@
                     <strong>2. 当前Thinking模式可能导致性能倒退：</strong>除了「字幕更利于 Thinking」的总体规律外，我们仍然观察到部分设定在开启Thinking 后出现明显回退，且在「无字幕」条件下更常见。例如<strong>Qwen3-VL-8B</strong>在无字幕设定下整体分数为-0.6，<strong>KimiVL-16B</strong>在无/有字幕设定下整体分别下降-3.3/-3.3；在最需要Thinking能力的Level 3上，甚至进一步下降到-4.0/-3.9。这说明当前多模态大模型的Thinking机制在视频理解任务中并非总能带来正向收益，仍有较大提升空间。
                 </p>
                 <figure class="figure-full-width">
-                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/scientific_think_effect_v2.png" onerror="this.onerror=null;this.src='figs/imgs/scientific_think_effect_v2.png';"
+                    <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/imgs/scientific_think_effect_v2.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/imgs/scientific_think_effect_v2.png';"
                         alt="Effect of Thinking with and without subtitle by level and overall" 
                         style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                     <figcaption data-lang-en>Figure 7: Score by level and overall under Thinking mode (with/without subtitle)</figcaption>
@@ -4595,7 +4600,7 @@
                         <div id="radar-chart" class="capability-radar-chart" aria-label="Capability radar chart"></div>
                         <noscript>
                             <div class="capability-radar-fallback">
-                                <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/radar_second_head.png" onerror="this.onerror=null;this.src='figs/exps/radar_second_head.png';"
+                                <img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/exps/radar_second_head.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/exps/radar_second_head.png';"
                                     alt="Capability radar: model performance across Video-MME-v2 dimensions"
                                     style="width:80%; max-width:80%; height:auto; display:block; margin:0 auto; border:1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); border-radius:8px;">
                             </div>
@@ -4668,27 +4673,64 @@
         if (savedLang) {
             switchLanguage(savedLang);
         }
-        initVideoPosterFallbacks();
+        initDeferredVideos();
         initYouTubeEmbeds();
         initCarousels();
     });
 
-    function initVideoPosterFallbacks() {
-        document.querySelectorAll('video[data-poster-fallback]').forEach(function(video) {
-            const remotePoster = video.getAttribute('poster');
-            const localPoster = video.dataset.posterFallback;
+    function initDeferredVideos() {
+        document.querySelectorAll('.deferred-video[data-video-src]').forEach(function(wrapper) {
+            wrapper.addEventListener('click', function() {
+                activateDeferredVideo(wrapper);
+            });
 
-            if (!remotePoster || !localPoster) return;
-
-            const probe = new Image();
-            probe.onload = function() {
-                video.poster = remotePoster;
-            };
-            probe.onerror = function() {
-                video.poster = localPoster;
-            };
-            probe.src = remotePoster;
+            wrapper.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    activateDeferredVideo(wrapper);
+                }
+            });
         });
+    }
+
+    function activateDeferredVideo(wrapper) {
+        if (!wrapper || wrapper.dataset.loaded === 'true') return;
+
+        const primarySrc = wrapper.dataset.videoSrc;
+        const fallbackSrc = wrapper.dataset.videoAltSrc;
+        const posterSrc = wrapper.dataset.posterSrc;
+        const posterFallback = wrapper.dataset.posterAltSrc;
+        if (!primarySrc) return;
+
+        wrapper.dataset.loaded = 'true';
+        wrapper.classList.add('is-loading');
+
+        const video = document.createElement('video');
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        if (posterSrc) video.poster = posterSrc;
+
+        let switchedToFallback = false;
+        video.addEventListener('error', function() {
+            if (!switchedToFallback && fallbackSrc) {
+                switchedToFallback = true;
+                if (posterFallback) video.poster = posterFallback;
+                video.src = fallbackSrc;
+                video.load();
+                const retry = video.play();
+                if (retry && typeof retry.catch === 'function') retry.catch(function() {});
+            }
+        });
+
+        wrapper.replaceChildren(video);
+        video.src = primarySrc;
+        video.load();
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function() {});
+        }
     }
 
     function initYouTubeEmbeds() {
@@ -4929,17 +4971,17 @@
         human: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;padding:2px;background:#e2e8f0;border-radius:6px;color:#475569;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`,
         openai: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.0462 6.0462 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.4848 4.4848 0 0 1 2.3655-1.9723V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.453l-.142.0805L8.704 5.4599a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l3.1028-1.7999 3.1028 1.7999v3.5916l-3.1028 1.7999-3.1028-1.7999z" fill="#000"/></svg>`,
         qwen: `<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Qwen_logo.svg" alt="Qwen" style="width:100%;height:100%;">`,
-        gemini: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/gemini_logo.jpg" alt="Gemini" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/gemini_logo.jpg';">`,
-        intern: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/intern_logo.png" alt="InternVL" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/intern_logo.png';">`,
-        doubao: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/logo_doubao.png" alt="Doubao" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/logo_doubao.png';">`,
-        claude: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/logo_claude.png" alt="Claude" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/logo_claude.png';">`,
-        kimi: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/kimi_logo.jpg" alt="Kimi" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/kimi_logo.jpg';">`,
-        glm: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/glm_logo.jpg" alt="GLM" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/glm_logo.jpg';">`,
-        mimo: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/mimo_logo.png" alt="MiMo" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/mimo_logo.png';">`,
-        videollama: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/videollama_logo.jpg" alt="VideoLLaMA" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/videollama_logo.jpg';">`,
-        llava: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/llava_logo.jpg" alt="LLaVA" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/llava_logo.jpg';">`,
-        keye: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/keye_logo.jpg" alt="Keye" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/keye_logo.jpg';">`,
-        vita: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/youtu.png" alt="VITA" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='figs/logos/youtu.png';">`,
+        gemini: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/gemini_logo.jpg" alt="Gemini" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/gemini_logo.jpg';">`,
+        intern: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/intern_logo.png" alt="InternVL" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/intern_logo.png';">`,
+        doubao: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/logo_doubao.png" alt="Doubao" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/logo_doubao.png';">`,
+        claude: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/logo_claude.png" alt="Claude" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/logo_claude.png';">`,
+        kimi: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/kimi_logo.jpg" alt="Kimi" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/kimi_logo.jpg';">`,
+        glm: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/glm_logo.jpg" alt="GLM" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/glm_logo.jpg';">`,
+        mimo: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/mimo_logo.png" alt="MiMo" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/mimo_logo.png';">`,
+        videollama: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/videollama_logo.jpg" alt="VideoLLaMA" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/videollama_logo.jpg';">`,
+        llava: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/llava_logo.jpg" alt="LLaVA" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/llava_logo.jpg';">`,
+        keye: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/keye_logo.jpg" alt="Keye" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/keye_logo.jpg';">`,
+        vita: `<img src="https://github.com/yfzhang114/VideoMMEv2/raw/refs/heads/main/figs/logos/youtu.png" alt="VITA" style="width:100%;height:100%;" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/yfzhang114/VideoMMEv2/main/figs/logos/youtu.png';">`,
     };
 
     // Current sort state
